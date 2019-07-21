@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#app {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #606266;
+    font-size: 0.72917vw;
+    overflow-x: hidden;
+    /* 14/1920 */
+}
+
+.normal {
+    color: #606266;
+    font-size: 0.72917vw;
+}
+
+.emphasize {
+    color: #303133;
+    font-size: 0.83334vw;
+    /* 16/1920 */
+}
+
+.ignore {
+    color: #909399;
+    font-size: 0.625vw;
+    /* 12/1920 */
+}
