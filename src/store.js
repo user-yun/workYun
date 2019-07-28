@@ -27,8 +27,11 @@ export default new Vuex.Store({
       for (let key in value) {
         Vue.set(state.userInfo, key, value[key]);
       }
-      let time = new Date().toLocaleString();
-      Vue.set(state.userInfo, "lastTime", time);
+      let time = new Date();
+      Vue.set(state.userInfo, "lastTime", {
+        date: time.toLocaleString(),
+        second: time.getTime()
+      });
     },
     deleteUserInfo(state, value) {
       Vue.delete(state.userInfo, value.key);
@@ -37,8 +40,11 @@ export default new Vuex.Store({
       for (let key in value) {
         Vue.set(state.otherInfo, key, value[key]);
       }
-      let time = new Date().toLocaleString();
-      Vue.set(state.userInfo, "lastTime", time);
+      let time = new Date();
+      Vue.set(state.otherInfo, "lastTime", {
+        date: time.toLocaleString(),
+        second: time.getTime()
+      });
     },
     deleteOtherInfo(state, value) {
       Vue.delete(state.otherInfo, value.key);
@@ -47,8 +53,11 @@ export default new Vuex.Store({
       for (let key in value) {
         Vue.set(state.language, key, value[key]);
       }
-      let time = new Date().toLocaleString();
-      Vue.set(state.userInfo, "lastTime", time);
+      let time = new Date();
+      Vue.set(state.language, "lastTime", {
+        date: time.toLocaleString(),
+        second: time.getTime()
+      });
     }
   },
   actions: {

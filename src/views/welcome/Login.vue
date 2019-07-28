@@ -1,0 +1,126 @@
+<template>
+  <div>
+    <el-image :src="otherInfo.bgImg" style="width:100vw;height:99.7vh" fit="cover"></el-image>
+    <el-dialog
+      :visible="true"
+      :show-close="false"
+      top="30vh"
+      :width=" otherInfo.menuCollapse ? '60%' : '30%' "
+    >
+      <el-row slot="title">
+        <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="18">
+          <h2 align="left">{{language.loginTile}}</h2>
+        </el-col>
+        <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="6" align="right">
+          <SelectLanguage></SelectLanguage>
+        </el-col>
+      </el-row>
+      <el-form :model="ruleForm" ref="ruleForm" status-icon :rules="rules">
+        <el-form-item prop="username">
+          <el-input
+            type="text"
+            v-model="ruleForm.username"
+            :maxlength="18"
+            prefix-icon="el-icon-user"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            type="password"
+            v-model="ruleForm.password"
+            :maxlength="20"
+            show-password
+            prefix-icon="el-icon-tickets"
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm')">{{language.determine}}</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import md5 from "js-md5";
+import mymixins from "@/mymixins";
+export default {
+  mixins: [mymixins],
+  name: "Login",
+  data() {
+    return {
+      ruleForm: {
+        username: null,
+        password: null
+      }
+    };
+  },
+  components: {
+    SelectLanguage: () => import("@/assets/SelectLanguage")
+  },
+  props: {},
+  computed: {
+    rules() {
+      let rules = {
+        username: [{ required: true, message: "username", trigger: "blur" }],
+        password: [{ required: true, message: "password", trigger: "blur" }]
+      };
+      return rules;
+    }
+  },
+  watch: {},
+  methods: {
+    resizeHandler() {
+      let currentWidth = document.body.clientWidth;
+      if (currentWidth <= 992) {
+        this.setOtherInfo({ menuCollapse: true });
+      } else {
+        this.setOtherInfo({ menuCollapse: false });
+      }
+    },
+    async setWebConfig() {
+      let config = await this.$Get("/web-config/config.json");
+      this.setOtherInfo(config);
+    },
+    submitForm(formName) {
+      let that = this;
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          that.login();
+        }
+      });
+    },
+    login() {
+      let that = this;
+      this.post("/auth/login", {
+        Username: this.ruleForm.username,
+        Password: md5(this.ruleForm.password)
+      }).then(res => {
+        let data = res.Data;
+        that.setUserInfo({
+          userName: data.Username,
+          headerTitle: data.Nickname,
+          userId: data.Id,
+          userToken: data.Token,
+          userRole: data.Role,
+          userProject: data.Project,
+          projectId: res.Expand.Id
+        });
+        that.$router.push({ name: "Home" });
+      });
+    }
+  },
+  created() {
+    this.setWebConfig();
+  },
+  mounted() {
+    this.resizeHandler();
+    window.addEventListener("resize", this.resizeHandler);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.resizeHandler);
+  }
+};
+</script>
+<style scoped>
+</style>

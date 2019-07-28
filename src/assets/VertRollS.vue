@@ -129,7 +129,7 @@ export default {
     },
     aniTime: {
       type: Number,
-      default: 2
+      default: 4
     },
     height: {
       type: String,
@@ -183,7 +183,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .list-complete-item {
-  transition: all 2s;
+  transition: all 4s;
   display: block;
 }
 .list-complete-item:hover {
@@ -192,15 +192,15 @@ export default {
 .list-complete-enter
 /* .list-complete-leave-active for below version 2.1.8 */ {
   opacity: 0;
-  transition: all 4s;
-  /* transform: translateY(4.16666vh); */
-  transform: scale(1.2) translateY(4.16666vh);
+  transition: all 2s;
+  transform: translateY(1vh);
+  /* transform: scale(1.2) translateY(4.16666vh); */
 }
 .list-complete-leave-to {
   opacity: 0;
   transition: all 0.5s;
-  /* transform: translateY(-4.16666vh); */
-  transform: scale(0.1) translateY(-4.16666vh);
+  transform: translateY(-1vh);
+  /* transform: scale(0.1) translateY(-4.16666vh); */
 }
 .list-complete-leave-active {
   position: absolute;

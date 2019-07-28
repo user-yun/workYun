@@ -1,3 +1,4 @@
+let illegalURL = "http://121.196.211.83/";
 module.exports = {
   // plugins: {
   //   autoprefixer: {}
@@ -54,14 +55,21 @@ module.exports = {
         }
       },
       "/static-resources": {
-        target: "http://121.196.211.83/",
+        target: illegalURL,
         changeOrigin: true,
         // pathRewrite: {
         //   '^/api': ''
         // }
       },
       "/language": {
-        target: "http://121.196.211.83/",
+        target: illegalURL,
+        changeOrigin: true,
+        // pathRewrite: {
+        //   '^/api': ''
+        // }
+      },
+      "/web-config": {
+        target: illegalURL,
         changeOrigin: true,
         // pathRewrite: {
         //   '^/api': ''

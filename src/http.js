@@ -1,7 +1,19 @@
 import axios from 'axios'
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import { getLocal } from "@/function";
+import store from './store';
+
+function isFalse(o) {
+    if (
+        !o ||
+        o === "null" ||
+        o === "undefined" ||
+        o === "false" ||
+        o === "NaN"
+    )
+        return true;
+    return false;
+}
 
 axios.defaults.timeout = 5000;                        //响应时间
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';        //配置请求头
@@ -21,8 +33,20 @@ axios.defaults.onDownloadProgress = function (p) {
 axios.interceptors.request.use((config) => {
     //在发送请求之前做某件事
     NProgress.start();
-    let token = getLocal("token")
-    config.headers.Authorization = `${token != null ? token : ''}`
+    let token = store.state.userInfo.userToken
+    let reqTime = new Date().getTime();
+    config.headers.Authorization = `${isFalse(token) ? '' : token}`
+    if (config.method === 'post') {
+        config.data = {
+            ...config.data,
+            reqTime: reqTime
+        }
+    } else if (config.method === 'get') {
+        config.params = {
+            ...config.params,
+            reqTime: reqTime
+        }
+    }
     return config;
 }, (error) => {
     return Promise.reject(error);

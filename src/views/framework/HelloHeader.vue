@@ -11,7 +11,7 @@
       :xl="{span: 16, offset: 3}"
       align="left"
     >
-      <b class="emphasize">{{userInfo.headerTitle}}</b>
+      <b class="emphasize" :style="{color:otherInfo.themeTextColor}">{{userInfo.headerTitle}}</b>
     </el-col>
     <el-col :xs="6" :sm="4" :lg="3" :xl="2">
       <el-button
@@ -20,7 +20,7 @@
         autofocus
         :style="{color:otherInfo.themeTextColor}"
         @click="getInto"
-      >{{Language.getInto}}</el-button>
+      >{{language.getInto}}</el-button>
     </el-col>
     <el-col :xs="6" :sm="3" :lg="2" :xl="2" align="right">
       <el-tooltip effect="light">
@@ -46,7 +46,6 @@
   </el-row>
 </template>
 <script>
-import { setLocal } from "@/function";
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
@@ -78,48 +77,11 @@ export default {
       return menuList;
     }
   },
-  watch: {
-    "otherInfo.LanguageOpt": {
-      deep: true,
-      immediate: true,
-      handler(newv, oldv) {
-        this.getLanguageJson();
-      }
-    }
-  },
+  watch: {},
   methods: {
-    login() {
-      this.post("/auth/login", {
-        Username: "1",
-        Password: "c4ca4238a0b923820dcc509a6f75849b"
-      }).then(res => {});
-    },
-    getLanguageJson() {
-      this.$Get("/language/" + this.otherInfo.LanguageOpt + ".json").then(
-        res => {
-          this.$store.dispatch("upVuex", {
-            mutations: "setLanguage",
-            value: res
-          });
-        }
-      );
-    },
     getInto() {
-      this.setOtherInfo({
-        LanguageOpt: "en-us"
-      });
+      this.$router.push({ name: "Park" });
     }
-  },
-  created() {
-    //创建
-    this.setUserInfo({ userName: "yun", headerTitle: "溏心" });
-    this.login();
-  },
-  mounted() {
-    //渲染
   }
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

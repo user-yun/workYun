@@ -12,7 +12,7 @@ let mixin = {
     otherInfo() {
       return this.$store.getters.getOtherInfo;
     },
-    Language() {
+    language() {
       return this.$store.getters.getLanguage;
     }
   },
@@ -71,10 +71,10 @@ let mixin = {
     post(url, param) {
       return new Promise((resolve, reject) => {
         this.$Post(this.httpURL + url, param).then(res => {
-          this.log(res.Data);
+          this.log(res);
           if (false) { }
           else
-            resolve(res.Data)
+            resolve(res)
         }).catch((error) => {
           reject(error)
         });
@@ -83,16 +83,20 @@ let mixin = {
     get(url, param) {
       return new Promise((resolve, reject) => {
         this.$Get(this.httpURL + url, param).then(res => {
-          this.log(res.Data);
+          this.log(res);
           if (false) { }
           else
-            resolve(res.Data)
+            resolve(res)
         }).catch((error) => {
           reject(error)
         });
       });
 
     },
+    isFalse(o) {
+      if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN') return true
+      return false
+    }
   },
 };
 export default mixin;
