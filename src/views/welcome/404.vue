@@ -1,5 +1,5 @@
 <template>
-  <el-card style="height:99.7vh">
+  <el-card class="h997">
     <el-col :xs="24" :md="12" :xl="6">
       <el-timeline>
         <el-timeline-item

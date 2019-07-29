@@ -22,11 +22,9 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 axios.defaults.onUploadProgress = function (p) {
     NProgress.set((p.loaded / p.total));
-    // console.log((p.loaded / p.total));
 }
 axios.defaults.onDownloadProgress = function (p) {
     NProgress.set((p.loaded / p.total));
-    // console.log((p.loaded / p.total));
 }
 
 //POST传参序列化(添加请求拦截器)

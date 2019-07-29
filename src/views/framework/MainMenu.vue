@@ -1,7 +1,15 @@
 <template>
-  <el-menu :collapse="otherInfo.menuCollapse">
+  <el-menu
+    :default-active="defaultActive"
+    :collapse="otherInfo.menuCollapse"
+    :background-color="otherInfo.themeBackgroundColor"
+    :text-color="otherInfo.themeTextColor"
+    router
+    class="h997"
+    :style="{height:otherInfo.asideVisible ? '':'98vh'}"
+  >
     <transition v-for="(menuListItem,indexList) in menuList" :key="indexList">
-      <el-submenu v-if="menuListItem.children" :index="menuListItem.meta.title">
+      <el-submenu v-if="menuListItem.children.length>1" :index="menuListItem.meta.title">
         <template slot="title">
           <i :class="menuListItem.meta.icon"></i>
           <span slot="title">{{menuListItem.meta.title}}</span>
@@ -16,9 +24,9 @@
           </el-menu-item>
         </transition>
       </el-submenu>
-      <el-menu-item v-else :index="menuListItem.meta.title">
-        <i :class="menuListItem.meta.icon"></i>
-        <span slot="title">{{menuListItem.meta.title}}</span>
+      <el-menu-item v-else :index="menuListItem.children[0].meta.title">
+        <i :class="menuListItem.children[0].meta.icon"></i>
+        <span slot="title">{{menuListItem.children[0].meta.title}}</span>
       </el-menu-item>
     </transition>
   </el-menu>
@@ -55,6 +63,9 @@ export default {
         }
       });
       return menuList;
+    },
+    defaultActive() {
+      return this.$route.path.substr(1, this.$route.path.length);
     }
   }
 };

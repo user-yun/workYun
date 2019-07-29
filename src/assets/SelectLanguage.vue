@@ -18,6 +18,9 @@ export default {
   computed: {
     otherInfo() {
       return this.$store.getters.getOtherInfo;
+    },
+    language() {
+      return this.$store.getters.getLanguage;
     }
   },
   watch: {

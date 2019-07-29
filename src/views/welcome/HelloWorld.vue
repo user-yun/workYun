@@ -16,6 +16,7 @@
 
 <script>
 import PolygonalChart from "@/echartsdata/PolygonalChart";
+import { setLocal } from "@/function";
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],

@@ -31,3 +31,22 @@ body {
     font-size: 0.625vw;
     /* 12/1920 */
 }
+
+.h997 {
+    height: 99.7vh
+}
+
+.w100 {
+    width: 100vw
+}
+
+.h5l5 {
+    height: 5vh;
+    line-height: 5vh;
+}
+
+.shadow {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+}

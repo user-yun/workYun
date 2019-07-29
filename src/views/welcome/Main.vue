@@ -1,12 +1,20 @@
 <template>
   <el-container>
-    <el-aside :width=" otherInfo.asideVisible ? otherInfo.menuCollapse ? 'auto' : '15%' :'0%' ">
-      <Menu></Menu>
+    <el-aside :width="asideWidth">
+      <MainMenu></MainMenu>
     </el-aside>
     <el-container>
-      <el-header>Header</el-header>
-      <el-main>{{otherInfo}}</el-main>
-      <el-footer>Footer</el-footer>
+      <el-header
+        height="5vh"
+        :style="{backgroundColor:otherInfo.themeBackgroundColor }"
+        class="shadow"
+      >
+        <MainHeader></MainHeader>
+      </el-header>
+      <el-main>
+        <MainApp></MainApp>
+      </el-main>
+      <!-- <el-footer height="5vh">Footer</el-footer> -->
     </el-container>
   </el-container>
 </template>
@@ -21,31 +29,21 @@ export default {
     return {};
   },
   components: {
-    Menu: () => import("@/views/framework/Menu")
+    MainMenu: () => import("@/views/framework/MainMenu"),
+    MainHeader: () => import("@/views/framework/MainHeader"),
+    MainApp: () => import("@/views/framework/MainApp")
   },
-  props: {
-    // test: {
-    //   type: String,
-    //   default: () => {
-    //     let colors = ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C"];
-    //     return colors[Math.ceil(Math.random() * colors.length)];
-    //   }
-    // }
-  },
+  props: {},
   computed: {
-    // test() {
-    //   let data = null;
-    //   return data;
-    // }
+    asideWidth() {
+      return this.otherInfo.asideVisible
+        ? this.otherInfo.menuCollapse
+          ? "auto"
+          : "11%"
+        : "0%";
+    }
   },
-  watch: {
-    //监听数据变化
-    // test: {
-    //   deep: true,
-    //   immediate: true,
-    //   handler(newv, oldv) {}
-    // }
-  },
+  watch: {},
   methods: {
     beforeunloadFn(e) {
       setLocal("userMemory", {
@@ -82,3 +80,5 @@ export default {
   }
 };
 </script>
+<style scoped>
+</style>

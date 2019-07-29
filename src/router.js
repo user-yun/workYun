@@ -22,6 +22,17 @@ let router = [
     name: '404',
     component: () => import('@/views/welcome/404.vue'),
   },
+  {
+    path: '/Home',
+    name: 'Home',
+    component: () => import('@/views/welcome/HelloWorld.vue'),
+    meta: {
+      title: "Home",//标题以及父项的唯一标识
+      icon: "el-icon-house",//图标
+      intercept: true,//是否需要拦截
+      role: [1]//角色
+    },
+  },
 ]
 
 

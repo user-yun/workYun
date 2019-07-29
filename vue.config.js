@@ -49,28 +49,28 @@ module.exports = {
     proxy: { // 设置代理
       "/Example-My": {
         target: "http://0.0.0.0",
-        changeOrigin: true,
+        changeOrigin: false,
         pathRewrite: {
           '^/replace': ''
         }
       },
       "/static-resources": {
         target: illegalURL,
-        changeOrigin: true,
+        changeOrigin: false,
         // pathRewrite: {
         //   '^/api': ''
         // }
       },
       "/language": {
         target: illegalURL,
-        changeOrigin: true,
+        changeOrigin: false,
         // pathRewrite: {
         //   '^/api': ''
         // }
       },
       "/web-config": {
         target: illegalURL,
-        changeOrigin: true,
+        changeOrigin: false,
         // pathRewrite: {
         //   '^/api': ''
         // }

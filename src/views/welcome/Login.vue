@@ -1,12 +1,7 @@
 <template>
   <div>
-    <el-image :src="otherInfo.bgImg" style="width:100vw;height:99.7vh" fit="cover"></el-image>
-    <el-dialog
-      :visible="true"
-      :show-close="false"
-      top="30vh"
-      :width=" otherInfo.menuCollapse ? '60%' : '30%' "
-    >
+    <el-image v-if="otherInfo.bgImg" :src="otherInfo.bgImg" class="w100 h997" fit="cover"></el-image>
+    <el-dialog :visible="true" :show-close="false" top="30vh" :width="dialogWidth">
       <el-row slot="title">
         <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="18">
           <h2 align="left">{{language.loginTile}}</h2>
@@ -66,6 +61,9 @@ export default {
         password: [{ required: true, message: "password", trigger: "blur" }]
       };
       return rules;
+    },
+    dialogWidth() {
+      return this.otherInfo.menuCollapse ? "60%" : "30%";
     }
   },
   watch: {},
@@ -104,7 +102,7 @@ export default {
           userToken: data.Token,
           userRole: data.Role,
           userProject: data.Project,
-          projectId: res.Expand.Id
+          projectId: that.isFalse(res.Expand) ? null : res.Expand.Id
         });
         that.$router.push({ name: "Home" });
       });

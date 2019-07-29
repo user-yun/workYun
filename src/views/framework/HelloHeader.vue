@@ -80,7 +80,7 @@ export default {
   watch: {},
   methods: {
     getInto() {
-      this.$router.push({ name: "Park" });
+      this.$router.push({ name: "Test" });
     }
   }
 };
