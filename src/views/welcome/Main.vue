@@ -11,6 +11,7 @@
       >
         <MainHeader></MainHeader>
       </el-header>
+      <MainTag></MainTag>
       <el-main>
         <MainApp></MainApp>
       </el-main>
@@ -24,13 +25,14 @@ import mymixins from "@/mymixins";
 import { setLocal } from "@/function";
 export default {
   mixins: [mymixins],
-  name: "Main",
+  name: "main-main",
   data() {
     return {};
   },
   components: {
     MainMenu: () => import("@/views/framework/MainMenu"),
     MainHeader: () => import("@/views/framework/MainHeader"),
+    MainTag: () => import("@/views/framework/MainTag"),
     MainApp: () => import("@/views/framework/MainApp")
   },
   props: {},
@@ -71,12 +73,12 @@ export default {
     //渲染
     this.resizeHandler();
     window.addEventListener("resize", this.resizeHandler);
-    window.addEventListener("beforeunload", e => this.beforeunloadFn(e));
+    window.addEventListener("beforeunload", this.beforeunloadFn, false);
   },
   beforeDestroy() {
     //销毁前
     window.removeEventListener("resize", this.resizeHandler);
-    window.removeEventListener("beforeunload", e => this.beforeunloadFn(e));
+    window.removeEventListener("beforeunload", this.beforeunloadFn, false);
   }
 };
 </script>

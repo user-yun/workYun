@@ -16,7 +16,7 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "Drawer",
+  name: "drawer",
   data() {
     return {};
   },

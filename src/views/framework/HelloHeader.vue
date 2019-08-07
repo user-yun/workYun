@@ -49,7 +49,7 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "New",
+  name: "helloHeader",
   data() {
     return {};
   },
@@ -80,7 +80,7 @@ export default {
   watch: {},
   methods: {
     getInto() {
-      this.$router.push({ name: "Test" });
+      this.$router.push({ name: "test" });
     }
   }
 };

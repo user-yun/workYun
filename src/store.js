@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
+import { setLocal } from "@/function";
 export default new Vuex.Store({
   state: {
     userInfo: {}, //用户信息

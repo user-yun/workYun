@@ -6,7 +6,7 @@
 // import mymixins from "@/mymixins";
 export default {
   // mixins: [mymixins],
-  name: "Test",
+  name: "test",
   data() {
     return {};
   },

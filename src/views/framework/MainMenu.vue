@@ -1,32 +1,32 @@
 <template>
   <el-menu
-    :default-active="defaultActive"
+    :default-active="$route.path"
     :collapse="otherInfo.menuCollapse"
     :background-color="otherInfo.themeBackgroundColor"
     :text-color="otherInfo.themeTextColor"
     router
     class="h997"
-    :style="{height:otherInfo.asideVisible ? '':'98vh'}"
   >
+    <!-- :style="{height:otherInfo.asideVisible ? '':'98vh'}" -->
     <transition v-for="(menuListItem,indexList) in menuList" :key="indexList">
-      <el-submenu v-if="menuListItem.children.length>1" :index="menuListItem.meta.title">
+      <el-submenu v-if="menuListItem.children.length>1" :index="menuListItem.path">
         <template slot="title">
           <i :class="menuListItem.meta.icon"></i>
-          <span slot="title">{{menuListItem.meta.title}}</span>
+          <span slot="title">{{language[menuListItem.name]}}</span>
         </template>
         <transition
           v-for="(menuChildrenItem,indexChildren) in menuListItem.children"
           :key="indexChildren"
         >
-          <el-menu-item :index="menuChildrenItem.meta.title">
+          <el-menu-item :index="menuChildrenItem.path">
             <i :class="menuChildrenItem.meta.icon"></i>
-            <span slot="title">{{menuChildrenItem.meta.title}}</span>
+            <span slot="title">{{language[menuChildrenItem.name]}}</span>
           </el-menu-item>
         </transition>
       </el-submenu>
-      <el-menu-item v-else :index="menuListItem.children[0].meta.title">
+      <el-menu-item v-else :index="menuListItem.children[0].path">
         <i :class="menuListItem.children[0].meta.icon"></i>
-        <span slot="title">{{menuListItem.children[0].meta.title}}</span>
+        <span slot="title">{{language[menuListItem.children[0].name]}}</span>
       </el-menu-item>
     </transition>
   </el-menu>
@@ -38,7 +38,7 @@ import menuroule from "@/menuroule";
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "Menu",
+  name: "mainMenu",
   data() {
     return {};
   },
@@ -63,9 +63,6 @@ export default {
         }
       });
       return menuList;
-    },
-    defaultActive() {
-      return this.$route.path.substr(1, this.$route.path.length);
     }
   }
 };

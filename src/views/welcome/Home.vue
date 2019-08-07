@@ -20,7 +20,7 @@ import { setLocal } from "@/function";
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "HelloWorld",
+  name: "home",
   components: {
     HelloHeader: () => import("@/views/framework/HelloHeader.vue"),
     VertRollS: () => import("@/assets/VertRollS.vue"),
@@ -57,11 +57,11 @@ export default {
   mounted() {
     this.resizeHandler();
     window.addEventListener("resize", this.resizeHandler);
-    window.addEventListener("beforeunload", e => this.beforeunloadFn(e));
+    window.addEventListener("beforeunload", this.beforeunloadFn, false);
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.resizeHandler);
-    window.removeEventListener("beforeunload", e => this.beforeunloadFn(e));
+    window.removeEventListener("beforeunload", this.beforeunloadFn, false);
   }
 };
 </script>

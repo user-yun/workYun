@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import router from './router';
@@ -19,6 +20,26 @@ function isFalse(o) {
 
 router.beforeEach((to, from, next) => {
     NProgress.start();
+    let toHandler = {
+        name: to.name,
+        path: to.path,
+        meta: to.meta,
+    }
+    let routerHistory = store.state.otherInfo.routerHistory
+    if (isFalse(routerHistory)) {
+        let rhObj = {};
+        Vue.set(rhObj, to.name, toHandler);
+        store.dispatch("upVuex", {
+            mutations: "setOtherInfo",
+            value: { routerHistory: rhObj }
+        });
+    } else {
+        Vue.set(routerHistory, to.name, toHandler);
+        store.dispatch("upVuex", {
+            mutations: "setOtherInfo",
+            value: { routerHistory: routerHistory }
+        });
+    }
     let meta = to.meta;
     if (isFalse(meta.intercept)) {//是否需要拦截 否
         next();
@@ -86,6 +107,7 @@ router.beforeEach((to, from, next) => {
             }
         }
     }
+    NProgress.done();
 });
 
 router.afterEach(transition => {

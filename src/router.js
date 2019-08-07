@@ -6,12 +6,12 @@ Vue.use(Router)
 let router = [
   {
     path: '/',
-    name: 'Login',
+    name: 'login',
     component: () => import('@/views/welcome/Login.vue'),
   },
   {
-    path: '/Login',
-    redirect: { name: "Login" },
+    path: '/login',
+    redirect: { name: "login" },
   },
   {
     path: '*',
@@ -23,11 +23,11 @@ let router = [
     component: () => import('@/views/welcome/404.vue'),
   },
   {
-    path: '/Home',
-    name: 'Home',
-    component: () => import('@/views/welcome/HelloWorld.vue'),
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/welcome/Home.vue'),
     meta: {
-      title: "Home",//标题以及父项的唯一标识
+      title: "home",//标题以及父项的唯一标识
       icon: "el-icon-house",//图标
       intercept: true,//是否需要拦截
       role: [1]//角色

@@ -98,8 +98,6 @@ let mixin = {
       return false
     }
   },
-  created() {
-    this.log(this.$route.matched);
-  }
+  created() { }
 };
 export default mixin;

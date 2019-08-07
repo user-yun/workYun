@@ -4,13 +4,13 @@
     <el-dialog :visible="true" :show-close="false" top="30vh" :width="dialogWidth">
       <el-row slot="title">
         <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="18">
-          <h2 align="left">{{language.loginTile}}</h2>
+          <h2 align="left">{{language.tile}}</h2>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="6" align="right">
           <SelectLanguage></SelectLanguage>
         </el-col>
       </el-row>
-      <el-form :model="ruleForm" ref="ruleForm" status-icon :rules="rules">
+      <el-form :model="ruleForm" ref="ruleForm" status-icon :rules="rules" @keyup.enter.native="submitForm('ruleForm')">
         <el-form-item prop="username">
           <el-input
             type="text"
@@ -29,7 +29,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">{{language.determine}}</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">{{language.signIn}}</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -38,10 +38,11 @@
 
 <script>
 import md5 from "js-md5";
+import { setLocal, getLocal } from "@/function";
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "Login",
+  name: "login",
   data() {
     return {
       ruleForm: {
@@ -79,6 +80,7 @@ export default {
     async setWebConfig() {
       let config = await this.$Get("/web-config/config.json");
       this.setOtherInfo(config);
+      this.resizeHandler();
     },
     submitForm(formName) {
       let that = this;
@@ -104,15 +106,24 @@ export default {
           userProject: data.Project,
           projectId: that.isFalse(res.Expand) ? null : res.Expand.Id
         });
-        that.$router.push({ name: "Home" });
+        setLocal("userMemory", {
+          userInfo: that.userInfo,
+          otherInfo: that.otherInfo,
+          language: that.language
+        });
+        that.$router.push({ name: "home" });
       });
     }
   },
   created() {
-    this.setWebConfig();
+    let userMemory = getLocal("userMemory");
+    if (this.isFalse(userMemory)) {
+      this.setWebConfig();
+    } else {
+      this.setOtherInfo(userMemory.otherInfo);
+    }
   },
   mounted() {
-    this.resizeHandler();
     window.addEventListener("resize", this.resizeHandler);
   },
   beforeDestroy() {
