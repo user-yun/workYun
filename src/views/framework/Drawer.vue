@@ -8,7 +8,7 @@
     append-to-body
     :close-on-press-escape="false"
   >
-    <span>我来啦!</span>
+    <span>drawer</span>
   </el-drawer>
 </template>
 

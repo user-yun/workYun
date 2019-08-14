@@ -24,15 +24,15 @@
     </el-col>
     <el-col :xs="6" :sm="3" :lg="2" :xl="2" align="right">
       <el-tooltip effect="light">
-        <el-menu slot="content" :collapse="otherInfo.menuCollapse">
+        <el-menu slot="content" :collapse="otherInfo.menuCollapse" @select="menuSelect">
           <el-menu-item
-            v-for="(item,index) in menuList"
-            :key="index+menuList.length"
-            :index="''+index+menuList.length"
-            :route="item.route"
+            v-for="(item) in otherInfo.helloMenuList"
+            :key="item.route"
+            :index="item.route"
           >
+            <!-- :key="index+otherInfo.helloMenuList.length" -->
             <i :class="item.icon"></i>
-            <span slot="title">{{item.title}}</span>
+            <span slot="title">{{language[item.title]}}</span>
           </el-menu-item>
         </el-menu>
         <el-button
@@ -55,32 +55,14 @@ export default {
   },
   components: {},
   props: {},
-  computed: {
-    menuList() {
-      let menuList = [
-        {
-          icon: "el-icon-menu",
-          title: "导航二",
-          route: ""
-        },
-        {
-          icon: "el-icon-document",
-          title: "导航三",
-          route: ""
-        },
-        {
-          icon: "el-icon-setting",
-          title: "导航四",
-          route: ""
-        }
-      ];
-      return menuList;
-    }
-  },
+  computed: {},
   watch: {},
   methods: {
     getInto() {
       this.$router.push({ name: "test" });
+    },
+    menuSelect(index, indexPath) {
+      this.$router.push({ name: index });
     }
   }
 };

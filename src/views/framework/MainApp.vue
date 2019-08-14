@@ -1,11 +1,11 @@
 <template>
-  <section class="shadow">
-    <transition>
+  <transition>
+    <div class="shadow" style="overflow: auto;">
       <keep-alive :include="keepList">
         <router-view :key="key"/>
       </keep-alive>
-    </transition>
-  </section>
+    </div>
+  </transition>
 </template>
 
 <script>

@@ -27,7 +27,7 @@ export default [
         name: 'test',
         component: Main,
         meta: {
-            icon: "el-icon-house",
+            icon: "el-icon-sugar",
             intercept: true,
             role: [1]
         },
@@ -37,7 +37,27 @@ export default [
                 name: 'test',
                 component: () => import('@/views/business/Test.vue'),
                 meta: {
-                    icon: "el-icon-house",
+                    icon: "el-icon-sugar",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/device',
+                name: 'device',
+                component: () => import('@/views/business/system/MModule'),
+                meta: {
+                    icon: "el-icon-odometer",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/list',
+                name: 'list',
+                component: () => import('@/views/business/system/MBusiness'),
+                meta: {
+                    icon: "el-icon-tickets",
                     intercept: true,
                     role: [1]
                 }

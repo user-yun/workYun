@@ -11,8 +11,8 @@
       >
         <MainHeader></MainHeader>
       </el-header>
-      <MainTag></MainTag>
-      <el-main>
+      <MainTag style="height:5vh"></MainTag>
+      <el-main style="height:85vh">
         <MainApp></MainApp>
       </el-main>
       <!-- <el-footer height="5vh">Footer</el-footer> -->
