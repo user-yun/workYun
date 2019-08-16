@@ -10,7 +10,13 @@
           <SelectLanguage></SelectLanguage>
         </el-col>
       </el-row>
-      <el-form :model="ruleForm" ref="ruleForm" status-icon :rules="rules" @keyup.enter.native="submitForm('ruleForm')">
+      <el-form
+        :model="ruleForm"
+        ref="ruleForm"
+        status-icon
+        :rules="rules"
+        @keyup.enter.native="submitForm('ruleForm')"
+      >
         <el-form-item prop="username">
           <el-input
             type="text"
@@ -71,7 +77,8 @@ export default {
   methods: {
     resizeHandler() {
       let currentWidth = document.body.clientWidth;
-      if (currentWidth <= 992) {
+      let clientHeight = document.body.clientHeight;
+      if (currentWidth <= 992 || clientHeight <= 558) {
         this.setOtherInfo({ menuCollapse: true });
       } else {
         this.setOtherInfo({ menuCollapse: false });

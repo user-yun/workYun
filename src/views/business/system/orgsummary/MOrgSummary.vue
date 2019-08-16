@@ -87,7 +87,7 @@ export default {
       let data = row[column.property];
       switch (typeof data) {
         case "string":
-          return data.substr(0, 20);
+          return data.substr(0, 10);
         case "number":
           return data.toFixed(2);
         default:

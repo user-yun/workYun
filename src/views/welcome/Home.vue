@@ -46,7 +46,8 @@ export default {
     },
     resizeHandler() {
       let currentWidth = document.body.clientWidth;
-      if (currentWidth <= 992) {
+      let clientHeight = document.body.clientHeight;
+      if (currentWidth <= 992 || clientHeight <= 558) {
         this.setOtherInfo({ menuCollapse: true });
       } else {
         this.setOtherInfo({ menuCollapse: false });

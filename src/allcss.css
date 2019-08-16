@@ -50,6 +50,17 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 
+.header-cell-class-name {
+    color: #303133;
+    font-size: 0.83334vw;
+    white-space: nowrap;
+}
+
+.cell-class-name {
+    color: #303133;
+    font-size: 0.72917vw;
+}
+
 ::-webkit-scrollbar {
     /*滚动条整体样式*/
     width: 0.72917vw;
