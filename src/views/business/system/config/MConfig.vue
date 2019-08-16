@@ -11,11 +11,11 @@
             pcode:{{item.Pcode}}
           </el-option>
         </el-select>
-        <br>
+        <br />
         {{father}}
       </el-col>
       <el-col :span="6">
-        <el-button type="primary" @click="upOk" style="width:100%">提交</el-button>
+        <el-button type="primary" @click="upOk" style="width:100%">{{language.sure}}</el-button>
       </el-col>
       <el-col :span="6" style="font-size:20px">
         <el-select v-model="son" multiple :disabled="arr.length>0">
@@ -27,7 +27,7 @@
             pcode:{{item.Pcode}}
           </el-option>
         </el-select>
-        <br>
+        <br />
         {{son}}
       </el-col>
       <el-col :span="6" style="font-size:20px">
@@ -40,27 +40,29 @@
             pcode:{{item.Pcode}}
           </el-option>
         </el-select>
-        <br>
+        <br />
         {{arr}}
       </el-col>
     </el-row>
     <el-row style="margin: 2vh 10vw ;width:80%">
       <el-col :span="10">
-        <el-input v-model="RobotToken" placeholder="请输入机器人Token"></el-input>
+        <el-input v-model="RobotToken" placeholder="RobotToken"></el-input>
       </el-col>
       <el-col :span="10">
-        <el-input v-model="GroupNumber" placeholder="请输入群号"></el-input>
+        <el-input v-model="GroupNumber" placeholder="GroupNumber"></el-input>
       </el-col>
       <el-col :span="4">
-        <el-button type="primary" @click="Bind" style="width:100%">绑定</el-button>
+        <el-button type="primary" @click="Bind" style="width:100%">{{language.sure}}</el-button>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import mymixins from "@/mymixins";
 export default {
-  name: "MConfig",
+  mixins: [mymixins],
+  name: "config",
   data() {
     return {
       father: "",
@@ -72,7 +74,7 @@ export default {
     };
   },
   mounted() {
-    this.getZone();
+    this.allModuleBrief();
   },
   computed: {},
   watch: {
@@ -94,44 +96,34 @@ export default {
     }
   },
   methods: {
-    getZone() {
-      let that = this;
-      let val = window.localStorage.park_FloorId;
-      this.$http
-        .get(`${this.$store.state.url}/zone/allmodulebrief/${val}`)
-        .then(res => {
-          if (res.ErrCode == 0) {
-            that.List = res.Data;
-          }
-        });
+    allModuleBrief() {
+      let projectId = this.userInfo.projectId;
+      this.get(`/zone/allModuleBrief/${projectId}`, {}).then(res => {
+        let data = res.Data;
+        this.List = data;
+      });
     },
     upOk() {
-      this.$http({
-        method: "post",
-        url: `${this.$store.state.url}/module/apportionrela`,
-        data: {
-          upperPid: this.father,
-          lowerPids: this.son,
-          ApportionPids: this.arr
-        }
+      this.post("/module/apportionrela", {
+        upperPid: this.father,
+        lowerPids: this.son,
+        ApportionPids: this.arr
       }).then(res => {
         if (res.ErrCode == 0) {
-          this.$message("成功");
+          this.$message("ok");
         } else {
           this.$message(res.ErrMsg);
         }
       });
     },
     Bind() {
-      this.$http({
-        method: "post",
-        url: `${this.$store.state.url}/robotBind/robotbind/${this.RobotToken}/${
-          this.GroupNumber
-        }/${window.localStorage.park_project}`,
-        data: {}
-      }).then(res => {
+      let userProject = this.userInfo.userProject;
+      this.post(
+        `/robotBind/robotbind/${this.RobotToken}/${this.GroupNumber}/${userProject}`,
+        {}
+      ).then(res => {
         if (res.ErrCode == 0) {
-          this.$message("成功");
+          this.$message("ok");
         } else {
           this.$message(res.ErrMsg);
         }

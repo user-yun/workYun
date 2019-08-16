@@ -1,8 +1,8 @@
 <template>
   <div style="height:100%">
     <el-table :data="tableData" border height="100%" @row-dblclick="rowDblclick">
-      <el-table-column align="left" width="150" prop="Title" label="Title"></el-table-column>
-      <el-table-column align="left" width="200" prop="Param.address" label="Param.address"></el-table-column>
+      <el-table-column align="left" width="150" prop="Title" label="Title" fixed></el-table-column>
+      <el-table-column align="left" width="200" prop="Param.address" label="address"></el-table-column>
       <el-table-column align="right" width="130" prop="Pcode" label="Pcode"></el-table-column>
       <el-table-column align="right" width="240" prop="Pid" label="Pid"></el-table-column>
       <el-table-column align="right" width="70" prop="Param.zone" label="zone"></el-table-column>
@@ -27,7 +27,7 @@ export default {
   mixins: [mymixins],
   name: "device",
   components: {
-    MModuleDialog: () => import("@/views/business/system/MModuleDialog")
+    MModuleDialog: () => import("@/views/business/system/module/MModuleDialog")
   },
   data() {
     return {
@@ -38,7 +38,7 @@ export default {
     };
   },
   mounted() {
-    this.allmodulebrief();
+    this.allModuleBrief();
   },
   methods: {
     rowDblclick(row, column) {
@@ -48,7 +48,7 @@ export default {
     onColse(value) {
       this.show = value;
     },
-    allmodulebrief(val) {
+    allModuleBrief(val) {
       let projectId = this.userInfo.projectId;
       this.get(`/zone/allmodulebrief/${projectId}`, {}).then(res => {
         let data = res.Data;

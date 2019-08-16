@@ -1,5 +1,5 @@
 <template>
-  <div align="left">
+  <nobr align="left" style="overflow-x:auto">
     <el-tag
       v-for="(tag,key) in otherInfo.routerHistory"
       v-if="tag.meta.icon"
@@ -10,11 +10,13 @@
       @click="TagClick(key)"
       @close="TagClose(tag)"
       style="cursor:pointer;"
+      class="normal"
+      :size=" otherInfo.menuCollapse ? 'mini' : 'medium' "
     >
       <i :class="tag.meta.icon"></i>
       {{language[key]}}
     </el-tag>
-  </div>
+  </nobr>
 </template>
 
 <script>

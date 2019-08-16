@@ -19,7 +19,7 @@ export default [
                     intercept: true,
                     role: [1]
                 }
-            },
+            }
         ]
     },
     {
@@ -41,11 +41,23 @@ export default [
                     intercept: true,
                     role: [1]
                 }
-            },
+            }
+        ]
+    },
+    {
+        path: '/system',
+        name: 'system',
+        component: Main,
+        meta: {
+            icon: "el-icon-s-platform",
+            intercept: true,
+            role: [1]
+        },
+        children: [
             {
                 path: '/device',
                 name: 'device',
-                component: () => import('@/views/business/system/MModule'),
+                component: () => import('@/views/business/system/module/MModule'),
                 meta: {
                     icon: "el-icon-odometer",
                     intercept: true,
@@ -53,16 +65,65 @@ export default [
                 }
             },
             {
-                path: '/list',
-                name: 'list',
-                component: () => import('@/views/business/system/MBusiness'),
+                path: '/business',
+                name: 'business',
+                component: () => import('@/views/business/system/business/MBusiness'),
                 meta: {
                     icon: "el-icon-tickets",
                     intercept: true,
                     role: [1]
                 }
+            },
+            {
+                path: '/config',
+                name: 'config',
+                component: () => import('@/views/business/system/config/MConfig'),
+                meta: {
+                    icon: "el-icon-s-help",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/organization',
+                name: 'organization',
+                component: () => import('@/views/business/system/orghistory/MOrgHistory'),
+                meta: {
+                    icon: "el-icon-s-check",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/bill',
+                name: 'bill',
+                component: () => import('@/views/business/system/bill/MBill'),
+                meta: {
+                    icon: "el-icon-s-order",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/enterpriseSummary',
+                name: 'enterpriseSummary',
+                component: () => import('@/views/business/system/orgsummary/MOrgSummary'),
+                meta: {
+                    icon: "el-icon-s-order",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/regionalSummary',
+                name: 'regionalSummary',
+                component: () => import('@/views/business/system/zonesummary/MZoneSummary'),
+                meta: {
+                    icon: "el-icon-s-order",
+                    intercept: true,
+                    role: [1]
+                }
             }
         ]
-    },
-
+    }
 ]

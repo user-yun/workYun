@@ -32,7 +32,7 @@
           >
             <!-- :key="index+otherInfo.helloMenuList.length" -->
             <i :class="item.icon"></i>
-            <span slot="title">{{language[item.title]}}</span>
+            <span slot="title" class="normal">{{language[item.title]}}</span>
           </el-menu-item>
         </el-menu>
         <el-button

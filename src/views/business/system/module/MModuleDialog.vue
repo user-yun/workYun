@@ -32,7 +32,7 @@
         <h4>######################################------------------------------------------------------</h4>
       </div>
     </span>
-    <span slot="footer" class="dialog-footer"></span>
+    <span slot="footer"></span>
   </el-dialog>
 </template>
 
@@ -62,12 +62,12 @@ export default {
       immediate: true,
       deep: true,
       handler: function(nvalue, ovalue) {
-        if (nvalue != null) this.rowDblclick();
+        if (nvalue != null) this.mouduleRela();
       }
     }
   },
   methods: {
-    rowDblclick() {
+    mouduleRela() {
       this.get(`/module/moudulerela/${this.data.Pid}`, {}).then(res => {
         if (res.ErrCode == 0) {
           this.resData = res.Data;
