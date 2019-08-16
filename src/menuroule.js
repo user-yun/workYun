@@ -57,7 +57,7 @@ export default [
             {
                 path: '/device',
                 name: 'device',
-                component: () => import('@/views/business/system/module/MModule'),
+                component: () => import('@/views/business/system/device/MDevice'),
                 meta: {
                     icon: "el-icon-odometer",
                     intercept: true,
@@ -118,6 +118,16 @@ export default [
                 path: '/regionalSummary',
                 name: 'regionalSummary',
                 component: () => import('@/views/business/system/zonesummary/MZoneSummary'),
+                meta: {
+                    icon: "el-icon-s-order",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/module',
+                name: 'module',
+                component: () => import('@/views/business/system/module/MModule'),
                 meta: {
                     icon: "el-icon-s-order",
                     intercept: true,

@@ -1,21 +1,51 @@
 <template>
   <div style="height:100%">
-    <el-table :data="tableData" border height="100%" @row-dblclick="rowDblclick">
-      <el-table-column align="left" width="150" prop="Title" label="Title" fixed></el-table-column>
-      <el-table-column align="left" width="200" prop="Param.address" label="address"></el-table-column>
-      <el-table-column align="right" width="130" prop="Pcode" label="Pcode"></el-table-column>
-      <el-table-column align="right" width="240" prop="Pid" label="Pid"></el-table-column>
-      <el-table-column align="right" width="70" prop="Param.zone" label="zone"></el-table-column>
-      <el-table-column align="right" width="240" prop="Param.zoneid" label="zoneid"></el-table-column>
-      <el-table-column align="right" width="170" prop="Report.lasttime" label="lasttime"></el-table-column>
-      <el-table-column align="left" width="120" prop="Param.org" label="org"></el-table-column>
-      <el-table-column align="right" width="130" prop="Report.powerfactor" label="powerfactor"></el-table-column>
-      <el-table-column align="right" width="70" prop="Report.voltage" label="voltage"></el-table-column>
-      <el-table-column align="right" width="70" prop="Report.current" label="current"></el-table-column>
-      <el-table-column align="right" width="130" prop="Report.activepower" label="activepower"></el-table-column>
-      <el-table-column align="right" width="130" prop="Report.reactivepower" label="reactivepower"></el-table-column>
-      <el-table-column align="right" width="90" prop="Report.allpower" label="allpower"></el-table-column>
-      <el-table-column align="right" width="230" prop="Id" label="moduleId"></el-table-column>
+    <el-table
+      :data="tableData"
+      border
+      height="100%"
+      @cell-dblclick="cellDblClick"
+      header-cell-class-name="header-cell-class-name"
+      cell-class-name="cell-class-name"
+    >
+      <el-table-column align="left" width="160" prop="title" label="title" sortable fixed></el-table-column>
+      <el-table-column align="right" width="160" prop="id" label="id" sortable>
+        <template slot-scope="scope">
+          <span class="ignore">{{scope.row.id}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="right" width="160" prop="pid" label="pid" sortable>
+        <template slot-scope="scope">
+          <span class="ignore">{{scope.row.pid}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="right" width="160" prop="devid" label="devid" sortable>
+        <template slot-scope="scope">
+          <span class="ignore">{{scope.row.devid}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="right" width="160" prop="zoneid" label="zoneid" sortable>
+        <template slot-scope="scope">
+          <span class="ignore">{{scope.row.zoneid}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="right" width="100" prop="pcode" label="pcode" sortable>
+        <template slot-scope="scope">
+          <span class="ignore">{{scope.row.pcode}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="right" width="100" prop="project" label="project" sortable>
+        <template slot-scope="scope">
+          <span class="ignore">{{scope.row.project}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="right" width="80" prop="type" label="type" sortable></el-table-column>
+      <el-table-column width="110" prop="param" label="param" :formatter="formatter" sortable></el-table-column>
+      <el-table-column width="110" prop="remark" label="remark" :formatter="formatter" sortable></el-table-column>
+      <el-table-column width="110" prop="status" label="status" :formatter="formatter" sortable></el-table-column>
+      <el-table-column width="110" prop="report" :formatter="formatter" label="report" sortable></el-table-column>
+      <el-table-column width="110" prop="ingress" label="ingress" :formatter="formatter" sortable></el-table-column>
+      <el-table-column width="110" prop="egress" label="egress" :formatter="formatter" sortable></el-table-column>
     </el-table>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </div>
@@ -25,34 +55,50 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "device",
+  name: "module",
   components: {
-    MModuleDialog: () => import("@/views/business/system/module/MModuleDialog")
+    MBusinessDialog: () =>
+      import("@/views/business/system/business/MBusinessDialog")
   },
   data() {
     return {
       tableData: [],
-      is: "MModuleDialog",
+      is: "MBusinessDialog",
       show: false,
       rowData: null
     };
   },
   mounted() {
-    this.allModuleBrief();
+    this.moduleShowlist();
   },
+  computed: {},
+  watch: {},
   methods: {
-    rowDblclick(row, column) {
-      this.rowData = row;
+    formatter(row, column) {
+      let data = row[column.property];
+      switch (typeof data) {
+        case "string":
+          return data.substr(0, 10);
+        case "number":
+          return data.toFixed(2);
+        default:
+          return;
+      }
+    },
+    cellDblClick(row, column) {
+      this.rowData = row[column.property];
       this.show = true;
     },
     onColse(value) {
       this.show = value;
     },
-    allModuleBrief(val) {
-      let projectId = this.userInfo.projectId;
-      this.get(`/zone/allmodulebrief/${projectId}`, {}).then(res => {
-        let data = res.Data;
-        this.tableData = data;
+    moduleShowlist(val) {
+      let userProject = this.userInfo.userProject;
+      this.get(`/module/showlist/${userProject}`, {}).then(res => {
+        if (res.ErrCode == 0) {
+          let data = res.Data;
+          this.tableData = data;
+        }
       });
     }
   }

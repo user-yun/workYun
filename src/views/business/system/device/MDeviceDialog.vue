@@ -40,7 +40,7 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "MModuleDialog",
+  name: "MDeviceDialog",
   data() {
     return {
       resData: null

@@ -26,7 +26,7 @@
           <span class="ignore">{{scope.row.mark}}</span>
         </template>
       </el-table-column>
-      <el-table-column width="160" prop="input" label="input" :formatter="formatter" sortable></el-table-column>
+      <el-table-column width="110" prop="input" label="input" :formatter="formatter" sortable></el-table-column>
       <el-table-column width="110" prop="inputsort" label="inputsort" sortable></el-table-column>
       <el-table-column width="160" prop="inputid" label="inputid" sortable>
         <template slot-scope="scope">
@@ -35,31 +35,18 @@
       </el-table-column>
       <el-table-column width="110" prop="inputduty" label="inputduty" sortable></el-table-column>
       <el-table-column width="120" prop="inputcode" label="inputcode" sortable></el-table-column>
-      <el-table-column
-        width="160"
-        prop="inputtitle"
-        label="inputtitle"
-        :formatter="formatter"
-        sortable
-      ></el-table-column>
-      <el-table-column width="160" prop="output" label="output" :formatter="formatter" sortable></el-table-column>
+      <el-table-column width="140" prop="inputtitle" label="inputtitle" :formatter="formatter"></el-table-column>
+      <el-table-column width="110" prop="output" label="output" :formatter="formatter"></el-table-column>
       <el-table-column width="130" prop="outputsort" label="outputsort" sortable></el-table-column>
       <el-table-column width="160" prop="outputid" label="outputid" sortable>
         <template slot-scope="scope">
           <span class="ignore">{{scope.row.outputid}}</span>
         </template>
       </el-table-column>
-
       <el-table-column width="120" prop="outputduty" label="outputduty" sortable></el-table-column>
       <el-table-column width="130" prop="outputcode" label="outputcode" sortable></el-table-column>
-      <el-table-column
-        width="160"
-        prop="outputtitle"
-        label="outputtitle"
-        :formatter="formatter"
-        sortable
-      ></el-table-column>
-      <el-table-column width="160" prop="param" label="param" :formatter="formatter" sortable></el-table-column>
+      <el-table-column width="140" prop="outputtitle" label="outputtitle" :formatter="formatter"></el-table-column>
+      <el-table-column width="110" prop="param" label="param" :formatter="formatter"></el-table-column>
     </el-table>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </div>
