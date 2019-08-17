@@ -7,6 +7,7 @@ export default [
         meta: {
             icon: "el-icon-house",//图标
             intercept: true,//是否需要拦截
+            noKeepAlive: true,
             role: [1]//角色
         },
         children: [
@@ -17,6 +18,7 @@ export default [
                 meta: {
                     icon: "el-icon-house",
                     intercept: true,
+                    noKeepAlive: true,
                     role: [1]
                 }
             }
@@ -29,16 +31,18 @@ export default [
         meta: {
             icon: "el-icon-sugar",
             intercept: true,
+            noKeepAlive: true,
             role: [1]
         },
         children: [
             {
                 path: '/test',
                 name: 'test',
-                component: () => import('@/views/business/Test.vue'),
+                component: () => import('@/views/business/test/Test.vue'),
                 meta: {
                     icon: "el-icon-sugar",
                     intercept: true,
+                    noKeepAlive: true,
                     role: [1]
                 }
             }
@@ -70,16 +74,6 @@ export default [
                 component: () => import('@/views/business/system/business/MBusiness'),
                 meta: {
                     icon: "el-icon-tickets",
-                    intercept: true,
-                    role: [1]
-                }
-            },
-            {
-                path: '/config',
-                name: 'config',
-                component: () => import('@/views/business/system/config/MConfig'),
-                meta: {
-                    icon: "el-icon-s-help",
                     intercept: true,
                     role: [1]
                 }
@@ -135,5 +129,69 @@ export default [
                 }
             }
         ]
-    }
+    },
+    {
+        path: '/config',
+        name: 'config',
+        component: Main,
+        meta: {
+            icon: "el-icon-s-help",
+            intercept: true,
+            role: [1]
+        },
+        children: [
+            {
+                path: '/faSonConfig',
+                name: 'faSonConfig',
+                component: () => import('@/views/business/config/fasonconfig/MFaSonConfig'),
+                meta: {
+                    icon: "el-icon-s-help",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/groRbtConfig',
+                name: 'groRbtConfig',
+                component: () => import('@/views/business/config/grorbtconfig/MGroRbtConfig'),
+                meta: {
+                    icon: "el-icon-s-help",
+                    intercept: true,
+                    role: [1]
+                }
+            }
+        ]
+    },
+    {
+        path: '/create',
+        name: 'create',
+        component: Main,
+        meta: {
+            icon: "el-icon-s-help",
+            intercept: true,
+            role: [1]
+        },
+        children: [
+            {
+                path: '/crGeTaPuBo',
+                name: 'crGeTaPuBo',
+                component: () => import('@/views/business/create/crgetapubo/MCrGeTaPuBo'),
+                meta: {
+                    icon: "el-icon-s-help",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/crInTaPuBo',
+                name: 'crInTaPuBo',
+                component: () => import('@/views/business/create/crintapubo/MCrInTaPuBo'),
+                meta: {
+                    icon: "el-icon-s-help",
+                    intercept: true,
+                    role: [1]
+                }
+            }
+        ]
+    },
 ]

@@ -40,7 +40,9 @@ export default {
   name: "enterpriseSummary",
   components: {
     MBusinessDialog: () =>
-      import("@/views/business/system/business/MBusinessDialog")
+      import("@/views/business/system/business/MBusinessDialog"),
+    MOrgHisrElectDialog: () =>
+      import("@/views/business/system/orgsummary/MOrgHisrElectDialog")
   },
   data() {
     return {
@@ -68,7 +70,13 @@ export default {
       }
     },
     cellDblClick(row, column) {
-      this.rowData = row[column.property];
+      if (column.property == "orgid") {
+        this.is = "MOrgHisrElectDialog";
+        this.rowData = row;
+      } else {
+        this.is = "MBusinessDialog";
+        this.rowData = row[column.property];
+      }
       this.show = true;
     },
     onColse(value) {

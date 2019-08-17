@@ -3,13 +3,13 @@
     <el-col :xs="4" :sm="4" :md="2" :lg="2" :xl="2" align="left" class="h5l5">
       <i
         :class="iClassAsideVisible"
-        style="font-size:1.5vw"
+        class="icon"
         :style="{color:otherInfo.themeTextColor}"
         @click="iClassAsideVisibleOnClick"
       ></i>
       <i
         :class="iClassMenuCollapse"
-        style="font-size:1.5vw"
+        class="icon"
         :style="{color:otherInfo.themeTextColor}"
         @click="iClassMenuCollapseOnClick"
       ></i>

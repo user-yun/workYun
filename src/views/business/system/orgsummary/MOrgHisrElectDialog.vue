@@ -26,7 +26,7 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "MOrgHistoryDialog",
+  name: "MOrgHisrElectDialog",
   data() {
     return {
       step: 96,
@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     orgHistoryList() {
-      this.get(`/org/historylist/${this.data.Id}/4/1/${this.step}`, {}).then(
+      this.get(`/org/historylist/${this.data.orgid}/4/1/${this.step}`, {}).then(
         res => {
           if (res.ErrCode == 0) {
             this.resData = res.Data;

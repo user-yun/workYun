@@ -8,7 +8,11 @@ export default {
   // mixins: [mymixins],
   name: "test",
   data() {
-    return {};
+    return {
+      // userInfo
+      // otherInfo
+      // language
+    };
   },
   components: {
     // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
@@ -37,7 +41,22 @@ export default {
     //   handler(newv, oldv) {}
     // }
   },
-  methods: {},
+  methods: {
+    getRequest() {
+      let userProject = this.userInfo.userProject;
+      this.get(`/zone/tree/${userProject}`, {}).then(res => {
+        let data = res.Data;
+        this.List = data;
+      });
+    },
+    postRequest() {
+      let userProject = this.userInfo.userProject;
+      this.post("/auth/login", {}).then(res => {
+        let data = res.Data;
+        this.List = data;
+      });
+    }
+  },
   beforeCreate() {
     //创建前
   },
@@ -51,6 +70,7 @@ export default {
   },
   mounted() {
     //渲染
+    console.log(this);
   },
   activited() {
     //可见

@@ -2,9 +2,10 @@
 let mixin = {
   data() {
     return {
-      httpURL: "http://121.196.211.83:7779",
+      // httpURL: "http://121.196.211.83:7779",
       // httpURL: "http://192.168.8.44:8888",
       // httpURL: "http://192.168.8.45:8888",
+      httpURL: "http://192.168.8.48:8888",
     };
   },
   computed: {

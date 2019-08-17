@@ -31,6 +31,15 @@ body {
     /* 12/1920 */
 }
 
+.icon {
+    font-size: 1.5vw;
+}
+
+.verRollView {
+    height: 88vh;
+    overflow-y: auto;
+}
+
 .h997 {
     height: 99.7vh
 }

@@ -2,7 +2,7 @@
   <transition>
     <div class="shadow" style="overflow: auto;">
       <keep-alive :include="keepList">
-        <router-view :key="key"/>
+        <router-view :key="key" />
       </keep-alive>
     </div>
   </transition>
@@ -20,8 +20,9 @@ export default {
     },
     keepList() {
       let list = [];
-      for (let k in this.otherInfo.routerHistory) {
-        if (this.otherInfo.routerHistory[k].meta.icon) {
+      let rh = this.otherInfo.routerHistory;
+      for (let k in rh) {
+        if (rh[k].meta.icon && !rh[k].meta.noKeepAlive) {
           list.push(k);
         }
       }

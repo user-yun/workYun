@@ -27,9 +27,9 @@ let router = [
     name: 'home',
     component: () => import('@/views/welcome/Home.vue'),
     meta: {
-      title: "home",//标题以及父项的唯一标识
       icon: "el-icon-house",//图标
       intercept: true,//是否需要拦截
+      noKeepAlive: true,
       role: [1]//角色
     },
   },

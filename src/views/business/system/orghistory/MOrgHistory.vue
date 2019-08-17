@@ -4,17 +4,17 @@
       :data="tableData"
       border
       height="100%"
-      @row-dblclick="rowDblclick"
+      @cell-dblclick="cellDblClick"
       header-cell-class-name="header-cell-class-name"
       cell-class-name="cell-class-name"
     >
-      <el-table-column align="left" width="110" prop="Title" label="Title" fixed></el-table-column>
-      <el-table-column align="left" width="120" prop="Id" label="Id">
+      <el-table-column width="110" prop="Title" label="Title" fixed></el-table-column>
+      <el-table-column width="160" prop="Id" label="Id">
         <template slot-scope="scope">
           <span class="ignore">{{scope.row.Id}}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" width="120" prop="Zonids" label="Zonids">
+      <el-table-column width="200" prop="Zonids" label="Zonids">
         <template slot-scope="scope">
           <span class="ignore">{{scope.row.Zonids}}</span>
         </template>
@@ -43,13 +43,13 @@ export default {
   mixins: [mymixins],
   name: "organization",
   components: {
-    MOrgHistoryDialog: () =>
-      import("@/views/business/system/orghistory/MOrgHistoryDialog")
+    MBusinessDialog: () =>
+      import("@/views/business/system/business/MBusinessDialog")
   },
   data() {
     return {
       tableData: [],
-      is: "MOrgHistoryDialog",
+      is: "MBusinessDialog",
       show: false,
       rowData: null
     };
@@ -58,8 +58,16 @@ export default {
     this.allOrg();
   },
   methods: {
-    rowDblclick(row, column) {
-      this.rowData = row;
+    cellDblClick(row, column) {
+      let iof = column.property.indexOf(".");
+      if (iof == -1) {
+        this.rowData = row[column.property];
+      } else {
+        let s = column.property.substring(0, iof);
+        let e = column.property.substring(iof + 1, column.property.length);
+        let data = row[s][e];
+        this.rowData = { s, e, data };
+      }
       this.show = true;
     },
     onColse(value) {

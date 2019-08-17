@@ -15,7 +15,12 @@
         {{father}}
       </el-col>
       <el-col :span="6">
-        <el-button type="primary" @click="upOk" style="width:100%">{{language.sure}}</el-button>
+        <el-button
+          type="primary"
+          @click="upOk"
+          style="width:100%"
+          :disabled="upOkDis"
+        >{{language.sure}}</el-button>
       </el-col>
       <el-col :span="6" style="font-size:20px">
         <el-select v-model="son" multiple :disabled="arr.length>0">
@@ -44,17 +49,6 @@
         {{arr}}
       </el-col>
     </el-row>
-    <el-row style="margin: 2vh 10vw ;width:80%">
-      <el-col :span="10">
-        <el-input v-model="RobotToken" placeholder="RobotToken"></el-input>
-      </el-col>
-      <el-col :span="10">
-        <el-input v-model="GroupNumber" placeholder="GroupNumber"></el-input>
-      </el-col>
-      <el-col :span="4">
-        <el-button type="primary" @click="Bind" style="width:100%">{{language.sure}}</el-button>
-      </el-col>
-    </el-row>
   </div>
 </template>
 
@@ -62,21 +56,32 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "config",
+  name: "faSonConfig",
   data() {
     return {
-      father: "",
       List: [],
+      father: "",
       son: [],
-      arr: [],
-      GroupNumber: "",
-      RobotToken: ""
+      arr: []
     };
   },
   mounted() {
     this.allModuleBrief();
   },
-  computed: {},
+  computed: {
+    upOkDis() {
+      let bool = true;
+      if (
+        !(
+          this.isFalse(this.father) ||
+          (this.son.length < 1 && this.arr.length < 1)
+        )
+      ) {
+        bool = false;
+      }
+      return bool;
+    }
+  },
   watch: {
     son: {
       deep: true,
@@ -109,19 +114,6 @@ export default {
         lowerPids: this.son,
         ApportionPids: this.arr
       }).then(res => {
-        if (res.ErrCode == 0) {
-          this.$message("ok");
-        } else {
-          this.$message(res.ErrMsg);
-        }
-      });
-    },
-    Bind() {
-      let userProject = this.userInfo.userProject;
-      this.post(
-        `/robotBind/robotbind/${this.RobotToken}/${this.GroupNumber}/${userProject}`,
-        {}
-      ).then(res => {
         if (res.ErrCode == 0) {
           this.$message("ok");
         } else {
