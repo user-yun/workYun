@@ -147,12 +147,19 @@ export default {
   watch: {
     treeData: {
       deep: true,
-      immediate: true,
+      // immediate: true,
       handler(newv, oldv) {
         if (!this.isFalse(newv)) {
           this.$set(this.ruleForm, "zoneid", newv.Id);
           this.$set(this.ruleForm, "title", newv.Title);
         }
+      }
+    },
+    ruleForm: {
+      deep: true,
+      // immediate: true,
+      handler(newv, oldv) {
+        this.$refs["ruleForm"].validate(valid => {});
       }
     }
   },
@@ -167,7 +174,6 @@ export default {
   },
   mounted() {
     //渲染
-    this.$refs["ruleForm"].validate(valid => {});
   }
 };
 </script>

@@ -60,14 +60,7 @@ export default {
   methods: {
     formatter(row, column) {
       let data = row[column.property];
-      switch (typeof data) {
-        case "string":
-          return data.substr(0, 10);
-        case "number":
-          return data.toFixed(2);
-        default:
-          return;
-      }
+      return this.dataFormat(data);
     },
     cellDblClick(row, column) {
       if (column.property == "orgid") {

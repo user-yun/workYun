@@ -191,6 +191,16 @@ export default [
                     intercept: true,
                     role: [1]
                 }
+            },
+            {
+                path: '/crModuRela',
+                name: 'crModuRela',
+                component: () => import('@/views/business/create/crmodurela/MCrModuRela'),
+                meta: {
+                    icon: "el-icon-s-help",
+                    intercept: true,
+                    role: [1]
+                }
             }
         ]
     },

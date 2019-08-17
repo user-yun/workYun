@@ -8,14 +8,18 @@
       header-cell-class-name="header-cell-class-name"
       cell-class-name="cell-class-name"
     >
-      <el-table-column align="left" width="150" prop="Title" label="Title" fixed></el-table-column>
-      <el-table-column align="left" width="200" prop="Param.address" label="address"></el-table-column>
-      <el-table-column align="right" width="130" prop="Pcode" label="Pcode">
+      <el-table-column align="left" width="90" prop="Title" label="Title" fixed>
+        <template slot-scope="scope">
+          <span class="ignore">{{scope.row.Title}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column align="left" width="170" prop="Param.address" label="address"></el-table-column>
+      <el-table-column align="right" width="110" prop="Pcode" label="Pcode">
         <template slot-scope="scope">
           <span class="ignore">{{scope.row.Pcode}}</span>
         </template>
       </el-table-column>
-      <el-table-column align="right" width="110" prop="Pid" label="Pid">
+      <el-table-column align="right" width="170" prop="Pid" label="Pid">
         <template slot-scope="scope">
           <span class="ignore">{{scope.row.Pid}}</span>
         </template>

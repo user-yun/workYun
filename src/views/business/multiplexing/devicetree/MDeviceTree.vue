@@ -13,16 +13,20 @@
       </el-col>
     </el-row>
     <el-tree
-      ref="zoneTree"
-      :data="zoneTree"
-      :props="zoneTreeProps"
-      node-key="/zone/tree/"
+      ref="deviceTree"
+      :data="deviceTree"
+      :props="deviceTreeProps"
+      node-key="/zone/allmodulebrief/"
       highlight-current
       :filter-node-method="filterNode"
       :expand-on-click-node="false"
-      @node-click="zoneTreeNodeClick"
+      @node-click="deviceTreeNodeClick"
     >
-      <span slot-scope="{ data }" class="normal">{{data.Title}}</span>
+      <span slot-scope="{ data }" class="normal">
+        {{data.Orgtitle}}
+        {{data.Title}}
+        {{data.Pcode}}
+      </span>
     </el-tree>
   </div>
 </template>
@@ -31,59 +35,47 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "MFloorTree",
+  name: "MDeviceTree",
   data() {
     return {
-      // userInfo
-      // otherInfo
-      // language
-      zoneTree: [],
-      zoneTreeProps: {
+      deviceTree: [],
+      deviceTreeProps: {
         children: "Children",
         label: "Title"
       },
       filterText: ""
     };
   },
-  components: {
-    // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    //test: () => import('@/test/test.vue')
-  },
-  props: {
-    // test: {
-    //   type: String,
-    //   default: () => {
-    //     let colors = ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C"];
-    //     return colors[Math.ceil(Math.random() * colors.length)];
-    //   }
-    // }
-  },
-  computed: {},
   watch: {
     //监听数据变化
     filterText: {
       deep: true,
       immediate: true,
       handler(newv, oldv) {
-        if (this.zoneTree.length > 0) this.$refs.zoneTree.filter(newv);
+        if (this.deviceTree.length > 0) this.$refs.deviceTree.filter(newv);
       }
     }
   },
   methods: {
     getRequest() {
-      this.zoneTree = [];
-      let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
+      this.deviceTree = [];
+      let projectId = this.userInfo.projectId;
+      this.get(`/zone/allmodulebrief/${projectId}`, {}).then(res => {
         let data = res.Data;
-        this.zoneTree = data;
+        this.deviceTree = [
+          {
+            Title: this.userInfo.headerTitle,
+            Children: data
+          }
+        ];
       });
     },
     filterNode(value, data) {
       if (!value) return true;
       return data.Title.includes(value);
     },
-    zoneTreeNodeClick(data) {
-      this.$emit("MFloorTree", data);
+    deviceTreeNodeClick(data) {
+      this.$emit("MDeviceTree", data);
     }
   },
   mounted() {

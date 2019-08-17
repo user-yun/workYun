@@ -1,11 +1,10 @@
-
 let mixin = {
   data() {
     return {
-      // httpURL: "http://121.196.211.83:7779",
+      httpURL: "http://121.196.211.83:7779",
       // httpURL: "http://192.168.8.44:8888",
       // httpURL: "http://192.168.8.45:8888",
-      httpURL: "http://192.168.8.48:8888",
+      // httpURL: "http://192.168.8.48:8888",
     };
   },
   computed: {
@@ -74,9 +73,11 @@ let mixin = {
     post(url, param) {
       return new Promise((resolve, reject) => {
         this.$Post(this.httpURL + url, param).then(res => {
-          this.log({ url, res });
-          if (false) { }
-          else
+          this.log({
+            url,
+            res
+          });
+          if (false) {} else
             resolve(res)
         }).catch((error) => {
           reject(error)
@@ -86,9 +87,11 @@ let mixin = {
     get(url, param) {
       return new Promise((resolve, reject) => {
         this.$Get(this.httpURL + url, param).then(res => {
-          this.log({ url, res });
-          if (false) { }
-          else
+          this.log({
+            url,
+            res
+          });
+          if (false) {} else
             resolve(res)
         }).catch((error) => {
           reject(error)
@@ -99,8 +102,35 @@ let mixin = {
     isFalse(o) {
       if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN') return true
       return false
+    },
+    ihTrue(data) {
+      switch (typeof data) {
+        case "string":
+          return data.length > 0;
+        case "number":
+          return true;
+        case "boolean":
+          return data;
+        case "object":
+          if (data == "undefined" || Object.keys(data).length < 0 || data.length < 0) {
+            return false;
+          } else
+            return true;
+        default:
+          return false;
+      }
+    },
+    dataFormat(data) {
+      switch (typeof data) {
+        case "string":
+          return data.substr(0, 10);
+        case "number":
+          return data.toFixed(2);
+        default:
+          return data;
+      }
     }
   },
-  created() { }
+  created() {}
 };
 export default mixin;

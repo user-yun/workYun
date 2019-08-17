@@ -66,14 +66,7 @@ export default {
   methods: {
     formatter(row, column) {
       let data = row[column.property];
-      switch (typeof data) {
-        case "string":
-          return data.substr(0, 15);
-        case "number":
-          return data.toFixed(2);
-        default:
-          return;
-      }
+      return this.dataFormat(data);
     },
     cellDblClick(row, column) {
       this.rowData = row[column.property];
