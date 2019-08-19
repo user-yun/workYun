@@ -132,14 +132,30 @@ export default {
       let unselected = this.language.unselected;
       let uninput = this.language.uninput;
       let obj = {
-        title: [{ required: true, message: unselected, trigger: "blur" }],
-        preiod: [{ required: true, message: unselected, trigger: "blur" }],
-        mode: [{ required: true, message: unselected, trigger: "blur" }],
-        outputduty: [{ required: true, message: unselected, trigger: "blur" }],
-        code: [{ required: true, message: uninput, trigger: "blur" }],
-        sourcecode: [{ required: true, message: uninput, trigger: "blur" }],
-        outputcode: [{ required: true, message: uninput, trigger: "blur" }],
-        factors: [{ required: true, message: uninput, trigger: "blur" }]
+        title: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ],
+        preiod: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ],
+        mode: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ],
+        outputduty: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ],
+        code: [
+          { required: true, message: uninput, trigger: ["blur", "change"] }
+        ],
+        sourcecode: [
+          { required: true, message: uninput, trigger: ["blur", "change"] }
+        ],
+        outputcode: [
+          { required: true, message: uninput, trigger: ["blur", "change"] }
+        ],
+        factors: [
+          { required: true, message: uninput, trigger: ["blur", "change"] }
+        ]
       };
       return obj;
     }

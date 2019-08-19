@@ -7,7 +7,7 @@
   >
     <el-option v-for="(value,key) in otherInfo.languageList" :key="key" :value="key" :label="value">
       <span style="float: left" class="normal">{{value}}</span>
-      <span style="float: right; color: #8492a6; font-size: 13px" class="normal">{{key}}</span>
+      <span style="float: right; color: #8492a6" class="normal">{{key}}</span>
     </el-option>
   </el-select>
 </template>

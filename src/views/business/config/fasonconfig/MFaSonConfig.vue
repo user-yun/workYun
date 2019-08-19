@@ -1,8 +1,15 @@
 <template>
-  <div align="center">
-    <el-row style="margin: 2vh 10vw ;width:80%">
-      <el-col :span="6" style="font-size:20px">
-        <el-select v-model="father">
+  <el-col :sm="24" :md="12" :xl="6">
+    <el-form
+      :model="ruleForm"
+      :rules="rules"
+      ref="ruleForm"
+      inline-message
+      status-icon
+      label-width="30%"
+    >
+      <el-form-item :label="language.sumMeter" prop="father">
+        <el-select v-model="ruleForm.father">
           <el-option v-for="(item,index) in List" :key="item.Pid+index" :value="item.Pid">
             {{item.Param.zone}}
             {{item.Param.org}}
@@ -11,19 +18,9 @@
             pcode:{{item.Pcode}}
           </el-option>
         </el-select>
-        <br />
-        {{father}}
-      </el-col>
-      <el-col :span="6">
-        <el-button
-          type="primary"
-          @click="upOk"
-          style="width:100%"
-          :disabled="upOkDis"
-        >{{language.sure}}</el-button>
-      </el-col>
-      <el-col :span="6" style="font-size:20px">
-        <el-select v-model="son" multiple :disabled="arr.length>0">
+      </el-form-item>
+      <el-form-item :label="language.sonMeter" prop="son">
+        <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0">
           <el-option v-for="(item,index) in List" :key="item.Pcode+index" :value="item.Pid">
             {{item.Param.zone}}
             {{item.Param.org}}
@@ -32,11 +29,9 @@
             pcode:{{item.Pcode}}
           </el-option>
         </el-select>
-        <br />
-        {{son}}
-      </el-col>
-      <el-col :span="6" style="font-size:20px">
-        <el-select v-model="arr" multiple :disabled="son.length>0">
+      </el-form-item>
+      <el-form-item :label="language.boothMeter" prop="arr">
+        <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0">
           <el-option v-for="(item,index) in List" :key="item.Pcode+index" :value="item.Pid">
             {{item.Param.zone}}
             {{item.Param.org}}
@@ -45,11 +40,25 @@
             pcode:{{item.Pcode}}
           </el-option>
         </el-select>
-        <br />
-        {{arr}}
-      </el-col>
-    </el-row>
-  </div>
+      </el-form-item>
+      <el-form-item :label="language.shareMethod" prop="mode">
+        <el-select v-model="ruleForm.mode">
+          <el-option
+            v-for="(item,index) in modeList"
+            :key="index+item.value"
+            :value="item.value"
+            :label="language[item.text]"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item :label="language.proportion" prop="factors">
+        <el-input-number v-model="ruleForm.factors" :precision="2" :step="0.1" :min="0.1" :max="99"></el-input-number>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')">{{language.sure}}</el-button>
+      </el-form-item>
+    </el-form>
+  </el-col>
 </template>
 
 <script>
@@ -59,35 +68,88 @@ export default {
   name: "faSonConfig",
   data() {
     return {
+      modeList: [
+        {
+          text: "equipartition", //均分
+          value: 0
+        },
+        {
+          text: "proportion", //比例
+          value: 1
+        },
+        {
+          text: "area", //面积
+          value: 2
+        },
+        {
+          text: "electricity", //电量
+          value: 3
+        }
+      ],
       List: [],
-      father: "",
-      son: [],
-      arr: []
+      ruleForm: {
+        father: "",
+        son: [],
+        arr: [],
+        mode: 0,
+        factors: 0.01
+      }
     };
   },
   mounted() {
     this.allModuleBrief();
   },
   computed: {
-    upOkDis() {
-      let bool = true;
-      if (
-        !(
-          this.isFalse(this.father) ||
-          (this.son.length < 1 && this.arr.length < 1)
-        )
-      ) {
-        bool = false;
-      }
-      return bool;
+    rules() {
+      let that = this.ruleForm;
+      let unselected = this.language.unselected;
+      let uninput = this.language.uninput;
+      let TwoArrays = (rule, value, callback) => {
+        if (that.son.length < 1 && that.arr.length < 1) {
+          callback(new Error(unselected));
+        } else {
+          this.$refs.ruleForm.clearValidate(["arr", "son"]);
+          callback();
+        }
+      };
+      let obj = {
+        father: [
+          { required: true, message: uninput, trigger: ["blur", "change"] }
+        ],
+        factors: [
+          { required: true, message: uninput, trigger: ["blur", "change"] }
+        ],
+        mode: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ],
+        arr: [
+          { required: true, validator: TwoArrays, trigger: ["blur", "change"] }
+        ],
+        son: [
+          { required: true, validator: TwoArrays, trigger: ["blur", "change"] }
+        ]
+      };
+      return obj;
     }
+    // upOkDis() {
+    //   let bool = true;
+    //   if (
+    //     !(
+    //       this.isFalse(this.father) ||
+    //       (this.son.length < 1 && this.arr.length < 1)
+    //     )
+    //   ) {
+    //     bool = false;
+    //   }
+    //   return bool;
+    // }
   },
   watch: {
     son: {
       deep: true,
       handler(newValue, oldValue) {
         if (newValue.length > 0) {
-          this.arr.splice(0, this.arr.length);
+          this.ruleForm.arr.splice(0, this.ruleForm.arr.length);
         }
       }
     },
@@ -95,7 +157,7 @@ export default {
       deep: true,
       handler(newValue, oldValue) {
         if (newValue.length > 0) {
-          this.son.splice(0, this.son.length);
+          this.ruleForm.son.splice(0, this.ruleForm.son.length);
         }
       }
     }
@@ -103,21 +165,27 @@ export default {
   methods: {
     allModuleBrief() {
       let projectId = this.userInfo.projectId;
-      this.get(`/zone/allModuleBrief/${projectId}`, {}).then(res => {
+      this.get(`/zone/allmodulebrief/${projectId}`, {}).then(res => {
         let data = res.Data;
         this.List = data;
       });
     },
-    upOk() {
-      this.post("/module/apportionrela", {
-        upperPid: this.father,
-        lowerPids: this.son,
-        ApportionPids: this.arr
-      }).then(res => {
-        if (res.ErrCode == 0) {
-          this.$message("ok");
-        } else {
-          this.$message(res.ErrMsg);
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.post("/module/apportionrela", {
+            upperPid: this.ruleForm.father,
+            lowerPids: this.ruleForm.son,
+            ApportionPids: this.ruleForm.arr,
+            ApportionPids: this.ruleForm.mode,
+            ApportionPids: this.ruleForm.factors
+          }).then(res => {
+            if (res.ErrCode == 0) {
+              this.$message("ok");
+            } else {
+              this.$message(res.ErrMsg);
+            }
+          });
         }
       });
     }

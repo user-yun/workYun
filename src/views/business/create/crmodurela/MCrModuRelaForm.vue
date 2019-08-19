@@ -99,10 +99,18 @@ export default {
       let unselected = this.language.unselected;
       let uninput = this.language.uninput;
       let obj = {
-        Zongid: [{ required: true, message: unselected, trigger: "blur" }],
-        Pid: [{ required: true, message: unselected, trigger: "blur" }],
-        Type: [{ required: true, message: unselected, trigger: "blur" }],
-        Status: [{ required: true, message: unselected, trigger: "blur" }]
+        Zongid: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ],
+        Pid: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ],
+        Type: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ],
+        Status: [
+          { required: true, message: unselected, trigger: ["blur", "change"] }
+        ]
       };
       return obj;
     }
