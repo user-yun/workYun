@@ -49,7 +49,7 @@ router.beforeEach((to, from, next) => {
             let userMemory = getLocal("userMemory");
             if (isFalse(userMemory)) {//是否本地有记忆 否
                 next({
-                    name: "Login",
+                    name: "login",
                     params: {
                         redirect: to.name
                     }
@@ -86,7 +86,7 @@ router.beforeEach((to, from, next) => {
                 } else {
                     clearLocal();
                     next({
-                        name: "Login",
+                        name: "login",
                         params: {
                             redirect: to.name
                         }

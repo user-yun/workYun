@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h997">
     <HelloHeader></HelloHeader>
     <el-col :span="24">
       <VertRollS :showNum="2"></VertRollS>
@@ -45,9 +45,9 @@ export default {
       return confirmationMessage;
     },
     resizeHandler() {
-      let currentWidth = document.body.clientWidth;
+      let clientWidth = document.body.clientWidth;
       let clientHeight = document.body.clientHeight;
-      if (currentWidth <= 992 || clientHeight <= 558) {
+      if (clientWidth <= 992 || clientHeight <= 558) {
         this.setOtherInfo({ menuCollapse: true });
       } else {
         this.setOtherInfo({ menuCollapse: false });

@@ -76,9 +76,9 @@ export default {
   watch: {},
   methods: {
     resizeHandler() {
-      let currentWidth = document.body.clientWidth;
+      let clientWidth = document.body.clientWidth;
       let clientHeight = document.body.clientHeight;
-      if (currentWidth <= 992 || clientHeight <= 558) {
+      if (clientWidth <= 992 || clientHeight <= 558) {
         this.setOtherInfo({ menuCollapse: true });
       } else {
         this.setOtherInfo({ menuCollapse: false });
@@ -122,15 +122,14 @@ export default {
       });
     }
   },
-  created() {
+  created() {},
+  mounted() {
     let userMemory = getLocal("userMemory");
     if (this.isFalse(userMemory)) {
       this.setWebConfig();
     } else {
       this.setOtherInfo(userMemory.otherInfo);
     }
-  },
-  mounted() {
     window.addEventListener("resize", this.resizeHandler);
   },
   beforeDestroy() {

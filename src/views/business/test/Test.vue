@@ -1,5 +1,5 @@
 <template>
-  <div>Test</div>
+  <PageTable @cellDblClick="cellDblClick" @clickPage="clickPage"></PageTable>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
   },
   components: {
     // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    //test: () => import('@/test/test.vue')
+    PageTable: () => import("@/assets/PageTable.vue")
   },
   props: {
     // test: {
@@ -42,6 +42,13 @@ export default {
     // }
   },
   methods: {
+    cellDblClick(row, column) {
+      console.log(row);
+      console.log(column);
+    },
+    clickPage(page) {
+      console.log(page);
+    },
     getRequest() {
       let userProject = this.userInfo.userProject;
       this.get(`/zone/tree/${userProject}`, {}).then(res => {
@@ -70,7 +77,6 @@ export default {
   },
   mounted() {
     //渲染
-    console.log(this);
   },
   activited() {
     //可见
