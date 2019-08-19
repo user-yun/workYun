@@ -26,7 +26,7 @@
     <el-form-item :label="language.equDataSampType" prop="Type">
       <el-select v-model="ruleForm.Type">
         <el-option
-          v-for="(item,index) in typeList"
+          v-for="(item,index) in otherInfo.meterList"
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
@@ -36,7 +36,7 @@
     <el-form-item :label="language.deviceState" prop="Status">
       <el-select v-model="ruleForm.Status">
         <el-option
-          v-for="(item,index) in lineList"
+          v-for="(item,index) in otherInfo.lineList"
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
@@ -56,26 +56,6 @@ export default {
   name: "MCrModuRelaForm",
   data() {
     return {
-      typeList: [
-        {
-          text: "wattHourMeter", //电表
-          value: 64
-        },
-        {
-          text: "waterMeter", //水表
-          value: 32768
-        }
-      ],
-      lineList: [
-        {
-          text: "offLine", //离线
-          value: 0
-        },
-        {
-          text: "onLine", //在线
-          value: 1
-        }
-      ],
       ruleForm: {
         Zongid: "",
         Pid: 0,

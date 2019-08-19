@@ -8,9 +8,30 @@
       status-icon
       label-width="30%"
     >
+      <el-form-item :label="language.shareType" prop="shareType">
+        <el-select v-model="ruleForm.shareType">
+          <el-option
+            v-for="(item,index) in otherInfo.shareModelList"
+            :key="item.value+index"
+            :value="item.value"
+            :label="language[item.label]"
+          >
+            {{language[item.label]}}:
+            <span
+              v-for="(text,texti) in item.text"
+              :key="texti+item.text.length"
+            >{{language[text]}}</span>
+          </el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item :label="language.sumMeter" prop="father">
         <el-select v-model="ruleForm.father">
-          <el-option v-for="(item,index) in List" :key="item.Pid+index" :value="item.Pid">
+          <el-option
+            v-for="(item,index) in List"
+            :key="item.Pid+index"
+            :value="item.Pid"
+            :label="item.Param.org+item.Title"
+          >
             {{item.Param.zone}}
             {{item.Param.org}}
             {{item.Title}}
@@ -20,8 +41,14 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="language.sonMeter" prop="son">
-        <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0">
-          <el-option v-for="(item,index) in List" :key="item.Pcode+index" :value="item.Pid">
+        <!-- <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0"> -->
+        <el-select v-model="ruleForm.son" multiple>
+          <el-option
+            v-for="(item,index) in List"
+            :key="item.Pcode+index"
+            :value="item.Pid"
+            :label="item.Param.org+item.Title"
+          >
             {{item.Param.zone}}
             {{item.Param.org}}
             {{item.Title}}
@@ -31,8 +58,14 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="language.boothMeter" prop="arr">
-        <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0">
-          <el-option v-for="(item,index) in List" :key="item.Pcode+index" :value="item.Pid">
+        <!-- <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0"> -->
+        <el-select v-model="ruleForm.arr" multiple>
+          <el-option
+            v-for="(item,index) in List"
+            :key="item.Pcode+index"
+            :value="item.Pid"
+            :label="item.Param.org+item.Title"
+          >
             {{item.Param.zone}}
             {{item.Param.org}}
             {{item.Title}}
@@ -44,7 +77,7 @@
       <el-form-item :label="language.shareMethod" prop="mode">
         <el-select v-model="ruleForm.mode">
           <el-option
-            v-for="(item,index) in modeList"
+            v-for="(item,index) in otherInfo.computationalModelList"
             :key="index+item.value"
             :value="item.value"
             :label="language[item.text]"
@@ -68,26 +101,9 @@ export default {
   name: "faSonConfig",
   data() {
     return {
-      modeList: [
-        {
-          text: "equipartition", //均分
-          value: 0
-        },
-        {
-          text: "proportion", //比例
-          value: 1
-        },
-        {
-          text: "area", //面积
-          value: 2
-        },
-        {
-          text: "electricity", //电量
-          value: 3
-        }
-      ],
       List: [],
       ruleForm: {
+        shareType: 1,
         father: "",
         son: [],
         arr: [],
@@ -145,22 +161,24 @@ export default {
     // }
   },
   watch: {
-    son: {
-      deep: true,
-      handler(newValue, oldValue) {
-        if (newValue.length > 0) {
-          this.ruleForm.arr.splice(0, this.ruleForm.arr.length);
-        }
-      }
-    },
-    arr: {
-      deep: true,
-      handler(newValue, oldValue) {
-        if (newValue.length > 0) {
-          this.ruleForm.son.splice(0, this.ruleForm.son.length);
-        }
-      }
-    }
+    // "ruleForm.son": {
+    //   deep: true,
+    //   handler(newValue, oldValue) {
+    //     console.log(newValue.length);
+    //     if (newValue.length > 0) {
+    //       this.ruleForm.arr.splice(0, this.ruleForm.arr.length);
+    //     }
+    //   }
+    // },
+    // "ruleForm.arr": {
+    //   deep: true,
+    //   handler(newValue, oldValue) {
+    //     console.log(newValue.length);
+    //     if (newValue.length > 0) {
+    //       this.ruleForm.son.splice(0, this.ruleForm.son.length);
+    //     }
+    //   }
+    // }
   },
   methods: {
     allModuleBrief() {
@@ -176,9 +194,9 @@ export default {
           this.post("/module/apportionrela", {
             upperPid: this.ruleForm.father,
             lowerPids: this.ruleForm.son,
-            ApportionPids: this.ruleForm.arr,
-            ApportionPids: this.ruleForm.mode,
-            ApportionPids: this.ruleForm.factors
+            ApportionPids: this.ruleForm.arr
+            // ApportionPids: this.ruleForm.mode,
+            // ApportionPids: this.ruleForm.factors
           }).then(res => {
             if (res.ErrCode == 0) {
               this.$message("ok");

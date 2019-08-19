@@ -13,7 +13,7 @@
     <el-form-item :label="language.computingMethod" prop="preiod">
       <el-select v-model="ruleForm.preiod">
         <el-option
-          v-for="(item,index) in periodList"
+          v-for="(item,index) in otherInfo.calculatingPeriodList"
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
@@ -23,7 +23,7 @@
     <el-form-item :label="language.shareMethod" prop="mode">
       <el-select v-model="ruleForm.mode">
         <el-option
-          v-for="(item,index) in modeList"
+          v-for="(item,index) in otherInfo.computationalModelList"
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
@@ -33,7 +33,7 @@
     <el-form-item :label="language.equDataSampType" prop="outputduty">
       <el-select v-model="ruleForm.outputduty">
         <el-option
-          v-for="(item,index) in outputdutyList"
+          v-for="(item,index) in otherInfo.outMeterList"
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
@@ -65,48 +65,6 @@ export default {
   name: "MCrGeTaPuBoForm",
   data() {
     return {
-      periodList: [
-        {
-          text: "realTime", //实时
-          value: 0
-        },
-        {
-          text: "day", //天
-          value: 96
-        },
-        {
-          text: "month", //月
-          value: 128
-        }
-      ],
-      modeList: [
-        {
-          text: "equipartition", //均分
-          value: 0
-        },
-        {
-          text: "proportion", //比例
-          value: 1
-        },
-        {
-          text: "area", //面积
-          value: 2
-        },
-        {
-          text: "electricity", //电量
-          value: 3
-        }
-      ],
-      outputdutyList: [
-        {
-          text: "wattHourMeter", //电表
-          value: 4
-        },
-        {
-          text: "peakValleyMeter", //峰谷表
-          value: 8
-        }
-      ],
       ruleForm: {
         zoneid: "",
         title: "",
