@@ -8,7 +8,7 @@
       status-icon
       label-width="30%"
     >
-      <el-form-item :label="language.shareType" prop="shareType">
+      <el-form-item :label="language.shareMethod" prop="shareType">
         <el-select v-model="ruleForm.shareType">
           <el-option
             v-for="(item,index) in otherInfo.shareModelList"
@@ -86,6 +86,9 @@
       </el-form-item>
       <el-form-item :label="language.proportion" prop="factors">
         <el-input-number v-model="ruleForm.factors" :precision="2" :step="0.1" :min="0.1" :max="99"></el-input-number>
+      </el-form-item>
+      <el-form-item :label="language.shareConfigName">
+        <el-input v-model="ruleForm.title" clearable :maxlength="10" show-word-limit></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">{{language.sure}}</el-button>
@@ -197,7 +200,8 @@ export default {
             ApportionPids: this.ruleForm.arr,
             sharetype: this.ruleForm.shareType,
             dividetype: this.ruleForm.mode,
-            ratio: this.ruleForm.factors
+            ratio: this.ruleForm.factors,
+            Title: this.ruleForm.title
           }).then(res => {});
         }
       });
