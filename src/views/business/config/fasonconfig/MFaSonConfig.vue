@@ -40,9 +40,9 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="language.sonMeter" prop="son">
-        <!-- <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0"> -->
-        <el-select v-model="ruleForm.son" multiple>
+      <el-form-item :label="language.boothMeter" prop="arr">
+        <!-- <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0"> -->
+        <el-select v-model="ruleForm.arr" multiple>
           <el-option
             v-for="(item,index) in List"
             :key="item.Pcode+index"
@@ -57,9 +57,9 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="language.boothMeter" prop="arr">
-        <!-- <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0"> -->
-        <el-select v-model="ruleForm.arr" multiple>
+      <el-form-item :label="language.sonMeter" prop="son">
+        <!-- <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0"> -->
+        <el-select v-model="ruleForm.son" multiple>
           <el-option
             v-for="(item,index) in List"
             :key="item.Pcode+index"
@@ -194,16 +194,11 @@ export default {
           this.post("/module/apportionrela", {
             upperPid: this.ruleForm.father,
             lowerPids: this.ruleForm.son,
-            ApportionPids: this.ruleForm.arr
-            // ApportionPids: this.ruleForm.mode,
-            // ApportionPids: this.ruleForm.factors
-          }).then(res => {
-            if (res.ErrCode == 0) {
-              this.$message("ok");
-            } else {
-              this.$message(res.ErrMsg);
-            }
-          });
+            ApportionPids: this.ruleForm.arr,
+            sharetype: this.ruleForm.shareType,
+            dividetype: this.ruleForm.mode,
+            ratio: this.ruleForm.factors
+          }).then(res => {});
         }
       });
     }

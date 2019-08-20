@@ -69,7 +69,7 @@ export default {
       return this.dataFormat(data);
     },
     cellDblClick(row, column) {
-      this.rowData = row[column.property];
+      this.rowData = this.cellDataFormat(r, c);
       this.show = true;
     },
     onColse(value) {

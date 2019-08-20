@@ -1,10 +1,10 @@
-let mixin = {
+let m = {
   data() {
     return {
-      httpURL: "http://121.196.211.83:7779",
-      // httpURL: "http://192.168.8.44:8888",
-      // httpURL: "http://192.168.8.45:8888",
-      // httpURL: "http://192.168.8.48:8888",
+      // h: "http://121.196.211.83:7779",
+      // h: "http://192.168.8.44:8888",
+      // h: "http://192.168.8.45:8888",
+      h: "http://192.168.8.48:8888",
     };
   },
   computed: {
@@ -35,66 +35,68 @@ let mixin = {
     // }
   },
   methods: {
-    log(text) {
-      console.log(text);
+    log(t) {
+      console.log(t);
     },
-    deleteOtherInfo(key) {
+    deleteOtherInfo(k) {
       //删除其他的信息
       this.$store.dispatch("upVuex", {
         mutations: "deleteOtherInfo",
         value: {
-          key: key
+          key: k
         }
       });
     },
-    setOtherInfo(value) {
+    setOtherInfo(v) {
       //设置其他的信息
       this.$store.dispatch("upVuex", {
         mutations: "setOtherInfo",
-        value: value
+        value: v
       });
     },
-    deleteUserInfo(key) {
+    deleteUserInfo(k) {
       //删除用户的信息
       this.$store.dispatch("upVuex", {
         mutations: "deleteUserInfo",
         value: {
-          key: key
+          key: k
         }
       });
     },
-    setUserInfo(value) {
+    setUserInfo(v) {
       //设置用户的信息
       this.$store.dispatch("upVuex", {
         mutations: "setUserInfo",
-        value: value
+        value: v
       });
     },
-    post(url, param) {
+    post(u, p) {
       return new Promise((resolve, reject) => {
-        this.$Post(this.httpURL + url, param).then(res => {
+        this.$Post(this.h + u, p).then(res => {
           this.log({
-            url,
+            u,
             res
           });
-          if (false) {} else
-            resolve(res)
-        }).catch((error) => {
-          reject(error)
+          let i = this.ifServerCode(res.ErrCode)
+          this.eleNotify(i, res.ErrMsg);
+          resolve(res)
+        }).catch((e) => {
+          reject(e)
         });
       });
     },
-    get(url, param) {
+    get(u, p) {
       return new Promise((resolve, reject) => {
-        this.$Get(this.httpURL + url, param).then(res => {
+        this.$Get(this.h + u, p).then(res => {
           this.log({
-            url,
+            u,
             res
           });
-          if (false) {} else
-            resolve(res)
-        }).catch((error) => {
-          reject(error)
+          let i = this.ifServerCode(res.ErrCode)
+          this.eleNotify(i, res.ErrMsg);
+          resolve(res)
+        }).catch((e) => {
+          reject(e)
         });
       });
 
@@ -103,16 +105,16 @@ let mixin = {
       if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN') return true
       return false
     },
-    ihTrue(data) {
-      switch (typeof data) {
+    ihTrue(d) {
+      switch (typeof d) {
         case "string":
-          return data.length > 0;
+          return d.length > 0;
         case "number":
           return true;
         case "boolean":
-          return data;
+          return d;
         case "object":
-          if (data == "undefined" || Object.keys(data).length < 0 || data.length < 0) {
+          if (d == "undefined" || Object.keys(d).length < 0 || d.length < 0) {
             return false;
           } else
             return true;
@@ -120,17 +122,62 @@ let mixin = {
           return false;
       }
     },
-    dataFormat(data) {
-      switch (typeof data) {
+    dataFormat(d) {
+      switch (typeof d) {
         case "string":
-          return data.substr(0, 10);
+          return d.substr(0, 10);
         case "number":
-          return data.toFixed(2);
+          return d.toFixed(2);
         default:
-          return data;
+          return d;
+      }
+    },
+    cellDataFormat(r, c) {
+      let iof = c.property.indexOf(".");
+      if (iof == -1) {
+        return r[c.property];
+      } else {
+        let s = c.property.substring(0, iof);
+        let e = c.property.substring(iof + 1, c.property.length);
+        let data = r[s][e];
+        return {
+          s,
+          e,
+          data
+        };
+      }
+    },
+    eleNotify(i, t) {
+      this.$notify({
+        message: t,
+        type: this.eleIfType(i)
+      });
+    },
+    ifServerCode(i) {
+      let s = [0];
+      let w = [];
+      let e = [10101, 10211, 10212, 10213, 10214, 10215, 10216];
+      if (s.includes(i)) {
+        return 1;
+        // } else if (w.includes(i)) {
+        // return 2;
+      } else if (e.includes(i)) {
+        return 3;
+      } else return 2;
+    },
+    eleIfType(i) {
+      switch (i) {
+        case 1:
+          return "success";
+        case 2:
+          return "warning";
+        case 3:
+          return "error";
+        default:
+          return "info";
       }
     }
   },
   created() {}
 };
-export default mixin;
+export default m;

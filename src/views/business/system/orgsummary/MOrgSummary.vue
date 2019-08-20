@@ -68,7 +68,7 @@ export default {
         this.rowData = row;
       } else {
         this.is = "MBusinessDialog";
-        this.rowData = row[column.property];
+        this.rowData = this.cellDataFormat(r, c);
       }
       this.show = true;
     },

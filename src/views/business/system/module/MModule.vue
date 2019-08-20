@@ -78,8 +78,8 @@ export default {
       let data = row[column.property];
       return this.dataFormat(data);
     },
-    cellDblClick(row, column) {
-      this.rowData = row[column.property];
+    cellDblClick(r, c) {
+      this.rowData = this.cellDataFormat(r, c);
       this.show = true;
     },
     onColse(value) {

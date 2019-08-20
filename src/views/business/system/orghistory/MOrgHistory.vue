@@ -58,22 +58,14 @@ export default {
     this.allOrg();
   },
   methods: {
-    cellDblClick(row, column) {
-      let iof = column.property.indexOf(".");
-      if (iof == -1) {
-        this.rowData = row[column.property];
-      } else {
-        let s = column.property.substring(0, iof);
-        let e = column.property.substring(iof + 1, column.property.length);
-        let data = row[s][e];
-        this.rowData = { s, e, data };
-      }
+    cellDblClick(r, c) {
+      this.rowData = this.cellDataFormat(r, c);
       this.show = true;
     },
-    onColse(value) {
-      this.show = value;
+    onColse(v) {
+      this.show = v;
     },
-    allOrg(val) {
+    allOrg() {
       let userProject = this.userInfo.userProject;
       this.get(`/org/list/${userProject}`, {}).then(res => {
         let data = res.Data;

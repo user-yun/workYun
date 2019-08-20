@@ -47,13 +47,7 @@ export default {
       this.post(
         `/robotBind/robotbind/${this.RobotToken}/${this.GroupNumber}/${userProject}`,
         {}
-      ).then(res => {
-        if (res.ErrCode == 0) {
-          this.$message("ok");
-        } else {
-          this.$message(res.ErrMsg);
-        }
-      });
+      ).then(res => {});
     }
   }
 };
