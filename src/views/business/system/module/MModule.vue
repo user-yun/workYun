@@ -39,7 +39,16 @@
           <span class="ignore">{{scope.row.project}}</span>
         </template>
       </el-table-column>
+      <el-table-column align="right" width="100" prop="powerFactor" label="powerFactor" sortable>
+        <template slot-scope="scope">
+          <span class="ignore">{{scope.row.powerFactor}}</span>
+        </template>
+      </el-table-column>
       <el-table-column align="right" width="80" prop="type" label="type" sortable></el-table-column>
+      <el-table-column align="right" width="160" prop="voltage" label="voltage" sortable></el-table-column>
+      <el-table-column align="right" width="160" prop="allPower" label="allPower" sortable></el-table-column>
+      <el-table-column align="right" width="160" prop="current" label="current" sortable></el-table-column>
+      <el-table-column align="right" width="160" prop="activePower" label="activePower" sortable></el-table-column>
       <el-table-column width="110" prop="param" label="param" :formatter="formatter" sortable></el-table-column>
       <el-table-column width="110" prop="remark" label="remark" :formatter="formatter" sortable></el-table-column>
       <el-table-column width="110" prop="status" label="status" :formatter="formatter" sortable></el-table-column>
@@ -57,8 +66,7 @@ export default {
   mixins: [mymixins],
   name: "module",
   components: {
-    MBusinessDialog: () =>
-      import("@/views/business/system/business/MBusinessDialog")
+    MBusinessDialog: () => import("#/system/business/MBusinessDialog")
   },
   data() {
     return {

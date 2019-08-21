@@ -21,9 +21,9 @@ export default {
   },
   components: {
     MFloorTree: () =>
-      import("@/views/business/multiplexing/floortree/MFloorTree.vue"),
+      import("#/multiplexing/floortree/MFloorTree.vue"),
     MCrGeTaPuBoForm: () =>
-      import("@/views/business/create/crgetapubo/MCrGeTaPuBoForm.vue")
+      import("#/create/crgetapubo/MCrGeTaPuBoForm.vue")
   },
   props: {},
   computed: {},

@@ -1,5 +1,28 @@
 <template>
-  <PageTable @cellDblClick="cellDblClick" @clickPage="clickPage"></PageTable>
+  <!-- <PageTable @cellDblClick="cellDblClick" @clickPage="clickPage"></PageTable> -->
+  <div>
+    <el-row>
+      <el-col :xs="6" :sm="5" :md="4" :xl="3">
+        <el-select v-model="select">
+          <el-option value="get"></el-option>
+          <el-option value="post"></el-option>
+        </el-select>
+      </el-col>
+      <el-col :xs="13" :sm="14" :md="16" :xl="18">
+        <el-input v-model="input"></el-input>
+      </el-col>
+      <el-col :xs="5" :sm="5" :md="4" :xl="3">
+        <el-button
+          icon="el-icon-search"
+          type="primary"
+          :disabled=" input == '' "
+          @click="get"
+          style="width:100%"
+        ></el-button>
+      </el-col>
+    </el-row>
+    <pre align="left">{{Test}}</pre>
+  </div>
 </template>
 
 <script>
@@ -12,11 +35,14 @@ export default {
       // userInfo
       // otherInfo
       // language
+      input: "",
+      select: "get",
+      Test: {}
     };
   },
   components: {
     // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    PageTable: () => import("@/assets/PageTable.vue")
+    // PageTable: () => import("@/assets/PageTable.vue")
   },
   props: {
     // test: {
@@ -42,6 +68,10 @@ export default {
     // }
   },
   methods: {
+    async get() {
+      if (this.select == "get") this.Test = await this.$Get(this.input);
+      else if (this.select == "post") this.Test = await this.$Post(this.input);
+    },
     cellDblClick(row, column) {
       console.log(row);
       console.log(column);

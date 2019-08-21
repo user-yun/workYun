@@ -54,7 +54,7 @@ export default {
   mixins: [mymixins],
   name: "device",
   components: {
-    MModuleDialog: () => import("@/views/business/system/device/MDeviceDialog")
+    MModuleDialog: () => import("#/system/device/MDeviceDialog")
   },
   data() {
     return {

@@ -24,11 +24,11 @@ export default {
   },
   components: {
     MFloorTree: () =>
-      import("@/views/business/multiplexing/floortree/MFloorTree.vue"),
+      import("#/multiplexing/floortree/MFloorTree.vue"),
     MDeviceTree: () =>
-      import("@/views/business/multiplexing/devicetree/MDeviceTree.vue"),
+      import("#/multiplexing/devicetree/MDeviceTree.vue"),
     MCrModuRelaForm: () =>
-      import("@/views/business/create/crmodurela/MCrModuRelaForm.vue")
+      import("#/create/crmodurela/MCrModuRelaForm.vue")
   },
   props: {},
   computed: {},

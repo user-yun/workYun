@@ -77,7 +77,8 @@ let m = {
             u,
             res
           });
-          let i = this.ifServerCode(res.ErrCode)
+          let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
+          let i = this.ifServerCode(c)
           this.eleNotify(i, res.ErrMsg);
           resolve(res)
         }).catch((e) => {
@@ -92,7 +93,8 @@ let m = {
             u,
             res
           });
-          let i = this.ifServerCode(res.ErrCode)
+          let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
+          let i = this.ifServerCode(c)
           this.eleNotify(i, res.ErrMsg);
           resolve(res)
         }).catch((e) => {
@@ -178,6 +180,6 @@ let m = {
       }
     }
   },
-  created() {}
+  created() { }
 };
 export default m;

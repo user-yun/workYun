@@ -21,9 +21,9 @@ export default {
   },
   components: {
     MFloorTree: () =>
-      import("@/views/business/multiplexing/floortree/MFloorTree.vue"),
+      import("#/multiplexing/floortree/MFloorTree.vue"),
     MCrInTaPuBoForm: () =>
-      import("@/views/business/create/crintapubo/MCrInTaPuBoForm.vue")
+      import("#/create/crintapubo/MCrInTaPuBoForm.vue")
   },
   props: {},
   computed: {},

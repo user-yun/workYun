@@ -38,7 +38,7 @@ export default [
             {
                 path: '/test',
                 name: 'test',
-                component: () => import('@/views/business/test/Test.vue'),
+                component: () => import('#/test/Test.vue'),
                 meta: {
                     icon: "el-icon-sugar",
                     intercept: true,
@@ -61,7 +61,7 @@ export default [
             {
                 path: '/device',
                 name: 'device',
-                component: () => import('@/views/business/system/device/MDevice'),
+                component: () => import('#/system/device/MDevice'),
                 meta: {
                     icon: "el-icon-odometer",
                     intercept: true,
@@ -71,7 +71,7 @@ export default [
             {
                 path: '/business',
                 name: 'business',
-                component: () => import('@/views/business/system/business/MBusiness'),
+                component: () => import('#/system/business/MBusiness'),
                 meta: {
                     icon: "el-icon-tickets",
                     intercept: true,
@@ -81,7 +81,7 @@ export default [
             {
                 path: '/organization',
                 name: 'organization',
-                component: () => import('@/views/business/system/orghistory/MOrgHistory'),
+                component: () => import('#/system/orghistory/MOrgHistory'),
                 meta: {
                     icon: "el-icon-s-check",
                     intercept: true,
@@ -91,7 +91,7 @@ export default [
             {
                 path: '/bill',
                 name: 'bill',
-                component: () => import('@/views/business/system/bill/MBill'),
+                component: () => import('#/system/bill/MBill'),
                 meta: {
                     icon: "el-icon-s-order",
                     intercept: true,
@@ -101,7 +101,7 @@ export default [
             {
                 path: '/enterpriseSummary',
                 name: 'enterpriseSummary',
-                component: () => import('@/views/business/system/orgsummary/MOrgSummary'),
+                component: () => import('#/system/orgsummary/MOrgSummary'),
                 meta: {
                     icon: "el-icon-s-order",
                     intercept: true,
@@ -111,7 +111,7 @@ export default [
             {
                 path: '/regionalSummary',
                 name: 'regionalSummary',
-                component: () => import('@/views/business/system/zonesummary/MZoneSummary'),
+                component: () => import('#/system/zonesummary/MZoneSummary'),
                 meta: {
                     icon: "el-icon-s-order",
                     intercept: true,
@@ -121,7 +121,17 @@ export default [
             {
                 path: '/module',
                 name: 'module',
-                component: () => import('@/views/business/system/module/MModule'),
+                component: () => import('#/system/module/MModule'),
+                meta: {
+                    icon: "el-icon-s-order",
+                    intercept: true,
+                    role: [1]
+                }
+            },
+            {
+                path: '/region',
+                name: 'region',
+                component: () => import('#/system/zonesummary/MZoneList'),
                 meta: {
                     icon: "el-icon-s-order",
                     intercept: true,
@@ -143,7 +153,7 @@ export default [
             {
                 path: '/faSonConfig',
                 name: 'faSonConfig',
-                component: () => import('@/views/business/config/fasonconfig/MFaSonConfig'),
+                component: () => import('#/config/fasonconfig/MFaSonConfig'),
                 meta: {
                     icon: "el-icon-s-help",
                     intercept: true,
@@ -153,7 +163,7 @@ export default [
             {
                 path: '/groRbtConfig',
                 name: 'groRbtConfig',
-                component: () => import('@/views/business/config/grorbtconfig/MGroRbtConfig'),
+                component: () => import('#/config/grorbtconfig/MGroRbtConfig'),
                 meta: {
                     icon: "el-icon-s-help",
                     intercept: true,
@@ -175,7 +185,7 @@ export default [
             {
                 path: '/crGeTaPuBo',
                 name: 'crGeTaPuBo',
-                component: () => import('@/views/business/create/crgetapubo/MCrGeTaPuBo'),
+                component: () => import('#/create/crgetapubo/MCrGeTaPuBo'),
                 meta: {
                     icon: "el-icon-s-help",
                     intercept: true,
@@ -185,7 +195,7 @@ export default [
             {
                 path: '/crInTaPuBo',
                 name: 'crInTaPuBo',
-                component: () => import('@/views/business/create/crintapubo/MCrInTaPuBo'),
+                component: () => import('#/create/crintapubo/MCrInTaPuBo'),
                 meta: {
                     icon: "el-icon-s-help",
                     intercept: true,
@@ -195,7 +205,7 @@ export default [
             {
                 path: '/crModuRela',
                 name: 'crModuRela',
-                component: () => import('@/views/business/create/crmodurela/MCrModuRela'),
+                component: () => import('#/create/crmodurela/MCrModuRela'),
                 meta: {
                     icon: "el-icon-s-help",
                     intercept: true,

@@ -1,4 +1,9 @@
 let illegalURL = "http://121.196.211.83/";
+let weatherURL = "https://www.tianqiapi.com/api/"
+let path = require('path')
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
 module.exports = {
   // plugins: {
   //   autoprefixer: {}
@@ -75,6 +80,13 @@ module.exports = {
         //   '^/api': ''
         // }
       },
+      "/weather": {
+        target: weatherURL,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/weather': ''
+        }
+      },
     }
 
     // before: app => {}
@@ -83,6 +95,11 @@ module.exports = {
   pluginOptions: {
     // ...
   },
+  chainWebpack: config => {
+    config.resolve.alias
+      .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
+      .set('#', resolve('src/views/business')) // key,value自行定义，比如.set('@@', resolve('src/components'))
+  }
   // vueLoader: {},
   // 是否启用dll
   // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode

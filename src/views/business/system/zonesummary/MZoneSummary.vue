@@ -48,7 +48,7 @@ export default {
   name: "regionalSummary",
   components: {
     MBusinessDialog: () =>
-      import("@/views/business/system/business/MBusinessDialog")
+      import("#/system/business/MBusinessDialog")
   },
   data() {
     return {

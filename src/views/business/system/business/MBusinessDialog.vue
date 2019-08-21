@@ -1,6 +1,6 @@
 <template>
   <el-dialog v-if="show" :visible.sync="show" :before-close="handleClose" destroy-on-close>
-    <span>{{data}}</span>
+    <pre>{{data}}</pre>
     <span slot="footer"></span>
   </el-dialog>
 </template>

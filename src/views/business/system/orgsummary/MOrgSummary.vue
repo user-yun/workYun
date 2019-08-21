@@ -40,9 +40,9 @@ export default {
   name: "enterpriseSummary",
   components: {
     MBusinessDialog: () =>
-      import("@/views/business/system/business/MBusinessDialog"),
+      import("#/system/business/MBusinessDialog"),
     MOrgHisrElectDialog: () =>
-      import("@/views/business/system/orgsummary/MOrgHisrElectDialog")
+      import("#/system/orgsummary/MOrgHisrElectDialog")
   },
   data() {
     return {

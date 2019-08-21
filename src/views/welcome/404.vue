@@ -1,17 +1,25 @@
 <template>
   <el-card class="h997">
     <h1>404</h1>
+    <pre align="left">{{weather}}</pre>
   </el-card>
 </template>
 
 <script>
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
   name: "error-404",
   data() {
-    return {};
+    return {
+      weather: {}
+    };
   },
-  computed: {}
+  methods: {
+    async get() {
+      this.weather = await this.$Get("/weather");
+    }
+  },
+  mounted() {
+    this.get();
+  }
 };
 </script>

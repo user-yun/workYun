@@ -1,12 +1,11 @@
 <template>
-  <div style="height:100%">
+  <div style="height:100%;">
     <el-table
       :data="tableData"
       :border="TableConfig.border"
       :stripe="TableConfig.stripe"
       :highlight-current-row="TableConfig.highlight"
       height="95%"
-      style="width:100%"
       @cell-dblclick="cellDblClick"
       header-cell-class-name="header-cell-class-name"
       cell-class-name="cell-class-name"
@@ -22,7 +21,9 @@
         :fixed="item.fixed"
       >
         <template slot-scope="scope">
+          <pre v-if="item.json" :class="item.mini ? 'ignore': 'normal' ">{{dataFormat(item.format,scope.row[scope.column.property])}}</pre>
           <span
+            v-else
             :class="item.mini ? 'ignore': 'normal' "
           >{{dataFormat(item.format,scope.row[scope.column.property])}}</span>
         </template>
@@ -49,12 +50,17 @@ export default {
   // mixins: [mymixins],
   name: "PageTable",
   data() {
-    return {
-      tableData: [{ test: "test" }]
-    };
+    return {};
   },
   components: {},
   props: {
+    tableData: {
+      type: Array,
+      default: () => {
+        let arr = [{ test: "test" }];
+        return arr;
+      }
+    },
     TableConfig: {
       type: Object,
       default: () => {

@@ -44,7 +44,7 @@ export default {
   name: "bill",
   components: {
     MBusinessDialog: () =>
-      import("@/views/business/system/business/MBusinessDialog")
+      import("#/system/business/MBusinessDialog")
   },
   data() {
     return {
