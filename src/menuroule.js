@@ -42,7 +42,7 @@ export default [
                 meta: {
                     icon: "el-icon-sugar",
                     intercept: true,
-                    noKeepAlive: true,
+                    noKeepAlive: false,
                     role: [1]
                 }
             }

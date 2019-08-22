@@ -1,6 +1,7 @@
 <template>
   <el-dialog v-if="show" :visible.sync="show" :before-close="handleClose" destroy-on-close>
-    <pre>{{data}}</pre>
+    <pre align="left" v-if="typeof showData == 'object'">{{showData}}</pre>
+    <div v-else>{{showData}}</div>
     <span slot="footer"></span>
   </el-dialog>
 </template>
@@ -9,7 +10,9 @@
 export default {
   name: "MBusinessDialog",
   data() {
-    return {};
+    return {
+      showData: {}
+    };
   },
   mounted() {},
   computed: {},
@@ -26,7 +29,13 @@ export default {
     data: {
       immediate: true,
       deep: true,
-      handler: function(nvalue, ovalue) {}
+      handler: function(nvalue, ovalue) {
+        try {
+          if (nvalue) this.showData = JSON.parse(nvalue);
+        } catch (error) {
+          this.showData = nvalue;
+        }
+      }
     }
   },
   methods: {

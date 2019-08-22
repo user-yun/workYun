@@ -86,7 +86,8 @@ export default {
             sortable: true,
             fixed: true,
             mini: true,
-            format: true
+            format: true,
+            json:true
           }
         ];
         return arr;
@@ -112,7 +113,7 @@ export default {
         case "number":
           return data.toFixed(2);
         default:
-          return data;
+          return JSON.stringify(data).substr(0, 20);
       }
     },
     cellDblClick(row, column) {

@@ -2,35 +2,39 @@
   <div style="height:100%;">
     <PageTable
       :tableData="tableData"
-      :DataConfig="DataConfig"
+      :DataConfig="MZoneListDataConfig"
       @cellDblClick="cellDblClick"
-      @clickPage="clickPage"
     ></PageTable>
+    <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </div>
 </template>
 
 <script>
 import mymixins from "@/mymixins";
-import DataConfig from "./DataConfig.js";
+import MZoneListDataConfig from "./MZoneListDataConfig.js";
 export default {
   mixins: [mymixins],
   name: "region",
   data() {
     return {
       tableData: [],
-      DataConfig: []
+      MZoneListDataConfig: [],
+      is: "MBusinessDialog",
+      show: false,
+      rowData: {}
     };
   },
   components: {
+    MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
     PageTable: () => import("@/assets/PageTable.vue")
   },
   methods: {
-    cellDblClick(row, column) {
-      console.log(row);
-      console.log(column);
+    cellDblClick(r, c) {
+      this.rowData = this.cellDataFormat(r, c);
+      this.show = true;
     },
-    clickPage(page) {
-      console.log(page);
+    onColse(value) {
+      this.show = value;
     },
     getRequest() {
       let userProject = this.userInfo.userProject;
@@ -42,7 +46,7 @@ export default {
   },
   mounted() {
     //渲染
-    this.DataConfig = DataConfig;
+    this.MZoneListDataConfig = MZoneListDataConfig;
     this.getRequest();
   }
 };

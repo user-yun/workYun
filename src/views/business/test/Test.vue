@@ -72,13 +72,8 @@ export default {
       if (this.select == "get") this.Test = await this.$Get(this.input);
       else if (this.select == "post") this.Test = await this.$Post(this.input);
     },
-    cellDblClick(row, column) {
-      console.log(row);
-      console.log(column);
-    },
-    clickPage(page) {
-      console.log(page);
-    },
+    cellDblClick(row, column) {},
+    clickPage(page) {},
     getRequest() {
       let userProject = this.userInfo.userProject;
       this.get(`/zone/tree/${userProject}`, {}).then(res => {

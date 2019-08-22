@@ -1,9 +1,16 @@
 let arr = [
     {
-        width: "200",
+        width: "140",
+        prop: "Title",
+        sortable: true,
+        mini: true,
+        fixed: true,
+        format: true
+    },
+    {
+        width: "170",
         prop: "Address",
         sortable: true,
-        fixed: true,
         mini: true,
     },
     {
@@ -13,7 +20,7 @@ let arr = [
         mini: true,
     },
     {
-        width: "200",
+        width: "160",
         prop: "Ingress",
         sortable: true,
         mini: true,
@@ -21,23 +28,32 @@ let arr = [
         // json: true
     },
     {
-        width: "200",
-        prop: "Lowerids",
+        width: "100",
+        prop: "Upperid",
         sortable: true,
+        format: true,
         mini: true,
     },
     {
-        width: "130",
+        width: "110",
+        prop: "Lowerids",
+        sortable: true,
+        format: true,
+        mini: true,
+    },
+    {
+        width: "120",
+        prop: "Moduleids",
+        sortable: true,
+        format: true,
+        mini: true,
+    },
+    {
+        width: "120",
         prop: "Managers",
         sortable: true,
         mini: true,
         format: true
-    },
-    {
-        width: "200",
-        prop: "Moduleids",
-        sortable: true,
-        mini: true,
     },
     {
         width: "200",
@@ -46,25 +62,12 @@ let arr = [
         mini: true,
     },
     {
-        width: "180",
+        width: "140",
         prop: "Param",
         sortable: true,
         mini: true,
         format: true
     },
-    {
-        width: "150",
-        prop: "Title",
-        sortable: true,
-        mini: true,
-        format: true
-    },
-    {
-        width: "200",
-        prop: "Upperid",
-        sortable: true,
-        mini: true,
-    }
 ]
 
 export default arr
