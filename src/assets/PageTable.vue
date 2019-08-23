@@ -21,11 +21,11 @@
         :fixed="item.fixed"
       >
         <template slot-scope="scope">
-          <pre v-if="item.json" :class="item.mini ? 'ignore': 'normal' ">{{dataFormat(item.format,scope.row[scope.column.property])}}</pre>
+          <pre v-if="item.json" :class="item.mini ? 'ignore': 'normal' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
           <span
             v-else
             :class="item.mini ? 'ignore': 'normal' "
-          >{{dataFormat(item.format,scope.row[scope.column.property])}}</span>
+          >{{dataFormat(item.format,scope.row,scope.column)}}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -87,7 +87,7 @@ export default {
             fixed: true,
             mini: true,
             format: true,
-            json:true
+            json: true
           }
         ];
         return arr;
@@ -105,15 +105,35 @@ export default {
     }
   },
   methods: {
-    dataFormat(is, data) {
+    cellDataFormat(r, c) {
+      let iof = c.property.indexOf(".");
+      if (iof == -1) {
+        return r[c.property];
+      } else {
+        let s = c.property.substring(0, iof);
+        let e = c.property.substring(iof + 1, c.property.length);
+        let data = r[s][e];
+        return {
+          data,
+          s,
+          e
+        };
+      }
+    },
+    dataFormat(is, r, c) {
+      let data = this.cellDataFormat(r, c);
       if (!is) return data;
-      switch (typeof data) {
-        case "string":
-          return data.substr(0, 10);
-        case "number":
-          return data.toFixed(2);
-        default:
-          return JSON.stringify(data).substr(0, 20);
+      try {
+        switch (typeof data) {
+          case "string":
+            return data.substr(0, 10);
+          case "number":
+            return data.toFixed(2);
+          default:
+            return JSON.stringify(data).substr(0, 10);
+        }
+      } catch (e) {
+        return JSON.stringify(data);
       }
     },
     cellDblClick(row, column) {

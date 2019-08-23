@@ -9,83 +9,101 @@
 // json:true
 let arr = [
     {
-        width: "100",
-        prop: "orgtitle",
+        width: "130",
+        prop: "title",
         sortable: true,
         fixed: true,
         mini: true,
     },
     {
-        width: "180",
+        width: "190",
         prop: "id",
         sortable: true,
         mini: true,
     },
     {
-        width: "100",
-        prop: "orgid",
+        width: "200",
+        prop: "zoneid",
         sortable: true,
         mini: true,
-        format: true,
         // json: true
     },
     {
-        width: "130",
-        prop: "project",
+        width: "90",
+        prop: "date",
         sortable: true,
         mini: true,
     },
     {
-        width: "90",
-        prop: "gover",
+        width: "110",
+        prop: "address",
         sortable: true,
         mini: true,
+        format: true
+    },
+    {
+        width: "90",
+        prop: "param",
+        sortable: true,
+        mini: true,
+        format: true,
     },
     {
         width: "90",
         prop: "status",
         sortable: true,
+        format: true,
         mini: true,
     },
     {
         width: "90",
-        prop: "code",
+        prop: "mbs",
         sortable: true,
+        format: true,
         mini: true,
     },
     {
         width: "90",
-        prop: "begin",
+        prop: "obs",
         sortable: true,
+        format: true,
         mini: true,
     },
     {
-        width: "80",
-        prop: "end",
+        width: "90",
+        prop: "zbs",
         sortable: true,
+        format: true,
         mini: true,
     },
     {
         width: "90",
         prop: "sum",
         sortable: true,
+        mini: true,
+        format: true
+    },
+    {
+        width: "100",
+        prop: "record",
+        sortable: true,
         format: true,
         mini: true,
     },
     {
         width: "100",
-        prop: "remark",
-        sortable: true,
-        mini: true,
-        format: true
-    },
-    {
-        width: "110",
-        prop: "items",
+        prop: "obss",
         sortable: true,
         format: true,
         mini: true,
-    }
+    },
+    {
+        width: "120",
+        prop: "baseinfo",
+        sortable: true,
+        format: true,
+        mini: true,
+    },
 ]
 
 export default arr

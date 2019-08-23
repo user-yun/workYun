@@ -1,76 +1,41 @@
 <template>
   <div style="height:100%">
-    <el-table
-      :data="tableData"
-      border
-      height="100%"
-      @row-dblclick="rowDblclick"
-      header-cell-class-name="header-cell-class-name"
-      cell-class-name="cell-class-name"
-    >
-      <el-table-column align="left" width="90" prop="Title" label="Title" fixed>
-        <template slot-scope="scope">
-          <span class="ignore">{{scope.row.Title}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column align="left" width="170" prop="Param.address" label="address"></el-table-column>
-      <el-table-column align="right" width="110" prop="Pcode" label="Pcode">
-        <template slot-scope="scope">
-          <span class="ignore">{{scope.row.Pcode}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column align="right" width="170" prop="Pid" label="Pid">
-        <template slot-scope="scope">
-          <span class="ignore">{{scope.row.Pid}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column align="right" width="70" prop="Param.zone" label="zone"></el-table-column>
-      <el-table-column align="right" width="110" prop="Param.zoneid" label="zoneid">
-        <template slot-scope="scope">
-          <span class="ignore">{{scope.row.zoneid}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column align="right" width="140" prop="Report.lasttime" label="lasttime">
-        <template slot-scope="scope">
-          <span class="ignore">{{scope.row.lasttime}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column align="left" width="120" prop="Param.org" label="org"></el-table-column>
-      <el-table-column align="right" width="130" prop="Report.powerfactor" label="powerfactor"></el-table-column>
-      <el-table-column align="right" width="70" prop="Report.voltage" label="voltage"></el-table-column>
-      <el-table-column align="right" width="70" prop="Report.current" label="current"></el-table-column>
-      <el-table-column align="right" width="130" prop="Report.activepower" label="activepower"></el-table-column>
-      <el-table-column align="right" width="130" prop="Report.reactivepower" label="reactivepower"></el-table-column>
-      <el-table-column align="right" width="90" prop="Report.allpower" label="allpower"></el-table-column>
-      <el-table-column align="right" width="230" prop="Id" label="moduleId"></el-table-column>
-    </el-table>
+    <PageTable :tableData="tableData" :DataConfig="MDeviceDataConfig" @cellDblClick="cellDblClick"></PageTable>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </div>
 </template>
 
 <script>
+import MDeviceDataConfig from "./MDeviceDataConfig";
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
   name: "device",
   components: {
-    MModuleDialog: () => import("#/system/device/MDeviceDialog")
+    PageTable: () => import("@/assets/PageTable.vue"),
+    MBusinessDialog: () => import("#/system/business/MBusinessDialog")
   },
   data() {
     return {
       tableData: [],
-      is: "MModuleDialog",
+      is: "MBusinessDialog",
+      MDeviceDataConfig: {},
       show: false,
       rowData: null
     };
   },
   mounted() {
+    this.MDeviceDataConfig = MDeviceDataConfig;
     this.allModuleBrief();
   },
   methods: {
-    rowDblclick(row, column) {
-      this.rowData = row;
+    cellDblClick(row, column) {
       this.show = true;
+      this.get(`/module/moudulerela/${row.Pid}`, {}).then(res => {
+        if (res.ErrCode == 0) {
+          this.rowData = res.Data;
+        }
+      });
     },
     onColse(value) {
       this.show = value;

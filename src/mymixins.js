@@ -73,6 +73,7 @@ let m = {
     post(u, p) {
       return new Promise((resolve, reject) => {
         this.$Post(this.h + u, p).then(res => {
+          resolve(res)
           this.log({
             u,
             res
@@ -80,7 +81,6 @@ let m = {
           let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
           let i = this.ifServerCode(c)
           this.eleNotify(i, res.ErrMsg);
-          resolve(res)
         }).catch((e) => {
           reject(e)
         });
@@ -89,6 +89,7 @@ let m = {
     get(u, p) {
       return new Promise((resolve, reject) => {
         this.$Get(this.h + u, p).then(res => {
+          resolve(res)
           this.log({
             u,
             res
@@ -96,7 +97,6 @@ let m = {
           let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
           let i = this.ifServerCode(c)
           this.eleNotify(i, res.ErrMsg);
-          resolve(res)
         }).catch((e) => {
           reject(e)
         });
@@ -143,22 +143,22 @@ let m = {
         let e = c.property.substring(iof + 1, c.property.length);
         let data = r[s][e];
         return {
+          data,
           s,
           e,
-          data
         };
       }
     },
     eleNotify(i, t) {
       this.$notify({
         message: t,
-        type: this.eleIfType(i)
+        type: this.eleIfType(i),
       });
     },
     ifServerCode(i) {
-      let s = [0];
-      let w = [];
-      let e = [10101, 10211, 10212, 10213, 10214, 10215, 10216];
+      let s = [0];//成功
+      let w = [];//警告
+      let e = [10101, 10211, 10212, 10213, 10214, 10215, 10216];//失败
       if (s.includes(i)) {
         return 1;
         // } else if (w.includes(i)) {
