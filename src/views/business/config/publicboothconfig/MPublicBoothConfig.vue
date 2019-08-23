@@ -101,7 +101,7 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "faSonConfig",
+  name: "publicBoothConfig",
   data() {
     return {
       List: [],

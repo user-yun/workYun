@@ -37,10 +37,6 @@ export default {
   computed: {},
   watch: {},
   methods: {
-    formatter(row, column) {
-      let data = row[column.property];
-      return this.dataFormat(data);
-    },
     cellDblClick(r, c) {
       if (c.property == "orgid") {
         this.is = "MOrgHisrElectDialog";

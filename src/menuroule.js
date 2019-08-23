@@ -151,9 +151,9 @@ export default [
         },
         children: [
             {
-                path: '/faSonConfig',
-                name: 'faSonConfig',
-                component: () => import('#/config/fasonconfig/MFaSonConfig'),
+                path: '/publicBoothConfig',
+                name: 'publicBoothConfig',
+                component: () => import('#/config/publicboothconfig/MPublicBoothConfig'),
                 meta: {
                     icon: "el-icon-s-help",
                     intercept: true,

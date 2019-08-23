@@ -29,13 +29,17 @@ export default {
     this.allModuleBrief();
   },
   methods: {
-    cellDblClick(row, column) {
+    cellDblClick(r, c) {
       this.show = true;
-      this.get(`/module/moudulerela/${row.Pid}`, {}).then(res => {
-        if (res.ErrCode == 0) {
-          this.rowData = res.Data;
-        }
-      });
+      if (c.property == "Pid") {
+        this.get(`/module/moudulerela/${r.Pid}`, {}).then(res => {
+          if (res.ErrCode == 0) {
+            this.rowData = res.Data;
+          }
+        });
+      } else {
+        this.rowData = this.cellDataFormat(r, c);
+      }
     },
     onColse(value) {
       this.show = value;
