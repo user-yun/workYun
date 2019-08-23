@@ -39,7 +39,7 @@ export default {
       let data = row[column.property];
       return this.dataFormat(data);
     },
-    cellDblClick(row, column) {
+    cellDblClick(r, c) {
       this.rowData = this.cellDataFormat(r, c);
       this.show = true;
     },
