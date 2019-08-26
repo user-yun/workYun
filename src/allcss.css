@@ -19,6 +19,48 @@ body {
     /* 14/1920 */
 }
 
+.m-z-index {
+    z-index: 5233;
+}
+
+.alnlft {
+    text-align: left;
+}
+
+.alnrit {
+    text-align: right;
+}
+
+.alncnt {
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 0.625vw;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 0.625vw;
+}
+
+::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0);
+    border-radius: 0.625vw;
+    background: rgba(0, 0, 0, 0.0);
+}
+
+#app:hover ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0);
+    border-radius: 0.625vw;
+    background: rgba(0, 0, 0, 0);
+}
+
 .normal {
     font-size: 0.72917vw;
 }
@@ -54,8 +96,8 @@ body {
 }
 
 .h5l5 {
-    height: 5vh;
-    line-height: 5vh;
+    height: 4vh;
+    line-height: 6vh;
 }
 
 .shadow {
@@ -73,29 +115,4 @@ body {
 .cell-class-name {
     color: #303133;
     font-size: 0.72917vw;
-}
-
-.m-z-index {
-    z-index: 5233;
-}
-
-::-webkit-scrollbar {
-    /*滚动条整体样式*/
-    width: 0.72917vw;
-    /*高宽分别对应横竖滚动条的尺寸*/
-    height: 0.72917vw;
-}
-
-::-webkit-scrollbar-thumb {
-    /*滚动条里面小方块*/
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    background: #f8f8f9;
-}
-
-::-webkit-scrollbar-track {
-    /*滚动条里面轨道*/
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    background: #f9f9f9;
 }

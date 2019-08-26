@@ -29,7 +29,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-col align="center" v-show="TableConfig.showPage" :style="{fontSize:'150%',height:'4%'}">
+    <el-col class="alncnt" v-show="TableConfig.showPage" :style="{fontSize:'150%',height:'4%'}">
       <i
         class="el-icon-arrow-left"
         :style="{color: pageDis == null || pageDis == 'right' ? '#409EFF':'transparent'}"

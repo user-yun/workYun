@@ -30,7 +30,7 @@
             v-for="(item,index) in List"
             :key="item.Pid+index"
             :value="item.Pid"
-            :label="item.Param.org+item.Title"
+            :label="item.Param.zone+item.Param.org+item.Title"
           >
             {{item.Param.zone}}
             {{item.Param.org}}
@@ -42,12 +42,12 @@
       </el-form-item>
       <el-form-item :label="language.boothMeter" prop="arr">
         <!-- <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0"> -->
-        <el-select v-model="ruleForm.arr" multiple>
+        <el-select v-model="ruleForm.arr" multiple value-key="id">
           <el-option
             v-for="(item,index) in List"
             :key="item.Pcode+index"
-            :value="item.Pid"
-            :label="item.Param.org+item.Title"
+            :value="{id:item.Pid,title:item.Param.org+item.Title,value:0.01}"
+            :label="item.Param.zone+item.Param.org+item.Title"
           >
             {{item.Param.zone}}
             {{item.Param.org}}
@@ -59,12 +59,12 @@
       </el-form-item>
       <el-form-item :label="language.sonMeter" prop="son">
         <!-- <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0"> -->
-        <el-select v-model="ruleForm.son" multiple>
+        <el-select v-model="ruleForm.son" multiple value-key="id">
           <el-option
             v-for="(item,index) in List"
             :key="item.Pcode+index"
-            :value="item.Pid"
-            :label="item.Param.org+item.Title"
+            :value="{id:item.Pid,title:item.Param.org+item.Title,value:0.01}"
+            :label="item.Param.zone+item.Param.org+item.Title"
           >
             {{item.Param.zone}}
             {{item.Param.org}}
@@ -84,8 +84,12 @@
           ></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item :label="language.proportion" prop="factors">
-        <el-input-number v-model="ruleForm.factors" :precision="2" :step="0.1" :min="0.1" :max="99"></el-input-number>
+      <el-form-item :label="language.proportion" prop="factors" class="alnrit">
+        <span v-for="(item,iindex) in ruleForm.son.concat(ruleForm.arr)" :key="iindex">
+          {{item.title}}
+          <el-input-number v-model="item.value" :precision="2" :step="0.01" :min="0.01" :max="100"></el-input-number>%
+          <br>
+        </span>
       </el-form-item>
       <el-form-item :label="language.shareConfigName">
         <el-input v-model="ruleForm.title" clearable :maxlength="10" show-word-limit></el-input>
@@ -111,7 +115,7 @@ export default {
         son: [],
         arr: [],
         mode: 0,
-        factors: 0.01
+        factors: null
       }
     };
   },
@@ -119,6 +123,7 @@ export default {
     this.allModuleBrief();
   },
   computed: {
+    ruleFormArr() {},
     rules() {
       let that = this.ruleForm;
       let unselected = this.language.unselected;
@@ -182,6 +187,17 @@ export default {
     //     }
     //   }
     // }
+    ruleForm: {
+      deep: true,
+      handler(newValue, oldValue) {
+        if (newValue.son.length > 0 || newValue.arr.length > 0) {
+          this.$set(this.ruleForm, "factors", 0);
+          this.$refs.ruleForm.clearValidate(["arr", "son", "factors"]);
+        } else {
+          this.$set(this.ruleForm, "factors", null);
+        }
+      }
+    }
   },
   methods: {
     allModuleBrief() {

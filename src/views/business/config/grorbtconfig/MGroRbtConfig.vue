@@ -1,5 +1,5 @@
 <template>
-  <div align="center">
+  <div class="alncnt">
     <el-row style="margin: 2vh 10vw ;width:80%">
       <el-col :span="10">
         <el-input v-model="RobotToken" placeholder="RobotToken"></el-input>

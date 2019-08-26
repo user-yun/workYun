@@ -15,7 +15,7 @@
         :span="24"
         v-for="(value,index) in resData"
         :key="index"
-        align="left"
+        class="alnlft"
       >{{value.Time.substr(0,19)}}---{{value.Allpower}}</el-col>
     </el-row>
     <span slot="footer"></span>

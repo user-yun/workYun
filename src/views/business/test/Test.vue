@@ -21,7 +21,8 @@
         ></el-button>
       </el-col>
     </el-row>
-    <pre align="left">{{Test}}</pre>
+    <pre class="alnlft">{{Test}}</pre>
+    <MultipleTimePickers></MultipleTimePickers>
   </div>
 </template>
 
@@ -42,7 +43,8 @@ export default {
   },
   components: {
     // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    // PageTable: () => import("@/assets/PageTable.vue")
+    // PageTable: () => import("@/assets/PageTable")
+    MultipleTimePickers: () => import("@/assets/MultipleTimePickers")
   },
   props: {
     // test: {

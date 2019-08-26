@@ -9,7 +9,7 @@
       :sm="{span: 16, offset: 1}"
       :lg="{span: 16, offset: 2}"
       :xl="{span: 16, offset: 3}"
-      align="left"
+      class="alnlft"
     >
       <b class="emphasize" :style="{color:otherInfo.themeTextColor}">{{userInfo.headerTitle}}</b>
     </el-col>
@@ -22,7 +22,7 @@
         @click="getInto"
       >{{language.getInto}}</el-button>
     </el-col>
-    <el-col :xs="6" :sm="3" :lg="2" :xl="2" align="right">
+    <el-col :xs="6" :sm="3" :lg="2" :xl="2" class="alnrit">
       <el-tooltip effect="light">
         <el-menu slot="content" :collapse="otherInfo.menuCollapse" @select="menuSelect">
           <el-menu-item

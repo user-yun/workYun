@@ -1,23 +1,33 @@
 <template>
-  <el-row>
-    <el-col :xs="4" :sm="4" :md="2" :lg="2" :xl="2" align="left" class="h5l5">
-      <i
-        :class="iClassAsideVisible"
-        class="icon"
-        :style="{color:otherInfo.themeTextColor}"
-        @click="iClassAsideVisibleOnClick"
-      ></i>
-      <i
-        :class="iClassMenuCollapse"
-        class="icon"
-        :style="{color:otherInfo.themeTextColor}"
-        @click="iClassMenuCollapseOnClick"
-      ></i>
-    </el-col>
-    <el-col :xs="20" :sm="20" :md="22" :lg="22" :xl="22" align="right" class="h5l5">
-      <SelectLanguage></SelectLanguage>
-    </el-col>
-  </el-row>
+  <div>
+    <el-row>
+      <el-col :xs="4" :sm="4" :md="2" :lg="2" :xl="2" class="h5l5 alnlft">
+        <i
+          :class="iClassAsideVisible"
+          class="icon"
+          :style="{color:otherInfo.themeTextColor}"
+          @click="iClassAsideVisibleOnClick"
+        ></i>
+        <i
+          :class="iClassMenuCollapse"
+          class="icon"
+          :style="{color:otherInfo.themeTextColor}"
+          @click="iClassMenuCollapseOnClick"
+        ></i>
+      </el-col>
+      <el-col :xs="15" :sm="15" :md="19" :lg="19" :xl="19" class="h5l5 alnrit">
+        <i
+          class="el-icon-setting icon"
+          :style="{color:otherInfo.themeTextColor}"
+          @click="iClassDrawerCollapseOnClick"
+        ></i>
+      </el-col>
+      <el-col :xs="5" :sm="5" :md="3" :lg="3" :xl="3" class="alnrit">
+        <SelectLanguage></SelectLanguage>
+      </el-col>
+    </el-row>
+    <ConfigDrawer></ConfigDrawer>
+  </div>
 </template>
 
 <script>
@@ -29,7 +39,8 @@ export default {
     return {};
   },
   components: {
-    SelectLanguage: () => import("@/assets/SelectLanguage")
+    SelectLanguage: () => import("@/assets/SelectLanguage"),
+    ConfigDrawer: () => import("@/views/framework/ConfigDrawer")
   },
   props: {},
   computed: {
@@ -49,6 +60,9 @@ export default {
     },
     iClassMenuCollapseOnClick() {
       this.setOtherInfo({ menuCollapse: !this.otherInfo.menuCollapse });
+    },
+    iClassDrawerCollapseOnClick() {
+      this.setOtherInfo({ drawerVisible: !this.otherInfo.drawerVisible });
     }
   }
 };

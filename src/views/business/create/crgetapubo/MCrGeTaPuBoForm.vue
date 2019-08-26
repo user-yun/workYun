@@ -33,7 +33,7 @@
     <el-form-item :label="language.equDataSampType" prop="outputduty">
       <el-select v-model="ruleForm.outputduty">
         <el-option
-          v-for="(item,index) in otherInfo.outMeterList"
+          v-for="(item,index) in otherInfo.wattMeterList"
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"

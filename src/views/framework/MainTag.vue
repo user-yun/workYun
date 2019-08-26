@@ -1,5 +1,5 @@
 <template>
-  <nobr align="left" style="overflow-x:auto">
+  <nobr class="alnlft" style="overflow-x:auto">
     <el-tag
       v-for="(tag,key) in otherInfo.routerHistory"
       v-if="tag.meta.icon"
@@ -13,8 +13,10 @@
       class="normal"
       :size=" otherInfo.menuCollapse ? 'mini' : 'medium' "
     >
-      <i :class="tag.meta.icon"></i>
-      {{language[key]}}
+      <span :style="{ color: tag.path == $route.path ? otherInfo.themeTextColor : '#909399' }">
+        <i :class="tag.meta.icon"></i>
+        {{language[key]}}
+      </span>
     </el-tag>
   </nobr>
 </template>

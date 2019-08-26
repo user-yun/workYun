@@ -26,7 +26,7 @@
     <el-form-item :label="language.equDataSampType" prop="Type">
       <el-select v-model="ruleForm.Type">
         <el-option
-          v-for="(item,index) in otherInfo.meterList"
+          v-for="(item,index) in otherInfo.equipmentList"
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"

@@ -4,9 +4,9 @@
     <el-dialog :visible="true" :show-close="false" top="30vh" :width="dialogWidth">
       <el-row slot="title">
         <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="18">
-          <h2 align="left">{{language.tile}}</h2>
+          <h2 class="alnlft">{{language.tile}}</h2>
         </el-col>
-        <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="6" align="right">
+        <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="6" class="alnrit">
           <SelectLanguage></SelectLanguage>
         </el-col>
       </el-row>

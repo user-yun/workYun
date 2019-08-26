@@ -1,7 +1,7 @@
 <template>
   <el-card class="h997">
     <h1>404</h1>
-    <pre align="left">{{weather}}</pre>
+    <pre class="alnlft">{{weather}}</pre>
   </el-card>
 </template>
 
