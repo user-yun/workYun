@@ -22,7 +22,8 @@
       </el-col>
     </el-row>
     <pre class="alnlft">{{Test}}</pre>
-    <MultipleTimePickers></MultipleTimePickers>
+    <!-- <MultipleTimePickers></MultipleTimePickers> -->
+    <MultipleTimeCheck></MultipleTimeCheck>
   </div>
 </template>
 
@@ -44,7 +45,8 @@ export default {
   components: {
     // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
     // PageTable: () => import("@/assets/PageTable")
-    MultipleTimePickers: () => import("@/assets/MultipleTimePickers")
+    // MultipleTimePickers: () => import("@/assets/MultipleTimePickers")
+    MultipleTimeCheck: () => import("@/assets/MultipleTimeCheck")
   },
   props: {
     // test: {
