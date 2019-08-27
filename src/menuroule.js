@@ -214,4 +214,28 @@ export default [
             }
         ]
     },
+    {
+        path: '/docking',
+        name: 'docking',
+        component: Main,
+        meta: {
+            icon: "el-icon-sugar",
+            intercept: true,
+            noKeepAlive: true,
+            role: [1]
+        },
+        children: [
+            {
+                path: '/hosDock',
+                name: 'hosDock',
+                component: () => import('#/docking/HosDock/MHosDock.vue'),
+                meta: {
+                    icon: "el-icon-sugar",
+                    intercept: true,
+                    noKeepAlive: false,
+                    role: [1]
+                }
+            }
+        ]
+    },
 ]

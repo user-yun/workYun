@@ -45,20 +45,6 @@ export default {
       filterText: ""
     };
   },
-  components: {
-    // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    //test: () => import('@/test/test.vue')
-  },
-  props: {
-    // test: {
-    //   type: String,
-    //   default: () => {
-    //     let colors = ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C"];
-    //     return colors[Math.ceil(Math.random() * colors.length)];
-    //   }
-    // }
-  },
-  computed: {},
   watch: {
     //监听数据变化
     filterText: {

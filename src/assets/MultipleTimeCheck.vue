@@ -1,47 +1,52 @@
 <template>
   <span>
-    <el-checkbox-group v-model="iTL" @change="groupChange" :fill="colors[iTL]">
+    <el-radio-group v-model="iTL" :fill="colors[iTL]">
+      <el-radio-button v-for="(tv,ti) in TL" :label="tv.value" :key="ti">{{language[tv.text]}}</el-radio-button>
+    </el-radio-group>
+    <!-- <el-checkbox-group v-model="iTL" :fill="colors[iTL]">
       <el-checkbox-button
         v-for="(tv,ti) in TL"
         :true-label="tv.value"
         :key="ti"
       >{{language[tv.text]}}</el-checkbox-button>
-    </el-checkbox-group>
-    {{ML}}
-    <el-checkbox-group v-model="ML[iTL]" @change="handleCheckedCitiesChange">
-      <el-checkbox v-for="i in 24" :label="i" :key="i">{{i}}</el-checkbox>
-    </el-checkbox-group>
+    </el-checkbox-group>-->
+    <el-row>
+      <el-col :span="1" v-for="(oitem,oindex) in ML" :key="oindex">
+        <el-checkbox-group :value="true" :fill="colors[oitem.type]" @change="groupChange(oindex)">
+          <el-checkbox-button :label="oitem.value">{{oitem.text}}</el-checkbox-button>
+        </el-checkbox-group>
+      </el-col>
+    </el-row>
   </span>
 </template>
-
 <script>
-// import mymixins from "@/mymixins";
 export default {
-  // mixins: [mymixins],
   name: "MultipleTimeCheck",
   data() {
     return {
-      // userInfo
-      // otherInfo
-      // language
       colors: ["#409EFF", "#F56C6C", "#E6A23C", "#909399", "#67C23A"],
       iTL: 1
     };
-  },
-  components: {
-    // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    //test: () => import('@/test/test.vue')
   },
   props: {
     ML: {
       type: Array,
       default: () => {
-        let ML = {
-          1: [],
-          2: [],
-          3: [],
-          4: []
-        };
+        let ML = [
+          { type: 1, value: 0, text: "0时段" },
+          { type: 1, value: 1, text: "1时段" },
+          { type: 1, value: 2, text: "2时段" },
+          { type: 1, value: 3, text: "3时段" },
+          { type: 2, value: 4, text: "4时段" },
+          { type: 2, value: 5, text: "5时段" },
+          { type: 2, value: 6, text: "6时段" },
+          { type: 2, value: 7, text: "7时段" },
+          { type: 3, value: 8, text: "8时段" },
+          { type: 3, value: 9, text: "9时段" },
+          { type: 3, value: 10, text: "10时段" },
+          { type: 4, value: 11, text: "11时段" },
+          { type: 4, value: 12, text: "12时段" }
+        ];
         return ML;
       }
     },
@@ -75,67 +80,15 @@ export default {
       return this.$store.getters.getLanguage;
     }
   },
-  watch: {
-    //监听数据变化
-    // test: {
-    //   deep: true,
-    //   immediate: true,
-    //   handler(newv, oldv) {}
-    // }
-  },
+  watch: {},
   methods: {
-    groupChange(v) {
-      console.log(v);
-    },
-    getRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
-    },
-    postRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
+    groupChange(i) {
+      this.$set(this.ML[i], "type", this.iTL);
+      this.$emit("group", this.ML);
     }
-  },
-  beforeCreate() {
-    //创建前
-  },
-  created() {
-    //创建
-  },
-  beforeMount() {
-    //渲染前
-    // this.$forceUpdate();
-    // this.$nextTick();
   },
   mounted() {
     //渲染
-  },
-  activited() {
-    //可见
-  },
-  beforeUpdate() {
-    //更新前
-  },
-  updated() {
-    //更新
-  },
-  beforeDestroy() {
-    //销毁前
-  },
-  destroyed() {
-    //销毁
   }
 };
 </script>
-<style scoped>
-.test {
-}
-</style>

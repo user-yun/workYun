@@ -23,7 +23,7 @@
     </el-row>
     <pre class="alnlft">{{Test}}</pre>
     <!-- <MultipleTimePickers></MultipleTimePickers> -->
-    <MultipleTimeCheck></MultipleTimeCheck>
+    <MultipleTimeCheck @group="groupMultipleTimeCheck"></MultipleTimeCheck>
   </div>
 </template>
 
@@ -72,12 +72,13 @@ export default {
     // }
   },
   methods: {
+    groupMultipleTimeCheck(list) {},
     async get() {
       if (this.select == "get") this.Test = await this.$Get(this.input);
       else if (this.select == "post") this.Test = await this.$Post(this.input);
     },
-    cellDblClick(row, column) {},
-    clickPage(page) {},
+    // cellDblClick(row, column) {},
+    // clickPage(page) {},
     getRequest() {
       let userProject = this.userInfo.userProject;
       this.get(`/zone/tree/${userProject}`, {}).then(res => {

@@ -85,7 +85,7 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="language.proportion" prop="factors" class="alnrit">
-        <span v-for="(item,iindex) in ruleForm.son.concat(ruleForm.arr)" :key="iindex">
+        <span v-for="(item,iindex) in ruleForm.son.concat([])" :key="iindex">
           {{item.title}}
           <el-input-number v-model="item.value" :precision="2" :step="0.01" :min="0.01" :max="100"></el-input-number>%
           <br>
@@ -128,17 +128,17 @@ export default {
       let that = this.ruleForm;
       let unselected = this.language.unselected;
       let uninput = this.language.uninput;
-      let TwoArrays = (rule, value, callback) => {
-        if (that.son.length < 1 && that.arr.length < 1) {
+      let Arrays = (rule, value, callback) => {
+        if (that.son.length < 1 && that.arr.length < 1 && that.father == "") {
           callback(new Error(unselected));
         } else {
-          this.$refs.ruleForm.clearValidate(["arr", "son"]);
+          this.$refs.ruleForm.clearValidate(["arr", "son", "factors"]);
           callback();
         }
       };
       let obj = {
         father: [
-          { required: true, message: uninput, trigger: ["blur", "change"] }
+          { required: true, validator: Arrays, trigger: ["blur", "change"] }
         ],
         factors: [
           { required: true, message: uninput, trigger: ["blur", "change"] }
@@ -147,10 +147,10 @@ export default {
           { required: true, message: unselected, trigger: ["blur", "change"] }
         ],
         arr: [
-          { required: true, validator: TwoArrays, trigger: ["blur", "change"] }
+          { required: true, validator: Arrays, trigger: ["blur", "change"] }
         ],
         son: [
-          { required: true, validator: TwoArrays, trigger: ["blur", "change"] }
+          { required: true, validator: Arrays, trigger: ["blur", "change"] }
         ]
       };
       return obj;
@@ -190,9 +190,12 @@ export default {
     ruleForm: {
       deep: true,
       handler(newValue, oldValue) {
-        if (newValue.son.length > 0 || newValue.arr.length > 0) {
+        if (
+          newValue.son.length > 0 ||
+          newValue.arr.length > 0 ||
+          newValue.father != ""
+        ) {
           this.$set(this.ruleForm, "factors", 0);
-          this.$refs.ruleForm.clearValidate(["arr", "son", "factors"]);
         } else {
           this.$set(this.ruleForm, "factors", null);
         }
@@ -216,7 +219,6 @@ export default {
             ApportionPids: this.ruleForm.arr,
             sharetype: this.ruleForm.shareType,
             dividetype: this.ruleForm.mode,
-            ratio: this.ruleForm.factors,
             Title: this.ruleForm.title
           }).then(res => {});
         }

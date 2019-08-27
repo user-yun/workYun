@@ -72,6 +72,7 @@ export default {
   },
   mounted() {
     //渲染
+    alert(1)
   },
   activited() {
     //可见

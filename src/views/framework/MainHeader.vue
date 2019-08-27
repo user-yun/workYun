@@ -26,7 +26,7 @@
         <SelectLanguage></SelectLanguage>
       </el-col>
     </el-row>
-    <ConfigDrawer></ConfigDrawer>
+    <ConfigDrawer v-if="otherInfo.drawerVisible"></ConfigDrawer>
   </div>
 </template>
 
