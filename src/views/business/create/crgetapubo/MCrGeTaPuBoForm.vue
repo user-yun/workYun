@@ -60,6 +60,7 @@
 
 <script>
 import mymixins from "@/mymixins";
+import formValidation from "@/function/formValidation.js";
 export default {
   mixins: [mymixins],
   name: "MCrGeTaPuBoForm",
@@ -87,35 +88,35 @@ export default {
   },
   computed: {
     rules() {
-      let unselected = this.language.unselected;
-      let uninput = this.language.uninput;
+      // let unselected = this.language.unselected;
+      // let uninput = this.language.uninput;
       let obj = {
-        title: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ],
-        preiod: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ],
-        mode: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ],
-        outputduty: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ],
-        code: [
-          { required: true, message: uninput, trigger: ["blur", "change"] }
-        ],
-        sourcecode: [
-          { required: true, message: uninput, trigger: ["blur", "change"] }
-        ],
-        outputcode: [
-          { required: true, message: uninput, trigger: ["blur", "change"] }
-        ],
-        factors: [
-          { required: true, message: uninput, trigger: ["blur", "change"] }
-        ]
+        // title: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ],
+        // preiod: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ],
+        // mode: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ],
+        // outputduty: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ],
+        // code: [
+        //   { required: true, message: uninput, trigger: ["blur", "change"] }
+        // ],
+        // sourcecode: [
+        //   { required: true, message: uninput, trigger: ["blur", "change"] }
+        // ],
+        // outputcode: [
+        //   { required: true, message: uninput, trigger: ["blur", "change"] }
+        // ],
+        // factors: [
+        //   { required: true, message: uninput, trigger: ["blur", "change"] }
+        // ]
       };
-      return obj;
+      return Object.assign({}, formValidation, obj);
     }
   },
   watch: {

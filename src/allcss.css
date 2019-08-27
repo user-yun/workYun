@@ -62,57 +62,75 @@ body {
 }
 
 .normal {
+    /* 普通文字 */
     font-size: 0.72917vw;
 }
 
 .emphasize {
+    /* 主要文字 */
     color: #303133;
     font-size: 0.83334vw;
     /* 16/1920 */
 }
 
 .ignore {
+    /* 忽视文字 */
     color: #909399;
     font-size: 0.625vw;
     /* 12/1920 */
 }
 
 .icon {
+    /* 图标 */
     font-size: 1.5vw;
 }
 
 .verRollView {
+    /* 主要视图 */
     height: 88vh;
     overflow-y: auto;
 }
 
 .h997 {
+    /* 全屏高 */
     height: 99.7vh;
     overflow: auto;
 }
 
 .w100 {
+    /* 全屏宽 */
     width: 100vw
 }
 
 .h5l5 {
+    /* 顶部导航栏 */
     height: 4vh;
     line-height: 6vh;
 }
 
 .shadow {
+    /* 阴影 */
     width: 100%;
     height: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 }
 
 .header-cell-class-name {
+    /* 表头单元格 */
     color: #303133;
     font-size: 0.72917vw;
     white-space: nowrap;
 }
 
 .cell-class-name {
+    /* 表格单元格 */
     color: #303133;
     font-size: 0.72917vw;
+}
+
+.messageBox {
+    /* 消息框 */
+    min-width: 3vw;
+    font-size: 1vw;
+    padding: 1vh;
 }

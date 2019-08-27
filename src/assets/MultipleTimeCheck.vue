@@ -11,9 +11,9 @@
       >{{language[tv.text]}}</el-checkbox-button>
     </el-checkbox-group>-->
     <el-row>
-      <el-col :span="1" v-for="(oitem,oindex) in ML" :key="oindex">
+      <el-col :span="span" v-for="(oitem,oindex) in ML" :key="oindex">
         <el-checkbox-group :value="true" :fill="colors[oitem.type]" @change="groupChange(oindex)">
-          <el-checkbox-button :label="oitem.value">{{oitem.text}}</el-checkbox-button>
+          <el-checkbox-button :label="oitem.value">{{oitem.text?oitem.text:oitem.value}}</el-checkbox-button>
         </el-checkbox-group>
       </el-col>
     </el-row>
@@ -49,6 +49,9 @@ export default {
         ];
         return ML;
       }
+    },
+    span: {
+      default: 2
     },
     TL: {
       type: Array,

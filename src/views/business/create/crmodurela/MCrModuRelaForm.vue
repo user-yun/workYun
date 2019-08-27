@@ -10,16 +10,16 @@
     <el-form-item :label="language.currentOptions" prop="Zongid">
       <span v-show="ruleForm.Zongid">
         {{ruleForm.Zongid}}
-        <br />
+        <br>
         {{ruleForm.Title}}
       </span>
     </el-form-item>
     <el-form-item :label="language.currentOptions" prop="Pid">
       <span v-show="ruleForm.Pid">
         {{ruleForm.Pid}}
-        <br />
+        <br>
         {{ruleForm.Pcode}}
-        <br />
+        <br>
         {{ruleForm.Devid}}
       </span>
     </el-form-item>
@@ -51,6 +51,7 @@
 
 <script>
 import mymixins from "@/mymixins";
+import formValidation from "@/function/formValidation.js";
 export default {
   mixins: [mymixins],
   name: "MCrModuRelaForm",
@@ -76,23 +77,23 @@ export default {
   },
   computed: {
     rules() {
-      let unselected = this.language.unselected;
-      let uninput = this.language.uninput;
+      // let unselected = this.language.unselected;
+      // let uninput = this.language.uninput;
       let obj = {
-        Zongid: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ],
-        Pid: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ],
-        Type: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ],
-        Status: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ]
+        // Zongid: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ],
+        // Pid: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ],
+        // Type: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ],
+        // Status: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ]
       };
-      return obj;
+      return Object.assign({}, formValidation, obj);
     }
   },
   watch: {

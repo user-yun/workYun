@@ -103,6 +103,7 @@
 
 <script>
 import mymixins from "@/mymixins";
+import formValidation from "@/function/formValidation.js";
 export default {
   mixins: [mymixins],
   name: "publicBoothConfig",
@@ -140,12 +141,12 @@ export default {
         father: [
           { required: true, validator: Arrays, trigger: ["blur", "change"] }
         ],
-        factors: [
-          { required: true, message: uninput, trigger: ["blur", "change"] }
-        ],
-        mode: [
-          { required: true, message: unselected, trigger: ["blur", "change"] }
-        ],
+        // factors: [
+        //   { required: true, message: uninput, trigger: ["blur", "change"] }
+        // ],
+        // mode: [
+        //   { required: true, message: unselected, trigger: ["blur", "change"] }
+        // ],
         arr: [
           { required: true, validator: Arrays, trigger: ["blur", "change"] }
         ],
@@ -153,7 +154,7 @@ export default {
           { required: true, validator: Arrays, trigger: ["blur", "change"] }
         ]
       };
-      return obj;
+      return Object.assign({}, formValidation, obj);
     }
     // upOkDis() {
     //   let bool = true;

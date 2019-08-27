@@ -1,22 +1,23 @@
-import Vue from 'vue'
-let language = Vue.$store.getters.getLanguage;
+import store from '@/store';
+
+let language = store.getters.getLanguage;
 let unselected = language.unselected;
 let uninput = language.uninput;
-
 let msgUnSelect = { required: true, message: unselected, trigger: ["blur", "change"] };
 let msgUnInput = { required: true, message: uninput, trigger: ["blur", "change"] };
 
-export function publicBoothConfigVali(son, arr) {
-    let TwoArrays = (rule, value, callback) => {
-        if (son.length < 1 && arr.length < 1) {
-            callback(new Error(unselected));
-        } else {
-            Vue.$refs.ruleForm.clearValidate(["arr", "son"]);
-            callback();
-        }
-    };
-    let vali = {
-
-    }
-    return vali;
-};
+let formVali = {
+    factors: [msgUnInput],
+    mode: [msgUnSelect],
+    title: [msgUnSelect],
+    preiod: [msgUnSelect],
+    outputduty: [msgUnSelect],
+    code: [msgUnInput],
+    sourcecode: [msgUnInput],
+    outputcode: [msgUnInput],
+    Zongid: [msgUnSelect],
+    Pid: [msgUnSelect],
+    Type: [msgUnSelect],
+    Status: [msgUnSelect]
+}
+export default formVali;

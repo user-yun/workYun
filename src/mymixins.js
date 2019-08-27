@@ -150,9 +150,13 @@ let m = {
       }
     },
     eleNotify(i, t) {
-      this.$notify({
+      //message
+      //notify
+      this.$message({
         message: t,
         type: this.eleIfType(i),
+        duration: 3000,
+        customClass: "messageBox"
       });
     },
     ifServerCode(i) {
