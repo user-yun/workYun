@@ -228,7 +228,18 @@ export default [
             {
                 path: '/hosDock',
                 name: 'hosDock',
-                component: () => import('#/docking/HosDock/MHosDock.vue'),
+                component: () => import('#/docking/hosdock/MHosDock.vue'),
+                meta: {
+                    icon: "el-icon-sugar",
+                    intercept: true,
+                    noKeepAlive: false,
+                    role: [1]
+                }
+            },
+            {
+                path: '/enterpDock',
+                name: 'enterpDock',
+                component: () => import('#/docking/enterpdock/MEnterpDock.vue'),
                 meta: {
                     icon: "el-icon-sugar",
                     intercept: true,

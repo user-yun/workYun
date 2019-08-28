@@ -2,10 +2,10 @@
   <div class="alncnt">
     <el-row style="margin: 2vh 10vw ;width:80%">
       <el-col :span="10">
-        <el-input v-model="RobotToken" placeholder="RobotToken"></el-input>
+        <el-input v-model="RobotToken" clearable :maxlength="30" placeholder="RobotToken"></el-input>
       </el-col>
       <el-col :span="10">
-        <el-input v-model="GroupNumber" placeholder="GroupNumber"></el-input>
+        <el-input v-model="GroupNumber" clearable :maxlength="30" placeholder="GroupNumber"></el-input>
       </el-col>
       <el-col :span="4">
         <el-button

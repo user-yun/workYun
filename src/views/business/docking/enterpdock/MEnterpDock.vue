@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <el-col :sm="12" :md="6" :xl="3">
-      <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
+      <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>
     <el-col :sm="12" :md="9" :xl="6" class="alnlft">
       <li class="emphasize creamsLi">{{treeData.Title}}：{{treeData.Id}}</li>
@@ -30,7 +30,7 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "hosDock",
+  name: "enterpDock",
   data() {
     return {
       // userInfo
@@ -41,16 +41,16 @@ export default {
     };
   },
   components: {
-    MFloorTree: () => import("#/multiplexing/floortree/MFloorTree.vue")
+    MEnterTree: () => import("#/multiplexing/entertree/MEnterTree.vue")
   },
   methods: {
-    MFloorTreeClick(data) {
+    MEnterTreeClick(data) {
       this.treeData = data;
     },
     getRequest() {
       let zoneid = this.treeData.Id;
       let outzoneid = this.outzoneid;
-      this.get(`/zone/addoutzoneid/${zoneid}/${outzoneid}`, {}).then(res => {});
+      this.get(`/org/addoutorgid/${zoneid}/${outzoneid}`, {}).then(res => {});
     }
   },
   mounted() {

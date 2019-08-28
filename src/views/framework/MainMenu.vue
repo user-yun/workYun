@@ -4,13 +4,14 @@
     :collapse="otherInfo.menuCollapse"
     :background-color="otherInfo.themeBackgroundColor"
     :text-color="otherInfo.themeTextColor"
+    unique-opened
     router
     class="h997"
     style="overflow-x:hidden;"
   >
     <!-- :style="{height:otherInfo.asideVisible ? '':'98vh'}" -->
     <transition v-for="(menuListItem,indexList) in menuList" :key="indexList">
-      <el-submenu v-if="menuListItem.children.length>1" :index="menuListItem.path">
+      <el-submenu v-if="menuListItem.children.length>1" :index="menuListItem.path" class="alnlft">
         <template slot="title">
           <i :class="menuListItem.meta.icon"></i>
           <span
@@ -23,7 +24,7 @@
           v-for="(menuChildrenItem,indexChildren) in menuListItem.children"
           :key="indexChildren"
         >
-          <el-menu-item :index="menuChildrenItem.path">
+          <el-menu-item :index="menuChildrenItem.path" class="alnlft">
             <i :class="menuChildrenItem.meta.icon"></i>
             <span
               slot="title"
@@ -33,7 +34,7 @@
           </el-menu-item>
         </transition>
       </el-submenu>
-      <el-menu-item v-else :index="menuListItem.children[0].path">
+      <el-menu-item v-else :index="menuListItem.children[0].path" class="alnlft">
         <i :class="menuListItem.children[0].meta.icon"></i>
         <span
           slot="title"

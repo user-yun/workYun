@@ -7,7 +7,7 @@
       <el-col :span="4">
         <i
           class="el-icon-refresh-left icon"
-          :style="{color:otherInfo.themeBackgroundColor}"
+          :style="{color:otherInfo.themeTextColor}"
           @click="getRequest"
         ></i>
       </el-col>

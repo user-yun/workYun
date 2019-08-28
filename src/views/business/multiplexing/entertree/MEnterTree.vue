@@ -13,14 +13,14 @@
       </el-col>
     </el-row>
     <el-tree
-      ref="deviceTree"
-      :data="deviceTree"
-      :props="deviceTreeProps"
-      node-key="/zone/allmodulebrief/"
+      ref="enterTree"
+      :data="enterTree"
+      :props="enterTreeProps"
+      node-key="/org/list/"
       highlight-current
       :filter-node-method="filterNode"
       :expand-on-click-node="false"
-      @node-click="deviceTreeNodeClick"
+      @node-click="enterTreeNodeClick"
     >
       <span slot-scope="{ data }" class="normal">
         {{data.Orgtitle}}
@@ -35,11 +35,11 @@
 import mymixins from "@/mymixins";
 export default {
   mixins: [mymixins],
-  name: "MDeviceTree",
+  name: "MEnterTree",
   data() {
     return {
-      deviceTree: [],
-      deviceTreeProps: {
+      enterTree: [],
+      enterTreeProps: {
         children: "Children",
         label: "Title"
       },
@@ -52,17 +52,17 @@ export default {
       deep: true,
       immediate: true,
       handler(newv, oldv) {
-        if (this.deviceTree.length > 0) this.$refs.deviceTree.filter(newv);
+        if (this.enterTree.length > 0) this.$refs.enterTree.filter(newv);
       }
     }
   },
   methods: {
     getRequest() {
-      this.deviceTree = [];
-      let projectId = this.userInfo.projectId;
-      this.get(`/zone/allmodulebrief/${projectId}`, {}).then(res => {
+      this.enterTree = [];
+      let userProject = this.userInfo.userProject;
+      this.get(`/org/list/${userProject}`, {}).then(res => {
         let data = res.Data;
-        this.deviceTree = [
+        this.enterTree = [
           {
             Title: this.userInfo.headerTitle,
             Children: data
@@ -74,8 +74,8 @@ export default {
       if (!value) return true;
       return data.Title.includes(value);
     },
-    deviceTreeNodeClick(data) {
-      this.$emit("MDeviceTree", data);
+    enterTreeNodeClick(data) {
+      this.$emit("MEnterTree", data);
     }
   },
   mounted() {
