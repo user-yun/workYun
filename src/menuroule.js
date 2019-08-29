@@ -137,6 +137,16 @@ export default [
                     intercept: true,
                     role: [1]
                 }
+            },
+            {
+                path: '/publicBooth',
+                name: 'publicBooth',
+                component: () => import('#/system/publicbooth/MPublicBooth'),
+                meta: {
+                    icon: "el-icon-s-order",
+                    intercept: true,
+                    role: [1]
+                }
             }
         ]
     },

@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       tableData: [],
-      MOrgSummaryDataConfig: {},
+      MOrgSummaryDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null

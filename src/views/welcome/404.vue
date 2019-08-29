@@ -15,7 +15,11 @@ export default {
   },
   methods: {
     async get() {
-      this.weather = await this.$Get("/weather");
+      let appid = "25161667";
+      let appsecret = "y5cW8f2j";
+      // let cityid = "101020100";
+      let city = "上海";
+      this.weather = await this.$Get("/weather", { appid, appsecret, city });
     }
   },
   mounted() {

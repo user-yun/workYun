@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       tableData: [],
-      MModuleDataConfig: {},
+      MModuleDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null

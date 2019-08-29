@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       tableData: [],
-      MBillDataConfig: {},
+      MBillDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null

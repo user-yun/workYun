@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       tableData: [],
-      MOrgHistoryDataConfig: {},
+      MOrgHistoryDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null

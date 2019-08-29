@@ -19,7 +19,7 @@ export default {
     return {
       tableData: [],
       is: "MBusinessDialog",
-      MDeviceDataConfig: {},
+      MDeviceDataConfig: [],
       show: false,
       rowData: null
     };
