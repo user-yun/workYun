@@ -5,7 +5,7 @@
       <VertRollS :showNum="2"></VertRollS>
     </el-col>
     <el-col :span="20">
-      <ECharts id="PolygonalChart" :data="PolygonalChartData"></ECharts>
+      <ECharts id="PolygonalChart" :data="PolygonalChartData" @clickECharts="clickECharts"></ECharts>
     </el-col>
     <el-col :span="4">
       <BriefSee></BriefSee>
@@ -34,6 +34,9 @@ export default {
     }
   },
   methods: {
+    clickECharts(p){
+      this.log(p)
+    },
     beforeunloadFn(e) {
       setLocal("userMemory", {
         userInfo: this.userInfo,

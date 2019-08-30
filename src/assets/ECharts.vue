@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="always" v-bind:id="id" :class="className" :style="{height:height,width:width}"></el-card>
+  <div shadow="always" v-bind:id="id" :class="className" :style="{height:height,width:width}"></div>
 </template>
 <script>
 import echarts from "echarts";
@@ -26,10 +26,10 @@ export default {
       type: Object,
       default: null
     },
-    mFunction: {
-      type: Function,
-      default: null
-    },
+    // mFunction: {
+    //   type: Function,
+    //   default: null
+    // },
     width: {
       type: String,
       default: "100%"
@@ -46,8 +46,9 @@ export default {
       // _this.MyChart = _this.$echarts.init(myChart);
       _this.MyChart = echarts.init(document.getElementById(_this.id));
       _this.setChart();
-      _this.MyChart.on("click", function(params) {
-        if (_this.mFunction) _this.mFunction(params);
+      _this.MyChart.on("click", function(p) {
+        _this.$emit("clickECharts", p);
+        // if (_this.mFunction) _this.mFunction(p);
       });
       // window.addEventListener("resize", function() {
       //   _this.MyChart.resize;
