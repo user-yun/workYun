@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  // mixins: [require("@/mymixins")],
+  // mixins: [require("@/mymixins").default],
   name: "New",
   data() {
     return {

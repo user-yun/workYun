@@ -23,7 +23,6 @@
     </el-row>
     <pre class="alnlft">{{Test}}</pre>
     <!-- <MultipleTimePickers></MultipleTimePickers> -->
-    {{timeList}}
     <div class="alnlft">
       <MultipleTimeCheck
         :TL="otherInfo.peakValleyList"
@@ -38,6 +37,12 @@
 export default {
   mixins: [require("@/mymixins").default],
   name: "test",
+  components: {
+    // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
+    // PageTable: () => import("@/assets/PageTable")
+    // MultipleTimePickers: () => import("@/assets/MultipleTimePickers")
+    MultipleTimeCheck: () => import("@/assets/MultipleTimeCheck")
+  },
   data() {
     return {
       // userInfo
@@ -62,12 +67,6 @@ export default {
         { type: 4, value: 12, text: "12时段" }
       ]
     };
-  },
-  components: {
-    // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    // PageTable: () => import("@/assets/PageTable")
-    // MultipleTimePickers: () => import("@/assets/MultipleTimePickers")
-    MultipleTimeCheck: () => import("@/assets/MultipleTimeCheck")
   },
   props: {
     // test: {

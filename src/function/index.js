@@ -1,5 +1,5 @@
-export default function log(logd) {
-    console.log(logd);
+export default function log(l) {
+    console.log(l);
 }
 /*-----------------cookie---------------------*/
 /*设置cookie*/
