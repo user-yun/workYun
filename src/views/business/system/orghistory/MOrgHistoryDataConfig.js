@@ -22,66 +22,74 @@ let arr = [
         mini: true,
     },
     {
-        width: "160",
+        width: "110",
         prop: "Surplusmoney",
         sortable: true,
         mini: true,
+        label: "smoney",
         format: true,
         // json: true
     },
     {
-        width: "160",
+        width: "110",
         prop: "Param.contact",
         sortable: true,
+        label: "contact",
         mini: true,
         format: true,
     },
     {
-        width: "110",
+        width: "100",
         prop: "Zonids",
         sortable: true,
         mini: true,
         format: true
     },
     {
-        width: "140",
+        width: "90",
         prop: "Param.phone",
         sortable: true,
         mini: true,
+        label: "phone",
         format: true,
     },
     {
-        width: "180",
+        width: "130",
         prop: "Param.pricepublic",
         sortable: true,
         format: true,
-        mini: true,
-    },
-    {
-        width: "210",
-        prop: "Param.pricewaterpublic",
-        sortable: true,
-        format: true,
-        mini: true,
-    },
-    {
-        width: "200",
-        prop: "Param.paymode",
-        sortable: true,
-        format: true,
-        mini: true,
-    },
-    {
-        width: "150",
-        prop: "Param.balance",
-        sortable: true,
-        format: true,
+        label: "pricepublic",
         mini: true,
     },
     {
         width: "130",
+        prop: "Param.pricewaterpublic",
+        sortable: true,
+        format: true,
+        label: "waterpublic",
+        mini: true,
+    },
+    {
+        width: "110",
+        prop: "Param.paymode",
+        sortable: true,
+        format: true,
+        label: "paymode",
+        mini: true,
+    },
+    {
+        width: "110",
+        prop: "Param.balance",
+        sortable: true,
+        format: true,
+        label: "balance",
+        mini: true,
+    },
+    {
+        width: "90",
         prop: "Param.area",
         sortable: true,
+        label: "area",
         mini: true,
         format: true
     },
@@ -94,4 +102,4 @@ let arr = [
     },
 ]
 
-export default arr
+module.exports = arr

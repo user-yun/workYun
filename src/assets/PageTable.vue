@@ -45,9 +45,7 @@
 </template>
 
 <script>
-// import mymixins from "@/mymixins";
 export default {
-  // mixins: [mymixins],
   name: "PageTable",
   data() {
     return {};

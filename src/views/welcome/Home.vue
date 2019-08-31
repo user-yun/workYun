@@ -1,25 +1,28 @@
 <template>
   <div class="h997">
     <HelloHeader></HelloHeader>
+    <el-col :span="4" v-for="i in 6" :key="i">
+      <BriefSee :bsSmall="false"></BriefSee>
+    </el-col>
     <el-col :span="24">
-      <VertRollS :showNum="2"></VertRollS>
+      <VertRollS style="height:20vh" :showNum="4"></VertRollS>
     </el-col>
     <el-col :span="20">
-      <ECharts id="PolygonalChart" :data="PolygonalChartData" @clickECharts="clickECharts"></ECharts>
+      <ECharts
+        id="PolygonalChart"
+        :data="require('@/echartsdata/PolygonalChart')('折线图图')"
+        @clickECharts="clickECharts"
+      ></ECharts>
     </el-col>
-    <el-col :span="4">
-      <BriefSee></BriefSee>
-    </el-col>
+
     <!-- @click.native="test" -->
   </div>
 </template>
 
 <script>
-import PolygonalChart from "@/echartsdata/PolygonalChart";
 import { setLocal } from "@/function";
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "home",
   components: {
     HelloHeader: () => import("@/views/framework/HelloHeader.vue"),
@@ -27,15 +30,10 @@ export default {
     BriefSee: () => import("@/assets/BriefSee.vue"),
     ECharts: () => import("@/assets/ECharts.vue")
   },
-  computed: {
-    PolygonalChartData() {
-      let PolygonalChartData = PolygonalChart("折线图");
-      return PolygonalChartData;
-    }
-  },
+  computed: {},
   methods: {
-    clickECharts(p){
-      this.log(p)
+    clickECharts(p) {
+      this.log(p);
     },
     beforeunloadFn(e) {
       setLocal("userMemory", {

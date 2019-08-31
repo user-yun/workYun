@@ -1,15 +1,17 @@
 <template>
   <div style="height:100%">
-    <PageTable :tableData="tableData" :DataConfig="MDeviceDataConfig" @cellDblClick="cellDblClick"></PageTable>
+    <PageTable
+      :tableData="tableData"
+      :DataConfig="require('./MDeviceDataConfig.js')"
+      @cellDblClick="cellDblClick"
+    ></PageTable>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </div>
 </template>
 
 <script>
-import MDeviceDataConfig from "./MDeviceDataConfig";
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "device",
   components: {
     PageTable: () => import("@/assets/PageTable.vue"),
@@ -19,13 +21,11 @@ export default {
     return {
       tableData: [],
       is: "MBusinessDialog",
-      MDeviceDataConfig: [],
       show: false,
       rowData: null
     };
   },
   mounted() {
-    this.MDeviceDataConfig = MDeviceDataConfig;
     this.allModuleBrief();
   },
   methods: {

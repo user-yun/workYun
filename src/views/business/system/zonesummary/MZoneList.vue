@@ -2,7 +2,7 @@
   <div style="height:100%;">
     <PageTable
       :tableData="tableData"
-      :DataConfig="MZoneListDataConfig"
+      :DataConfig="require('./MZoneListDataConfig.js')"
       @cellDblClick="cellDblClick"
     ></PageTable>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
@@ -10,15 +10,12 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
-import MZoneListDataConfig from "./MZoneListDataConfig.js";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "region",
   data() {
     return {
       tableData: [],
-      MZoneListDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: {}
@@ -46,7 +43,6 @@ export default {
   },
   mounted() {
     //渲染
-    this.MZoneListDataConfig = MZoneListDataConfig;
     this.getRequest();
   }
 };

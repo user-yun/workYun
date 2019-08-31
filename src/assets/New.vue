@@ -3,9 +3,8 @@
 </template>
 
 <script>
-// import mymixins from "@/mymixins";
 export default {
-  // mixins: [mymixins],
+  // mixins: [require("@/mymixins")],
   name: "New",
   data() {
     return {
@@ -72,7 +71,7 @@ export default {
   },
   mounted() {
     //渲染
-    alert(1)
+    alert(1);
   },
   activited() {
     //可见

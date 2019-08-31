@@ -27,9 +27,8 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "enterpDock",
   data() {
     return {

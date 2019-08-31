@@ -1,15 +1,17 @@
 <template>
   <div style="height:100%">
-    <PageTable :tableData="tableData" :DataConfig="MPublicBoothDataConfig" @cellDblClick="cellDblClick"></PageTable>
+    <PageTable
+      :tableData="tableData"
+      :DataConfig="require('./MPublicBoothDataConfig.js')"
+      @cellDblClick="cellDblClick"
+    ></PageTable>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </div>
 </template>
 
 <script>
-import MPublicBoothDataConfig from "./MPublicBoothDataConfig.js";
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "publicBooth",
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
@@ -18,14 +20,12 @@ export default {
   data() {
     return {
       tableData: [],
-      MPublicBoothDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null
     };
   },
   mounted() {
-    this.MPublicBoothDataConfig = MPublicBoothDataConfig;
     this.getRequest();
   },
   computed: {},

@@ -140,4 +140,4 @@ let arr = [
     }
 ]
 
-export default arr
+module.exports = arr

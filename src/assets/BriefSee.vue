@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import CountTo from "vue-count-to";
+let colors = require("@/color.js");
 export default {
   components: {
-    CountTo
+    CountTo: () => import("vue-count-to")
   },
   name: "BriefSee",
   data() {
@@ -38,14 +38,12 @@ export default {
     bsColor: {
       type: String,
       default: () => {
-        let colors = ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C"];
         return colors[Math.ceil(Math.random() * colors.length)];
       }
     },
     bsBackground: {
       type: String,
       default: () => {
-        let colors = ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C"];
         return colors[Math.ceil(Math.random() * colors.length)];
       }
     },
@@ -79,15 +77,6 @@ export default {
     bsMove(e) {
       this.isMove = !this.isMove;
     }
-  },
-  mounted() {},
-  activited() {},
-  created() {},
-  beforeDestroy() {},
-  destroyed() {}
+  }
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

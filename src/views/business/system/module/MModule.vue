@@ -2,7 +2,7 @@
   <div style="height:100%">
     <PageTable
       :tableData="tableData"
-      :DataConfig="MModuleDataConfig"
+      :DataConfig="require('./MModuleDataConfig.js')"
       @cellDblClick="cellDblClick"
     ></PageTable>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import MModuleDataConfig from "./MModuleDataConfig";
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "module",
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
@@ -22,14 +20,12 @@ export default {
   data() {
     return {
       tableData: [],
-      MModuleDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null
     };
   },
   mounted() {
-    this.MModuleDataConfig = MModuleDataConfig;
     this.moduleShowlist();
   },
   computed: {},

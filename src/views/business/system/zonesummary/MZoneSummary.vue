@@ -2,7 +2,7 @@
   <div style="height:100%">
     <PageTable
       :tableData="tableData"
-      :DataConfig="MZoneSummaryDataConfig"
+      :DataConfig="require('./MZoneSummaryDataConfig.js')"
       @cellDblClick="cellDblClick"
     ></PageTable>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import MZoneSummaryDataConfig from "./MZoneSummaryDataConfig";
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "regionalSummary",
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
@@ -22,14 +20,12 @@ export default {
   data() {
     return {
       tableData: [],
-      MZoneSummaryDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null
     };
   },
   mounted() {
-    this.MZoneSummaryDataConfig = MZoneSummaryDataConfig;
     this.zoneSummaryList();
   },
   computed: {},

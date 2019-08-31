@@ -50,10 +50,8 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
-import formValidation from "@/function/formValidation.js";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "MCrModuRelaForm",
   data() {
     return {
@@ -93,7 +91,11 @@ export default {
         //   { required: true, message: unselected, trigger: ["blur", "change"] }
         // ]
       };
-      return Object.assign({}, formValidation, obj);
+      return Object.assign(
+        {},
+        require("@/function/formValidation.js").default,
+        obj
+      );
     }
   },
   watch: {

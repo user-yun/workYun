@@ -1,15 +1,17 @@
 <template>
   <div style="height:100%">
-    <PageTable :tableData="tableData" :DataConfig="MBillDataConfig" @cellDblClick="cellDblClick"></PageTable>
+    <PageTable
+      :tableData="tableData"
+      :DataConfig="require('./MBillDataConfig.js')"
+      @cellDblClick="cellDblClick"
+    ></PageTable>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </div>
 </template>
 
 <script>
-import MBillDataConfig from "./MBillDataConfig.js";
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "bill",
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
@@ -18,14 +20,12 @@ export default {
   data() {
     return {
       tableData: [],
-      MBillDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null
     };
   },
   mounted() {
-    this.MBillDataConfig = MBillDataConfig;
     this.billList();
   },
   computed: {},

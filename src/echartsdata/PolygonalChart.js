@@ -1,4 +1,4 @@
-export default function (title) {
+module.exports = function (title) {
     let option = {
         title: {
             text: title,

@@ -48,10 +48,8 @@
 </template>
 
 <script>
-import menuroule from "@/menuroule";
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "mainMenu",
   data() {
     return {};
@@ -59,7 +57,7 @@ export default {
   computed: {
     menuList() {
       let that = this;
-      let allMenuList = menuroule;
+      let allMenuList = require("@/menuroule").default;
       let userRole = this.userInfo.userRole;
       let menuList = [];
       allMenuList.forEach((allValue, index) => {

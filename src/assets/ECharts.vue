@@ -2,7 +2,6 @@
   <div shadow="always" v-bind:id="id" :class="className" :style="{height:height,width:width}"></div>
 </template>
 <script>
-import echarts from "echarts";
 export default {
   mixins: [],
   name: "ECharts",
@@ -44,7 +43,9 @@ export default {
     initChart() {
       let _this = this;
       // _this.MyChart = _this.$echarts.init(myChart);
-      _this.MyChart = echarts.init(document.getElementById(_this.id));
+      _this.MyChart = require("echarts").init(
+        document.getElementById(_this.id)
+      );
       _this.setChart();
       _this.MyChart.on("click", function(p) {
         _this.$emit("clickECharts", p);

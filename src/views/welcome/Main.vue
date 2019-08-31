@@ -21,10 +21,9 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
 import { setLocal } from "@/function";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "main-main",
   data() {
     return {};

@@ -22,11 +22,10 @@ let arr = [
         mini: true,
     },
     {
-        width: "100",
+        width: "190",
         prop: "orgid",
         sortable: true,
         mini: true,
-        format: true,
         // json: true
     },
     {
@@ -51,6 +50,7 @@ let arr = [
         width: "90",
         prop: "code",
         sortable: true,
+        format: true,
         mini: true,
     },
     {
@@ -60,7 +60,7 @@ let arr = [
         mini: true,
     },
     {
-        width: "80",
+        width: "90",
         prop: "end",
         sortable: true,
         mini: true,
@@ -88,4 +88,4 @@ let arr = [
     }
 ]
 
-export default arr
+module.exports = arr

@@ -43,11 +43,9 @@
 </template>
 
 <script>
-import md5 from "js-md5";
 import { setLocal, getLocal } from "@/function";
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "login",
   data() {
     return {
@@ -101,7 +99,7 @@ export default {
       let that = this;
       this.post("/auth/login", {
         Username: this.ruleForm.username,
-        Password: md5(this.ruleForm.password)
+        Password: require("js-md5")(this.ruleForm.password)
       }).then(res => {
         let data = res.Data;
         that.setUserInfo({

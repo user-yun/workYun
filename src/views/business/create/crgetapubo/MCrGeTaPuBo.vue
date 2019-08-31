@@ -10,9 +10,8 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "crGeTaPuBo",
   data() {
     return {
@@ -20,10 +19,8 @@ export default {
     };
   },
   components: {
-    MFloorTree: () =>
-      import("#/multiplexing/floortree/MFloorTree.vue"),
-    MCrGeTaPuBoForm: () =>
-      import("#/create/crgetapubo/MCrGeTaPuBoForm.vue")
+    MFloorTree: () => import("#/multiplexing/floortree/MFloorTree.vue"),
+    MCrGeTaPuBoForm: () => import("#/create/crgetapubo/MCrGeTaPuBoForm.vue")
   },
   props: {},
   computed: {},

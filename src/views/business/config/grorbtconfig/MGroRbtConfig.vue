@@ -20,9 +20,8 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "groRbtConfig",
   data() {
     return {
@@ -45,7 +44,9 @@ export default {
     bind() {
       let userProject = this.userInfo.userProject;
       this.post(
-        `/robotBind/robotbind/${this.RobotToken}/${this.GroupNumber}/${userProject}`,
+        `/robotBind/robotbind/${this.RobotToken}/${
+          this.GroupNumber
+        }/${userProject}`,
         {}
       ).then(res => {});
     }

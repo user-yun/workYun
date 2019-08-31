@@ -102,10 +102,8 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
-import formValidation from "@/function/formValidation.js";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "publicBoothConfig",
   data() {
     return {
@@ -154,7 +152,11 @@ export default {
           { required: true, validator: Arrays, trigger: ["blur", "change"] }
         ]
       };
-      return Object.assign({}, formValidation, obj);
+      return Object.assign(
+        {},
+        require("@/function/formValidation.js").default,
+        obj
+      );
     }
     // upOkDis() {
     //   let bool = true;

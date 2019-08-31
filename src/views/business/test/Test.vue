@@ -23,14 +23,20 @@
     </el-row>
     <pre class="alnlft">{{Test}}</pre>
     <!-- <MultipleTimePickers></MultipleTimePickers> -->
-    <MultipleTimeCheck @group="groupMultipleTimeCheck"></MultipleTimeCheck>
+    {{timeList}}
+    <div class="alnlft">
+      <MultipleTimeCheck
+        :TL="otherInfo.peakValleyList"
+        :ML="timeList"
+        @group="groupMultipleTimeCheck"
+      ></MultipleTimeCheck>
+    </div>
   </div>
 </template>
 
 <script>
-// import mymixins from "@/mymixins";
 export default {
-  // mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "test",
   data() {
     return {
@@ -39,7 +45,22 @@ export default {
       // language
       input: "",
       select: "get",
-      Test: {}
+      Test: {},
+      timeList: [
+        { type: 1, value: 0, text: "0时段" },
+        { type: 1, value: 1, text: "1时段" },
+        { type: 1, value: 2, text: "2时段" },
+        { type: 1, value: 3, text: "3时段" },
+        { type: 2, value: 4, text: "4时段" },
+        { type: 2, value: 5, text: "5时段" },
+        { type: 2, value: 6, text: "6时段" },
+        { type: 2, value: 7, text: "7时段" },
+        { type: 3, value: 8, text: "8时段" },
+        { type: 3, value: 9, text: "9时段" },
+        { type: 3, value: 10, text: "10时段" },
+        { type: 4, value: 11, text: "11时段" },
+        { type: 4, value: 12, text: "12时段" }
+      ]
     };
   },
   components: {
@@ -72,7 +93,9 @@ export default {
     // }
   },
   methods: {
-    groupMultipleTimeCheck(list) {},
+    groupMultipleTimeCheck(list) {
+      this.timeList = list;
+    },
     async get() {
       if (this.select == "get") this.Test = await this.$Get(this.input);
       else if (this.select == "post") this.Test = await this.$Post(this.input);

@@ -165,7 +165,8 @@ export default {
     }
   },
   mounted() {
-    this.timer = setInterval(this.shuffle, this.aniTime * 1000);
+    if (this.showNum < this.data.length)
+      this.timer = setInterval(this.shuffle, this.aniTime * 1000);
     document.body.style.overflowX = "hidden";
   },
   activited() {},

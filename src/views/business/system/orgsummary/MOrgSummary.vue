@@ -2,7 +2,7 @@
   <div style="height:100%">
     <PageTable
       :tableData="tableData"
-      :DataConfig="MOrgSummaryDataConfig"
+      :DataConfig="require('./MOrgSummaryDataConfig.js')"
       @cellDblClick="cellDblClick"
     ></PageTable>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
-import MOrgSummaryDataConfig from "./MOrgSummaryDataConfig";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "enterpriseSummary",
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
@@ -24,14 +22,12 @@ export default {
   data() {
     return {
       tableData: [],
-      MOrgSummaryDataConfig: [],
       is: "MBusinessDialog",
       show: false,
       rowData: null
     };
   },
   mounted() {
-    this.MOrgSummaryDataConfig = MOrgSummaryDataConfig;
     this.orgSummaryList();
   },
   computed: {},

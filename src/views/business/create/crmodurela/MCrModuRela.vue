@@ -13,9 +13,8 @@
 </template>
 
 <script>
-import mymixins from "@/mymixins";
 export default {
-  mixins: [mymixins],
+  mixins: [require("@/mymixins").default],
   name: "crModuRela",
   data() {
     return {
@@ -23,12 +22,9 @@ export default {
     };
   },
   components: {
-    MFloorTree: () =>
-      import("#/multiplexing/floortree/MFloorTree.vue"),
-    MDeviceTree: () =>
-      import("#/multiplexing/devicetree/MDeviceTree.vue"),
-    MCrModuRelaForm: () =>
-      import("#/create/crmodurela/MCrModuRelaForm.vue")
+    MFloorTree: () => import("#/multiplexing/floortree/MFloorTree.vue"),
+    MDeviceTree: () => import("#/multiplexing/devicetree/MDeviceTree.vue"),
+    MCrModuRelaForm: () => import("#/create/crmodurela/MCrModuRelaForm.vue")
   },
   props: {},
   computed: {},

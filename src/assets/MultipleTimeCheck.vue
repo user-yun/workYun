@@ -10,13 +10,21 @@
         :key="ti"
       >{{language[tv.text]}}</el-checkbox-button>
     </el-checkbox-group>-->
-    <el-row>
+    <br>
+    <span
+      v-for="(oitem,oindex) in ML"
+      :key="oindex"
+      :style="{background:`${colors[oitem.type]}`}"
+      class="themeSpan"
+      @click="groupChange(oindex)"
+    >{{oitem.text?oitem.text:oitem.value}}</span>
+    <!-- <el-row>
       <el-col :span="span" v-for="(oitem,oindex) in ML" :key="oindex">
         <el-checkbox-group :value="true" :fill="colors[oitem.type]" @change="groupChange(oindex)">
           <el-checkbox-button :label="oitem.value">{{oitem.text?oitem.text:oitem.value}}</el-checkbox-button>
         </el-checkbox-group>
       </el-col>
-    </el-row>
+    </el-row>-->
   </span>
 </template>
 <script>
@@ -24,7 +32,6 @@ export default {
   name: "MultipleTimeCheck",
   data() {
     return {
-      colors: ["#409EFF", "#F56C6C", "#E6A23C", "#909399", "#67C23A"],
       iTL: 1
     };
   },
@@ -32,22 +39,14 @@ export default {
     ML: {
       type: Array,
       default: () => {
-        let ML = [
-          { type: 1, value: 0, text: "0时段" },
-          { type: 1, value: 1, text: "1时段" },
-          { type: 1, value: 2, text: "2时段" },
-          { type: 1, value: 3, text: "3时段" },
-          { type: 2, value: 4, text: "4时段" },
-          { type: 2, value: 5, text: "5时段" },
-          { type: 2, value: 6, text: "6时段" },
-          { type: 2, value: 7, text: "7时段" },
-          { type: 3, value: 8, text: "8时段" },
-          { type: 3, value: 9, text: "9时段" },
-          { type: 3, value: 10, text: "10时段" },
-          { type: 4, value: 11, text: "11时段" },
-          { type: 4, value: 12, text: "12时段" }
-        ];
+        let ML = [];
         return ML;
+      }
+    },
+    colors: {
+      type: Array,
+      default: () => {
+        return require("@/color.js");
       }
     },
     span: {
@@ -56,24 +55,7 @@ export default {
     TL: {
       type: Array,
       default: () => {
-        let TL = [
-          {
-            text: ["tip"],
-            value: 1
-          },
-          {
-            text: ["peak"],
-            value: 2
-          },
-          {
-            text: ["flat"],
-            value: 3
-          },
-          {
-            text: ["valley"],
-            value: 4
-          }
-        ];
+        let TL = [];
         return TL;
       }
     }
@@ -95,3 +77,15 @@ export default {
   }
 };
 </script>
+<style scoped>
+.themeSpan {
+  padding: 2px 4px;
+  display: inline-block;
+  height: 25px;
+  min-width: 25px;
+  border-radius: 5px;
+  /* cursor: not-allowed; */
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3);
+}
+</style>
