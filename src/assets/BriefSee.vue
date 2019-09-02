@@ -5,7 +5,7 @@
     @mouseover.native="bsMove"
     @mouseout.native="bsMove"
   >
-    <el-row type="flex" align="middle" justify="space-between">
+    <el-row type="flex" align="middle" justify="space-between" style="height:4vh">
       <el-col
         :span="6"
         :style="{ background:false ? iBsBackground : '',borderRadius: '0.52083vw',textAlign:'center',fontSize: '4.62962vh'}"

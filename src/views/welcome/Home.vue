@@ -1,20 +1,55 @@
 <template>
   <div class="h997">
+    <!-- 5vh -->
     <HelloHeader></HelloHeader>
+    <!-- 4vh -->
     <el-col :span="4" v-for="i in 6" :key="i">
       <BriefSee :bsSmall="false"></BriefSee>
     </el-col>
-    <el-col :span="24">
-      <VertRollS style="height:20vh" :showNum="4"></VertRollS>
-    </el-col>
-    <el-col :span="20">
+    <el-col :span="8">
       <ECharts
-        id="PolygonalChart"
-        :data="require('@/echartsdata/PolygonalChart')('折线图图')"
+        id="LinePostChart"
+        height="44vh"
+        :data="require('@/echartsdata/LinePostChart')('折线图图')"
         @clickECharts="clickECharts"
       ></ECharts>
     </el-col>
-
+    <el-col :span="8">
+      <VertRollS DHeight="44vh"></VertRollS>
+      <!-- <VertRoll DHeight="7vh" :vShowNum="4"></VertRoll> -->
+    </el-col>
+    <el-col :span="8">
+      <ECharts
+        height="44vh"
+        id="MultiplePillarsChart"
+        :data="require('@/echartsdata/MultiplePillarsChart')('折线图图')"
+        @clickECharts="clickECharts"
+      ></ECharts>
+    </el-col>
+    <el-col :span="8">
+      <ECharts
+        height="44vh"
+        id="PieChart"
+        :data="require('@/echartsdata/PieChart')('折线图图')"
+        @clickECharts="clickECharts"
+      ></ECharts>
+    </el-col>
+    <el-col :span="8">
+      <ECharts
+        height="44vh"
+        id="PolylineChart"
+        :data="require('@/echartsdata/PolylineChart')('折线图图')"
+        @clickECharts="clickECharts"
+      ></ECharts>
+    </el-col>
+    <el-col :span="8">
+      <ECharts
+        height="44vh"
+        id="RadarChart"
+        :data="require('@/echartsdata/RadarChart')('折线图图')"
+        @clickECharts="clickECharts"
+      ></ECharts>
+    </el-col>
     <!-- @click.native="test" -->
   </div>
 </template>
@@ -27,6 +62,7 @@ export default {
   components: {
     HelloHeader: () => import("@/views/framework/HelloHeader.vue"),
     VertRollS: () => import("@/assets/VertRollS.vue"),
+    VertRoll: () => import("@/assets/VertRoll.vue"),
     BriefSee: () => import("@/assets/BriefSee.vue"),
     ECharts: () => import("@/assets/ECharts.vue")
   },

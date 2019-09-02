@@ -1,25 +1,27 @@
 <template>
-  <transition-group name="list-complete" tag="div">
-    <el-row
-      v-for=" (items,index) in data "
-      v-if=" index < showNum "
-      :style=" {height:height,width:'100%',listStyle:'none'} "
-      :key="items.index"
-      class="list-complete-item"
-      @click.native="liCilck(items)"
-      type="flex"
-      align="middle"
-    >
-      <el-col
-        v-for=" (item,index) in items.obj "
-        :key="index"
-        :span=" item.length"
-        :style=" { height:height,textAlign:item.align ? item.align : 'left' , background: item.background ? item.background : '',
+  <div ref="VertRoll" :style="{height:DHeight}">
+    <transition-group name="list-complete" tag="div">
+      <el-row
+        v-for=" (items,index) in data "
+        v-if=" index < showNum "
+        :style=" {height:height,width:'100%',listStyle:'none'} "
+        :key="items.index"
+        class="list-complete-item"
+        @click.native="liCilck(items)"
+        type="flex"
+        align="middle"
+      >
+        <el-col
+          v-for=" (item,index) in items.obj "
+          :key="index"
+          :span=" item.length"
+          :style=" { height:height,textAlign:item.align ? item.align : 'left' , background: item.background ? item.background : '',
         overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',borderRadius:'0.26041vw',lineHeight:height, } "
-        :offset=" item.offset ? item.offset : 0 "
-      >{{item.text}}</el-col>
-    </el-row>
-  </transition-group>
+          :offset=" item.offset ? item.offset : 0 "
+        >{{item.text}}</el-col>
+      </el-row>
+    </transition-group>
+  </div>
 </template>
 
 <script>
@@ -28,6 +30,7 @@ export default {
   data() {
     return {
       timer: null,
+      s: 0,
       data: [
         {
           index: 1,
@@ -118,14 +121,158 @@ export default {
               background: "#99a9bf"
             }
           ]
+        },
+        {
+          index: 5,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 6,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 7,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 8,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 9,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 10,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 11,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 12,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 13,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 14,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 15,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 16,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
         }
       ]
     };
   },
   props: {
-    showNum: {
+    vShowNum: {
       type: Number,
-      default: 3
+      default: 10
     },
     aniTime: {
       type: Number,
@@ -135,36 +282,62 @@ export default {
       type: String,
       default: "2.77777vh"
     },
+    DHeight: {
+      type: String,
+      default: "20vh"
+    },
     vData: {
       type: Array,
       default: null
-    },
-    onClick: {
-      type: Function,
-      default: null
     }
   },
-  computed: {},
+  computed: {
+    showNum: {
+      get() {
+        return this.s;
+      },
+      set(v) {
+        this.s = v;
+      }
+    }
+  },
   watch: {
+    vShowNum: {
+      handler(n, o) {
+        if (n != null) this.s = n;
+      },
+      deep: true,
+      immediate: true
+    },
     vData: {
-      handler(newValue, oldValue) {
-        if (newValue != null) this.data = newValue;
+      handler(n, o) {
+        if (n != null) this.data = n;
       },
       deep: true,
       immediate: true
     }
   },
   methods: {
+    handlerHeight() {
+      let dh = parseFloat(this.DHeight);
+      let h = parseFloat(this.height);
+      let n = this.showNum;
+      let i = Math.floor(dh / h);
+      if (n > i) {
+        this.s = i;
+      }
+    },
     shuffle: function() {
       let item = this.data[0];
       this.data.splice(this.data.length, 0, item);
       this.data.splice(0, 1);
     },
     liCilck(items) {
-      if (this.onClick) this.onClick(items);
+      this.$emit("onClick", items);
     }
   },
   mounted() {
+    this.handlerHeight();
     if (this.showNum < this.data.length)
       this.timer = setInterval(this.shuffle, this.aniTime * 1000);
     document.body.style.overflowX = "hidden";
@@ -199,8 +372,9 @@ export default {
 }
 .list-complete-leave-to {
   opacity: 0;
-  transition: all 0.5s;
-  transform: translateY(-1vh);
+  transition: all 0.1s;
+  transform: scale(0.1) translateY(-0.1vh) translateZ(-100);
+  z-index: -100;
   /* transform: scale(0.1) translateY(-4.16666vh); */
 }
 .list-complete-leave-active {
