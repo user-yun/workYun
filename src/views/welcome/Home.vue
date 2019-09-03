@@ -4,7 +4,8 @@
     <HelloHeader></HelloHeader>
     <!-- 4vh -->
     <el-col :span="4" v-for="i in 6" :key="i">
-      <BriefSee :bsSmall="false"></BriefSee>
+      <BriefSee></BriefSee>
+      <!-- <BriefSeeS :bsSmall="false"></BriefSeeS> -->
     </el-col>
     <el-col :span="8">
       <ECharts

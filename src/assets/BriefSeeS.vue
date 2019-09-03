@@ -1,19 +1,19 @@
 <template>
   <el-card
     shadow="always"
-    :body-style="{ padding: '0.52083vw'}"
+    :body-style="{ padding: '0.52083vw',color:iBsColor,background: bsSmall ? '' : iBsBackground }"
     @mouseover.native="bsMove"
     @mouseout.native="bsMove"
   >
     <el-row type="flex" align="middle" justify="space-between" style="height:4vh">
       <el-col
         :span="6"
-        :style="{ background: iBsColor ,borderRadius: '0.52083vw',textAlign:'center',fontSize: '4.62962vh'}"
+        :style="{ background:false ? iBsBackground : '',borderRadius: '0.52083vw',textAlign:'center',fontSize: '4.62962vh'}"
         :class="bsIcon"
       ></el-col>
       <el-col
         :span="18"
-        :style="{textAlign:'right',fontSize:'1.25vw',fontWeight:'530',color:color}"
+        :style="{textAlign:'right',fontSize:'1.25vw',fontWeight:'530',color: bsSmall ? bsColor : iBsColor }"
       >
         {{bsTitle}}
         <CountTo :start-val="0" :end-val="bsCountTo.end" :duration="4000" :decimals="bsCountTo.dec"></CountTo>
@@ -35,13 +35,13 @@ export default {
     };
   },
   props: {
-    isColor: {
+    bsColor: {
       type: String,
       default: () => {
         return colors[Math.ceil(Math.random() * colors.length)];
       }
     },
-    color: {
+    bsBackground: {
       type: String,
       default: () => {
         return colors[Math.ceil(Math.random() * colors.length)];
@@ -49,7 +49,7 @@ export default {
     },
     bsIcon: {
       type: String,
-      default: "el-icon-medal-1"
+      default: "el-icon-loading"
     },
     bsTitle: {
       type: String,
@@ -58,11 +58,18 @@ export default {
     bsCountTo: {
       type: Object,
       default: () => ({ end: 100, dec: 0 })
+    },
+    bsSmall: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
+    iBsBackground() {
+      return this.isMove ? this.bsColor : this.bsBackground;
+    },
     iBsColor() {
-      return this.isMove ? this.isColor : this.color;
+      return this.isMove ? this.bsBackground : this.bsColor;
     }
   },
   watch: {},

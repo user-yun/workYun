@@ -129,6 +129,8 @@ export default {
   },
   mounted() {
     //渲染
+    let i = [{ k: 99 }, { k: 6 }, { k: 6 }];
+    console.log(i.operation("k"));
   },
   activited() {
     //可见

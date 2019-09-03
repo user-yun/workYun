@@ -116,7 +116,7 @@ export default {
           otherInfo: that.otherInfo,
           language: that.language
         });
-        that.$router.push({ name: "home" });
+        that.$router.replace({ name: "home" });
       });
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <div ref="VertRoll" :style="{height:DHeight}">
+  <div class="shadow" ref="VertRoll" :style="{height:DHeight}">
     <transition-group name="list-complete" tag="div">
       <el-row
         v-for=" (items,index) in data "
@@ -272,7 +272,7 @@ export default {
   props: {
     vShowNum: {
       type: Number,
-      default: 10
+      default: 99
     },
     aniTime: {
       type: Number,
