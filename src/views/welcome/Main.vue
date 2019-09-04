@@ -46,39 +46,34 @@ export default {
   },
   watch: {},
   methods: {
-    beforeunloadFn(e) {
-      setLocal("userMemory", {
-        userInfo: this.userInfo,
-        otherInfo: this.otherInfo,
-        language: this.language
-      });
-      let confirmationMessage = "user-yun";
-      (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
-      return confirmationMessage;
-    },
-    resizeHandler() {
-      let clientWidth = document.body.clientWidth;
-      let clientHeight = document.body.clientHeight;
-      if (clientWidth <= 992 || clientHeight <= 558) {
-        this.setOtherInfo({ menuCollapse: true });
-      } else {
-        this.setOtherInfo({ menuCollapse: false });
-      }
-    }
-  },
-  created() {
-    //创建
+    // beforeunloadFn(e) {
+    //   setLocal("userMemory", {
+    //     userInfo: this.userInfo,
+    //     otherInfo: this.otherInfo,
+    //     language: this.language
+    //   });
+    //   let confirmationMessage = "user-yun";
+    //   (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
+    //   return confirmationMessage;
+    // },
+    // resizeHandler() {
+    //   let clientWidth = document.body.clientWidth;
+    //   let clientHeight = document.body.clientHeight;
+    //   if (clientWidth <= 992 || clientHeight <= 558) {
+    //     this.setOtherInfo({ menuCollapse: true });
+    //   } else {
+    //     this.setOtherInfo({ menuCollapse: false });
+    //   }
+    // }
   },
   mounted() {
-    //渲染
-    this.resizeHandler();
-    window.addEventListener("resize", this.resizeHandler);
-    window.addEventListener("beforeunload", this.beforeunloadFn, false);
+    // this.resizeHandler();
+    // window.addEventListener("resize", this.resizeHandler);
+    // window.addEventListener("beforeunload", this.beforeunloadFn, false);
   },
   beforeDestroy() {
-    //销毁前
-    window.removeEventListener("resize", this.resizeHandler);
-    window.removeEventListener("beforeunload", this.beforeunloadFn, false);
+    // window.removeEventListener("resize", this.resizeHandler);
+    // window.removeEventListener("beforeunload", this.beforeunloadFn, false);
   }
 };
 </script>
