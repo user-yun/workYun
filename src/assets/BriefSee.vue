@@ -7,12 +7,12 @@
   >
     <el-row type="flex" align="middle" justify="space-between" style="height:4vh">
       <el-col
-        :span="6"
-        :style="{ background: iBsColor ,borderRadius: '0.52083vw',textAlign:'center',fontSize: '4.62962vh'}"
+        :span="5"
+        :style="{ background: iBsColor ,borderRadius: '0.52083vw',textAlign:'center',fontSize: '3.62962vh'}"
         :class="bsIcon"
       ></el-col>
       <el-col
-        :span="18"
+        :span="19"
         :style="{textAlign:'right',fontSize:'1.25vw',fontWeight:'530',color:color}"
       >
         {{bsTitle}}

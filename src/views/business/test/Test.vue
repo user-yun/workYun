@@ -28,8 +28,10 @@
         :ML="timeList"
         @group="groupMultipleTimeCheck"
     ></MultipleTimeCheck>-->
+    <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
+    <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
     <div class="alnlft">
-      <DatePicker type="1"></DatePicker>
+      <ProgresS></ProgresS>
     </div>
   </div>
 </template>
@@ -43,7 +45,9 @@ export default {
     // PageTable: () => import("@/assets/PageTable")
     // MultipleTimePickers: () => import("@/assets/MultipleTimePickers")
     // MultipleTimeCheck: () => import("@/assets/MultipleTimeCheck")
-    DatePicker: () => import("@/assets/DatePicker")
+    // DatePicker: () => import("@/assets/DatePicker"),
+    // DatePickerMult: () => import("@/assets/DatePickerMult")
+    ProgresS: () => import("@/assets/ProgresS")
   },
   data() {
     return {
@@ -94,6 +98,9 @@ export default {
     // }
   },
   methods: {
+    pickerChange(t) {
+      console.log(t);
+    },
     groupMultipleTimeCheck(list) {
       this.timeList = list;
     },

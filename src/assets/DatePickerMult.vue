@@ -12,11 +12,11 @@
 
 <script>
 export default {
-  name: "DatePicker",
+  name: "DatePickerMult",
   data() {
     return {
-      day: "",
-      typeS: ["date", "month"],
+      day: [],
+      typeS: ["daterange", "monthrange"],
       valueF: ["yyyy-MM-dd", "yyyy-MM"]
     };
   },
@@ -30,7 +30,7 @@ export default {
     dayNum: {
       type: Number,
       default: () => {
-        return 0;
+        return 30;
       }
     }
   },
@@ -43,8 +43,9 @@ export default {
   mounted() {
     //渲染
     let date = new Date();
+    this.day.push(date.format("yyyy-MM-dd"));
     date.setDate(date.getDate() - this.dayNum);
-    this.day = date.format("yyyy-MM-dd");
+    this.day.push(date.format("yyyy-MM-dd"));
   }
 };
 </script>
