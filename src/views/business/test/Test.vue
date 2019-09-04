@@ -23,12 +23,13 @@
     </el-row>
     <pre class="alnlft">{{Test}}</pre>
     <!-- <MultipleTimePickers></MultipleTimePickers> -->
-    <div class="alnlft">
-      <MultipleTimeCheck
+    <!-- <MultipleTimeCheck
         :TL="otherInfo.peakValleyList"
         :ML="timeList"
         @group="groupMultipleTimeCheck"
-      ></MultipleTimeCheck>
+    ></MultipleTimeCheck>-->
+    <div class="alnlft">
+      <DatePicker type="1"></DatePicker>
     </div>
   </div>
 </template>
@@ -41,7 +42,8 @@ export default {
     // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
     // PageTable: () => import("@/assets/PageTable")
     // MultipleTimePickers: () => import("@/assets/MultipleTimePickers")
-    MultipleTimeCheck: () => import("@/assets/MultipleTimeCheck")
+    // MultipleTimeCheck: () => import("@/assets/MultipleTimeCheck")
+    DatePicker: () => import("@/assets/DatePicker")
   },
   data() {
     return {
@@ -129,8 +131,6 @@ export default {
   },
   mounted() {
     //渲染
-    let i = [{ k: 99 }, { k: 6 }, { k: 6 }];
-    console.log(i.operation("k"));
   },
   activited() {
     //可见

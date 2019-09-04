@@ -9,9 +9,9 @@
     </el-col>
     <el-col :span="8">
       <ECharts
-        id="LinePostChart"
+        id="PostRevenue"
         height="44vh"
-        :data="require('@/echartsdata/LinePostChart')('折线图图')"
+        :data="require('@/echartsdata/PostRevenue')('折线图图')"
         @clickECharts="clickECharts"
       ></ECharts>
     </el-col>
