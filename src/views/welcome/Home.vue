@@ -69,9 +69,7 @@ export default {
   },
   computed: {},
   methods: {
-    clickECharts(p) {
-      this.log(p);
-    }
+    clickECharts(p) {}
     // beforeunloadFn(e) {
     //   setLocal("userMemory", {
     //     userInfo: this.userInfo,

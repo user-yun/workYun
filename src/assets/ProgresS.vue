@@ -1,9 +1,24 @@
 <template>
   <span>
-    <span v-for="(item,i) in l" :key="i+list.length" :style="{color:item.color}">
-      {{item.name}}
-      <span v-show="showNum">：{{item.num}}</span>
-      <el-progress :percentage="item.num" :color="item.color" :stroke-width="width"></el-progress>
+    <span
+      v-for="(item,i) in list"
+      :key="i+list.length"
+      :style="{color:item.color}"
+      class="emphasize"
+    >
+      <el-col :span="24">
+        {{item.name}}
+        <span v-show="showNum">：{{item.num}}</span>
+      </el-col>
+      <el-col :span="22">
+        <el-progress
+          :percentage="l[i].num"
+          :color="item.color"
+          :stroke-width="width"
+          :show-text="false"
+        ></el-progress>
+      </el-col>
+      <el-col :span="2">{{l[i].num}}%</el-col>
     </span>
   </span>
 </template>
@@ -19,11 +34,9 @@ export default {
       type: Array,
       default: () => {
         let s = [
-          { name: "12", num: 12, color: "#f00" },
-          { name: "75", num: 75, color: "#ff0" },
           { name: "103", num: 103, color: "#f0f" },
-          { name: "59", num: 59, color: "#0f0" },
-          { name: "89", num: 89, color: "#00f" }
+          { name: "59", num: 168, color: "#0f0" },
+          { name: "89", num: 459, color: "#00f" }
         ];
         return s;
       }
@@ -43,11 +56,8 @@ export default {
       let sum = this.list.operation("num");
       this.list.forEach(e => {
         let o = {
-          name: e.name,
-          num: Math.floor((e.num / sum) * 100),
-          color: e.color
+          num: parseFloat(((e.num / sum) * 100).toFixed(2))
         };
-        console.log(o);
         l.push(o);
       });
       return l;

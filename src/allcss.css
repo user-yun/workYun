@@ -73,6 +73,13 @@ body {
     /* 16/1920 */
 }
 
+.title {
+    /* 标题文字 */
+    font-size: 0.9375vw;
+    font-weight: 450;
+    /* 18/1920 */
+}
+
 .ignore {
     /* 忽视文字 */
     color: #909399;

@@ -221,6 +221,16 @@ export default [
                     intercept: true,
                     role: [1]
                 }
+            },
+            {
+                path: '/crdevrelacorr',
+                name: 'crdevrelacorr',
+                component: () => import('#/create/crdevrelacorr/MCrDevRelaCorr'),
+                meta: {
+                    icon: "el-icon-s-help",
+                    intercept: true,
+                    role: [1]
+                }
             }
         ]
     },

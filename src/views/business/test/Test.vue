@@ -30,9 +30,10 @@
     ></MultipleTimeCheck>-->
     <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
     <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
-    <div class="alnlft">
-      <ProgresS></ProgresS>
-    </div>
+    <!-- <ProgresS></ProgresS> -->
+    <!-- <EEXC>
+      <el-button>123</el-button>
+    </EEXC>-->
   </div>
 </template>
 
@@ -42,12 +43,14 @@ export default {
   name: "test",
   components: {
     // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    // PageTable: () => import("@/assets/PageTable")
-    // MultipleTimePickers: () => import("@/assets/MultipleTimePickers")
-    // MultipleTimeCheck: () => import("@/assets/MultipleTimeCheck")
+    // PageTable: () => import("@/assets/PageTable"),
+    // MultipleTimePickers: () => import("@/assets/MultipleTimePickers"),
+    // MultipleTimeCheck: () => import("@/assets/MultipleTimeCheck"),
     // DatePicker: () => import("@/assets/DatePicker"),
-    // DatePickerMult: () => import("@/assets/DatePickerMult")
-    ProgresS: () => import("@/assets/ProgresS")
+    // DatePickerMult: () => import("@/assets/DatePickerMult"),
+    // ProgresS: () => import("@/assets/ProgresS"),
+    // Title: () => import("@/assets/Title"),
+    EEXC: () => import("@/assets/EEXC")
   },
   data() {
     return {
@@ -78,8 +81,8 @@ export default {
     // test: {
     //   type: String,
     //   default: () => {
-    //     let colors = ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C"];
-    //     return colors[Math.ceil(Math.random() * colors.length)];
+    //     let colors = require("@/color.js");
+    //     return colors[Math.ceil(Math.random() * colors.length - 1)];
     //   }
     // }
   },

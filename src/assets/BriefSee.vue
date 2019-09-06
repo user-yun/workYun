@@ -38,13 +38,13 @@ export default {
     isColor: {
       type: String,
       default: () => {
-        return colors[Math.ceil(Math.random() * colors.length)];
+        return colors[Math.ceil(Math.random() * colors.length - 1)];
       }
     },
     color: {
       type: String,
       default: () => {
-        return colors[Math.ceil(Math.random() * colors.length)];
+        return colors[Math.ceil(Math.random() * colors.length - 1)];
       }
     },
     bsIcon: {

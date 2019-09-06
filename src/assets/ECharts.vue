@@ -31,7 +31,7 @@ export default {
     // },
     width: {
       type: String,
-      default: "100%"
+      default: "99.9%"
     },
     height: {
       type: String,
@@ -47,10 +47,11 @@ export default {
         document.getElementById(_this.id)
       );
       _this.setChart();
-      _this.MyChart.on("click", function(p) {
-        _this.$emit("clickECharts", p);
-        // if (_this.mFunction) _this.mFunction(p);
-      });
+      // _this.MyChart.on("click", function(p) {
+      //   _this.$emit("clickECharts", p);
+      //   // if (_this.mFunction) _this.mFunction(p);
+      // });
+      _this.MyChart.on("click", p => _this.$emit("clickECharts", p));
       // window.addEventListener("resize", function() {
       //   _this.MyChart.resize;
       // });
@@ -62,6 +63,8 @@ export default {
       _this.$set(_this.data, "animationEasingUpdate", "elasticOut");
       _this.$set(_this.data, "animationDelay", 200);
       _this.$set(_this.data, "animationDelayUpdate", 200);
+      _this.$set(_this.data, "animationDuration", 200);
+      _this.$set(_this.data, "animationDurationUpdate", 200);
       _this.MyChart.setOption(_this.data);
     },
     __resizeHandler() {

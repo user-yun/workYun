@@ -21,8 +21,8 @@ export default {
     // test: {
     //   type: String,
     //   default: () => {
-    //     let colors = ["#409EFF", "#67C23A", "#E6A23C", "#F56C6C"];
-    //     return colors[Math.ceil(Math.random() * colors.length)];
+    //     let colors = require("@/color.js");
+    //     return colors[Math.ceil(Math.random() * colors.length - 1)];
     //   }
     // }
   },
