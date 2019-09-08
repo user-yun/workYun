@@ -26,27 +26,7 @@ export default {
   },
   methods: {
     EEXCOut() {
-      let xlsxParam = { raw: true };
-      let wb = XLSX.utils.table_to_book(
-        document.querySelector("#" + this.id),
-        xlsxParam
-      );
-      let wbout = XLSX.write(wb, {
-        bookType: "xlsx",
-        bookSST: true,
-        type: "array"
-      });
-      try {
-        FileSaver.saveAs(
-          new Blob([wbout], {
-            type: "application/octet-stream"
-          }),
-          "测试.xlsx"
-        );
-      } catch (e) {
-        if (typeof console !== "undefined") console.log(e, wbout);
-      }
-      return wbout;
+      require("@/function/excel.js").default();
     }
   },
   mounted() {

@@ -1,14 +1,15 @@
 <template>
   <div style="height:100%">
-    <el-col :span="20" style="height:100%">
+    <el-col :span="18" style="height:100%">
       <ECharts
+        ref="PostRevenue"
         id="PostRevenue"
         height="99.8%"
         :data="require('@/echartsdata/TreeChart').default(TreeChartOption)"
         @clickECharts="clickECharts"
       ></ECharts>
     </el-col>
-    <el-col :span="4">
+    <el-col :span="6">
       <MCrDevRelaCorrForm :treeData="treeData" @ruleForm="ruleFormHandler"></MCrDevRelaCorrForm>
     </el-col>
   </div>
@@ -29,10 +30,10 @@ export default {
       TreeChartOption: [
         {
           children: [
-            { children: [], name: "一号楼", id: 11, layer: 2, type: 1 },
+            { children: [], name: "一号楼", id: 11, type: 1 },
             {
               children: [
-                { children: [], name: "2层", id: 121, layer: 3, type: 1 },
+                { children: [], name: "2层", id: 121, type: 1 },
                 {
                   children: [
                     {
@@ -41,46 +42,69 @@ export default {
                           children: [],
                           name: "蜂电301",
                           id: 12211,
-                          layer: 5,
-                          type: 1
+                          type: 2
                         },
                         {
                           children: [],
                           name: "蜂电302",
                           id: 12212,
-                          layer: 5,
-                          type: 1
+                          type: 2
                         },
                         {
                           children: [],
                           name: "蜂电303",
                           id: 12213,
-                          layer: 5,
-                          type: 1
+                          type: 2
                         }
                       ],
                       name: "蜂电",
                       id: 1221,
-                      layer: 4
+                      type: 998
                     },
-                    { children: [], name: "百度", id: 1222, layer: 4, type: 1 },
-                    { children: [], name: "美团", id: 1223, layer: 4, type: 1 }
+                    {
+                      children: [
+                        {
+                          children: [],
+                          name: "百度401",
+                          id: 12221,
+                          type: 2
+                        },
+                        {
+                          children: [],
+                          name: "百度401",
+                          id: 12222,
+                          type: 2
+                        }
+                      ],
+                      name: "百度",
+                      id: 1222,
+                      type: 1
+                    },
+                    {
+                      children: [],
+                      name: "美团",
+                      id: 1223,
+                      type: 2
+                    },
+                    {
+                      children: [],
+                      name: "公共",
+                      id: 1224,
+                      type: 2
+                    }
                   ],
                   name: "3层",
                   id: 122,
-                  layer: 3,
                   type: 1
                 }
               ],
               name: "二号楼",
               id: 12,
-              layer: 2,
               type: 1
             }
           ],
           name: "腾飞",
           id: 1,
-          layer: 1,
           type: 1
         }
       ]
@@ -93,19 +117,38 @@ export default {
     // }
   },
   watch: {
-    //监听数据变化
-    // test: {
-    //   deep: true,
-    //   immediate: true,
-    //   handler(newv, oldv) {}
-    // }
+    TreeChartOption: {
+      deep: true,
+      immediate: true,
+      handler(newv, oldv) {}
+    }
   },
   methods: {
     clickECharts(p) {
-      this.treeData = p.data;
+      let d = JSON.parse(JSON.stringify(p));
+      this.treeData = Object.assign({}, null, d);
     },
-    ruleFormHandler(f) {
-      console.log(f);
+    async ruleFormHandler(f) {
+      await this.hf(this.TreeChartOption, f);
+    },
+    hf(array, i) {
+      let that = this;
+      let nl = [];
+      array.forEach(e => {
+        if (e.children.length > 1) {
+          that.hf(e.children, i);
+        }
+        if (e.id == i.id) {
+          let n = i.id * 10 + 1;
+          e.children.push({
+            name: i.name,
+            type: i.type,
+            children: nl,
+            id: Number(n)
+          });
+          return;
+        }
+      });
     }
   },
   mounted() {

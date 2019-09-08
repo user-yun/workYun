@@ -10,6 +10,7 @@ let formVali = {
     factors: [msgUnInput],
     mode: [msgUnSelect],
     title: [msgUnSelect],
+    name: [msgUnInput],
     preiod: [msgUnSelect],
     outputduty: [msgUnSelect],
     code: [msgUnInput],
@@ -18,6 +19,7 @@ let formVali = {
     Zongid: [msgUnSelect],
     Pid: [msgUnSelect],
     Type: [msgUnSelect],
+    type: [msgUnSelect],
     Status: [msgUnSelect]
 }
 export default formVali;

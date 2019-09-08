@@ -31,9 +31,9 @@
     <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
     <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
     <!-- <ProgresS></ProgresS> -->
-    <!-- <EEXC>
+    <EEXC>
       <el-button>123</el-button>
-    </EEXC>-->
+    </EEXC>
   </div>
 </template>
 

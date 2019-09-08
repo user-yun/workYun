@@ -6,9 +6,29 @@ function hf(data) {
         if (e.children.length > 1) {
             c = hf(e.children);
         }
+        let iS = {};
+        if (e.type == 998) {
+            iS = {
+                borderColor: "#666",
+                borderType: "dotted",
+                opacity: 1,
+                borderWidth: 1
+            }
+        } else {
+            iS = {
+                borderColor: "#000",
+                borderType: "solid",
+                opacity: 1,
+                borderWidth: 2
+            }
+        }
         d.push({
             children: c,
-            name: e.name + e.id
+            name: e.name + "：" + e.id,
+            id: e.id,
+            layer: e.layer,
+            type: e.type,
+            itemStyle: iS
         });
     });
     return d;

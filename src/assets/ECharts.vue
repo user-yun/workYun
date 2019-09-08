@@ -25,9 +25,9 @@ export default {
       type: Object,
       default: null
     },
-    // mFunction: {
-    //   type: Function,
-    //   default: null
+    // clearCache: {
+    //   type: Boolean,
+    //   default: true
     // },
     width: {
       type: String,
@@ -40,32 +40,43 @@ export default {
   },
   computed: {},
   methods: {
-    initChart() {
+    async initChart() {
+      console.warn(`------------------------initCharts-${this.id}-start`);
       let _this = this;
       // _this.MyChart = _this.$echarts.init(myChart);
-      _this.MyChart = require("echarts").init(
+      _this.MyChart = await require("echarts").init(
         document.getElementById(_this.id)
       );
-      _this.setChart();
+      if (_this.MyChart._$handlers.click) {
+        _this.MyChart._$handlers.click.length = 0;
+      }
+      await window.removeEventListener("click", _this.click);
+      await _this.MyChart.on("click", _this.click);
       // _this.MyChart.on("click", function(p) {
       //   _this.$emit("clickECharts", p);
       //   // if (_this.mFunction) _this.mFunction(p);
       // });
-      _this.MyChart.on("click", p => _this.$emit("clickECharts", p));
       // window.addEventListener("resize", function() {
       //   _this.MyChart.resize;
       // });
-      window.addEventListener("resize", _this.__resizeHandler);
+      await window.addEventListener("resize", _this.__resizeHandler);
+      await _this.setChart();
+      console.warn(`------------------------initCharts-${this.id}-end`);
     },
-    setChart() {
+    click(p) {
       let _this = this;
-      _this.$set(_this.data, "animationEasing", "elasticOut");
-      _this.$set(_this.data, "animationEasingUpdate", "elasticOut");
-      _this.$set(_this.data, "animationDelay", 200);
-      _this.$set(_this.data, "animationDelayUpdate", 200);
-      _this.$set(_this.data, "animationDuration", 200);
-      _this.$set(_this.data, "animationDurationUpdate", 200);
-      _this.MyChart.setOption(_this.data);
+      let d = JSON.parse(JSON.stringify(p.data));
+      _this.$emit("clickECharts", Object.assign({}, null, d));
+    },
+    clear() {
+      this.MyChart.clear();
+      console.warn(`------------------------initCharts-${this.id}-clear`);
+    },
+    async setChart() {
+      let _this = this;
+      await _this.clear();
+      await _this.MyChart.setOption(_this.data, true);
+      console.warn(`------------------------initCharts-${this.id}-setChart`);
     },
     __resizeHandler() {
       if (this.MyChart) {
@@ -75,25 +86,23 @@ export default {
   },
   watch: {
     data: {
-      handler(newValue, oldValue) {
-        if (newValue) this.initChart();
+      handler(n, o) {
+        if (JSON.stringify(n) !== JSON.stringify(o)) this.setChart();
       },
       deep: true
     }
   },
   created() {},
   mounted() {
-    // this.initChart();
-    this.$nextTick(() => {
-      this.initChart();
-    });
+    // this.$nextTick(() => {
+    this.initChart();
+    // });
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.__resizeHandler);
     if (!this.MyChart) {
       return;
     }
-    // if (this.MyChart) this.MyChart.clear();
     this.MyChart.dispose();
     this.MyChart = null;
   },
