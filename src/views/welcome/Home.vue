@@ -69,17 +69,17 @@ export default {
   },
   computed: {},
   methods: {
-    clickECharts(p) {}
-    // beforeunloadFn(e) {
-    //   setLocal("userMemory", {
-    //     userInfo: this.userInfo,
-    //     otherInfo: this.otherInfo,
-    //     language: this.language
-    //   });
-    //   let confirmationMessage = "user-yun";
-    //   (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
-    //   return confirmationMessage;
-    // },
+    clickECharts(p) {},
+    beforeunloadFn(e) {
+      setLocal("userMemory", {
+        userInfo: this.userInfo,
+        otherInfo: this.otherInfo,
+        language: this.language
+      });
+      let confirmationMessage = "user-yun";
+      (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
+      return confirmationMessage;
+    }
     // resizeHandler() {
     //   let clientWidth = document.body.clientWidth;
     //   let clientHeight = document.body.clientHeight;
@@ -93,11 +93,11 @@ export default {
   mounted() {
     // this.resizeHandler();
     // window.addEventListener("resize", this.resizeHandler);
-    // window.addEventListener("beforeunload", this.beforeunloadFn, false);
+    window.addEventListener("beforeunload", this.beforeunloadFn, false);
   },
   beforeDestroy() {
     // window.removeEventListener("resize", this.resizeHandler);
-    // window.removeEventListener("beforeunload", this.beforeunloadFn, false);
+    window.removeEventListener("beforeunload", this.beforeunloadFn, false);
   }
 };
 </script>

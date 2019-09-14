@@ -9,7 +9,8 @@
       :color=" tag.path == $route.path ? otherInfo.themeBackgroundColor : '#C0C4CC' "
       @click="TagClick(key)"
       @close="TagClose(tag)"
-      style="cursor:pointer;"
+      style="margin-right:0.2vw"
+      :style="{cursor: tag.path == $route.path ? `not-allowed` : `pointer`}"
       class="normal"
       :size=" otherInfo.menuCollapse ? 'mini' : 'medium' "
     >

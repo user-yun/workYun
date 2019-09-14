@@ -31,9 +31,7 @@
     <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
     <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
     <!-- <ProgresS></ProgresS> -->
-    <EEXC>
-      <el-button>123</el-button>
-    </EEXC>
+    <el-button @click="exc">123</el-button>
   </div>
 </template>
 
@@ -50,7 +48,6 @@ export default {
     // DatePickerMult: () => import("@/assets/DatePickerMult"),
     // ProgresS: () => import("@/assets/ProgresS"),
     // Title: () => import("@/assets/Title"),
-    EEXC: () => import("@/assets/EEXC")
   },
   data() {
     return {
@@ -101,6 +98,12 @@ export default {
     // }
   },
   methods: {
+    exc() {
+      require("@/excelformat/test.js").default(this, "封装测试", [
+        { title: "测试一", content: "内容一" },
+        { title: "测试二", content: "内容二" }
+      ]);
+    },
     pickerChange(t) {
       console.log(t);
     },

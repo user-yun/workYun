@@ -34,7 +34,7 @@ export default {
     };
   },
   methods: {
-    async get() {
+    async req() {
       let version = "v6";
       let appid = "25161667";
       let appsecret = "y5cW8f2j";
@@ -48,7 +48,7 @@ export default {
     }
   },
   mounted() {
-    this.get();
+    this.req();
   }
 };
 </script>

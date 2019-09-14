@@ -57,7 +57,7 @@ export default {
   computed: {
     menuList() {
       let that = this;
-      let allMenuList = require("@/menuroule").default;
+      let allMenuList = require("@/menuroule").default();
       let userRole = this.userInfo.userRole;
       let menuList = [];
       allMenuList.forEach((allValue, index) => {

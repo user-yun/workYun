@@ -40,7 +40,7 @@ let router = [
 
 
 
-router = router.concat(menuroule);
+router = router.concat(menuroule());
 export default new Router({
   // mode: 'history',
   mode: 'hash',

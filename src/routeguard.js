@@ -57,7 +57,7 @@ router.beforeEach((to, from, next) => {
             } else {
                 let second = userMemory.userInfo.lastTime.second;
                 let nowSecond = new Date().getTime();
-                let obsoleteTime = 0.5 * 60 * 60 * 1000;
+                let obsoleteTime = 24 * 60 * 60 * 1000;//用户登录时间判断拦截
                 if (nowSecond - second < obsoleteTime) {
                     store.dispatch("upVuex", {
                         mutations: "setUserInfo",

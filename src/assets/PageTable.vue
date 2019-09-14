@@ -10,6 +10,7 @@
       header-cell-class-name="header-cell-class-name"
       cell-class-name="cell-class-name"
     >
+      <el-table-column type="index" width="60" align="center" fixed></el-table-column>
       <el-table-column
         v-for="(item,index) in DataConfig"
         :key="index"

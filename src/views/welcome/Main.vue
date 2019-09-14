@@ -11,8 +11,8 @@
       >
         <MainHeader></MainHeader>
       </el-header>
-      <MainTag style="height:4vh"></MainTag>
-      <el-main style="height:90vh;padding:0.5vw">
+      <MainTag style="height:4vh;margin:0.5vw 0 0 0.5vw"></MainTag>
+      <el-main style="height:90vh;padding:0.2vw 0.5vw 0.5vw 0.5vw">
         <MainApp></MainApp>
       </el-main>
       <!-- <el-footer height="5vh">Footer</el-footer> -->
@@ -46,16 +46,16 @@ export default {
   },
   watch: {},
   methods: {
-    // beforeunloadFn(e) {
-    //   setLocal("userMemory", {
-    //     userInfo: this.userInfo,
-    //     otherInfo: this.otherInfo,
-    //     language: this.language
-    //   });
-    //   let confirmationMessage = "user-yun";
-    //   (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
-    //   return confirmationMessage;
-    // },
+    beforeunloadFn(e) {
+      setLocal("userMemory", {
+        userInfo: this.userInfo,
+        otherInfo: this.otherInfo,
+        language: this.language
+      });
+      let confirmationMessage = "user-yun";
+      (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
+      return confirmationMessage;
+    }
     // resizeHandler() {
     //   let clientWidth = document.body.clientWidth;
     //   let clientHeight = document.body.clientHeight;
@@ -69,11 +69,11 @@ export default {
   mounted() {
     // this.resizeHandler();
     // window.addEventListener("resize", this.resizeHandler);
-    // window.addEventListener("beforeunload", this.beforeunloadFn, false);
+    window.addEventListener("beforeunload", this.beforeunloadFn, false);
   },
   beforeDestroy() {
     // window.removeEventListener("resize", this.resizeHandler);
-    // window.removeEventListener("beforeunload", this.beforeunloadFn, false);
+    window.removeEventListener("beforeunload", this.beforeunloadFn, false);
   }
 };
 </script>

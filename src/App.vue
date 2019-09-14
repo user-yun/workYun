@@ -8,11 +8,17 @@ export default {
   name: "app",
   data() {
     return {
-      YouAreSmart: true
+      YouAreSmart: true,
+      KickOutInterval: {},
+      KickOutTime: 0,
+      KickOutNum: 1000 * 60 * 10
+      // KickOutNum: 5000
     };
   },
   methods: {
-    mousemove() {},
+    mousemove() {
+      this.KickOutTime = 0;
+    },
     beforeunloadFn(e) {
       setLocal("userMemory", {
         userInfo: this.userInfo,
@@ -40,6 +46,26 @@ export default {
       });
     }
   },
+  watch: {
+    KickOutTime(n) {
+      if (n > 3) {
+        this.$router.replace({ name: "login" });
+        this.KickOutTime = 0;
+      }
+    },
+    $route: {
+      handler: function(n, o) {
+        if (n.name == "login") {
+          clearInterval(this.KickOutInterval);
+        } else if (n.name == "home") {
+          this.KickOutInterval = setInterval(() => {
+            this.KickOutTime++;
+          }, this.KickOutNum);
+        }
+      },
+      deep: true
+    }
+  },
   mounted() {
     this.resizeHandler();
     window.addEventListener("resize", this.resizeHandler);
@@ -52,6 +78,7 @@ export default {
   beforeDestroy() {
     window.removeEventListener("resize", this.resizeHandler);
     window.removeEventListener("beforeunload", this.beforeunloadFn, false);
+    clearInterval(this.KickOutInterval);
   }
 };
 </script>
