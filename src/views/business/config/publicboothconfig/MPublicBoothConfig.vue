@@ -175,7 +175,6 @@ export default {
     // "ruleForm.son": {
     //   deep: true,
     //   handler(newValue, oldValue) {
-    //     console.log(newValue.length);
     //     if (newValue.length > 0) {
     //       this.ruleForm.arr.splice(0, this.ruleForm.arr.length);
     //     }
@@ -184,7 +183,6 @@ export default {
     // "ruleForm.arr": {
     //   deep: true,
     //   handler(newValue, oldValue) {
-    //     console.log(newValue.length);
     //     if (newValue.length > 0) {
     //       this.ruleForm.son.splice(0, this.ruleForm.son.length);
     //     }

@@ -7,7 +7,7 @@ Array.prototype.min = function () {
 Array.prototype.operation = function (i, o) {
     let s = 0;
     let a = 0;
-    if (i == undefined) {
+    if (i == undefined || i == null) {
         s = this[0];
         a = this[0];
         if (o == "-") {

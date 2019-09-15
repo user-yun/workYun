@@ -105,7 +105,6 @@ export default {
       ]);
     },
     pickerChange(t) {
-      console.log(t);
     },
     groupMultipleTimeCheck(list) {
       this.timeList = list;
