@@ -91,7 +91,7 @@ export default function f() {
             width: "130",
             align: "right",
             prop: "Mobile",
-            label: language.contactInformation,
+            label: language.contactInFormation,
             mini: true,
         },
     ]
