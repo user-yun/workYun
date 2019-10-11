@@ -6,12 +6,12 @@ Vue.use(Router)
 let router = [
   {
     path: '/',
-    name: 'login',
-    component: () => import('@/views/welcome/Login.vue'),
+    redirect: { name: "login" },
   },
   {
     path: '/login',
-    redirect: { name: "login" },
+    name: 'login',
+    component: () => import('@/views/welcome/Login.vue'),
   },
   {
     path: '*',

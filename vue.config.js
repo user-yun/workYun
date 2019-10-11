@@ -32,7 +32,21 @@ module.exports = {
   productionSourceMap: false, // 调整内部的webpack配置. // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   // productionSourceMap: true,
   chainWebpack: () => { },
-  configureWebpack: () => { }, // CSS 相关选项
+  configureWebpack: {
+    externals: {
+      'vue': 'Vue',
+      'vue-router': 'VueRouter',
+      'vuex': 'Vuex',
+      'axios': 'axios',
+      'element-ui': 'ELEMENT',
+      'echarts': 'echarts',
+      'file-saver': 'saveAs',
+      'xlsx': 'XLSX',
+      'js-md5': 'md5',
+      'nprogress': 'NProgress',
+      'vue-count-to': 'CountTo'
+    }
+  }, // CSS 相关选项
   css: {
     // 将组件内部的css提取到一个单独的css文件（只用在生产环境）
     // 也可以是传递给 extract-text-webpack-plugin 的选项对象
