@@ -31,7 +31,13 @@
     <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
     <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
     <!-- <ProgresS></ProgresS> -->
-    <el-button @click="exc">123</el-button>
+    <!-- <el-button @click="exc">123</el-button> -->
+    <ECharts
+      id="PostRevenue"
+      height="79vh"
+      :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'TB')"
+      @clickECharts="clickECharts"
+    ></ECharts>
   </div>
 </template>
 
@@ -48,6 +54,7 @@ export default {
     // DatePickerMult: () => import("@/assets/DatePickerMult"),
     // ProgresS: () => import("@/assets/ProgresS"),
     // Title: () => import("@/assets/Title"),
+    ECharts: () => import("@/assets/ECharts.vue")
   },
   data() {
     return {
@@ -71,6 +78,126 @@ export default {
         { type: 3, value: 10, text: "10时段" },
         { type: 4, value: 11, text: "11时段" },
         { type: 4, value: 12, text: "12时段" }
+      ],
+      TreeChartOption: [
+        [
+          {
+            children: [
+              {
+                children: [],
+                name: "分摊表",
+                id: 11,
+                type: 1,
+                color: "#00a600"
+              },
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              }
+            ],
+            name: "总表",
+            id: 1,
+            type: 1,
+            color: "#f75000"
+          }
+        ],
+        [
+          {
+            children: [
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              },
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              },
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              },
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              },
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              },
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              }
+            ],
+            name: "总表",
+            id: 1,
+            type: 1,
+            color: "#f75000"
+          }
+        ],
+        [
+          {
+            children: [
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              }
+            ],
+            name: "总表",
+            id: 1,
+            type: 1,
+            color: "#f75000"
+          }
+        ],
+        [
+          {
+            children: [
+              {
+                children: [],
+                name: "分摊表",
+                id: 11,
+                type: 1,
+                color: "#00a600"
+              },
+              {
+                children: [],
+                name: "子表",
+                id: 12,
+                color: "#0000c6",
+                type: 1
+              }
+            ],
+            name: "总表",
+            id: 1,
+            type: 1,
+            color: "#f75000",
+            opacity: 0
+          }
+        ]
       ]
     };
   },
@@ -104,8 +231,7 @@ export default {
         { title: "测试二", content: "内容二" }
       ]);
     },
-    pickerChange(t) {
-    },
+    pickerChange(t) {},
     groupMultipleTimeCheck(list) {
       this.timeList = list;
     },

@@ -9,7 +9,7 @@ export default function () {
                 icon: "el-icon-house",//图标
                 intercept: true,//是否需要拦截
                 noKeepAlive: true,
-                role: [1]//角色
+                role: [1, 999]//角色
             },
             children: [
                 {
@@ -20,7 +20,7 @@ export default function () {
                         icon: "el-icon-house",
                         intercept: true,
                         noKeepAlive: true,
-                        role: [1]
+                        role: [1, 999]
                     }
                 }
             ]
@@ -33,7 +33,7 @@ export default function () {
                 icon: "el-icon-sugar",
                 intercept: true,
                 noKeepAlive: true,
-                role: [1]
+                role: [1, 999]
             },
             children: [
                 {
@@ -44,7 +44,7 @@ export default function () {
                         icon: "el-icon-sugar",
                         intercept: true,
                         noKeepAlive: false,
-                        role: [1]
+                        role: [1, 999]
                     }
                 }
             ]

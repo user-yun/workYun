@@ -2,7 +2,6 @@
   <div style="height:100%">
     <el-col :span="18" style="height:100%">
       <ECharts
-        ref="PostRevenue"
         id="PostRevenue"
         height="99.8%"
         :data="require('@/echartsdata/TreeChart').default(TreeChartOption)"
@@ -28,85 +27,92 @@ export default {
     return {
       treeData: {},
       TreeChartOption: [
-        {
-          children: [
-            { children: [], name: "一号楼", id: 11, type: 1 },
-            {
-              children: [
-                { children: [], name: "2层", id: 121, type: 1 },
-                {
-                  children: [
-                    {
-                      children: [
-                        {
-                          children: [],
-                          name: "蜂电301",
-                          id: 12211,
-                          type: 2
-                        },
-                        {
-                          children: [],
-                          name: "蜂电302",
-                          id: 12212,
-                          type: 2
-                        },
-                        {
-                          children: [],
-                          name: "蜂电303",
-                          id: 12213,
-                          type: 2
-                        }
-                      ],
-                      name: "蜂电",
-                      id: 1221,
-                      type: 998
-                    },
-                    {
-                      children: [
-                        {
-                          children: [],
-                          name: "百度401",
-                          id: 12221,
-                          type: 2
-                        },
-                        {
-                          children: [],
-                          name: "百度401",
-                          id: 12222,
-                          type: 2
-                        }
-                      ],
-                      name: "百度",
-                      id: 1222,
-                      type: 1
-                    },
-                    {
-                      children: [],
-                      name: "美团",
-                      id: 1223,
-                      type: 2
-                    },
-                    {
-                      children: [],
-                      name: "公共",
-                      id: 1224,
-                      type: 2
-                    }
-                  ],
-                  name: "3层",
-                  id: 122,
-                  type: 1
-                }
-              ],
-              name: "二号楼",
-              id: 12,
-              type: 1
-            }
-          ],
-          name: "腾飞",
-          id: 1,
-          type: 1
-        }
+        [
+          {
+            children: [
+              {
+                children: [],
+                name: "一号楼",
+                id: 11,
+                type: 1
+              },
+              {
+                children: [
+                  { children: [], name: "2层", id: 121, type: 1 },
+                  {
+                    children: [
+                      {
+                        children: [
+                          {
+                            children: [],
+                            name: "蜂电301",
+                            id: 12211,
+                            type: 2
+                          },
+                          {
+                            children: [],
+                            name: "蜂电302",
+                            id: 12212,
+                            type: 2
+                          },
+                          {
+                            children: [],
+                            name: "蜂电303",
+                            id: 12213,
+                            type: 2
+                          }
+                        ],
+                        name: "蜂电",
+                        id: 1221,
+                        type: 998
+                      },
+                      {
+                        children: [
+                          {
+                            children: [],
+                            name: "百度401",
+                            id: 12221,
+                            type: 2
+                          },
+                          {
+                            children: [],
+                            name: "百度401",
+                            id: 12222,
+                            type: 2
+                          }
+                        ],
+                        name: "百度",
+                        id: 1222,
+                        type: 1
+                      },
+                      {
+                        children: [],
+                        name: "美团",
+                        id: 1223,
+                        type: 2
+                      },
+                      {
+                        children: [],
+                        name: "公共",
+                        id: 1224,
+                        type: 2
+                      }
+                    ],
+                    name: "3层",
+                    id: 122,
+                    type: 1
+                  }
+                ],
+                name: "二号楼",
+                id: 12,
+                type: 1
+              }
+            ],
+            name: "腾飞",
+            id: 1,
+            type: 1
+          }
+        ]
       ]
     };
   },

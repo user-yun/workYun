@@ -30,7 +30,7 @@ let router = [
       icon: "el-icon-house",//图标
       intercept: true,//是否需要拦截
       noKeepAlive: true,
-      role: [1]//角色
+      role: [1, 999]//角色
     },
   },
 ]

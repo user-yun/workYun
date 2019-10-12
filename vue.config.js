@@ -31,7 +31,11 @@ module.exports = {
   // compiler: false,
   productionSourceMap: false, // 调整内部的webpack配置. // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   // productionSourceMap: true,
-  chainWebpack: () => { },
+  // chainWebpack: () => { },
+  chainWebpack: config => {
+    // 修复HMR
+    config.resolve.symlinks(true);
+  },
   configureWebpack: {
     externals: {
       'vue': 'Vue',

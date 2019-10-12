@@ -11,7 +11,7 @@
       ></PageTable>
     </el-col>
     <el-col :span="5" style="height:55%" class="alnlft">123</el-col>
-    <el-col :span="24" style="height:10%" class="alnlft"></el-col>
+    <el-col :span="24" style="height:10%" class="alnlft">123</el-col>
   </el-row>
 </template>
 
