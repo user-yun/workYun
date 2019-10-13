@@ -105,7 +105,7 @@ router.beforeEach((to, from, next) => {
                 });
             }
         }
-    } else {
+    } else if (from.name == "login") {
         next({
             // name: from.name ? from.name : "",
             name: "ready",
@@ -113,6 +113,15 @@ router.beforeEach((to, from, next) => {
                 redirect: to.name
             }
         });
+    } else {
+        Vue.prototype.$message({
+            message: store.state.language.notAllow,
+            type: "error",
+            duration: 8000,
+            customClass: "messageBox"
+        });
+        next(false);
+        router.back();
     }
     NProgress.done();
 });

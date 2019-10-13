@@ -20,6 +20,9 @@ let router = [
   {
     path: '*',
     redirect: { name: "ready" },
+    meta: {
+      intercept: false
+    }
   },
   {
     path: '/404',
