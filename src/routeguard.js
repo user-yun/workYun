@@ -41,9 +41,10 @@ router.beforeEach((to, from, next) => {
         });
     }
     let meta = to.meta;
-    if (isFalse(meta.intercept)) {//是否需要拦截 否
+    // if (isFalse(meta.intercept)) {//是否需要拦截 否
+    if (meta.intercept == false) {//是否需要拦截 否
         next();
-    } else {
+    } else if (meta.intercept == true) {
         let userRole = store.state.userInfo.userRole;
         if (isFalse(userRole)) {//是否拥有角色 否
             let userMemory = getLocal("userMemory");
@@ -76,7 +77,6 @@ router.beforeEach((to, from, next) => {
                         next();
                     } else {
                         next({
-                            // name: from.name ? from.name : "404",
                             name: "404",
                             params: {
                                 redirect: to.name
@@ -98,7 +98,6 @@ router.beforeEach((to, from, next) => {
                 next();
             } else {
                 next({
-                    // name: from.name ? from.name : "404",
                     name: "404",
                     params: {
                         redirect: to.name
@@ -106,6 +105,14 @@ router.beforeEach((to, from, next) => {
                 });
             }
         }
+    } else {
+        next({
+            // name: from.name ? from.name : "",
+            name: "ready",
+            params: {
+                redirect: to.name
+            }
+        });
     }
     NProgress.done();
 });

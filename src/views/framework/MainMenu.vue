@@ -57,15 +57,15 @@ export default {
   computed: {
     menuList() {
       let that = this;
-      let allMenuList = require("@/menuroule").default();
-      let userRole = this.userInfo.userRole;
+      let allMenuList = this.otherInfo.userRoutes;
+      let ur = this.userInfo.userRole;
       let menuList = [];
       allMenuList.forEach((allValue, index) => {
-        if (allValue.meta.role.includes(userRole)) {
+        if (allValue.meta.icon && allValue.meta.role.includes(ur)) {
           if (allValue.children) {
             let childMenuList = [];
             allValue.children.forEach((childValue, index) => {
-              if (childValue.meta.role.includes(userRole)) {
+              if (childValue.meta.icon && childValue.meta.role.includes(ur)) {
                 childMenuList.push(childValue);
               }
             });

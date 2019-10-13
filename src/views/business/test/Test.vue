@@ -31,7 +31,7 @@
     <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
     <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
     <!-- <ProgresS></ProgresS> -->
-    <!-- <el-button @click="exc">123</el-button> -->
+    <el-button @click="exc">导出表格测试</el-button>
     <ECharts
       id="PostRevenue"
       height="79vh"

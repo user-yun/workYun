@@ -1,46 +1,44 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import menuroule from './menuroule.js';
 Vue.use(Router)
-
 let router = [
   {
     path: '/',
     redirect: { name: "login" },
+    meta: {
+      intercept: false
+    }
   },
   {
     path: '/login',
     name: 'login',
     component: () => import('@/views/welcome/Login.vue'),
+    meta: {
+      intercept: false
+    }
   },
   {
     path: '*',
-    redirect: { name: "404" },
+    redirect: { name: "ready" },
   },
   {
     path: '/404',
     name: '404',
     component: () => import('@/views/welcome/404.vue'),
+    meta: {
+      intercept: false
+    }
   },
   {
-    path: '/home',
-    name: 'home',
-    component: () => import('@/views/welcome/Home.vue'),
+    path: '/ready',
+    name: 'ready',
+    component: () => import('@/views/welcome/Ready.vue'),
     meta: {
-      icon: "el-icon-house",//图标
-      intercept: true,//是否需要拦截
-      noKeepAlive: true,
-      role: [1, 999]//角色
-    },
-  },
+      intercept: false
+    }
+  }
 ]
 
-
-
-
-
-
-router = router.concat(menuroule());
 export default new Router({
   // mode: 'history',
   mode: 'hash',
