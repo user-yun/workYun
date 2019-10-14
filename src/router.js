@@ -37,7 +37,8 @@ let router = [
     name: 'ready',
     component: () => import('@/views/welcome/Ready.vue'),
     meta: {
-      intercept: false
+      intercept: true,
+      role: [1, 999]
     }
   }
 ]

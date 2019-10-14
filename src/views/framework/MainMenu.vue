@@ -57,8 +57,8 @@ export default {
   computed: {
     menuList() {
       let that = this;
-      let allMenuList = this.otherInfo.userRoutes;
-      let ur = this.userInfo.userRole;
+      let allMenuList = that.otherInfo.userRoutes;
+      let ur = that.userInfo.userRole;
       let menuList = [];
       allMenuList.forEach((allValue, index) => {
         if (allValue.meta.icon && allValue.meta.role.includes(ur)) {

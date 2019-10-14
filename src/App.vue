@@ -4,6 +4,7 @@
   </div>
 </template>
 <script>
+import { setLocal } from "@/function";
 export default {
   name: "app",
   data() {
@@ -12,7 +13,6 @@ export default {
       KickOutInterval: {},
       KickOutTime: 0,
       KickOutNum: 1000 * 60 * 10
-      // KickOutNum: 5000
     };
   },
   methods: {
@@ -20,11 +20,13 @@ export default {
       this.KickOutTime = 0;
     },
     beforeunloadFn(e) {
-      setLocal("userMemory", {
-        userInfo: this.userInfo,
-        otherInfo: this.otherInfo,
-        language: this.language
-      });
+      if (this.$route.path != "/login") {
+        setLocal("userMemory", {
+          userInfo: this.userInfo,
+          otherInfo: this.otherInfo,
+          language: this.language
+        });
+      }
       let confirmationMessage = "user-yun";
       (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
       return confirmationMessage;
@@ -57,7 +59,8 @@ export default {
       handler: function(n, o) {
         if (n.name == "login") {
           clearInterval(this.KickOutInterval);
-        } else if (n.name == "home") {
+          // } else if (n.name == "home") {
+        } else {
           this.KickOutInterval = setInterval(() => {
             this.KickOutTime++;
           }, this.KickOutNum);

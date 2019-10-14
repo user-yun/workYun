@@ -43,7 +43,7 @@ export default {
       let userMemory = getLocal("userMemory");
       let userId = userMemory.userInfo.userId;
 
-      let userRoutes = await this.$Get("/web-config/routes.json");
+      let userRoutes = await that.$Get("/web-config/routes.json");
       // let userRoutes = require("@/routes.json");
       userRoutes = that.hr(userRoutes);
 
