@@ -186,8 +186,6 @@ export default {
       this.timer = setInterval(this.shuffle, this.aniTime * 1000);
     document.body.style.overflowX = "hidden";
   },
-  activited() {},
-  created() {},
   beforeDestroy() {
     if (this.timer) {
       //如果定时器还在运行 或者直接关闭，不用判断

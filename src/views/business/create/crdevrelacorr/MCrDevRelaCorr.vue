@@ -2,7 +2,7 @@
   <div style="height:100%">
     <el-col :span="18" style="height:100%">
       <ECharts
-        id="PostRevenue"
+        id="TreeConfig"
         height="99.8%"
         :data="require('@/echartsdata/TreeChart').default(TreeChartOption)"
         @clickECharts="clickECharts"

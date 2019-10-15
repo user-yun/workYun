@@ -1,11 +1,11 @@
 <template>
-  <div>closedBills</div>
+  <div>allOrgMonth</div>
 </template>
 
 <script>
 export default {
   // mixins: [require("@/mymixins").default],
-  name: "closedBills",
+  name: "allOrgMonth",
   data() {
     return {
       // userInfo

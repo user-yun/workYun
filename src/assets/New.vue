@@ -73,7 +73,7 @@ export default {
     //渲染
     alert(1);
   },
-  activited() {
+  activated() {
     //可见
   },
   beforeUpdate() {

@@ -41,7 +41,6 @@ export default {
   computed: {},
   methods: {
     async initChart() {
-      console.warn(`------------------------initCharts-${this.id}-start`);
       let _this = this;
       // _this.MyChart = _this.$echarts.init(myChart);
       _this.MyChart = await require("echarts").init(
@@ -52,16 +51,8 @@ export default {
       }
       await window.removeEventListener("click", _this.click);
       await _this.MyChart.on("click", _this.click);
-      // _this.MyChart.on("click", function(p) {
-      //   _this.$emit("clickECharts", p);
-      //   // if (_this.mFunction) _this.mFunction(p);
-      // });
-      // window.addEventListener("resize", function() {
-      //   _this.MyChart.resize;
-      // });
       await window.addEventListener("resize", _this.__resizeHandler);
       await _this.setChart();
-      console.warn(`------------------------initCharts-${this.id}-end`);
     },
     click(p) {
       let _this = this;
@@ -70,17 +61,16 @@ export default {
     },
     clear() {
       this.MyChart.clear();
-      console.warn(`------------------------initCharts-${this.id}-clear`);
     },
     async setChart() {
       let _this = this;
       await _this.clear();
       await _this.MyChart.setOption(_this.data, true);
-      console.warn(`------------------------initCharts-${this.id}-setChart`);
     },
     __resizeHandler() {
       if (this.MyChart) {
         this.MyChart.resize();
+        this.setChart();
       }
     }
   },
@@ -92,7 +82,6 @@ export default {
       deep: true
     }
   },
-  created() {},
   mounted() {
     // this.$nextTick(() => {
     this.initChart();
@@ -106,7 +95,12 @@ export default {
     this.MyChart.dispose();
     this.MyChart = null;
   },
-  destroyed() {}
+  activated() {
+    let that = this;
+    if (that.MyChart) {
+      that.__resizeHandler();
+    }
+  }
 };
 </script>
 

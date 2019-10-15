@@ -38,7 +38,7 @@
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
-            "noKeepAlive": true,
+            "noKeepAlive": false,
             "role": [1, 999]
         },
         "children": [{
@@ -48,7 +48,7 @@
             "meta": {
                 "icon": "el-icon-sugar",
                 "intercept": true,
-                "noKeepAlive": true,
+                "noKeepAlive": false,
                 "role": [1, 999]
             }
         }]
@@ -297,5 +297,52 @@
                 }
             }
         ]
+    },
+    {
+        "path": "/dataAgg",
+        "name": "dataAgg",
+        "component": "welcome/Main",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        },
+        "children": [{
+            "path": "/allOrgDay",
+            "name": "allOrgDay",
+            "component": "dataagg/allorgday/AllOrgDay",
+            "meta": {
+                "icon": "el-icon-sugar",
+                "intercept": true,
+                "role": [1]
+            }
+        }, {
+            "path": "/allOrgMonth",
+            "name": "allOrgMonth",
+            "component": "dataagg/allorgmonth/AllOrgMonth",
+            "meta": {
+                "icon": "el-icon-sugar",
+                "intercept": true,
+                "role": [1]
+            }
+        }, {
+            "path": "/sinOrgDay",
+            "name": "sinOrgDay",
+            "component": "dataagg/sinorgday/SinOrgDay",
+            "meta": {
+                "icon": "el-icon-sugar",
+                "intercept": true,
+                "role": [1]
+            }
+        }, {
+            "path": "/sinOrgMonth",
+            "name": "sinOrgMonth",
+            "component": "dataagg/sinorgmonth/SinOrgMonth",
+            "meta": {
+                "icon": "el-icon-sugar",
+                "intercept": true,
+                "role": [1]
+            }
+        }]
     }
 ]

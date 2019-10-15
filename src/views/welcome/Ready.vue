@@ -53,8 +53,8 @@ export default {
       let userId = this.userInfo.userId;
       this.log({ userId });
 
-      let userRoutes = await that.$Get("/web-config/routes.json");
-      // let userRoutes = require("@/routes.json");
+      // let userRoutes = await that.$Get("/web-config/routes.json");
+      let userRoutes = require("@/routes.json");
       userRoutes = that.hr(userRoutes);
 
       // let t = setTimeout(() => {

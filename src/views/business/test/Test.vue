@@ -33,7 +33,8 @@
     <!-- <ProgresS></ProgresS> -->
     <el-button @click="exc">excelTest</el-button>
     <ECharts
-      id="PostRevenue"
+      ref="TreeDemo"
+      id="TreeDemo"
       height="79vh"
       :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'TB')"
       @clickECharts="clickECharts"
@@ -269,9 +270,6 @@ export default {
   },
   mounted() {
     //渲染
-  },
-  activited() {
-    //可见
   },
   beforeUpdate() {
     //更新前
