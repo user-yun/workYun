@@ -74,6 +74,7 @@ module.exports = {
       "/weather": {
         target: weatherURL,
         changeOrigin: true,
+        secure: false,
         pathRewrite: {
           '^/weather': ''
         }
