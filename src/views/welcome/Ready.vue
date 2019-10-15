@@ -1,6 +1,6 @@
 <template></template>
 <script>
-import { getLocal } from "@/function";
+// import { getLocal } from "@/function";
 export default {
   mixins: [require("@/mymixins").default],
   name: "Ready",
@@ -17,11 +17,19 @@ export default {
           children = that.hr(le.children);
         }
         let ro;
-        if (le.component != undefined) {
+        let lect = le.component;
+        if (lect != undefined) {
+          let component;
+          let ls = lect.split("/");
+          if (ls[0] == "welcome") {
+            component = () => import(`@/views/welcome/${ls[1]}`);
+          } else {
+            component = () => import(`@/views/business/${lect}`);
+          }
           ro = {
             path: le.path,
             name: le.name,
-            component: () => import(`@/${le.component}`),
+            component,
             meta: le.meta,
             children
           };
@@ -40,8 +48,10 @@ export default {
     },
     async ready() {
       let that = this;
-      let userMemory = getLocal("userMemory");
-      let userId = userMemory.userInfo.userId;
+      // let userMemory = getLocal("userMemory");
+      // let userId = userMemory.userInfo.userId;
+      let userId = this.userInfo.userId;
+      this.log({ userId });
 
       let userRoutes = await that.$Get("/web-config/routes.json");
       // let userRoutes = require("@/routes.json");

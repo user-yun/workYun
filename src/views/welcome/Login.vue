@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-image v-if="otherInfo.bgImg" :src="otherInfo.bgImg" class="w100 h997" fit="cover"></el-image>
+    <!-- <el-image v-if="otherInfo.bgImg" :src="otherInfo.bgImg" class="w100 h997" fit="cover"></el-image> -->
+    <img v-if="otherInfo.bgImg" :src="otherInfo.bgImg" class="w100 h997" style="object-fit:cover;">
     <el-dialog :visible="true" :show-close="false" top="30vh" :width="dialogWidth">
       <el-row slot="title">
         <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="18">
@@ -116,8 +117,8 @@ export default {
           otherInfo: that.otherInfo,
           language: that.language
         });
-        that.$router.replace({ name: "home" });
-        // that.$router.replace({ name: "test" });
+        // that.$router.replace({ name: "home" });
+        that.$router.replace({ name: "test" });
       });
     }
   },

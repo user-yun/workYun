@@ -1,7 +1,7 @@
 [{
         "path": "/home",
         "name": "home",
-        "component": "views/welcome/Home.vue",
+        "component": "welcome/Home",
         "meta": {
             "intercept": true,
             "role": [1, 999]
@@ -10,7 +10,7 @@
     {
         "path": "/home",
         "name": "home",
-        "component": "views/welcome/Main.vue",
+        "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-house",
             "intercept": true,
@@ -34,7 +34,7 @@
     {
         "path": "/test",
         "name": "test",
-        "component": "views/welcome/Main.vue",
+        "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
@@ -44,7 +44,7 @@
         "children": [{
             "path": "/test",
             "name": "test",
-            "component": "views/business/test/Test.vue",
+            "component": "test/Test",
             "meta": {
                 "icon": "el-icon-sugar",
                 "intercept": true,
@@ -56,7 +56,7 @@
     {
         "path": "/system",
         "name": "system",
-        "component": "views/welcome/Main.vue",
+        "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-s-platform",
             "intercept": true,
@@ -65,7 +65,7 @@
         "children": [{
                 "path": "/device",
                 "name": "device",
-                "component": "views/business/system/device/MDevice",
+                "component": "system/device/MDevice",
                 "meta": {
                     "icon": "el-icon-odometer",
                     "intercept": true,
@@ -75,7 +75,7 @@
             {
                 "path": "/business",
                 "name": "business",
-                "component": "views/business/system/business/MBusiness",
+                "component": "system/business/MBusiness",
                 "meta": {
                     "icon": "el-icon-tickets",
                     "intercept": true,
@@ -85,7 +85,7 @@
             {
                 "path": "/organization",
                 "name": "organization",
-                "component": "views/business/system/orghistory/MOrgHistory",
+                "component": "system/orghistory/MOrgHistory",
                 "meta": {
                     "icon": "el-icon-s-check",
                     "intercept": true,
@@ -95,7 +95,7 @@
             {
                 "path": "/bill",
                 "name": "bill",
-                "component": "views/business/system/bill/MBill",
+                "component": "system/bill/MBill",
                 "meta": {
                     "icon": "el-icon-s-order",
                     "intercept": true,
@@ -105,7 +105,7 @@
             {
                 "path": "/enterpriseSummary",
                 "name": "enterpriseSummary",
-                "component": "views/business/system/orgsummary/MOrgSummary",
+                "component": "system/orgsummary/MOrgSummary",
                 "meta": {
                     "icon": "el-icon-s-order",
                     "intercept": true,
@@ -115,7 +115,7 @@
             {
                 "path": "/regionalSummary",
                 "name": "regionalSummary",
-                "component": "views/business/system/zonesummary/MZoneSummary",
+                "component": "system/zonesummary/MZoneSummary",
                 "meta": {
                     "icon": "el-icon-s-order",
                     "intercept": true,
@@ -125,7 +125,7 @@
             {
                 "path": "/module",
                 "name": "module",
-                "component": "views/business/system/module/MModule",
+                "component": "system/module/MModule",
                 "meta": {
                     "icon": "el-icon-s-order",
                     "intercept": true,
@@ -135,7 +135,7 @@
             {
                 "path": "/region",
                 "name": "region",
-                "component": "views/business/system/zonesummary/MZoneList",
+                "component": "system/zonesummary/MZoneList",
                 "meta": {
                     "icon": "el-icon-s-order",
                     "intercept": true,
@@ -145,7 +145,7 @@
             {
                 "path": "/publicBooth",
                 "name": "publicBooth",
-                "component": "views/business/system/publicbooth/MPublicBooth",
+                "component": "system/publicbooth/MPublicBooth",
                 "meta": {
                     "icon": "el-icon-s-order",
                     "intercept": true,
@@ -157,7 +157,7 @@
     {
         "path": "/config",
         "name": "config",
-        "component": "views/welcome/Main.vue",
+        "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-s-help",
             "intercept": true,
@@ -166,7 +166,7 @@
         "children": [{
                 "path": "/publicBoothConfig",
                 "name": "publicBoothConfig",
-                "component": "views/business/config/publicboothconfig/MPublicBoothConfig",
+                "component": "config/publicboothconfig/MPublicBoothConfig",
                 "meta": {
                     "icon": "el-icon-s-help",
                     "intercept": true,
@@ -176,7 +176,7 @@
             {
                 "path": "/groRbtConfig",
                 "name": "groRbtConfig",
-                "component": "views/business/config/grorbtconfig/MGroRbtConfig",
+                "component": "config/grorbtconfig/MGroRbtConfig",
                 "meta": {
                     "icon": "el-icon-s-help",
                     "intercept": true,
@@ -188,7 +188,7 @@
     {
         "path": "/create",
         "name": "create",
-        "component": "views/welcome/Main.vue",
+        "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-s-help",
             "intercept": true,
@@ -197,7 +197,7 @@
         "children": [{
                 "path": "/crGeTaPuBo",
                 "name": "crGeTaPuBo",
-                "component": "views/business/create/crgetapubo/MCrGeTaPuBo",
+                "component": "create/crgetapubo/MCrGeTaPuBo",
                 "meta": {
                     "icon": "el-icon-s-help",
                     "intercept": true,
@@ -207,7 +207,7 @@
             {
                 "path": "/crInTaPuBo",
                 "name": "crInTaPuBo",
-                "component": "views/business/create/crintapubo/MCrInTaPuBo",
+                "component": "create/crintapubo/MCrInTaPuBo",
                 "meta": {
                     "icon": "el-icon-s-help",
                     "intercept": true,
@@ -217,7 +217,7 @@
             {
                 "path": "/crModuRela",
                 "name": "crModuRela",
-                "component": "views/business/create/crmodurela/MCrModuRela",
+                "component": "create/crmodurela/MCrModuRela",
                 "meta": {
                     "icon": "el-icon-s-help",
                     "intercept": true,
@@ -227,7 +227,7 @@
             {
                 "path": "/crdevrelacorr",
                 "name": "crdevrelacorr",
-                "component": "views/business/create/crdevrelacorr/MCrDevRelaCorr",
+                "component": "create/crdevrelacorr/MCrDevRelaCorr",
                 "meta": {
                     "icon": "el-icon-s-help",
                     "intercept": true,
@@ -239,7 +239,7 @@
     {
         "path": "/docking",
         "name": "docking",
-        "component": "views/welcome/Main.vue",
+        "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
@@ -248,7 +248,7 @@
         "children": [{
                 "path": "/hosDock",
                 "name": "hosDock",
-                "component": "views/business/docking/hosdock/MHosDock.vue",
+                "component": "docking/hosdock/MHosDock",
                 "meta": {
                     "icon": "el-icon-sugar",
                     "intercept": true,
@@ -258,7 +258,7 @@
             {
                 "path": "/enterpDock",
                 "name": "enterpDock",
-                "component": "views/business/docking/enterpdock/MEnterpDock.vue",
+                "component": "docking/enterpdock/MEnterpDock",
                 "meta": {
                     "icon": "el-icon-sugar",
                     "intercept": true,
@@ -270,7 +270,7 @@
     {
         "path": "/billrechargemanagement",
         "name": "billrechargemanagement",
-        "component": "views/welcome/Main.vue",
+        "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
@@ -279,7 +279,7 @@
         "children": [{
                 "path": "/accountsReceivable",
                 "name": "accountsReceivable",
-                "component": "views/business/billrechargemanagement/accountsreceivable/AccountsReceivable.vue",
+                "component": "billrechargemanagement/accountsreceivable/AccountsReceivable",
                 "meta": {
                     "icon": "el-icon-sugar",
                     "intercept": true,
@@ -289,7 +289,7 @@
             {
                 "path": "/closedBills",
                 "name": "closedBills",
-                "component": "views/business/billrechargemanagement/closedbills/ClosedBills.vue",
+                "component": "billrechargemanagement/closedbills/ClosedBills",
                 "meta": {
                     "icon": "el-icon-sugar",
                     "intercept": true,
