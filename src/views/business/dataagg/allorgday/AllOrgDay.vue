@@ -1,6 +1,9 @@
 <template>
   <div>
     <DatePickerMult @change="pickerChange"></DatePickerMult>
+    <div style="height:84vh">
+      <PageTable :tableData="dataList" :DataConfig="require('./AllOrgDayDataConfig.js')"></PageTable>
+    </div>
   </div>
 </template>
 
@@ -10,51 +13,31 @@ export default {
   name: "allOrgDay",
   data() {
     return {
-      // userInfo
-      // otherInfo
-      // language
+      selectDate: [],
+      dataList: []
     };
   },
   components: {
+    PageTable: () => import("@/assets/PageTable"),
     DatePickerMult: () => import("@/assets/DatePickerMult")
-  },
-  computed: {
-    // test() {
-    //   let data = null;
-    //   return data;
-    // }
-  },
-  watch: {
-    //监听数据变化
-    // test: {
-    //   deep: true,
-    //   immediate: true,
-    //   handler(newv, oldv) {}
-    // }
   },
   methods: {
     pickerChange(t) {
-      this.log(t);
+      this.selectDate = t;
+      this.getRequest();
     },
     getRequest() {
-      let projectId = this.userInfo.projectId;
+      let that = this;
       let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
-    },
-    postRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
-        let data = res.Data;
-        this.List = data;
+      this.get(
+        `/orgday/orgpowersearch/${userProject}/${that.selectDate[0]}/${
+          that.selectDate[1]
+        }`,
+        {}
+      ).then(res => {
+        that.dataList = res.Data;
       });
     }
-  },
-  mounted() {
-    //渲染
   }
 };
 </script>

@@ -15,7 +15,7 @@ function isFalse(o) {
     return false;
 }
 
-axios.defaults.timeout = 5000;                        //响应时间
+axios.defaults.timeout = 10000;                        //响应时间
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';        //配置请求头
 // axios.defaults.baseURL = 'https://cs01.zg118.com/api/sp';   //配置接口地址
 // axios.defaults.baseURL = 'http://121.196.211.83:7779';

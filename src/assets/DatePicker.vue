@@ -44,7 +44,8 @@ export default {
     //渲染
     let date = new Date();
     date.setDate(date.getDate() - this.dayNum);
-    this.day = date.format("yyyy-MM-dd");
+    this.day = date.format(this.valueF[this.type]);
+    this.$emit("change", this.day);
   }
 };
 </script>

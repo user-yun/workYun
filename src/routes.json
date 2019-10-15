@@ -182,6 +182,16 @@
                     "intercept": true,
                     "role": [1]
                 }
+            },
+            {
+                "path": "/orgHousBind",
+                "name": "orgHousBind",
+                "component": "config/orghousbind/OrgHousBind",
+                "meta": {
+                    "icon": "el-icon-s-help",
+                    "intercept": true,
+                    "role": [1]
+                }
             }
         ]
     },

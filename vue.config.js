@@ -49,7 +49,7 @@ module.exports = {
     host: "0.0.0.0",
     port: 8088,
     https: false,
-    open: true, //配置自动启动浏览器
+    open: false, //配置自动启动浏览器
     hotOnly: false,
     proxy: { // 设置代理
       "/Example-My": {

@@ -43,9 +43,11 @@ export default {
   mounted() {
     //渲染
     let date = new Date();
-    this.day.push(date.format("yyyy-MM-dd"));
     date.setDate(date.getDate() - this.dayNum);
-    this.day.push(date.format("yyyy-MM-dd"));
+    this.day.push(date.format(this.valueF[this.type]));
+    date = new Date();
+    this.day.push(date.format(this.valueF[this.type]));
+    this.$emit("change", this.day);
   }
 };
 </script>

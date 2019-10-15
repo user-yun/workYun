@@ -1,93 +1,59 @@
 <template>
-  <div>sinOrgDay</div>
+  <div>
+    <el-col :sm="12" :md="6" :xl="3">
+      <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
+    </el-col>
+    <el-col :sm="12" :md="18" :xl="21">
+      <DatePickerMult @change="pickerChange"></DatePickerMult>
+      <div style="height:84vh">
+        <PageTable
+          :tableData="dataList"
+          :DataConfig="require('../allorgday/AllOrgDayDataConfig.js')"
+        ></PageTable>
+      </div>
+    </el-col>
+  </div>
 </template>
 
 <script>
 export default {
-  // mixins: [require("@/mymixins").default],
+  mixins: [require("@/mymixins").default],
   name: "sinOrgDay",
   data() {
     return {
-      // userInfo
-      // otherInfo
-      // language
+      selectDate: [],
+      dataList: [],
+      treeData: {}
     };
   },
   components: {
-    // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    //test: () => import('@/test/test.vue')
-  },
-  props: {
-    // test: {
-    //   type: String,
-    //   default: () => {
-    //     let colors = require("@/color.js");
-    //     return colors[Math.ceil(Math.random() * colors.length - 1)];
-    //   }
-    // }
-  },
-  computed: {
-    // test() {
-    //   let data = null;
-    //   return data;
-    // }
-  },
-  watch: {
-    //监听数据变化
-    // test: {
-    //   deep: true,
-    //   immediate: true,
-    //   handler(newv, oldv) {}
-    // }
+    PageTable: () => import("@/assets/PageTable"),
+    MEnterTree: () => import("#/multiplexing/entertree/MEnterTree.vue"),
+    DatePickerMult: () => import("@/assets/DatePickerMult")
   },
   methods: {
-    getRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
+    MEnterTreeClick(treeData) {
+      this.treeData = treeData;
+      if (treeData.Id) {
+        this.getRequest();
+      }
     },
-    postRequest() {
-      let projectId = this.userInfo.projectId;
+    pickerChange(t) {
+      this.selectDate = t;
+    },
+    getRequest() {
+      let that = this;
       let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
-        let data = res.Data;
-        this.List = data;
+      let orgid = this.treeData.Id;
+      this.get(
+        `/orgday/orgpowersearchorgid/${userProject}/${orgid}/${
+          that.selectDate[0]
+        }/${that.selectDate[1]}`,
+        {}
+      ).then(res => {
+        that.dataList = res.Data;
       });
     }
-  },
-  beforeCreate() {
-    //创建前
-  },
-  created() {
-    //创建
-  },
-  beforeMount() {
-    //渲染前
-    // this.$forceUpdate();
-    // this.$nextTick();
-  },
-  mounted() {
-    //渲染
-    alert(1);
-  },
-  beforeUpdate() {
-    //更新前
-  },
-  updated() {
-    //更新
-  },
-  beforeDestroy() {
-    //销毁前
-  },
-  destroyed() {
-    //销毁
   }
 };
 </script>
-<style scoped>
-.test {
-}
-</style>
