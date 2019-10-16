@@ -48,17 +48,10 @@ router.beforeEach((to, from, next) => {
         let userRole = store.state.userInfo.userRole;
         if (isFalse(userRole)) {//是否拥有角色 否
             let userMemory = getLocal("userMemory");
-            if (isFalse(userMemory)) {//是否本地有记忆 否
-                next({
-                    name: "login",
-                    params: {
-                        redirect: to.name
-                    }
-                });
-            } else {
+            if (!isFalse(userMemory) && Object.keys(userMemory).length > 0) {//是否本地有记忆 有
                 let second = userMemory.userInfo.lastTime.second;
                 let nowSecond = new Date().getTime();
-                let obsoleteTime = 24 * 60 * 60 * 1000;//用户登录时间判断拦截
+                let obsoleteTime = 0.5 * 60 * 60 * 1000 * 2;//用户登录时间判断拦截
                 if (nowSecond - second < obsoleteTime) {
                     store.dispatch("upVuex", {
                         mutations: "setUserInfo",
@@ -92,6 +85,13 @@ router.beforeEach((to, from, next) => {
                         }
                     });
                 }
+            } else {// 否
+                next({
+                    name: "login",
+                    params: {
+                        redirect: to.name
+                    }
+                });
             }
         } else {//有角色就可以跳转 等待加时间限制
             if (meta.role.includes(userRole)) {//是否角色可以跳转路由 是

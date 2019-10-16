@@ -130,10 +130,10 @@ export default {
   },
   mounted() {
     let userMemory = getLocal("userMemory");
-    if (this.isFalse(userMemory)) {
-      this.setWebConfig();
-    } else {
+    if (!this.isFalse(userMemory) && Object.keys(userMemory).length > 0) {
       this.setOtherInfo(userMemory.otherInfo);
+    } else {
+      this.setWebConfig();
     }
     window.addEventListener("resize", this.resizeHandler);
   },

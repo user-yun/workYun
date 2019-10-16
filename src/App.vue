@@ -12,7 +12,7 @@ export default {
       YouAreSmart: true,
       KickOutInterval: {},
       KickOutTime: 0,
-      KickOutNum: 1000 * 60 * 10
+      KickOutNum: 0.5 * 60 * 60 * 1000
     };
   },
   methods: {
@@ -50,8 +50,8 @@ export default {
   },
   watch: {
     KickOutTime(n) {
-      if (n > 3) {
-        this.$router.replace({ name: "login" });
+      if (n >= 2) {
+        this.$router.replace({ path: "/" });
         this.KickOutTime = 0;
       }
     },
