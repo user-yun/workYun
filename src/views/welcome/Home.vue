@@ -7,7 +7,7 @@
       <BriefSee></BriefSee>
       <!-- <BriefSeeS :bsSmall="false"></BriefSeeS> -->
     </el-col>
-    <el-col :span="8">
+    <el-col :xs="24" :md="12" :lg="8">
       <ECharts
         id="PostRevenue"
         height="44vh"
@@ -15,11 +15,11 @@
         @clickECharts="clickECharts"
       ></ECharts>
     </el-col>
-    <el-col :span="8">
+    <el-col :xs="24" :md="12" :lg="8">
       <VertRollS DHeight="44vh"></VertRollS>
       <!-- <VertRoll DHeight="7vh" :vShowNum="4"></VertRoll> -->
     </el-col>
-    <el-col :span="8">
+    <el-col :xs="24" :md="12" :lg="8">
       <ECharts
         height="44vh"
         id="MultiplePillarsChart"
@@ -27,7 +27,7 @@
         @clickECharts="clickECharts"
       ></ECharts>
     </el-col>
-    <el-col :span="8">
+    <el-col :xs="24" :md="12" :lg="8">
       <ECharts
         height="44vh"
         id="PieChart"
@@ -35,7 +35,7 @@
         @clickECharts="clickECharts"
       ></ECharts>
     </el-col>
-    <el-col :span="8">
+    <el-col :xs="24" :md="12" :lg="8">
       <ECharts
         height="44vh"
         id="PolylineChart"
@@ -43,7 +43,7 @@
         @clickECharts="clickECharts"
       ></ECharts>
     </el-col>
-    <el-col :span="8">
+    <el-col :xs="24" :md="12" :lg="8">
       <ECharts
         height="44vh"
         id="RadarChart"

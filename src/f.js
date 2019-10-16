@@ -258,3 +258,17 @@ Date.prototype.format = function (fmt) {
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
+
+Vue.prototype.$setTitle = function (t) {
+    let title = document.querySelector("title") || document.createElement('title');
+    title.innerText = t;
+    document.getElementsByTagName('head')[0].appendChild(title);
+}
+
+Vue.prototype.$setIco = function (i) {
+    let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = i;
+    document.getElementsByTagName('head')[0].appendChild(link);
+}

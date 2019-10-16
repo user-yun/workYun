@@ -5,7 +5,7 @@
     <el-dialog :visible="true" :show-close="false" top="30vh" :width="dialogWidth">
       <el-row slot="title">
         <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="18">
-          <h2 class="alnlft">{{language.title}}</h2>
+          <h2 class="alnlft title">{{language.title}}</h2>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="6" class="alnrit">
           <SelectLanguage></SelectLanguage>
@@ -36,7 +36,9 @@
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">{{language.signIn}}</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">
+            <span class="normal">{{language.signIn}}</span>
+          </el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -122,7 +124,10 @@ export default {
       });
     }
   },
-  created() {},
+  created() {
+    this.$setTitle("yun3");
+    this.$setIco("https://cloud.tencent.com/favicon.ico");
+  },
   mounted() {
     let userMemory = getLocal("userMemory");
     if (this.isFalse(userMemory)) {
