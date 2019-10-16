@@ -13,7 +13,7 @@
         <h4>{{language.selectDate}}</h4>
         <DatePickerMult @change="pickerChange"></DatePickerMult>
         <el-button type="primary" @click="getRequest">{{language.orgHousBind}}</el-button>
-        <div style="height:65vh">
+        <div style="height:65vh" v-if="checkData">
           <PageTable :tableData="checkData" :DataConfig="require('./OrgHousBindDataConfig.js')"></PageTable>
         </div>
       </el-col>
@@ -42,9 +42,11 @@ export default {
   methods: {
     MFloorTreeClick(t) {
       this.zoneTree = t;
+      this.checkZone();
     },
     MEnterTreeClick(t) {
       this.orgTree = t;
+      this.checkZone();
     },
     pickerChange(t) {
       this.selectDate = t;

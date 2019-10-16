@@ -34,25 +34,26 @@ export default {
   methods: {
     MEnterTreeClick(treeData) {
       this.treeData = treeData;
-      if (treeData.Id) {
-        this.getRequest();
-      }
+      this.getRequest();
     },
     pickerChange(t) {
       this.selectDate = t;
+      this.getRequest();
     },
     getRequest() {
       let that = this;
       let userProject = this.userInfo.userProject;
       let orgid = this.treeData.Id;
-      this.get(
-        `/orgday/orgpowersearchorgid/${userProject}/${orgid}/${
-          that.selectDate[0]
-        }/${that.selectDate[1]}`,
-        {}
-      ).then(res => {
-        that.dataList = res.Data;
-      });
+      if (orgid) {
+        this.get(
+          `/orgday/orgpowersearchorgid/${userProject}/${orgid}/${
+            that.selectDate[0]
+          }/${that.selectDate[1]}`,
+          {}
+        ).then(res => {
+          that.dataList = res.Data;
+        });
+      }
     }
   }
 };

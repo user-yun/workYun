@@ -21,9 +21,6 @@ export default {
   name: "sinOrgMonth",
   data() {
     return {
-      // userInfo
-      // otherInfo
-      // language
       selectDate: [],
       dataList: []
     };
@@ -36,25 +33,26 @@ export default {
   methods: {
     MEnterTreeClick(treeData) {
       this.treeData = treeData;
-      if (treeData.Id) {
-        this.getRequest();
-      }
+      this.getRequest();
     },
     pickerChange(t) {
       this.selectDate = t;
+      this.getRequest();
     },
     getRequest() {
       let that = this;
       let userProject = this.userInfo.userProject;
       let orgid = this.treeData.Id;
-      this.get(
-        `/orgmonth/orgpowersearchorgid/${userProject}/${orgid}/${
-          that.selectDate
-        }`,
-        {}
-      ).then(res => {
-        that.dataList = res.Data;
-      });
+      if (orgid) {
+        this.get(
+          `/orgmonth/orgpowersearchorgid/${userProject}/${orgid}/${
+            that.selectDate
+          }`,
+          {}
+        ).then(res => {
+          that.dataList = res.Data;
+        });
+      }
     }
   }
 };
