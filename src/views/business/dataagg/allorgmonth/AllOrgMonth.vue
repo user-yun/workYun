@@ -2,7 +2,11 @@
   <div>
     <DatePicker :type="1" :dayNum="31" @change="pickerChange"></DatePicker>
     <div style="height:84vh">
-      <PageTable :tableData="dataList" :DataConfig="require('./AllOrgMonthDataConfig.js')"></PageTable>
+      <PageTable
+        :tableData="dataList"
+        @select="tableSelect"
+        :DataConfig="require('./AllOrgMonthDataConfig.js')"
+      ></PageTable>
     </div>
   </div>
 </template>
@@ -25,6 +29,9 @@ export default {
     pickerChange(t) {
       this.selectDate = t;
       this.getRequest();
+    },
+    tableSelect(d) {
+      console.log(d);
     },
     getRequest() {
       let that = this;

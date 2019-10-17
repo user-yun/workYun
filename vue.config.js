@@ -1,4 +1,4 @@
-let illegalURL = "http://121.196.211.83/";
+let illegalURL = "https://spmp.zg118.com/";
 let weatherURL = "https://www.tianqiapi.com/api/"
 let path = require('path')
 function resolve(dir) {

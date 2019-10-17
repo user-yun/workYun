@@ -1,15 +1,26 @@
 <template>
   <div style="height:100%;">
     <el-table
+      ref="meltable"
       :data="tableData"
       :border="TableConfig.border"
       :stripe="TableConfig.stripe"
       :highlight-current-row="TableConfig.highlight"
       height="95%"
-      @cell-dblclick="cellDblClick"
+      :header-cell-style="headerCellStyle"
       :cell-style="cellStyle"
+      @cell-dblclick="cellDblClick"
+      @select="select"
+      @select-all="selectAll"
     >
+      <el-table-column
+        v-if="TableConfig.multiple || TableConfig.single"
+        type="selection"
+        width="44"
+        fixed
+      ></el-table-column>
       <el-table-column type="index" width="60" align="center" fixed></el-table-column>
+
       <el-table-column
         v-for="(item,index) in DataConfig"
         :key="index"
@@ -72,7 +83,9 @@ export default {
           border: true,
           stripe: true,
           highlight: true,
-          showPage: true,
+          showPage: false,
+          multiple: false,
+          single: false,
           disabled: ""
         };
         return obj;
@@ -140,8 +153,25 @@ export default {
         return JSON.stringify(data);
       }
     },
-    cellDblClick(row, column) {
-      this.$emit("cellDblClick", row, column);
+    cellDblClick(r, c) {
+      this.$emit("cellDblClick", r, c);
+    },
+    headerCellStyle(o) {
+      if (o.columnIndex == 0 && this.TableConfig.single) {
+        return { pointerEvents: "none", opacity: 0.1 };
+      }
+    },
+    select(s, r) {
+      if (this.TableConfig.multiple) {
+        this.$emit("select", s);
+      } else if (this.TableConfig.single) {
+        this.$refs.meltable.clearSelection();
+        this.$refs.meltable.toggleRowSelection(r);
+        this.$emit("select", r);
+      }
+    },
+    selectAll(s) {
+      this.$emit("select", s);
     },
     clickPage(is) {
       this.$emit("clickPage", is);

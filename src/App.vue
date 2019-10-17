@@ -1,5 +1,5 @@
 <template>
-  <div id="app" @mousemove="mousemove">
+  <div id="app" @mousemove="mousemove" @contextmenu.prevent>
     <router-view v-if="YouAreSmart" key="app"/>
   </div>
 </template>

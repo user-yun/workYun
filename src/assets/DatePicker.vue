@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <el-date-picker
-      v-model="day"
-      :editable="false"
-      :type="typeS[type]"
-      :value-format="valueF[type]"
-      @change="picker"
-    ></el-date-picker>
-  </div>
+  <el-date-picker
+    v-model="day"
+    :editable="false"
+    :clearable="false"
+    :type="typeS[type]"
+    :value-format="valueF[type]"
+    @change="picker"
+  ></el-date-picker>
 </template>
 
 <script>

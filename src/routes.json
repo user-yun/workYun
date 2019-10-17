@@ -192,6 +192,26 @@
                     "intercept": true,
                     "role": [1]
                 }
+            },
+            {
+                "path": "/inHouseSearch",
+                "name": "inHouseSearch",
+                "component": "config/inhousesearch/InHouseSearch",
+                "meta": {
+                    "icon": "el-icon-s-help",
+                    "intercept": true,
+                    "role": [1]
+                }
+            },
+            {
+                "path": "/houseDevBind",
+                "name": "houseDevBind",
+                "component": "config/housedevbind/HouseDevBind",
+                "meta": {
+                    "icon": "el-icon-s-help",
+                    "intercept": true,
+                    "role": [1]
+                }
             }
         ]
     },
