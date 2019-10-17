@@ -1,13 +1,13 @@
 <template>
   <el-col>
     <el-row>
-      <el-col :sm="8" :md="6" :xl="4">
+      <el-col :sm="6" :md="4" :xl="3">
         <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
       </el-col>
-      <el-col :sm="8" :md="6" :xl="4">
+      <el-col :sm="6" :md="4" :xl="3">
         <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
       </el-col>
-      <el-col :sm="8" :md="12" :xl="16">
+      <el-col :sm="12" :md="16" :xl="15">
         <h4>{{language.currentOptions}}：{{zoneTree.Title}}</h4>
         <h4>{{language.currentOptions}}：{{orgTree.Title}}</h4>
         <h4>{{language.selectDate}}</h4>

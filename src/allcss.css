@@ -81,13 +81,6 @@ body {
     cursor: default;
 }
 
-.ignore {
-    /* 忽视文字 */
-    color: #909399;
-    font-size: 0.625vw;
-    /* 12/1920 */
-}
-
 .icon {
     /* 图标 */
     font-size: 1.5vw;
@@ -121,19 +114,6 @@ body {
     width: 100%;
     height: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.2);
-}
-
-.header-cell-class-name {
-    /* 表头单元格 */
-    color: #303133;
-    font-size: 0.72917vw;
-    white-space: nowrap;
-}
-
-.cell-class-name {
-    /* 表格单元格 */
-    color: #303133;
-    font-size: 0.72917vw;
 }
 
 .messageBox {

@@ -16,8 +16,8 @@
           <i :class="menuListItem.meta.icon"></i>
           <span
             slot="title"
-            class="normal"
-            :text-color="otherInfo.themeTextColor"
+            class="emphasize"
+            :style="{color:otherInfo.themeTextColor}"
           >{{language[menuListItem.name]}}</span>
         </template>
         <transition
@@ -28,8 +28,8 @@
             <i :class="menuChildrenItem.meta.icon"></i>
             <span
               slot="title"
-              class="normal"
-              :text-color="otherInfo.themeTextColor"
+              class="emphasize"
+              :style="{color:otherInfo.themeTextColor}"
             >{{language[menuChildrenItem.name]}}</span>
           </el-menu-item>
         </transition>
@@ -38,8 +38,8 @@
         <i :class="menuListItem.children[0].meta.icon"></i>
         <span
           slot="title"
-          class="normal"
-          :text-color="otherInfo.themeTextColor"
+          class="emphasize"
+          :style="{color:otherInfo.themeTextColor}"
         >{{language[menuListItem.children[0].name]}}</span>
       </el-menu-item>
     </transition>

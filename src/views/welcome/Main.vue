@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="h997">
     <el-aside :width="asideWidth">
       <MainMenu></MainMenu>
     </el-aside>
@@ -12,7 +12,7 @@
         <MainHeader></MainHeader>
       </el-header>
       <MainTag style="height:4vh;margin:0.5vw 0 0 0.5vw"></MainTag>
-      <el-main style="height:90vh;padding:0.2vw 0.5vw 0.5vw 0.5vw">
+      <el-main style="height:90vh;padding:0.5vw">
         <MainApp></MainApp>
       </el-main>
       <!-- <el-footer height="5vh">Footer</el-footer> -->

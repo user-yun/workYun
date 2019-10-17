@@ -7,8 +7,7 @@
       :highlight-current-row="TableConfig.highlight"
       height="95%"
       @cell-dblclick="cellDblClick"
-      header-cell-class-name="header-cell-class-name"
-      cell-class-name="cell-class-name"
+      :cell-style="cellStyle"
     >
       <el-table-column type="index" width="60" align="center" fixed></el-table-column>
       <el-table-column
@@ -22,10 +21,10 @@
         :fixed="item.fixed"
       >
         <template slot-scope="scope">
-          <pre v-if="item.json" :class="item.mini ? 'ignore': 'normal' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
+          <pre v-if="item.json" :class="item.mini ? 'normal': 'emphasize' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
           <span
             v-else
-            :class="item.mini ? 'ignore': 'normal' "
+            :class="item.mini ? 'normal': 'emphasize' "
           >{{dataFormat(item.format,scope.row,scope.column)}}</span>
         </template>
       </el-table-column>
@@ -58,6 +57,12 @@ export default {
       default: () => {
         let arr = [{ test: "test" }];
         return arr;
+      }
+    },
+    cellStyle: {
+      default: () => {
+        let c = "padding:0vw";
+        return c;
       }
     },
     TableConfig: {
