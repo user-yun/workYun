@@ -96,7 +96,7 @@ export default {
           showPage: false,
           multiple: false,
           single: false,
-          disabled: false
+          disabled: true
         };
         return obj;
       }

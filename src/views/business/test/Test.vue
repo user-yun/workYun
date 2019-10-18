@@ -21,6 +21,28 @@
         ></el-button>
       </el-col>
     </el-row>
+    <el-row v-for="(v,i) in upData" :key="i">
+      <el-col :span="4">{{v.name}}</el-col>
+      <el-col :span="16">
+        <el-input v-model="v.value"></el-input>
+      </el-col>
+      <el-col :span="2">
+        <i class="el-icon-close title" @click="deleUpData(i)"></i>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="4">
+        <el-input v-model="inputName"></el-input>
+      </el-col>
+      <el-col :span="16">
+        <el-input v-model="inputValue"></el-input>
+      </el-col>
+      <el-col :span="4">
+        <el-button type="primary" @click="inputAdd" style="width:100%">add</el-button>
+      </el-col>
+    </el-row>
+
+    <pre class="alnlft">{{upDataHandler}}</pre>
     <pre class="alnlft">{{Test}}</pre>
     <!-- <MultipleTimePickers></MultipleTimePickers> -->
     <!-- <MultipleTimeCheck
@@ -63,6 +85,9 @@ export default {
       // otherInfo
       // language
       input: "",
+      upData: [],
+      inputName: "",
+      inputValue: "",
       select: "get",
       Test: {},
       timeList: [
@@ -212,10 +237,14 @@ export default {
     // }
   },
   computed: {
-    // test() {
-    //   let data = null;
-    //   return data;
-    // }
+    upDataHandler() {
+      let td = {};
+      let that = this;
+      this.upData.forEach(e => {
+        that.$set(td, "" + e.name, e.value);
+      });
+      return td;
+    }
   },
   watch: {
     //监听数据变化
@@ -226,6 +255,15 @@ export default {
     // }
   },
   methods: {
+    deleUpData(i) {
+      this.upData.splice(i);
+    },
+    inputAdd() {
+      this.upData.push({
+        name: this.inputName,
+        value: this.inputValue
+      });
+    },
     exc() {
       require("@/excelformat/test.js").default(this, "封装测试", [
         { title: "测试一", content: "内容一" },
@@ -237,8 +275,10 @@ export default {
       this.timeList = list;
     },
     async get() {
-      if (this.select == "get") this.Test = await this.$Get(this.input);
-      else if (this.select == "post") this.Test = await this.$Post(this.input);
+      if (this.select == "get")
+        this.Test = await this.$Get(this.input, this.upDataHandler);
+      else if (this.select == "post")
+        this.Test = await this.$Post(this.input, this.upDataHandler);
     },
     // cellDblClick(row, column) {},
     // clickPage(page) {},

@@ -1,78 +1,41 @@
 let e = require("echarts");
-module.exports = function (title) {
-    let dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
-    let data = [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125, 220];
-    let yMax = 500;
-    let dataShadow = [];
-    for (let i = 0; i < data.length; i++) {
-        dataShadow.push(yMax);
-    }
+module.exports = function (t) {
     let option = {
-        title: {
-            text: '特性示例：渐变色 阴影 点击缩放',
-            subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
+        legend: {},
+        tooltip: {
+            trigger: 'axis',
+            showContent: false
         },
-        xAxis: {
-            data: dataAxis,
-            axisLabel: {
-                inside: true,
-                textStyle: {
-                    color: '#fff'
-                }
-            },
-            axisTick: {
-                show: false
-            },
-            axisLine: {
-                show: false
-            },
-            z: 10
+        dataset: {
+            source: [
+                ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+                ['Matcha Latte', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
+                ['Milk Tea', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
+                ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
+                ['Walnut Brownie', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
+            ]
         },
-        yAxis: {
-            axisLine: {
-                show: false
-            },
-            axisTick: {
-                show: false
-            },
-            axisLabel: {
-                textStyle: {
-                    color: '#999'
-                }
-            }
-        },
-        dataZoom: [
-            {
-                type: 'inside'
-            }
-        ],
+        xAxis: { type: 'category' },
+        yAxis: { gridIndex: 0 },
+        grid: { top: '55%' },
         series: [
-            { // For shadow
-                type: 'bar',
-                itemStyle: {
-                    normal: { color: 'rgba(0,0,0,0.05)' }
-                },
-                barGap: '-100%',
-                barCategoryGap: '40%',
-                data: dataShadow,
-                animation: false
-            },
+            { type: 'line', smooth: true, seriesLayoutBy: 'row' },
+            { type: 'line', smooth: true, seriesLayoutBy: 'row' },
+            { type: 'line', smooth: true, seriesLayoutBy: 'row' },
+            { type: 'line', smooth: true, seriesLayoutBy: 'row' },
             {
-                type: 'bar',
-                itemStyle: {
-                    normal: {
-                        color:new e.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [
-                                { offset: 0, color: '#fff' },
-                                { offset: 0.5, color: '#188df0' },
-                                { offset: 1, color: '#000' }
-                            ]
-                        )
-                    },
-
+                type: 'pie',
+                id: 'pie',
+                radius: '30%',
+                center: ['50%', '25%'],
+                label: {
+                    formatter: '{b}: {@2012} ({d}%)'
                 },
-                data: data
+                encode: {
+                    itemName: 'product',
+                    value: '2012',
+                    tooltip: '2012'
+                }
             }
         ]
     };

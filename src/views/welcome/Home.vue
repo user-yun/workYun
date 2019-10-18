@@ -4,24 +4,30 @@
     <HelloHeader></HelloHeader>
     <!-- 4vh -->
     <el-col :span="4" v-for="i in 6" :key="i">
-      <BriefSee></BriefSee>
+      <!-- <BriefSee></BriefSee> -->
       <!-- <BriefSeeS :bsSmall="false"></BriefSeeS> -->
     </el-col>
     <el-col :xs="24" :md="12" :lg="8">
       <ECharts
         id="PostRevenue"
-        height="44vh"
+        :height="bigHeight"
         :data="require('@/echartsdata/PostRevenue')('折线图图')"
         @clickECharts="clickECharts"
       ></ECharts>
     </el-col>
     <el-col :xs="24" :md="12" :lg="8">
-      <VertRollS DHeight="44vh"></VertRollS>
+      <ECharts
+        :height="bigHeight"
+        id="MapChart"
+        :data="require('@/echartsdata/MapChart').default('折线图图')"
+        @clickECharts="clickECharts"
+      ></ECharts>
+      <!-- <VertRollS :DHeight="bigHeight"></VertRollS> -->
       <!-- <VertRoll DHeight="7vh" :vShowNum="4"></VertRoll> -->
     </el-col>
     <el-col :xs="24" :md="12" :lg="8">
       <ECharts
-        height="44vh"
+        :height="bigHeight"
         id="MultiplePillarsChart"
         :data="require('@/echartsdata/MultiplePillarsChart')('折线图图')"
         @clickECharts="clickECharts"
@@ -29,7 +35,7 @@
     </el-col>
     <el-col :xs="24" :md="12" :lg="8">
       <ECharts
-        height="44vh"
+        :height="bigHeight"
         id="PieChart"
         :data="require('@/echartsdata/PieChart')('折线图图')"
         @clickECharts="clickECharts"
@@ -37,7 +43,7 @@
     </el-col>
     <el-col :xs="24" :md="12" :lg="8">
       <ECharts
-        height="44vh"
+        :height="bigHeight"
         id="PolylineChart"
         :data="require('@/echartsdata/PolylineChart')('折线图图')"
         @clickECharts="clickECharts"
@@ -45,7 +51,7 @@
     </el-col>
     <el-col :xs="24" :md="12" :lg="8">
       <ECharts
-        height="44vh"
+        :height="bigHeight"
         id="RadarChart"
         :data="require('@/echartsdata/RadarChart')('折线图图')"
         @clickECharts="clickECharts"
@@ -60,6 +66,11 @@ import { setLocal } from "@/function";
 export default {
   mixins: [require("@/mymixins").default],
   name: "home",
+  data() {
+    return {
+      bigHeight: "47.3vh"
+    };
+  },
   components: {
     HelloHeader: () => import("@/views/framework/HelloHeader.vue"),
     VertRollS: () => import("@/assets/VertRollS.vue"),
@@ -67,7 +78,6 @@ export default {
     BriefSee: () => import("@/assets/BriefSee.vue"),
     ECharts: () => import("@/assets/ECharts.vue")
   },
-  computed: {},
   methods: {
     clickECharts(p) {},
     beforeunloadFn(e) {

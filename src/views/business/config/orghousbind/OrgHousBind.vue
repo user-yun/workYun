@@ -7,13 +7,12 @@
       <el-col :sm="6" :md="4" :xl="3">
         <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
       </el-col>
-      <el-col :sm="12" :md="16" :xl="15">
-        <h4>{{language.currentOptions}}：{{zoneTree.Title}}</h4>
-        <h4>{{language.currentOptions}}：{{orgTree.Title}}</h4>
-        <h4>{{language.selectDate}}</h4>
+      <el-col :sm="12" :md="16" :xl="15" class="title">
+        <div>{{language.curOptHou}}：{{zoneTree.Title}}</div>
+        <div>{{language.curOptOrg}}：{{orgTree.Title}}</div>
         <DatePickerMult @change="pickerChange"></DatePickerMult>
         <el-button type="primary" @click="getRequest">{{language.orgHousBind}}</el-button>
-        <div style="height:65vh" v-if="checkData">
+        <div style="height:55vh" v-if="checkData">
           <PageTable :tableData="checkData" :DataConfig="require('./OrgHousBindDataConfig.js')"></PageTable>
         </div>
       </el-col>

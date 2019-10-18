@@ -7,10 +7,22 @@
       <el-col :sm="6" :md="4" :xl="3">
         <MDeviceTree @MDeviceTree="MDeviceTreeClick"></MDeviceTree>
       </el-col>
-      <el-col :sm="12" :md="16" :xl="15">
-        <h4>{{language.currentOptions}}：{{zoneData.Title}}</h4>
-        <h4>{{language.currentOptions}}：{{devData.Title}}</h4>
-        <el-button type="primary" @click="getRequest">{{language.houseDevBind}}</el-button>
+      <el-col :sm="12" :md="16" :xl="15" class="title">
+        <div>{{language.curOptHou}}：{{zoneData.Title}}</div>
+        <div>{{language.curOptDev}}：{{devData.Title}}</div>
+        <div>
+          <el-input v-model="devId" clearable :maxlength="30" style="width:80%"></el-input>
+        </div>
+        <el-radio-group v-model="shareTreeNode">
+          <el-radio
+            v-for="(item,index) in otherInfo.shareTreeNodeList"
+            :key="index+item.value"
+            :label="item.value"
+          >{{language[item.text]}}</el-radio>
+        </el-radio-group>
+        <div>
+          <el-button type="primary" @click="getRequest">{{language.houseDevBind}}</el-button>
+        </div>
       </el-col>
     </el-row>
   </el-col>
@@ -24,7 +36,9 @@ export default {
     return {
       selectDate: [],
       zoneData: {},
-      devData: {}
+      devData: {},
+      shareTreeNode: 1,
+      devId: ""
     };
   },
   components: {

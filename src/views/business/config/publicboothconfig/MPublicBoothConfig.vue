@@ -85,7 +85,7 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="language.proportion" prop="factors" class="alnrit">
-        <span v-for="(item,iindex) in ruleForm.son.concat([])" :key="iindex">
+        <span v-for="(item,iindex) in ruleForm.son" :key="iindex">
           {{item.title}}
           <el-input-number v-model="item.value" :precision="2" :step="0.01" :min="0.01" :max="100"></el-input-number>%
           <br>

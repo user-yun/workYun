@@ -63,7 +63,7 @@ export default {
         let data = res.Data;
         this.deviceTree = [
           {
-            Title: this.userInfo.headerTitle,
+            Title: this.language.allDevice,
             Children: data
           }
         ];

@@ -7,15 +7,15 @@
       <el-col :sm="6" :md="4" :xl="3">
         <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
       </el-col>
-      <el-col :sm="12" :md="16" :xl="15" class="icon">
-        <span>
+      <el-col :sm="12" :md="16" :xl="15" class="title">
+        <div>
           {{language.curOptHou}}：{{zoneTree.Title}}
           <i class="el-icon-close" @click="zoneCleanFun"></i>
-        </span>
-        <span>
+        </div>
+        <div>
           {{language.curOptOrg}}：{{orgTree.Title}}
           <i class="el-icon-close" @click="orgCleanFun"></i>
-        </span>
+        </div>
         <div>
           {{language.selectDate}}：{{selectDate}}
           <i class="el-icon-close" @click="dateCleanFun"></i>

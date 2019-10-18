@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import { setLocal } from "@/function";
+import { setLocal, clearLocal } from "@/function";
 export default {
   name: "app",
   data() {
@@ -51,8 +51,9 @@ export default {
   watch: {
     KickOutTime(n) {
       if (n >= 2) {
-        this.$router.replace({ path: "/" });
+        clearLocal();
         this.KickOutTime = 0;
+        this.$router.replace({ path: "/" });
       }
     },
     $route: {

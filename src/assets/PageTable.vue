@@ -6,7 +6,7 @@
       :border="TableConfig.border"
       :stripe="TableConfig.stripe"
       :highlight-current-row="TableConfig.highlight"
-      height="95%"
+      :height="TableConfig.disabled == ''?'100%':'93%'"
       :header-cell-style="headerCellStyle"
       :cell-style="cellStyle"
       @cell-dblclick="cellDblClick"

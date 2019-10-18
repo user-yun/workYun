@@ -63,7 +63,7 @@ export default {
         let data = res.Data;
         this.enterTree = [
           {
-            Title: this.userInfo.headerTitle,
+            Title: this.language.allOrg,
             Children: data
           }
         ];

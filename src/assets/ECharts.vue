@@ -44,7 +44,8 @@ export default {
       let _this = this;
       // _this.MyChart = _this.$echarts.init(myChart);
       _this.MyChart = await require("echarts").init(
-        document.getElementById(_this.id)
+        document.getElementById(_this.id),
+        "light"
       );
       if (_this.MyChart._$handlers.click) {
         _this.MyChart._$handlers.click.length = 0;
