@@ -4,7 +4,6 @@
 // label: "test",
 // sortable: true,
 // fixed: true,
-// mini: true,
 // format: true,
 // json:true
 let arr = [
@@ -13,7 +12,6 @@ let arr = [
         prop: "Title",
         sortable: true,
         fixed: true,
-        mini: true,
     },
     {
         width: "100",
@@ -21,20 +19,16 @@ let arr = [
         sortable: true,
         label: "address",
         format: true,
-        mini: true,
     },
     {
         width: "120",
         prop: "Pcode",
         sortable: true,
-        mini: true,
-        // json: true
     },
     {
         width: "190",
         prop: "Pid",
         sortable: true,
-        mini: true,
     },
     {
         width: "90",
@@ -42,7 +36,6 @@ let arr = [
         sortable: true,
         label: "zone",
         format: true,
-        mini: true,
     },
     {
         width: "100",
@@ -50,7 +43,6 @@ let arr = [
         sortable: true,
         format: true,
         label: "zoneid",
-        mini: true,
     },
     {
         width: "100",
@@ -58,7 +50,6 @@ let arr = [
         sortable: true,
         format: true,
         label: "lasttime",
-        mini: true,
     },
     {
         width: "90",
@@ -66,7 +57,6 @@ let arr = [
         sortable: true,
         label: "org",
         format: true,
-        mini: true,
     },
     {
         width: "90",
@@ -74,7 +64,6 @@ let arr = [
         sortable: true,
         label: "factor",
         format: true,
-        mini: true,
     },
     {
         width: "110",
@@ -82,14 +71,12 @@ let arr = [
         sortable: true,
         format: true,
         label: "voltage",
-        mini: true,
     },
     {
         width: "100",
         prop: "Report.current",
         sortable: true,
         label: "current",
-        mini: true,
         format: true
     },
     {
@@ -98,13 +85,11 @@ let arr = [
         sortable: true,
         label: "active",
         format: true,
-        mini: true,
     },
     {
         width: "110",
         prop: "Report.reactivepower",
         sortable: true,
-        mini: true,
         label: "reactive",
         format: true
     },
@@ -112,7 +97,6 @@ let arr = [
         width: "110",
         prop: "Report.allpower",
         sortable: true,
-        mini: true,
         label: "allpower",
         format: true
     },
@@ -120,7 +104,6 @@ let arr = [
         width: "180",
         prop: "Id",
         sortable: true,
-        mini: true,
         fixed: true,
     }
 ]

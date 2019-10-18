@@ -6,7 +6,7 @@
       :border="TableConfig.border"
       :stripe="TableConfig.stripe"
       :highlight-current-row="TableConfig.highlight"
-      height="95%"
+      :height="TableConfig.disabled?'100%':'93%'"
       :header-cell-style="headerCellStyle"
       :cell-style="cellStyle"
       @cell-dblclick="cellDblClick"
@@ -39,28 +39,29 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-col class="alncnt" v-show="TableConfig.showPage" :style="{fontSize:'150%',height:'4%'}">
-      <i
-        class="el-icon-arrow-left"
-        :style="{color: pageDis == null || pageDis == 'right' ? '#409EFF':'transparent'}"
-        @click="clickPage(false)"
-      ></i>
-      <i
-        class="el-icon-arrow-right"
-        :style="{color: pageDis == null || pageDis == 'left' ? '#409EFF':'transparent'}"
-        @click="clickPage(true)"
-      ></i>
-    </el-col>
+    <el-pagination
+      v-if="!TableConfig.disabled"
+      :small="false"
+      background
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="PageConfig.total"
+      :page-size="PageConfig.size"
+      :current-page="page"
+      @current-change="clickPage"
+      @size-change="sizeChange"
+    ></el-pagination>
   </div>
 </template>
 
 <script>
 export default {
-  name: "PageTable",
+  name: "UiPageTable",
   data() {
-    return {};
+    return {
+      page: 1,
+      pageSize: 10
+    };
   },
-  components: {},
   props: {
     tableData: {
       type: Array,
@@ -75,6 +76,16 @@ export default {
         return c;
       }
     },
+    PageConfig: {
+      type: Object,
+      default: () => {
+        let obj = {
+          total: 100,
+          size: 10
+        };
+        return obj;
+      }
+    },
     TableConfig: {
       type: Object,
       default: () => {
@@ -85,7 +96,7 @@ export default {
           showPage: false,
           multiple: false,
           single: false,
-          disabled: ""
+          disabled: false
         };
         return obj;
       }
@@ -107,16 +118,6 @@ export default {
         ];
         return arr;
       }
-    }
-  },
-  computed: {
-    pageDis() {
-      let text = null;
-      let dis = this.TableConfig.disabled;
-      if (dis && dis.length > 0) {
-        text = dis;
-      }
-      return text;
     }
   },
   methods: {
@@ -171,9 +172,18 @@ export default {
     selectAll(s) {
       this.$emit("select", s);
     },
-    clickPage(is) {
-      this.$emit("clickPage", is);
+    clickPage(i) {
+      this.page = i;
+      this.$emit("clickPage", i, this.pageSize);
+    },
+    sizeChange(l) {
+      this.pageSize = l;
+      this.$emit("clickPage", this.page, l);
     }
+  },
+  mounted() {
+    this.pageSize = this.PageConfig.size;
+    // this.$emit("clickPage", this.page, this.pageSize);
   }
 };
 </script>

@@ -4,7 +4,6 @@
 // label: "test",
 // sortable: true,
 // fixed: true,
-// mini: true,
 // format: true,
 // json:true
 let arr = [
@@ -12,40 +11,34 @@ let arr = [
         width: "190",
         prop: "Id",
         sortable: true,
-        mini: true,
     },
     {
         width: "190",
         prop: "Orgid",
         sortable: true,
         fixed: true,
-        mini: true,
     },
     {
         width: "170",
         prop: "Orgtitle",
         sortable: true,
-        mini: true,
     },
     {
         width: "170",
         prop: "DateStart",
         sortable: true,
-        mini: true,
         align: "right",
     },
     {
         width: "170",
         prop: "DateEnd",
         sortable: true,
-        mini: true,
         align: "right",
     },
     {
         width: "170",
         prop: "Project",
         sortable: true,
-        mini: true,
         align: "right",
     },
     {
@@ -53,14 +46,12 @@ let arr = [
         prop: "AllPower",
         align: "right",
         sortable: true,
-        mini: true,
     },
     {
         width: "170",
         prop: "Totalcost",
         sortable: true,
         align: "right",
-        mini: true,
     }
 ]
 

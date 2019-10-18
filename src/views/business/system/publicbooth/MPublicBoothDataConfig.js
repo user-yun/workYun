@@ -4,7 +4,6 @@
 // label: "test",
 // sortable: true,
 // fixed: true,
-// mini: true,
 // format: true,
 // json:true
 let arr = [
@@ -13,13 +12,11 @@ let arr = [
         prop: "Title",
         sortable: true,
         fixed: true,
-        mini: true,
     },
     {
         width: "120",
         prop: "Zoneid",
         sortable: true,
-        mini: true,
         format: true,
     },
     {
@@ -27,7 +24,6 @@ let arr = [
         prop: "Uppermoduleid",
         sortable: true,
         label: "upmid",
-        mini: true,
         format: true,
         // json: true
     },
@@ -35,7 +31,6 @@ let arr = [
         width: "130",
         prop: "UpperPid",
         sortable: true,
-        mini: true,
         format: true,
     },
     {
@@ -43,7 +38,6 @@ let arr = [
         prop: "UpperPcode",
         sortable: true,
         label: "uppcode",
-        mini: true,
         format: true,
     },
     {
@@ -51,21 +45,18 @@ let arr = [
         prop: "Sharetype",
         sortable: true,
         label: "type",
-        mini: true,
     },
     {
         width: "90",
         prop: "Sharerole",
         label: "role",
         sortable: true,
-        mini: true,
     },
     {
         width: "130",
         prop: "Lowermoduleids",
         label: "lomids",
         sortable: true,
-        mini: true,
         format: true,
     },
     {
@@ -73,14 +64,12 @@ let arr = [
         prop: "LowerPids",
         sortable: true,
         label: "lopids",
-        mini: true,
         format: true,
     },
     {
         width: "130",
         prop: "LowerPcodes",
         sortable: true,
-        mini: true,
         label: "lopcodes",
         format: true,
     },
@@ -89,14 +78,12 @@ let arr = [
         prop: "LowerModules",
         sortable: true,
         label: "lomodules",
-        mini: true,
         format: true
     },
     {
         width: "110",
         prop: "Id",
         sortable: true,
-        mini: true,
         format: true,
     },
     {
@@ -104,14 +91,12 @@ let arr = [
         prop: "Dividetype",
         sortable: true,
         label: "dtype",
-        mini: true,
         format: true,
     },
     {
         width: "110",
         prop: "Apportionmoduleids",
         sortable: true,
-        mini: true,
         label: "appmids",
         format: true,
     },
@@ -119,7 +104,6 @@ let arr = [
         width: "110",
         prop: "ApportionPids",
         sortable: true,
-        mini: true,
         label: "apppids",
         format: true,
     },
@@ -127,7 +111,6 @@ let arr = [
         width: "130",
         prop: "ApportionPcodes",
         sortable: true,
-        mini: true,
         label: "apppcodes",
         format: true,
     },
@@ -136,7 +119,6 @@ let arr = [
         prop: "ApportionModules",
         sortable: true,
         label: "appmodules",
-        mini: true,
         format: true,
     }
 ]

@@ -8,7 +8,6 @@ export default function f() {
     // label: "test",
     // sortable: true,
     // fixed: true,
-    // mini: true,
     // format: true,
     // json:true
     let arr = [
@@ -17,14 +16,12 @@ export default function f() {
             prop: "OrgTitle",
             align: "center",
             fixed: true,
-            mini: true,
             label: language.enterpriseName,
         },
         {
             width: "180",
             prop: "billingCycle",
             align: "center",
-            mini: true,
             label: language.billingCycle,
         },
         {
@@ -32,7 +29,6 @@ export default function f() {
             align: "center",
             prop: "Paymodetext",
             label: language.paymentMode,
-            mini: true,
             // json: true
         },
         {
@@ -42,7 +38,6 @@ export default function f() {
             align: "right",
             format: true,
             label: language.currentReceivable,
-            mini: true,
         },
         {
             width: "130",
@@ -51,7 +46,6 @@ export default function f() {
             sortable: true,
             format: true,
             label: language.currentToBeCollected,
-            mini: true,
         },
         {
             width: "130",
@@ -60,7 +54,6 @@ export default function f() {
             label: language.realIncome,
             sortable: true,
             format: true,
-            mini: true,
         },
         {
             width: "130",
@@ -69,7 +62,6 @@ export default function f() {
             sortable: true,
             label: language.cumulativeRecharge,
             format: true,
-            mini: true,
         },
         {
             width: "130",
@@ -78,21 +70,18 @@ export default function f() {
             sortable: true,
             label: language.accountBalance,
             format: true,
-            mini: true,
         },
         {
             width: "100",
             align: "center",
             prop: "Body",
             label: language.contacts,
-            mini: true,
         },
         {
             width: "130",
             align: "right",
             prop: "Mobile",
             label: language.contactInFormation,
-            mini: true,
         },
     ]
     return arr;

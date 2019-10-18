@@ -14,11 +14,7 @@
       <el-submenu v-if="menuListItem.children.length>1" :index="menuListItem.path" class="alnlft">
         <template slot="title">
           <i :class="menuListItem.meta.icon"></i>
-          <span
-            slot="title"
-            class="emphasize"
-            :style="{color:otherInfo.themeTextColor}"
-          >{{language[menuListItem.name]}}</span>
+          <span slot="title" class="emphasize">{{language[menuListItem.name]}}</span>
         </template>
         <transition
           v-for="(menuChildrenItem,indexChildren) in menuListItem.children"
@@ -26,21 +22,13 @@
         >
           <el-menu-item :index="menuChildrenItem.path" class="alnlft">
             <i :class="menuChildrenItem.meta.icon"></i>
-            <span
-              slot="title"
-              class="emphasize"
-              :style="{color:otherInfo.themeTextColor}"
-            >{{language[menuChildrenItem.name]}}</span>
+            <span slot="title" class="emphasize">{{language[menuChildrenItem.name]}}</span>
           </el-menu-item>
         </transition>
       </el-submenu>
       <el-menu-item v-else :index="menuListItem.children[0].path" class="alnlft">
         <i :class="menuListItem.children[0].meta.icon"></i>
-        <span
-          slot="title"
-          class="emphasize"
-          :style="{color:otherInfo.themeTextColor}"
-        >{{language[menuListItem.children[0].name]}}</span>
+        <span slot="title" class="emphasize">{{language[menuListItem.children[0].name]}}</span>
       </el-menu-item>
     </transition>
   </el-menu>

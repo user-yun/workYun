@@ -4,7 +4,6 @@
 // label: "test",
 // sortable: true,
 // fixed: true,
-// mini: true,
 // format: true,
 // json:true
 let arr = [
@@ -13,19 +12,16 @@ let arr = [
         prop: "Title",
         sortable: true,
         fixed: true,
-        mini: true,
     },
     {
         width: "190",
         prop: "Id",
         sortable: true,
-        mini: true,
     },
     {
         width: "110",
         prop: "Surplusmoney",
         sortable: true,
-        mini: true,
         label: "smoney",
         format: true,
         // json: true
@@ -35,21 +31,18 @@ let arr = [
         prop: "Param.contact",
         sortable: true,
         label: "contact",
-        mini: true,
         format: true,
     },
     {
         width: "100",
         prop: "Zonids",
         sortable: true,
-        mini: true,
         format: true
     },
     {
         width: "90",
         prop: "Param.phone",
         sortable: true,
-        mini: true,
         label: "phone",
         format: true,
     },
@@ -59,7 +52,6 @@ let arr = [
         sortable: true,
         format: true,
         label: "pricepublic",
-        mini: true,
     },
     {
         width: "130",
@@ -67,7 +59,6 @@ let arr = [
         sortable: true,
         format: true,
         label: "waterpublic",
-        mini: true,
     },
     {
         width: "110",
@@ -75,7 +66,6 @@ let arr = [
         sortable: true,
         format: true,
         label: "paymode",
-        mini: true,
     },
     {
         width: "110",
@@ -83,14 +73,12 @@ let arr = [
         sortable: true,
         format: true,
         label: "balance",
-        mini: true,
     },
     {
         width: "90",
         prop: "Param.area",
         sortable: true,
         label: "area",
-        mini: true,
         format: true
     },
     {
@@ -98,7 +86,6 @@ let arr = [
         prop: "Status",
         sortable: true,
         format: true,
-        mini: true,
     },
 ]
 

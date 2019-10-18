@@ -1,11 +1,12 @@
 <template>
   <div>
     <DatePicker :type="1" :dayNum="31" @change="pickerChange"></DatePicker>
-    <div style="height:84vh">
+    <div style="height:83vh">
       <PageTable
         :tableData="dataList"
         @select="tableSelect"
         :DataConfig="require('./AllOrgMonthDataConfig.js')"
+        @clickPage="clickPage"
       ></PageTable>
     </div>
   </div>
@@ -32,6 +33,10 @@ export default {
     },
     tableSelect(d) {
       console.log(d);
+    },
+    clickPage(d, l) {
+      console.log(d);
+      console.log(l);
     },
     getRequest() {
       let that = this;
