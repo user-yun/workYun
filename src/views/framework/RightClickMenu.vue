@@ -1,0 +1,112 @@
+<template>
+  <div
+    class="alnlft"
+    :style="`position: fixed;top:${RightClickMenu.y}px;left:${RightClickMenu.x}px;z-index:5235`"
+    @mouseleave="runMenu"
+    @mouseover="clear"
+  >
+    <el-button class="menuItem" @click="backUpPage">{{language.backUpPage}}</el-button>
+    <el-button class="menuItem" @click="reloadThisPage">{{language.reloadThisPage}}</el-button>
+    <el-button
+      v-if="isPrint"
+      class="menuItem"
+      @click="printCurrentElement"
+    >{{language.printCurrentElement}}</el-button>
+    <el-button class="menuItem" @click="openSetUp">{{language.openSetUp}}</el-button>
+    <el-button class="menuItem" @click="signOutLogin">{{language.signOutLogin}}</el-button>
+  </div>
+</template>
+
+<script>
+export default {
+  mixins: [require("@/mymixins").default],
+  name: "RightClickMenu",
+  data() {
+    return {
+      rmTime: null,
+      printHTML: null
+    };
+  },
+  props: {
+    RightClickMenu: {
+      type: Object,
+      default: () => {
+        return { x: 0, y: 0 };
+      }
+    },
+    PrintingEle: {
+      default: ""
+    }
+  },
+  computed: {
+    isPrint() {
+      let path = this.PrintingEle.path;
+      let eleItem;
+      for (let i = 0, l = path.length; i < l; i++) {
+        let id = path[i].id;
+        if (id != "" && id != "app") {
+          eleItem = document.getElementById(id);
+          this.printHTML = eleItem.innerHTML;
+          return true;
+        }
+      }
+      return false;
+    }
+  },
+  methods: {
+    backUpPage() {
+      this.$router.back();
+    },
+    reloadThisPage() {
+      history.go(0);
+    },
+    printCurrentElement() {
+      let that = this;
+      let newwindow = window.open(window.location.href);
+      let t = setTimeout(() => {
+        newwindow.document.body.innerHTML = that.printHTML;
+        newwindow.print();
+        newwindow.close();
+        clearTimeout(t);
+      }, 1000);
+    },
+    openSetUp() {
+      this.setOtherInfo({ drawerVisible: !this.otherInfo.drawerVisible });
+    },
+    signOutLogin() {
+      this.$router.replace({ name: "login" });
+    },
+    clear() {
+      clearTimeout(this.rmTime);
+      this.rmTime = null;
+    },
+    close() {
+      this.clear();
+      this.$emit("close");
+      window.removeEventListener("click", this.close);
+    },
+    runMenu() {
+      let that = this;
+      window.addEventListener("click", this.close);
+      if (that.rmTime == null) {
+        that.rmTime = setTimeout(() => {
+          that.close();
+        }, 1000);
+      }
+    }
+  },
+  mounted() {
+    this.runMenu();
+  },
+  beforeDestroy() {
+    this.close();
+  }
+};
+</script>
+<style scoped>
+.menuItem {
+  width: 100%;
+  display: block;
+  margin: 0;
+}
+</style>

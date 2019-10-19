@@ -31,10 +31,8 @@
             v-for="(item,index) in List"
             :key="item.Pid+index"
             :value="item.Pid"
-            :label="item.Param.zone+item.Param.org+item.Title"
+            :label="item.Title"
           >
-            {{item.Param.zone}}
-            {{item.Param.org}}
             {{item.Title}}
             pid:{{item.Pid}}
             pcode:{{item.Pcode}}
@@ -47,11 +45,9 @@
           <el-option
             v-for="(item,index) in List"
             :key="item.Pcode+index"
-            :value="{id:item.Pid,title:item.Param.org+item.Title,value:0.01}"
-            :label="item.Param.zone+item.Param.org+item.Title"
+            :value="{id:item.Pid,title:item.Title,value:0.01}"
+            :label="item.Title"
           >
-            {{item.Param.zone}}
-            {{item.Param.org}}
             {{item.Title}}
             pid:{{item.Pid}}
             pcode:{{item.Pcode}}
@@ -64,11 +60,9 @@
           <el-option
             v-for="(item,index) in List"
             :key="item.Pcode+index"
-            :value="{id:item.Pid,title:item.Param.org+item.Title,value:0.01}"
-            :label="item.Param.zone+item.Param.org+item.Title"
+            :value="{id:item.Pid,title:item.Title,value:0.01}"
+            :label="item.Title"
           >
-            {{item.Param.zone}}
-            {{item.Param.org}}
             {{item.Title}}
             pid:{{item.Pid}}
             pcode:{{item.Pcode}}
@@ -209,8 +203,8 @@ export default {
   },
   methods: {
     allModuleBrief() {
-      let projectId = this.userInfo.projectId;
-      this.get(`/zone/allmodulebrief/${projectId}`, {}).then(res => {
+      let userProject = this.userInfo.userProject;
+      this.get(`/module/list/${userProject}`, {}).then(res => {
         let data = res.Data;
         this.List = data;
       });

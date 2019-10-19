@@ -1,23 +1,31 @@
 <template>
-  <el-container class="h997" @contextmenu.prevent>
-    <el-aside :width="asideWidth">
-      <MainMenu></MainMenu>
-    </el-aside>
-    <el-container>
-      <el-header
-        height="5vh"
-        :style="{backgroundColor:otherInfo.themeBackgroundColor }"
-        class="shadow"
-      >
-        <MainHeader></MainHeader>
-      </el-header>
-      <MainTag style="height:4vh;margin:0.5vw 0 0 0.5vw"></MainTag>
-      <el-main style="height:90vh;padding:0.5vw">
-        <MainApp></MainApp>
-      </el-main>
-      <!-- <el-footer height="5vh">Footer</el-footer> -->
+  <div @contextmenu.prevent="rightClick">
+    <RightClickMenu
+      v-if="RightClickMenuShow"
+      :RightClickMenu="RightClickMenu"
+      :PrintingEle="PrintingEle"
+      @close="RightClickMenuClose"
+    ></RightClickMenu>
+    <el-container class="h997">
+      <el-aside :width="asideWidth">
+        <MainMenu></MainMenu>
+      </el-aside>
+      <el-container>
+        <el-header
+          height="5vh"
+          :style="{backgroundColor:otherInfo.themeBackgroundColor }"
+          class="shadow"
+        >
+          <MainHeader></MainHeader>
+        </el-header>
+        <MainTag style="height:4vh;margin:0.5vw 0 0 0.5vw"></MainTag>
+        <el-main style="height:90vh;padding:0.5vw">
+          <MainApp></MainApp>
+        </el-main>
+        <!-- <el-footer height="5vh">Footer</el-footer> -->
+      </el-container>
     </el-container>
-  </el-container>
+  </div>
 </template>
 
 <script>
@@ -26,13 +34,18 @@ export default {
   mixins: [require("@/mymixins").default],
   name: "main-main",
   data() {
-    return {};
+    return {
+      RightClickMenu: { x: 0, y: 0 },
+      RightClickMenuShow: false,
+      PrintingEle: null
+    };
   },
   components: {
     MainMenu: () => import("@/views/framework/MainMenu"),
     MainHeader: () => import("@/views/framework/MainHeader"),
     MainTag: () => import("@/views/framework/MainTag"),
-    MainApp: () => import("@/views/framework/MainApp")
+    MainApp: () => import("@/views/framework/MainApp"),
+    RightClickMenu: () => import("@/views/framework/RightClickMenu")
   },
   props: {},
   computed: {
@@ -46,6 +59,9 @@ export default {
   },
   watch: {},
   methods: {
+    RightClickMenuClose() {
+      this.RightClickMenuShow = false;
+    },
     beforeunloadFn(e) {
       setLocal("userMemory", {
         userInfo: this.userInfo,
@@ -55,6 +71,12 @@ export default {
       let confirmationMessage = "user-yun";
       (e || window.event).returnValue = confirmationMessage; // Gecko and Trident
       return confirmationMessage;
+    },
+    rightClick(e) {
+      this.PrintingEle = e;
+      this.$set(this.RightClickMenu, "x", e.x);
+      this.$set(this.RightClickMenu, "y", e.y);
+      this.RightClickMenuShow = true;
     }
     // resizeHandler() {
     //   let clientWidth = document.body.clientWidth;
@@ -77,5 +99,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-</style>

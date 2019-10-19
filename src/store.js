@@ -57,6 +57,10 @@ export default new Vuex.Store({
         date: time.toLocaleString(),
         second: time.getTime()
       });
+    },
+    clearVuex(state) {
+      state.userInfo = {};
+      state.otherInfo = {};
     }
   },
   actions: {

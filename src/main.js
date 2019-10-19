@@ -19,7 +19,6 @@ import './routeguard';//路由守卫
 // import mymixins from './mymixins';//全局Mixins函数
 // Vue.mixin(mymixins);
 
-
 Vue.config.productionTip = false
 
 new Vue({

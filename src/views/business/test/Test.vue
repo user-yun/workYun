@@ -1,6 +1,6 @@
 <template>
   <!-- <PageTable @cellDblClick="cellDblClick" @clickPage="clickPage"></PageTable> -->
-  <div>
+  <div id="adwadwa">
     <el-row>
       <el-col :xs="6" :sm="5" :md="4" :xl="3">
         <el-select v-model="select">
@@ -54,13 +54,13 @@
     <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
     <!-- <ProgresS></ProgresS> -->
     <el-button @click="exc">excelTest</el-button>
-    <ECharts
+    <!-- <ECharts
       ref="TreeDemo"
       id="TreeDemo"
       height="79vh"
       :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'TB')"
       @clickECharts="clickECharts"
-    ></ECharts>
+    ></ECharts>-->
   </div>
 </template>
 

@@ -33,6 +33,10 @@
           ></span>
         </el-col>
       </el-form-item>
+      <el-form-item class="alnlft">
+        <span slot="label" class="normal">{{language.homeQuickNav}}</span>
+        <el-switch v-model="homeQuickNav"></el-switch>
+      </el-form-item>
     </el-form>
   </el-drawer>
 </template>
@@ -49,6 +53,14 @@ export default {
     //test: () => import('@/test/test.vue')
   },
   computed: {
+    homeQuickNav: {
+      get() {
+        return this.otherInfo.homeQuickNav;
+      },
+      set(v) {
+        this.setOtherInfo({ homeQuickNav: v });
+      }
+    },
     configThemeDisabled() {
       let d = this.otherInfo.configThemeDisabled;
       return d;
