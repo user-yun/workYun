@@ -6,7 +6,8 @@ let router = [
     path: '/',
     redirect: { name: "login" },
     meta: {
-      intercept: false
+      intercept: false,
+      noQuickTabs: true
     }
   },
   {
@@ -14,14 +15,16 @@ let router = [
     name: 'login',
     component: () => import('@/views/welcome/Login.vue'),
     meta: {
-      intercept: false
+      intercept: false,
+      noQuickTabs: true
     }
   },
   {
     path: '*',
     redirect: { name: "ready" },
     meta: {
-      intercept: false
+      intercept: false,
+      noQuickTabs: true
     }
   },
   {
@@ -29,7 +32,8 @@ let router = [
     name: '404',
     component: () => import('@/views/welcome/404.vue'),
     meta: {
-      intercept: false
+      intercept: false,
+      noQuickTabs: true
     }
   },
   {
@@ -38,6 +42,7 @@ let router = [
     component: () => import('@/views/welcome/Ready.vue'),
     meta: {
       intercept: true,
+      noQuickTabs: true,
       role: [1, 999]
     }
   }

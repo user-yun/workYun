@@ -1,5 +1,6 @@
 <template>
-  <el-col :sm="24" :md="12" :xl="6">
+  <el-col :sm="24" :md="12" :xl="6" class="alnlft">
+    <Title>{{language.publicBoothConfig}}</Title>
     <el-form
       :model="ruleForm"
       :rules="rules"
@@ -117,6 +118,9 @@ export default {
         factors: null
       }
     };
+  },
+  components: {
+    Title: () => import("@/assets/Title.vue")
   },
   mounted() {
     this.allModuleBrief();

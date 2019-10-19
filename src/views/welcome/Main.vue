@@ -1,5 +1,5 @@
 <template>
-  <el-container class="h997">
+  <el-container class="h997" @contextmenu.prevent>
     <el-aside :width="asideWidth">
       <MainMenu></MainMenu>
     </el-aside>

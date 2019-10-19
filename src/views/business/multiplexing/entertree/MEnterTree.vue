@@ -21,6 +21,7 @@
       :filter-node-method="filterNode"
       :expand-on-click-node="false"
       @node-click="enterTreeNodeClick"
+      class="treeMH"
     >
       <span slot-scope="{ data }" class="normal">
         {{data.Orgtitle}}
@@ -73,8 +74,8 @@ export default {
       if (!value) return true;
       return data.Title.includes(value);
     },
-    enterTreeNodeClick(data) {
-      this.$emit("MEnterTree", data);
+    enterTreeNodeClick(data, e) {
+      this.$emit("MEnterTree", data, e.level);
     }
   },
   mounted() {

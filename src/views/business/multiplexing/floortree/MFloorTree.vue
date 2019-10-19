@@ -21,6 +21,7 @@
       :filter-node-method="filterNode"
       :expand-on-click-node="false"
       @node-click="zoneTreeNodeClick"
+      class="treeMH"
     >
       <span slot-scope="{ data }" class="normal">{{data.Title}}</span>
     </el-tree>
@@ -67,8 +68,8 @@ export default {
       if (!value) return true;
       return data.Title.includes(value);
     },
-    zoneTreeNodeClick(data) {
-      this.$emit("MFloorTree", data);
+    zoneTreeNodeClick(data, e) {
+      this.$emit("MFloorTree", data, e.level);
     }
   },
   mounted() {

@@ -7,35 +7,24 @@
 // format: true,
 // json:true
 let arr = [
-    // {
-    //     width: "190",
-    //     prop: "ZoneId",
-    //     sortable: true,
-    // },
-    // {
-    //     width: "190",
-    //     prop: "Orgid",
-    //     sortable: true,
-    //     fixed: true,
-    // },
     {
         width: "140",
-        prop: "Orgtitle",
+        prop: "ModuleTitle",
         sortable: true,
     },
     {
         width: "245",
-        prop: "ZoneAddress",
+        prop: "Address",
         sortable: true,
     },
     {
         width: "120",
-        prop: "StartDate",
+        prop: "Pcode",
         sortable: true,
     },
     {
         width: "120",
-        prop: "EndDate",
+        prop: "type",
         sortable: true,
     },
 ]

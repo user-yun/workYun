@@ -31,8 +31,17 @@ export default {
   },
   methods: {
     TagClose(t) {
-      this.$delete(this.otherInfo.routerHistory, t.name);
-      if (t.path == this.$route.path) this.$router.go(-1);
+      let r = this.otherInfo.routerHistory;
+      this.$delete(r, t.name);
+      let rk = Object.keys(r);
+      let rkl = rk.length;
+      if (t.path == this.$route.path) {
+        if (rkl > 0) {
+          this.$router.push({ name: rk[rkl - 1] });
+        } else {
+          this.$router.back();
+        }
+      }
     },
     TagClick(r) {
       this.$router.push({ name: r });

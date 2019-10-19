@@ -1,10 +1,21 @@
 Array.prototype.max = function () {
+    //数字数组里最大
     return Math.max.apply({}, this);
 }
 Array.prototype.min = function () {
+    //数字数组里最小
     return Math.min.apply({}, this);
 }
+Array.prototype.itemByValue = function (v, ii, t) {
+    //比较数组中对象的某个值等于传如的值返回另一个值
+    for (let i = 0, l = this.length; i < l; i++) {
+        if (this[i][v] == ii) {
+            return this[i][t]
+        }
+    }
+}
 Array.prototype.operation = function (i, o) {
+    //单个item的数组的计算
     let s = 0;
     let a = 0;
     if (i == undefined || i == null) {
@@ -244,6 +255,7 @@ Vue.directive('dialogDrag', {
  *(new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
  */
 Date.prototype.format = function (fmt) {
+    //日期格式化
     var o = {
         "M+": this.getMonth() + 1, //月份
         "d+": this.getDate(), //日
@@ -260,12 +272,14 @@ Date.prototype.format = function (fmt) {
 }
 
 Vue.prototype.$setTitle = function (t) {
+    //设置网页的标题
     let title = document.querySelector("title") || document.createElement('title');
     title.innerText = t;
     document.getElementsByTagName('head')[0].appendChild(title);
 }
 
 Vue.prototype.$setIco = function (i) {
+    //设置网页的图标
     let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
     link.rel = 'shortcut icon';

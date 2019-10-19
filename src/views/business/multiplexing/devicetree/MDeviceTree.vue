@@ -21,6 +21,7 @@
       :filter-node-method="filterNode"
       :expand-on-click-node="false"
       @node-click="deviceTreeNodeClick"
+      class="treeMH"
     >
       <span slot-scope="{ data }" class="normal">
         {{data.Orgtitle}}
@@ -73,8 +74,8 @@ export default {
       if (!value) return true;
       return data.Title.includes(value);
     },
-    deviceTreeNodeClick(data) {
-      this.$emit("MDeviceTree", data);
+    deviceTreeNodeClick(data, e) {
+      this.$emit("MDeviceTree", data, e.level);
     }
   },
   mounted() {

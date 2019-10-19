@@ -15,6 +15,7 @@
             "icon": "el-icon-house",
             "intercept": true,
             "noKeepAlive": true,
+            "noQuickTabs": true,
             "role": [1, 999]
         },
         "children": [{

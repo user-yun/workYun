@@ -3,10 +3,12 @@
     <!-- 5vh -->
     <HelloHeader></HelloHeader>
     <!-- 4vh -->
-    <el-col :span="4" v-for="i in 6" :key="i">
-      <!-- <BriefSee></BriefSee> -->
-      <!-- <BriefSeeS :bsSmall="false"></BriefSeeS> -->
-    </el-col>
+    <el-row>
+      <el-col :span="4" v-for="i in 6" :key="i" v-if="homeQuickNav">
+        <BriefSee></BriefSee>
+        <!-- <BriefSeeS :bsSmall="false"></BriefSeeS> -->
+      </el-col>
+    </el-row>
     <el-col :xs="24" :md="12" :lg="8">
       <ECharts
         id="PostRevenue"
@@ -67,9 +69,19 @@ export default {
   mixins: [require("@/mymixins").default],
   name: "home",
   data() {
-    return {
-      bigHeight: "47.3vh"
-    };
+    return {};
+  },
+  computed: {
+    homeQuickNav() {
+      return this.otherInfo.homeQuickNav;
+    },
+    bigHeight() {
+      if (this.homeQuickNav) {
+        return "44vh";
+      } else {
+        return "47.3vh";
+      }
+    }
   },
   components: {
     HelloHeader: () => import("@/views/framework/HelloHeader.vue"),
