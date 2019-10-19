@@ -1,7 +1,8 @@
 <template>
   <div
+    id="rightClickMenuId"
     class="alnlft"
-    :style="`position: fixed;top:${RightClickMenu.y}px;left:${RightClickMenu.x}px;z-index:5235`"
+    :style="`position: fixed;top:${show.y}px;left:${show.x}px;z-index:5235`"
     @mouseleave="runMenu"
     @mouseover="clear"
   >
@@ -24,7 +25,8 @@ export default {
   data() {
     return {
       rmTime: null,
-      printHTML: null
+      printHTML: null,
+      show: { x: 0, y: 0 }
     };
   },
   props: {
@@ -38,13 +40,21 @@ export default {
       default: ""
     }
   },
+  watch: {
+    RightClickMenu: {
+      deep: true,
+      handler(newv, oldv) {
+        this.handShow();
+      }
+    }
+  },
   computed: {
     isPrint() {
       let path = this.PrintingEle.path;
       let eleItem;
       for (let i = 0, l = path.length; i < l; i++) {
         let id = path[i].id;
-        if (id != "" && id != "app") {
+        if (id != "" && id != "app" && id != null && id != undefined) {
           eleItem = document.getElementById(id);
           this.printHTML = eleItem.innerHTML;
           return true;
@@ -88,15 +98,33 @@ export default {
     runMenu() {
       let that = this;
       window.addEventListener("click", this.close);
-      if (that.rmTime == null) {
-        that.rmTime = setTimeout(() => {
-          that.close();
-        }, 1000);
+      that.rmTime = setTimeout(() => {
+        that.close();
+      }, 600);
+    },
+    handShow() {
+      let clientWidth = document.body.clientWidth;
+      let clientHeight = document.body.clientHeight;
+      let rcm = document.getElementById("rightClickMenuId");
+      let rcmW = rcm.clientWidth;
+      let rcmH = rcm.clientHeight;
+      let x = this.RightClickMenu.x;
+      let y = this.RightClickMenu.y;
+      if (x + rcmW >= clientWidth) {
+        this.$set(this.show, "x", x - rcmW);
+      } else {
+        this.$set(this.show, "x", x);
+      }
+      if (y + rcmH >= clientHeight) {
+        this.$set(this.show, "y", y - rcmH);
+      } else {
+        this.$set(this.show, "y", y);
       }
     }
   },
   mounted() {
     this.runMenu();
+    this.handShow();
   },
   beforeDestroy() {
     this.close();

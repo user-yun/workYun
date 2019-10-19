@@ -78,7 +78,6 @@ export default {
   methods: {
     resizeHandler() {
       let clientWidth = document.body.clientWidth;
-      let clientHeight = document.body.clientHeight;
       if (clientWidth <= 992) {
         this.setOtherInfo({ menuCollapse: true });
       } else {
