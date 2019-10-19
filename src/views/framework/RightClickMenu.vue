@@ -54,7 +54,13 @@ export default {
       let eleItem;
       for (let i = 0, l = path.length; i < l; i++) {
         let id = path[i].id;
-        if (id != "" && id != "app" && id != null && id != undefined) {
+        if (
+          id != "" &&
+          id != "app" &&
+          id != null &&
+          id != undefined &&
+          id != "rightClickMenuId"
+        ) {
           eleItem = document.getElementById(id);
           this.printHTML = eleItem.innerHTML;
           return true;
@@ -98,9 +104,12 @@ export default {
     runMenu() {
       let that = this;
       window.addEventListener("click", this.close);
-      that.rmTime = setTimeout(() => {
-        that.close();
-      }, 600);
+      if (that.rmTime == null) {
+        that.rmTime = setTimeout(() => {
+          that.close();
+          console.log(1);
+        }, 600);
+      }
     },
     handShow() {
       let clientWidth = document.body.clientWidth;
