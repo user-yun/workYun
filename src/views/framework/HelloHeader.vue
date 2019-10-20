@@ -2,7 +2,8 @@
   <el-row
     type="flex"
     align="middle"
-    :style="{height:'5vh',backgroundColor:otherInfo.themeBackgroundColor }"
+    class="hh5"
+    :style="{backgroundColor:otherInfo.themeBackgroundColor }"
   >
     <el-col
       :xs="12"

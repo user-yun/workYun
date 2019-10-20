@@ -11,16 +11,12 @@
         <MainMenu></MainMenu>
       </el-aside>
       <el-container>
-        <el-header
-          height="5vh"
-          :style="{backgroundColor:otherInfo.themeBackgroundColor }"
-          class="shadow"
-        >
+        <el-header style="padding:0;height:auto;">
           <MainHeader></MainHeader>
         </el-header>
-        <MainTag style="height:4vh;margin:0.5vw 0 0 0.5vw"></MainTag>
-        <el-main style="height:90vh;padding:0.5vw">
-          <MainApp></MainApp>
+        <MainTag></MainTag>
+        <el-main style="padding:0.2vw 0.5vw;">
+          <MainApp class="shadow" style="overflow: auto;"></MainApp>
         </el-main>
         <!-- <el-footer height="5vh">Footer</el-footer> -->
       </el-container>

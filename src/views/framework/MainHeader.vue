@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <el-row>
-      <el-col :xs="4" :sm="4" :md="2" :lg="2" :xl="2" class="h5l5 alnlft">
+  <div :style="{backgroundColor:otherInfo.themeBackgroundColor }">
+    <el-row type="flex" align="middle" class="hh5">
+      <el-col :xs="19" :sm="19" :md="21" :lg="21" :xl="21" class="alnlft">
         <i
           :class="iClassAsideVisible"
           class="icon"
@@ -15,14 +15,7 @@
           @click="iClassMenuCollapseOnClick"
         ></i>
       </el-col>
-      <el-col :xs="15" :sm="15" :md="19" :lg="19" :xl="19" class="h5l5 alnrit">
-        <i
-          class="el-icon-setting icon"
-          :style="{color:otherInfo.themeTextColor}"
-          @click="iClassDrawerCollapseOnClick"
-        ></i>
-      </el-col>
-      <el-col :xs="5" :sm="5" :md="3" :lg="3" :xl="3" class="h5l5 alnrit">
+      <el-col :xs="5" :sm="5" :md="3" :lg="3" :xl="3" class="alnlft">
         <i
           class="el-icon-setting icon"
           :style="{color:otherInfo.themeTextColor}"

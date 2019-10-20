@@ -42,6 +42,10 @@
         <el-switch v-model="tableSelfAW"></el-switch>
       </el-form-item>
       <el-form-item class="alnlft">
+        <span slot="label" class="normal">{{language.menuUnique}}</span>
+        <el-switch v-model="menuUnique"></el-switch>
+      </el-form-item>
+      <el-form-item class="alnlft">
         <span slot="label" class="normal">{{language.selectLanguage}}</span>
         <SelectLanguage></SelectLanguage>
       </el-form-item>
@@ -74,6 +78,14 @@ export default {
       },
       set(v) {
         this.setOtherInfo({ tableSelfAW: v });
+      }
+    },
+    menuUnique: {
+      get() {
+        return this.otherInfo.menuUnique;
+      },
+      set(v) {
+        this.setOtherInfo({ menuUnique: v });
       }
     },
     configThemeDisabled() {

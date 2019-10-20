@@ -1,5 +1,5 @@
 <template>
-  <nobr class="alnlft" style="overflow-x:auto">
+  <nobr class="alnlft th4">
     <el-tag
       v-for="(tag,key) in otherInfo.routerHistory"
       v-if="tag.meta.icon"

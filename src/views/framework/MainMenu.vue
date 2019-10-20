@@ -4,10 +4,9 @@
     :collapse="otherInfo.menuCollapse"
     :background-color="otherInfo.themeBackgroundColor"
     :text-color="otherInfo.themeTextColor"
-    unique-opened
+    :unique-opened="otherInfo.menuUnique"
     router
     class="h997"
-    style="overflow-x:hidden;"
   >
     <!-- :style="{height:otherInfo.asideVisible ? '':'98vh'}" -->
     <transition v-for="(menuListItem,indexList) in menuList" :key="indexList">

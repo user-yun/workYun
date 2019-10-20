@@ -85,27 +85,27 @@ body {
     font-size: 1.5vw;
 }
 
-.verRollView {
-    /* 主要视图 */
-    height: 88vh;
-    overflow-y: auto;
-}
-
 .h997 {
     /* 全屏高 */
     height: 99.7vh;
     overflow: auto;
 }
 
+.hh5 {
+    /*顶部栏*/
+    height: 5vh
+}
+
+.th4 {
+    /*tag 标签*/
+    height: 3.5vh;
+    margin: 0.2vw 0.5vw 0 0.5vw;
+    overflow-x: auto
+}
+
 .w100 {
     /* 全屏宽 */
     width: 100vw
-}
-
-.h5l5 {
-    /* 顶部导航栏 */
-    height: 4vh;
-    line-height: 6vh;
 }
 
 .shadow {
