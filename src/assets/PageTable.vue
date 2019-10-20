@@ -24,12 +24,15 @@
         v-for="(item,index) in DataConfig"
         :key="index"
         :align="item.align"
-        :width="item.width"
+        :width="item.width*widthScale"
         :prop="item.prop"
         :label=" item.label ? item.label : item.prop "
         :sortable="item.sortable"
         :fixed="item.fixed"
       >
+        <template slot="header" slot-scope="scope">
+          <span :class="item.class ? item.class: 'emphasize' ">{{scope.column.property}}</span>
+        </template>
         <template slot-scope="scope">
           <pre v-if="item.json" :class="item.class ? item.class: 'emphasize' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
           <span
@@ -58,7 +61,9 @@
 export default {
   name: "PageTable",
   data() {
-    return {};
+    return {
+      widthScale: 1
+    };
   },
   components: {},
   props: {
@@ -120,6 +125,11 @@ export default {
     }
   },
   methods: {
+    widthScaleHandler() {
+      let w = document.body.clientWidth;
+      let ws = w / 1920 <= 0.6 ? 0.6 : w / 1920;
+      this.widthScale = ws;
+    },
     cellDataFormat(r, c) {
       let iof = c.property.indexOf(".");
       if (iof == -1) {
@@ -156,7 +166,7 @@ export default {
     },
     headerCellStyle(o) {
       if (o.columnIndex == 0 && this.TableConfig.single) {
-        return { pointerEvents: "none", opacity: 0.1 };
+        return { pointerEvents: "none", opacity: 0 };
       }
     },
     select(s, r) {
@@ -174,6 +184,12 @@ export default {
     clickPage(is) {
       this.$emit("clickPage", is);
     }
+  },
+  mounted() {
+    window.addEventListener("resize", this.widthScaleHandler);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.widthScaleHandler);
   }
 };
 </script>

@@ -37,9 +37,9 @@ body {
 
 ::-webkit-scrollbar {
     /*滚动条整体样式*/
-    width: 0.369vw;
+    width: 0.5233vw;
     /*高宽分别对应横竖滚动条的尺寸*/
-    height: 0.369vw;
+    height: 0.5233vw;
 }
 
 ::-webkit-scrollbar-thumb {

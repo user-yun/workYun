@@ -6,15 +6,37 @@
     @mouseleave="runMenu"
     @mouseover="clear"
   >
-    <el-button class="menuItem" @click="backUpPage">{{language.backUpPage}}</el-button>
-    <el-button class="menuItem" @click="reloadThisPage">{{language.reloadThisPage}}</el-button>
     <el-button
+      class="menuItem"
+      size="mini"
+      :style="rightBt"
+      @click="backUpPage"
+    >{{language.backUpPage}}</el-button>
+    <el-button
+      class="menuItem"
+      size="mini"
+      :style="rightBt"
+      @click="reloadThisPage"
+    >{{language.reloadThisPage}}</el-button>
+    <el-button
+      size="mini"
+      :style="rightBt"
       v-if="isPrint"
       class="menuItem"
       @click="printCurrentElement"
     >{{language.printCurrentElement}}</el-button>
-    <el-button class="menuItem" @click="openSetUp">{{language.openSetUp}}</el-button>
-    <el-button class="menuItem" @click="signOutLogin">{{language.signOutLogin}}</el-button>
+    <el-button
+      class="menuItem"
+      size="mini"
+      :style="rightBt"
+      @click="openSetUp"
+    >{{language.openSetUp}}</el-button>
+    <el-button
+      class="menuItem"
+      size="mini"
+      :style="rightBt"
+      @click="signOutLogin"
+    >{{language.signOutLogin}}</el-button>
   </div>
 </template>
 
@@ -49,6 +71,11 @@ export default {
     }
   },
   computed: {
+    rightBt() {
+      return `background-color:${this.otherInfo.themeBackgroundColor};color:${
+        this.otherInfo.themeTextColor
+      }`;
+    },
     isPrint() {
       let path = this.PrintingEle.path;
       let eleItem;
