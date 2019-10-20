@@ -22,8 +22,12 @@
           @click="iClassDrawerCollapseOnClick"
         ></i>
       </el-col>
-      <el-col :xs="5" :sm="5" :md="3" :lg="3" :xl="3" class="alnrit">
-        <SelectLanguage></SelectLanguage>
+      <el-col :xs="5" :sm="5" :md="3" :lg="3" :xl="3" class="h5l5 alnrit">
+        <i
+          class="el-icon-setting icon"
+          :style="{color:otherInfo.themeTextColor}"
+          @click="iClassDrawerCollapseOnClick"
+        ></i>
       </el-col>
     </el-row>
     <ConfigDrawer v-if="otherInfo.drawerVisible"></ConfigDrawer>
@@ -38,7 +42,6 @@ export default {
     return {};
   },
   components: {
-    SelectLanguage: () => import("@/assets/SelectLanguage"),
     ConfigDrawer: () => import("@/views/framework/ConfigDrawer")
   },
   props: {},

@@ -115,6 +115,9 @@ export default {
     }
   },
   computed: {
+    otherInfo() {
+      return this.$store.getters.getOtherInfo;
+    },
     pageDis() {
       let text = null;
       let dis = this.TableConfig.disabled;
@@ -126,9 +129,11 @@ export default {
   },
   methods: {
     widthScaleHandler() {
-      let w = document.body.clientWidth;
-      let ws = w / 1920 <= 0.6 ? 0.6 : w / 1920;
-      this.widthScale = ws;
+      if (this.otherInfo.tableSelfAW) {
+        let w = document.body.clientWidth;
+        let ws = w / 1920 <= 0.6 ? 0.6 : w / 1920;
+        this.widthScale = ws;
+      }
     },
     cellDataFormat(r, c) {
       let iof = c.property.indexOf(".");

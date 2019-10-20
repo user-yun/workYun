@@ -37,6 +37,14 @@
         <span slot="label" class="normal">{{language.homeQuickNav}}</span>
         <el-switch v-model="homeQuickNav"></el-switch>
       </el-form-item>
+      <el-form-item class="alnlft">
+        <span slot="label" class="normal">{{language.tableSelfAW}}</span>
+        <el-switch v-model="tableSelfAW"></el-switch>
+      </el-form-item>
+      <el-form-item class="alnlft">
+        <span slot="label" class="normal">{{language.selectLanguage}}</span>
+        <SelectLanguage></SelectLanguage>
+      </el-form-item>
     </el-form>
   </el-drawer>
 </template>
@@ -49,8 +57,7 @@ export default {
     return {};
   },
   components: {
-    // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    //test: () => import('@/test/test.vue')
+    SelectLanguage: () => import("@/assets/SelectLanguage")
   },
   computed: {
     homeQuickNav: {
@@ -59,6 +66,14 @@ export default {
       },
       set(v) {
         this.setOtherInfo({ homeQuickNav: v });
+      }
+    },
+    tableSelfAW: {
+      get() {
+        return this.otherInfo.tableSelfAW;
+      },
+      set(v) {
+        this.setOtherInfo({ tableSelfAW: v });
       }
     },
     configThemeDisabled() {
