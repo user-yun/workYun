@@ -2,7 +2,6 @@
   <div class="alnlft th4 mainTag" style="white-space:nowrap;">
     <el-tag
       v-for="(tag,key) in otherInfo.routerHistory"
-      v-if="tag.meta.icon"
       :key="key"
       closable
       disable-transitions
@@ -14,7 +13,10 @@
       class="emphasize"
       :size=" otherInfo.menuCollapse ? 'mini' : 'medium' "
     >
-      <span :style="{ color: tag.path == $route.path ? otherInfo.themeTextColor : '#909399' }">
+      <span
+        v-if="tag.meta.icon"
+        :style="{ color: tag.path == $route.path ? otherInfo.themeTextColor : '#909399' }"
+      >
         <i :class="tag.meta.icon"></i>
         {{language[key]}}
       </span>

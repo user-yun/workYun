@@ -20,7 +20,11 @@ export default {
       let list = [];
       let rh = this.otherInfo.routerHistory;
       for (let k in rh) {
-        if (rh[k].meta.icon && !rh[k].meta.noKeepAlive) {
+        if (
+          rh[k].meta.icon &&
+          !rh[k].meta.noKeepAlive &&
+          !rh[k].meta.noQuickTabs
+        ) {
           list.push(k);
         }
       }
