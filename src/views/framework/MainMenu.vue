@@ -1,15 +1,5 @@
 <template>
-  <el-menu
-    :default-active="$route.path"
-    :collapse="otherInfo.menuCollapse"
-    :background-color="otherInfo.themeBackgroundColor"
-    :text-color="otherInfo.themeTextColor"
-    :unique-opened="otherInfo.menuUnique"
-    router
-    class="h997"
-  >
-    <RecursionMenu :mList="menuList"></RecursionMenu>
-  </el-menu>
+  <RecursionMenu class="h997" :mList="menuList"></RecursionMenu>
   <!-- <keep-alive> </keep-alive> <component></component> -->
 </template>
 
@@ -27,7 +17,6 @@ export default {
     menuList() {
       let that = this;
       let allMenuList = that.otherInfo.userRoutes;
-      let ur = that.userInfo.userRole;
       let menuList = that.handFor(allMenuList);
       return menuList;
     }

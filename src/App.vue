@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       YouAreSmart: true,
-      KickOutInterval: {},
+      KickOutInterval: null,
       KickOutTime: 0,
       KickOutNum: 0.5 * 60 * 60 * 1000
     };
@@ -46,11 +46,15 @@ export default {
         mutations: "setOtherInfo",
         value: v
       });
+    },
+    clear() {
+      clearInterval(this.KickOutInterval);
+      this.KickOutInterval = null;
     }
   },
   watch: {
     KickOutTime(n) {
-      if (n >= 2) {
+      if (n >= 7) {
         clearLocal();
         this.KickOutTime = 0;
         this.$router.replace({ path: "/" });
@@ -59,12 +63,13 @@ export default {
     $route: {
       handler: function(n, o) {
         if (n.name == "login") {
-          clearInterval(this.KickOutInterval);
-          // } else if (n.name == "home") {
+          this.clear();
         } else {
-          this.KickOutInterval = setInterval(() => {
-            this.KickOutTime++;
-          }, this.KickOutNum);
+          if (this.KickOutInterval == null) {
+            this.KickOutInterval = setInterval(() => {
+              this.KickOutTime++;
+            }, this.KickOutNum);
+          }
         }
       },
       deep: true
@@ -82,7 +87,7 @@ export default {
   beforeDestroy() {
     window.removeEventListener("resize", this.resizeHandler);
     window.removeEventListener("beforeunload", this.beforeunloadFn, false);
-    clearInterval(this.KickOutInterval);
+    this.clear();
   }
 };
 </script>
