@@ -3,7 +3,7 @@
     <el-tag
       v-for="(tag,key) in otherInfo.routerHistory"
       :key="key"
-      closable
+      :closable="closable"
       disable-transitions
       :color=" tag.path == $route.path ? otherInfo.themeBackgroundColor : '#C0C4CC' "
       @click="TagClick(key)"
@@ -11,12 +11,9 @@
       style="margin-right:0.2vw"
       :style="{cursor: tag.path == $route.path ? `not-allowed` : `pointer`}"
       class="emphasize"
-      :size=" otherInfo.menuCollapse ? 'mini' : 'medium' "
+      :size="size"
     >
-      <span
-        v-if="tag.meta.icon"
-        :style="{ color: tag.path == $route.path ? otherInfo.themeTextColor : '#909399' }"
-      >
+      <span :style="{ color: tag.path == $route.path ? otherInfo.themeTextColor : '#909399' }">
         <i :class="tag.meta.icon"></i>
         {{language[key]}}
       </span>
@@ -28,8 +25,13 @@
 export default {
   mixins: [require("@/mymixins").default],
   name: "mainTag",
-  data() {
-    return {};
+  computed: {
+    closable() {
+      return Object.keys(this.otherInfo.routerHistory).length > 1;
+    },
+    size() {
+      return this.otherInfo.menuCollapse ? "mini" : "medium";
+    }
   },
   methods: {
     TagClose(t) {

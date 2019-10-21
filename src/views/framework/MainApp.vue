@@ -1,6 +1,6 @@
 <template >
   <div class="shadow" style="overflow: auto;">
-    <keep-alive :include="keepList">
+    <keep-alive :include="otherInfo.routerHistory">
       <router-view :key="key"/>
     </keep-alive>
   </div>
@@ -15,20 +15,6 @@ export default {
     },
     key() {
       return this.$route.path;
-    },
-    keepList() {
-      let list = [];
-      let rh = this.otherInfo.routerHistory;
-      for (let k in rh) {
-        if (
-          rh[k].meta.icon &&
-          !rh[k].meta.noKeepAlive &&
-          !rh[k].meta.noQuickTabs
-        ) {
-          list.push(k);
-        }
-      }
-      return list;
     }
   }
 };
