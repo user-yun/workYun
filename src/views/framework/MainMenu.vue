@@ -8,28 +8,7 @@
     router
     class="h997"
   >
-    <!-- :style="{height:otherInfo.asideVisible ? '':'98vh'}" -->
-    <transition v-for="(menuListItem,indexList) in menuList" :key="indexList">
-      <el-submenu v-if="menuListItem.children.length>1" :index="menuListItem.path" class="alnlft">
-        <template slot="title">
-          <i :class="menuListItem.meta.icon"></i>
-          <span slot="title" class="emphasize">{{language[menuListItem.name]}}</span>
-        </template>
-        <transition
-          v-for="(menuChildrenItem,indexChildren) in menuListItem.children"
-          :key="indexChildren"
-        >
-          <el-menu-item :index="menuChildrenItem.path" class="alnlft">
-            <i :class="menuChildrenItem.meta.icon"></i>
-            <span slot="title" class="emphasize">{{language[menuChildrenItem.name]}}</span>
-          </el-menu-item>
-        </transition>
-      </el-submenu>
-      <el-menu-item v-else :index="menuListItem.children[0].path" class="alnlft">
-        <i :class="menuListItem.children[0].meta.icon"></i>
-        <span slot="title" class="emphasize">{{language[menuListItem.children[0].name]}}</span>
-      </el-menu-item>
-    </transition>
+    <RecursionMenu :mList="menuList"></RecursionMenu>
   </el-menu>
   <!-- <keep-alive> </keep-alive> <component></component> -->
 </template>
@@ -41,27 +20,32 @@ export default {
   data() {
     return {};
   },
+  components: {
+    RecursionMenu: () => import("@/views/framework/RecursionMenu")
+  },
   computed: {
     menuList() {
       let that = this;
       let allMenuList = that.otherInfo.userRoutes;
       let ur = that.userInfo.userRole;
-      let menuList = [];
-      allMenuList.forEach((allValue, index) => {
-        if (allValue.meta.icon && allValue.meta.role.includes(ur)) {
-          if (allValue.children) {
-            let childMenuList = [];
-            allValue.children.forEach((childValue, index) => {
-              if (childValue.meta.icon && childValue.meta.role.includes(ur)) {
-                childMenuList.push(childValue);
-              }
-            });
-            that.$set(allValue, "children", childMenuList);
+      let menuList = that.handFor(allMenuList);
+      return menuList;
+    }
+  },
+  methods: {
+    handFor(l) {
+      let that = this;
+      let ur = that.userInfo.userRole;
+      let lm = [];
+      l.forEach(e => {
+        if (e.meta.icon && e.meta.role.includes(ur)) {
+          if (e.children && e.children.length > 0) {
+            that.$set(e, "children", that.handFor(e.children));
           }
-          menuList.push(allValue);
+          lm.push(e);
         }
       });
-      return menuList;
+      return lm;
     }
   }
 };

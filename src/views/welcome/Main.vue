@@ -18,7 +18,7 @@
           <MainTag></MainTag>
         </el-header>
         <el-main style="padding:0.2vw 0.5vw;">
-          <MainApp class="shadow" style="overflow: auto;"></MainApp>
+          <MainApp></MainApp>
         </el-main>
         <!-- <el-footer height="5vh">Footer</el-footer> -->
       </el-container>

@@ -30,6 +30,39 @@
                 "noKeepAlive": true,
                 "role": [1, 999]
             }
+        }, {
+            "path": "/test",
+            "name": "test",
+            "component": "test/Test",
+            "meta": {
+                "icon": "el-icon-sugar",
+                "intercept": true,
+                "noKeepAlive": false,
+                "role": [1, 999]
+            },
+            "children": [{
+                "path": "/test",
+                "name": "test",
+                "component": "test/Test",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "noKeepAlive": false,
+                    "role": [1, 999]
+                }
+            }, {
+                "path": "/home",
+                "name": "home",
+                "redirect": {
+                    "name": "home"
+                },
+                "meta": {
+                    "icon": "el-icon-house",
+                    "intercept": true,
+                    "noKeepAlive": true,
+                    "role": [1, 999]
+                }
+            }]
         }]
     },
     {

@@ -1,7 +1,9 @@
-<template>
-  <keep-alive :include="keepList">
-    <router-view :key="key"/>
-  </keep-alive>
+<template >
+  <div class="shadow" style="overflow: auto;">
+    <keep-alive :include="keepList">
+      <router-view :key="key"/>
+    </keep-alive>
+  </div>
 </template>
 
 <script>
