@@ -17,7 +17,7 @@
     <el-col :xs="6" :sm="4" :lg="3" :xl="2">
       <el-button
         type="text"
-        class="normal"
+        class="emphasize"
         autofocus
         :style="{color:otherInfo.themeTextColor}"
         @click="getInto"
@@ -33,13 +33,13 @@
           >
             <!-- :key="index+otherInfo.helloMenuList.length" -->
             <i :class="item.icon"></i>
-            <span slot="title" class="normal">{{language[item.title]}}</span>
+            <span slot="title" class="emphasize">{{language[item.title]}}</span>
           </el-menu-item>
         </el-menu>
         <el-button
           type="text"
           icon="el-icon-user"
-          class="normal"
+          class="emphasize"
           :style="{color:otherInfo.themeTextColor}"
         >{{userInfo.userName}}</el-button>
       </el-tooltip>

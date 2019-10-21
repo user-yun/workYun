@@ -8,22 +8,22 @@
 // json:true
 let arr = [
     {
-        width: "70",
+        width: "90",
         prop: "title",
         sortable: true,
         fixed: true,
     },
-    {
-        width: "190",
-        prop: "id",
-        sortable: true,
-    },
-    {
-        width: "100",
-        prop: "project",
-        sortable: true,
-        format: true,
-    },
+    // {
+    //     width: "190",
+    //     prop: "id",
+    //     sortable: true,
+    // },
+    // {
+    //     width: "100",
+    //     prop: "project",
+    //     sortable: true,
+    //     format: true,
+    // },
     {
         width: "90",
         prop: "alg",

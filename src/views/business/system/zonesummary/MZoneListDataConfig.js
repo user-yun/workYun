@@ -7,12 +7,12 @@ let arr = [
         format: true
     },
     {
-        width: "170",
+        width: "230",
         prop: "Address",
         sortable: true,
     },
     {
-        width: "200",
+        width: "230",
         prop: "Id",
         sortable: true,
     },
@@ -24,7 +24,7 @@ let arr = [
         // json: true
     },
     {
-        width: "100",
+        width: "130",
         prop: "Upperid",
         sortable: true,
         format: true,
@@ -48,7 +48,7 @@ let arr = [
         format: true
     },
     {
-        width: "200",
+        width: "230",
         prop: "Orgids",
         sortable: true,
     },

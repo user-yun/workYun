@@ -1,28 +1,35 @@
 <template>
-  <el-col :sm="24" :md="12" :xl="6"  class="alnlft">
+  <el-row>
     <Title>{{language.groRbtConfig}}</Title>
-    <el-form :model="ruleForm" label-width="40%">
-      <el-form-item>
-        <el-input v-model="ruleForm.RobotToken" clearable :maxlength="30" placeholder="RobotToken"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-input
-          v-model="ruleForm.GroupNumber"
-          clearable
-          :maxlength="30"
-          placeholder="GroupNumber"
-        ></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button
-          type="primary"
-          @click="bind"
-          style="width:100%"
-          :disabled="bindDis"
-        >{{language.sure}}</el-button>
-      </el-form-item>
-    </el-form>
-  </el-col>
+    <el-col :sm="24" :md="12" :xl="6" class="alnlft">
+      <el-form :model="ruleForm" label-width="40%">
+        <el-form-item>
+          <el-input
+            v-model="ruleForm.RobotToken"
+            clearable
+            :maxlength="30"
+            placeholder="RobotToken"
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input
+            v-model="ruleForm.GroupNumber"
+            clearable
+            :maxlength="30"
+            placeholder="GroupNumber"
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button
+            type="primary"
+            @click="bind"
+            style="width:100%"
+            :disabled="bindDis"
+          >{{language.sure}}</el-button>
+        </el-form-item>
+      </el-form>
+    </el-col>
+  </el-row>
 </template>
 
 <script>

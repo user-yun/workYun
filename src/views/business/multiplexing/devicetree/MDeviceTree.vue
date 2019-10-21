@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-row>
+    <el-row class="treeSearch">
       <el-col :span="20">
         <el-input v-model="filterText" clearable :maxlength="20"></el-input>
       </el-col>
@@ -23,7 +23,7 @@
       @node-click="deviceTreeNodeClick"
       class="treeMH"
     >
-      <span slot-scope="{ data }" class="normal">
+      <span slot-scope="{ data }" class="emphasize">
         {{data.Orgtitle}}
         {{data.Title}}
         {{data.Pcode}}

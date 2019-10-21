@@ -8,61 +8,58 @@
 // json:true
 let arr = [
     {
-        width: "90",
+        width: "170",
         prop: "Title",
         sortable: true,
         fixed: true,
     },
     {
-        width: "100",
-        prop: "Param.address",
-        sortable: true,
-        label: "address",
-        format: true,
-    },
-    {
-        width: "120",
-        prop: "Pcode",
-        sortable: true,
-    },
-    {
-        width: "190",
-        prop: "Pid",
-        sortable: true,
-    },
-    {
-        width: "90",
-        prop: "Param.zone",
-        sortable: true,
-        label: "zone",
-        format: true,
-    },
-    {
-        width: "100",
-        prop: "Param.zoneid",
-        sortable: true,
-        format: true,
-        label: "zoneid",
-    },
-    {
-        width: "100",
-        prop: "Report.lasttime",
-        sortable: true,
-        format: true,
-        label: "lasttime",
-    },
-    {
-        width: "90",
+        width: "140",
         prop: "Param.org",
         sortable: true,
         label: "org",
         format: true,
     },
     {
+        width: "220",
+        prop: "Param.address",
+        sortable: true,
+        label: "address",
+        format: true,
+    },
+    {
+        width: "130",
+        prop: "Pcode",
+    },
+    {
+        width: "240",
+        prop: "Pid",
+    },
+    // {
+    //     width: "90",
+    //     prop: "Param.zone",
+    //     sortable: true,
+    //     label: "zone",
+    //     format: true,
+    // },
+    {
+        width: "250",
+        prop: "Param.zoneid",
+        label: "zoneid",
+    },
+    // {
+    //     width: "100",
+    //     prop: "Report.lasttime",
+    //     sortable: true,
+    //     format: true,
+    //     label: "lasttime",
+    // },
+    {
         width: "90",
         prop: "Report.powerfactor",
         sortable: true,
         label: "factor",
+        align: "right",
         format: true,
     },
     {
@@ -70,13 +67,15 @@ let arr = [
         prop: "Report.voltage",
         sortable: true,
         format: true,
+        align: "right",
         label: "voltage",
     },
     {
-        width: "100",
+        width: "110",
         prop: "Report.current",
         sortable: true,
         label: "current",
+        align: "right",
         format: true
     },
     {
@@ -84,6 +83,7 @@ let arr = [
         prop: "Report.activepower",
         sortable: true,
         label: "active",
+        align: "right",
         format: true,
     },
     {
@@ -91,21 +91,23 @@ let arr = [
         prop: "Report.reactivepower",
         sortable: true,
         label: "reactive",
+        align: "right",
         format: true
     },
     {
         width: "110",
         prop: "Report.allpower",
         sortable: true,
+        align: "right",
         label: "allpower",
         format: true
     },
-    {
-        width: "180",
-        prop: "Id",
-        sortable: true,
-        fixed: true,
-    }
+    // {
+    //     width: "180",
+    //     prop: "Id",
+    //     sortable: true,
+    //     fixed: true,
+    // }
 ]
 
 module.exports = arr

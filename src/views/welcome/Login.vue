@@ -37,7 +37,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">
-            <span class="normal">{{language.signIn}}</span>
+            <span class="emphasize">{{language.signIn}}</span>
           </el-button>
         </el-form-item>
       </el-form>

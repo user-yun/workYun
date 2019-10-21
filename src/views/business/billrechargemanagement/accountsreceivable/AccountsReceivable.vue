@@ -1,8 +1,6 @@
 <template>
   <el-row style="height:100%;" class="alnlft">
-    <el-col :span="24" style="height:5%">
-      <Title>{{language.accountsReceivable}}</Title>
-    </el-col>
+    <Title>{{language.accountsReceivable}}</Title>
     <el-col :span="19" style="height:55%">
       <PageTable
         :tableData="tableData"

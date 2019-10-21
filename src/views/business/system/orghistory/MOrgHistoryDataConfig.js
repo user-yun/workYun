@@ -8,48 +8,43 @@
 // json:true
 let arr = [
     {
-        width: "100",
+        width: "120",
         prop: "Title",
         sortable: true,
         fixed: true,
     },
     {
-        width: "190",
+        width: "240",
         prop: "Id",
-        sortable: true,
     },
-    {
-        width: "110",
-        prop: "Surplusmoney",
-        sortable: true,
-        label: "smoney",
-        format: true,
-        // json: true
-    },
+    // {
+    //     width: "110",
+    //     prop: "Surplusmoney",
+    //     sortable: true,
+    //     label: "smoney",
+    //     format: true,
+    //     // json: true
+    // },
     {
         width: "110",
         prop: "Param.contact",
-        sortable: true,
         label: "contact",
         format: true,
     },
     {
-        width: "100",
+        width: "250",
         prop: "Zonids",
-        sortable: true,
         format: true
     },
     {
-        width: "90",
+        width: "120",
         prop: "Param.phone",
-        sortable: true,
         label: "phone",
         format: true,
     },
     {
         width: "130",
         prop: "Param.pricepublic",
-        sortable: true,
         format: true,
         label: "pricepublic",
     },
@@ -58,20 +53,22 @@ let arr = [
         prop: "Param.pricewaterpublic",
         sortable: true,
         format: true,
-        label: "waterpublic",
+        label: "water",
+        align: "right",
     },
-    {
-        width: "110",
-        prop: "Param.paymode",
-        sortable: true,
-        format: true,
-        label: "paymode",
-    },
+    // {
+    //     width: "110",
+    //     prop: "Param.paymode",
+    //     sortable: true,
+    //     format: true,
+    //     label: "paymode",
+    // },
     {
         width: "110",
         prop: "Param.balance",
         sortable: true,
         format: true,
+        align: "right",
         label: "balance",
     },
     {
@@ -79,11 +76,13 @@ let arr = [
         prop: "Param.area",
         sortable: true,
         label: "area",
-        format: true
+        format: true,
+        align: "right",
     },
     {
         width: "100",
         prop: "Status",
+        align: "right",
         sortable: true,
         format: true,
     },

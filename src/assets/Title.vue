@@ -2,7 +2,9 @@
   <div>
     <el-divider content-position="left">
       <el-divider direction="vertical"></el-divider>
-      <slot></slot>
+      <span class="title">
+        <slot></slot>
+      </span>
       <el-divider direction="vertical"></el-divider>
     </el-divider>
   </div>

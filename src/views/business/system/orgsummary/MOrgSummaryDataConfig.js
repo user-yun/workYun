@@ -14,17 +14,17 @@ let arr = [
         fixed: true,
     },
     {
-        width: "190",
+        width: "240",
         prop: "id",
         sortable: true,
     },
     {
-        width: "180",
+        width: "240",
         prop: "orgid",
         sortable: true,
     },
     {
-        width: "90",
+        width: "120",
         prop: "date",
         sortable: true,
     },
@@ -35,13 +35,13 @@ let arr = [
         format: true
     },
     {
-        width: "90",
+        width: "120",
         prop: "param",
         sortable: true,
         format: true,
     },
     {
-        width: "90",
+        width: "120",
         prop: "status",
         sortable: true,
         format: true,
@@ -76,12 +76,12 @@ let arr = [
         sortable: true,
         format: true,
     },
-    {
-        width: "100",
-        prop: "items",
-        sortable: true,
-        format: true,
-    },
+    // {
+    //     width: "100",
+    //     prop: "items",
+    //     sortable: true,
+    //     format: true,
+    // },
 ]
 
 module.exports = arr

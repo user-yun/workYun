@@ -14,18 +14,15 @@ let arr = [
         fixed: true,
     },
     {
-        width: "120",
+        width: "240",
         prop: "Zoneid",
         sortable: true,
-        format: true,
     },
     {
-        width: "120",
+        width: "240",
         prop: "Uppermoduleid",
         sortable: true,
         label: "upmid",
-        format: true,
-        // json: true
     },
     {
         width: "130",

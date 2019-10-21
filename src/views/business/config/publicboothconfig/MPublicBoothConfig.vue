@@ -1,99 +1,107 @@
 <template>
-  <el-col :sm="24" :md="12" :xl="6" class="alnlft">
+  <el-row>
     <Title>{{language.publicBoothConfig}}</Title>
-    <el-form
-      :model="ruleForm"
-      :rules="rules"
-      ref="ruleForm"
-      inline-message
-      status-icon
-      label-width="30%"
-    >
-      <el-form-item :label="language.shareMethod" prop="shareType">
-        <el-select v-model="ruleForm.shareType">
-          <el-option
-            v-for="(item,index) in otherInfo.shareModelList"
-            :key="item.value+index"
-            :value="item.value"
-            :label="language[item.label]"
-          >
-            {{language[item.label]}}:
-            <span
-              v-for="(text,texti) in item.text"
-              :key="texti+item.text.length"
-            >{{language[text]}}</span>
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item :label="language.sumMeter" prop="father">
-        <el-select v-model="ruleForm.father">
-          <el-option
-            v-for="(item,index) in List"
-            :key="item.Pid+index"
-            :value="item.Pid"
-            :label="item.Title"
-          >
-            {{item.Title}}
-            pid:{{item.Pid}}
-            pcode:{{item.Pcode}}
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item :label="language.boothMeter" prop="arr">
-        <!-- <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0"> -->
-        <el-select v-model="ruleForm.arr" multiple value-key="id">
-          <el-option
-            v-for="(item,index) in List"
-            :key="item.Pcode+index"
-            :value="{id:item.Pid,title:item.Title,value:0.01}"
-            :label="item.Title"
-          >
-            {{item.Title}}
-            pid:{{item.Pid}}
-            pcode:{{item.Pcode}}
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item :label="language.sonMeter" prop="son">
-        <!-- <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0"> -->
-        <el-select v-model="ruleForm.son" multiple value-key="id">
-          <el-option
-            v-for="(item,index) in List"
-            :key="item.Pcode+index"
-            :value="{id:item.Pid,title:item.Title,value:0.01}"
-            :label="item.Title"
-          >
-            {{item.Title}}
-            pid:{{item.Pid}}
-            pcode:{{item.Pcode}}
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item :label="language.shareMethod" prop="mode">
-        <el-select v-model="ruleForm.mode">
-          <el-option
-            v-for="(item,index) in otherInfo.computationalModelList"
-            :key="index+item.value"
-            :value="item.value"
-            :label="language[item.text]"
-          ></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item :label="language.proportion" prop="factors" class="alnrit">
-        <span v-for="(item,iindex) in ruleForm.son" :key="iindex">
-          {{item.title}}
-          <el-input-number v-model="item.value" :precision="2" :step="0.01" :min="0.01" :max="100"></el-input-number>%
-          <br>
-        </span>
-      </el-form-item>
-      <el-form-item :label="language.shareConfigName">
-        <el-input v-model="ruleForm.title" clearable :maxlength="10" show-word-limit></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">{{language.sure}}</el-button>
-      </el-form-item>
-    </el-form>
-  </el-col>
+    <el-col :sm="24" :md="12" :xl="6" class="alnlft">
+      <el-form
+        :model="ruleForm"
+        :rules="rules"
+        ref="ruleForm"
+        inline-message
+        status-icon
+        label-width="30%"
+      >
+        <el-form-item :label="language.shareMethod" prop="shareType">
+          <el-select v-model="ruleForm.shareType">
+            <el-option
+              v-for="(item,index) in otherInfo.shareModelList"
+              :key="item.value+index"
+              :value="item.value"
+              :label="language[item.label]"
+            >
+              {{language[item.label]}}:
+              <span
+                v-for="(text,texti) in item.text"
+                :key="texti+item.text.length"
+              >{{language[text]}}</span>
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item :label="language.sumMeter" prop="father">
+          <el-select v-model="ruleForm.father">
+            <el-option
+              v-for="(item,index) in List"
+              :key="item.Pid+index"
+              :value="item.Pid"
+              :label="item.Title"
+            >
+              {{item.Title}}
+              pid:{{item.Pid}}
+              pcode:{{item.Pcode}}
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item :label="language.boothMeter" prop="arr">
+          <!-- <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0"> -->
+          <el-select v-model="ruleForm.arr" multiple value-key="id">
+            <el-option
+              v-for="(item,index) in List"
+              :key="item.Pcode+index"
+              :value="{id:item.Pid,title:item.Title,value:0.01}"
+              :label="item.Title"
+            >
+              {{item.Title}}
+              pid:{{item.Pid}}
+              pcode:{{item.Pcode}}
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item :label="language.sonMeter" prop="son">
+          <!-- <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0"> -->
+          <el-select v-model="ruleForm.son" multiple value-key="id">
+            <el-option
+              v-for="(item,index) in List"
+              :key="item.Pcode+index"
+              :value="{id:item.Pid,title:item.Title,value:0.01}"
+              :label="item.Title"
+            >
+              {{item.Title}}
+              pid:{{item.Pid}}
+              pcode:{{item.Pcode}}
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item :label="language.shareMethod" prop="mode">
+          <el-select v-model="ruleForm.mode">
+            <el-option
+              v-for="(item,index) in otherInfo.computationalModelList"
+              :key="index+item.value"
+              :value="item.value"
+              :label="language[item.text]"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item :label="language.proportion" prop="factors" class="alnrit">
+          <span v-for="(item,iindex) in ruleForm.son" :key="iindex">
+            {{item.title}}
+            <el-input-number
+              v-model="item.value"
+              :precision="2"
+              :step="0.01"
+              :min="0.01"
+              :max="100"
+            ></el-input-number>%
+            <br>
+          </span>
+        </el-form-item>
+        <el-form-item :label="language.shareConfigName">
+          <el-input v-model="ruleForm.title" clearable :maxlength="10" show-word-limit></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm')">{{language.sure}}</el-button>
+        </el-form-item>
+      </el-form>
+    </el-col>
+  </el-row>
 </template>
 
 <script>

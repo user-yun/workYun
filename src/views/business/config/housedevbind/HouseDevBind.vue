@@ -4,11 +4,11 @@
       <el-col :sm="6" :md="4" :xl="3">
         <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
       </el-col>
-      <el-col :sm="6" :md="4" :xl="3">
+      <el-col :sm="6" :md="7" :xl="6">
         <MDeviceTree @MDeviceTree="MDeviceTreeClick"></MDeviceTree>
       </el-col>
-      <el-col :sm="12" :md="8" :xl="10" class="alnlft">
-        <el-form label-width="30%">
+      <el-col :sm="12" :md="13" :xl="15" class="alnlft">
+        <el-form label-width="20%">
           <el-form-item :label="language.curOptHou">{{zoneData.Title}}</el-form-item>
           <el-form-item :label="language.curOptDev">{{devData.Title}}{{devData.Pcode}}</el-form-item>
           <!-- <el-form-item>

@@ -1,5 +1,5 @@
 <template>
-  <nobr class="alnlft th4">
+  <div class="alnlft th4 mainTag" style="white-space:nowrap;">
     <el-tag
       v-for="(tag,key) in otherInfo.routerHistory"
       v-if="tag.meta.icon"
@@ -11,7 +11,7 @@
       @close="TagClose(tag)"
       style="margin-right:0.2vw"
       :style="{cursor: tag.path == $route.path ? `not-allowed` : `pointer`}"
-      class="normal"
+      class="emphasize"
       :size=" otherInfo.menuCollapse ? 'mini' : 'medium' "
     >
       <span :style="{ color: tag.path == $route.path ? otherInfo.themeTextColor : '#909399' }">
@@ -19,7 +19,7 @@
         {{language[key]}}
       </span>
     </el-tag>
-  </nobr>
+  </div>
 </template>
 
 <script>
@@ -49,4 +49,19 @@ export default {
   }
 };
 </script>
+<style scoped>
+.mainTag {
+  overflow: hidden;
+}
+.mainTag:hover {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 0.333vw;
+  /*高宽分别对应横竖滚动条的尺寸*/
+  height: 0.333vw;
+}
+</style>
 

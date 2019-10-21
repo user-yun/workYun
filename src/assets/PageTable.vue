@@ -31,7 +31,7 @@
         :fixed="item.fixed"
       >
         <template slot="header" slot-scope="scope">
-          <span :class="item.class ? item.class: 'emphasize' ">{{scope.column.property}}</span>
+          <span :class="item.class ? item.class: 'emphasize' ">{{scope.column.label}}</span>
         </template>
         <template slot-scope="scope">
           <pre v-if="item.json" :class="item.class ? item.class: 'emphasize' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
@@ -143,22 +143,31 @@ export default {
         let s = c.property.substring(0, iof);
         let e = c.property.substring(iof + 1, c.property.length);
         let data = r[s][e];
-        return {
-          data,
-          s,
-          e
-        };
+        return data;
+        // return {
+        //   data,
+        //   s,
+        //   e
+        // };
       }
     },
     dataFormat(is, r, c) {
       let data = this.cellDataFormat(r, c);
-      if (!is) return data;
+      if (!is) {
+        return data;
+      }
       try {
         switch (typeof data) {
           case "string":
             return data.substr(0, 10);
           case "number":
             return data.toFixed(2);
+          case "object":
+            let t = "";
+            data.forEach(e => {
+              t += e;
+            });
+            return t;
           default:
             return JSON.stringify(data).substr(0, 10);
         }

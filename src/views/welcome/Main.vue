@@ -14,7 +14,9 @@
         <el-header style="padding:0;height:auto;">
           <MainHeader></MainHeader>
         </el-header>
-        <MainTag></MainTag>
+        <el-header style="padding:0;height:auto;">
+          <MainTag></MainTag>
+        </el-header>
         <el-main style="padding:0.2vw 0.5vw;">
           <MainApp class="shadow" style="overflow: auto;"></MainApp>
         </el-main>
