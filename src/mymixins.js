@@ -3,6 +3,7 @@ let m = {
     return {
       h: "https://spmp.zg118.com/server"
       // h: "http://192.168.8.48:8888"
+      // h: "http://192.168.8.45:8888"
     };
   },
   computed: {

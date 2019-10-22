@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100%">
+  <el-row style="height:100%">
     <el-col :span="18" style="height:100%">
       <ECharts
         id="TreeConfig"
@@ -11,7 +11,7 @@
     <el-col :span="6">
       <MCrDevRelaCorrForm :treeData="treeData" @ruleForm="ruleFormHandler"></MCrDevRelaCorrForm>
     </el-col>
-  </div>
+  </el-row>
 </template>
 
 <script>

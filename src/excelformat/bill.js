@@ -7,9 +7,10 @@ export default function bill(that, n, o) {
             name: "仿宋",
             sz: 12,
             color: "#000000",
-            bold: true
-        }
+            bold: true,
+        },
     };
+    let t = 'n';
     let exc = {
         SheetNames: [],
         Sheets: {}

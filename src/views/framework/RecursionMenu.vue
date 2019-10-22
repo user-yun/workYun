@@ -8,12 +8,7 @@
     router
   >
     <transition v-for="(mli,i) in mList" :key="i+mList.length">
-      <el-submenu
-        :collapse="otherInfo.menuCollapse"
-        v-if="mli.children&&mli.children.length>1"
-        :index="mli.path"
-        class="alnlft"
-      >
+      <el-submenu v-if="mli.children&&mli.children.length>1" :index="mli.path" class="alnlft">
         <template slot="title">
           <i :class="mli.meta.icon"></i>
           <span slot="title" class="emphasize">{{language[mli.name]}}</span>

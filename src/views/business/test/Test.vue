@@ -54,13 +54,13 @@
     <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
     <!-- <ProgresS></ProgresS> -->
     <el-button @click="exc">excelTest</el-button>
-    <!-- <ECharts
-      ref="TreeDemo"
+    <ECharts
+      style="pointerEvents:none"
       id="TreeDemo"
-      height="79vh"
+      height="65vh"
       :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'TB')"
       @clickECharts="clickECharts"
-    ></ECharts>-->
+    ></ECharts>
   </div>
 </template>
 

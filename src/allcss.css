@@ -33,6 +33,16 @@ body {
     font-size: 0.83334vw;
 }
 
+.el-tag--mini,
+.el-tag--medium {
+    height: 3.2vh;
+    line-height: 3vh;
+}
+
+.el-divider--horizontal {
+    margin: 1% 0;
+}
+
 .alnlft {
     text-align: left;
 }
@@ -102,12 +112,6 @@ body {
 .hh5 {
     /*顶部栏*/
     height: 5vh
-}
-
-.el-tag--mini,
-.el-tag--medium {
-    height: 3.2vh;
-    line-height: 3vh;
 }
 
 .th4 {

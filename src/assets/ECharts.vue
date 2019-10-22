@@ -43,14 +43,15 @@ export default {
     async initChart() {
       let _this = this;
       // _this.MyChart = _this.$echarts.init(myChart);
+      // require("echarts").dispose(document.getElementById(_this.id));
       _this.MyChart = await require("echarts").init(
         document.getElementById(_this.id),
         "light"
       );
-      if (_this.MyChart._$handlers.click) {
-        _this.MyChart._$handlers.click.length = 0;
-      }
-      await window.removeEventListener("click", _this.click);
+      // if (_this.MyChart._$handlers.click) {
+      //   _this.MyChart._$handlers.click.length = 0;
+      // }
+      // await window.removeEventListener("click", _this.click);
       await _this.MyChart.on("click", _this.click);
       await window.addEventListener("resize", _this.__resizeHandler);
       await _this.setChart();

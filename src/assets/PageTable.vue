@@ -6,7 +6,7 @@
       :border="TableConfig.border"
       :stripe="TableConfig.stripe"
       :highlight-current-row="TableConfig.highlight"
-      :height="TableConfig.disabled == ''?'100%':'93%'"
+      :height="TableConfig.disabled ? '93%':'100%'"
       :header-cell-style="headerCellStyle"
       :cell-style="cellStyle"
       @cell-dblclick="cellDblClick"
@@ -62,7 +62,8 @@ export default {
   name: "PageTable",
   data() {
     return {
-      widthScale: 1
+      widthScale: 1,
+      singleRow: {}
     };
   },
   components: {},
@@ -135,6 +136,13 @@ export default {
         this.widthScale = ws;
       }
     },
+    handCss() {
+      if (this.TableConfig.single) {
+        this.$addCSS(".el-checkbox__inner{ border-radius:7px;}");
+      } else {
+        this.$addCSS(".el-checkbox__inner{ border-radius:2px;}");
+      }
+    },
     cellDataFormat(r, c) {
       let iof = c.property.indexOf(".");
       if (iof == -1) {
@@ -179,18 +187,26 @@ export default {
       this.$emit("cellDblClick", r, c);
     },
     headerCellStyle(o) {
+      this.handCss();
       if (o.columnIndex == 0 && this.TableConfig.single) {
-        return { pointerEvents: "none", opacity: 0 };
+        return { pointerEvents: "none", opacity: 0.4 };
       }
     },
     select(s, r) {
-      if (this.TableConfig.multiple) {
-        this.$emit("select", s);
-      } else if (this.TableConfig.single) {
+      if (this.TableConfig.single) {
         this.$refs.meltable.clearSelection();
-        this.$refs.meltable.toggleRowSelection(r);
-        this.$emit("select", r);
+        if (this.singleRow != r) {
+          this.$refs.meltable.toggleRowSelection(r);
+          this.singleRow = r;
+          this.$emit("select", [r]);
+          return;
+        } else {
+          this.singleRow = {};
+          this.$emit("select", []);
+          return;
+        }
       }
+      this.$emit("select", s);
     },
     selectAll(s) {
       this.$emit("select", s);
@@ -204,6 +220,9 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.widthScaleHandler);
+  },
+  activated() {
+    this.handCss();
   }
 };
 </script>

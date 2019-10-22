@@ -1,12 +1,23 @@
 <template>
-  <div style="height:100%">
-    <PageTable
-      :tableData="tableData"
-      :DataConfig="require('./MPublicBoothDataConfig.js')"
-      @cellDblClick="cellDblClick"
-    ></PageTable>
-    <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
-  </div>
+  <el-row style="height:100%">
+    <el-col style="height:100%" :span="8">
+      <PageTable
+        :tableData="tableData"
+        :TableConfig="TableConfig"
+        :DataConfig="require('./MPublicBoothDataConfig.js')"
+        @cellDblClick="cellDblClick"
+        @select="tableSelect"
+      ></PageTable>
+    </el-col>
+    <el-col style="height:100%;pointerEvents:none" :span="16">
+      <ECharts
+        id="publicTree"
+        height="100%"
+        :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'TB',TreeChartConfig)"
+      ></ECharts>
+    </el-col>
+    <!-- <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component> -->
+  </el-row>
 </template>
 
 <script>
@@ -15,14 +26,28 @@ export default {
   name: "publicBooth",
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
-    PageTable: () => import("@/assets/PageTable.vue")
+    PageTable: () => import("@/assets/PageTable.vue"),
+    ECharts: () => import("@/assets/ECharts.vue")
   },
   data() {
     return {
       tableData: [],
       is: "MBusinessDialog",
       show: false,
-      rowData: null
+      rowData: null,
+      TableConfig: {
+        border: true,
+        stripe: true,
+        highlight: true,
+        single: true
+      },
+      TreeChartOption: [],
+      TreeChartConfig: {
+        name: "UpperTitle",
+        type: "Sharerole",
+        id: "UpperPcode",
+        children: "Children"
+      }
     };
   },
   mounted() {
@@ -31,6 +56,10 @@ export default {
   computed: {},
   watch: {},
   methods: {
+    tableSelect(l) {
+      console.log(l);
+      this.TreeChartOption = [].concat([], [l]);
+    },
     cellDblClick(r, c) {
       this.rowData = this.cellDataFormat(r, c);
       this.show = true;
@@ -40,7 +69,7 @@ export default {
     },
     getRequest(val) {
       let userProject = this.userInfo.userProject;
-      this.get(`/module/modulerelalist/${userProject}`, {}).then(res => {
+      this.get(`/module/modulerelation/${userProject}`, {}).then(res => {
         if (res.ErrCode == 0) {
           let data = res.Data;
           this.tableData = data;

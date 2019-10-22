@@ -1,15 +1,13 @@
 <template>
   <el-row style="height:100%;" class="alnlft">
     <Title>{{language.accountsReceivable}}</Title>
-    <el-col :span="19" style="height:55%">
+    <el-col :span="24" style="height:95%">
       <PageTable
         :tableData="tableData"
         :DataConfig="require('./AccountsReceivableDataConfig.js').default()"
         @cellDblClick="cellDblClick"
       ></PageTable>
     </el-col>
-    <el-col :span="5" style="height:55%">123</el-col>
-    <el-col :span="24" style="height:10%">123</el-col>
   </el-row>
 </template>
 

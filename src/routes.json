@@ -332,8 +332,8 @@
         ]
     },
     {
-        "path": "/billrechargemanagement",
-        "name": "billrechargemanagement",
+        "path": "/accountsReceivable",
+        "name": "accountsReceivable",
         "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-sugar",
@@ -341,26 +341,15 @@
             "role": [1]
         },
         "children": [{
-                "path": "/accountsReceivable",
-                "name": "accountsReceivable",
-                "component": "billrechargemanagement/accountsreceivable/AccountsReceivable",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/closedBills",
-                "name": "closedBills",
-                "component": "billrechargemanagement/closedbills/ClosedBills",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
+            "path": "/accountsReceivable",
+            "name": "accountsReceivable",
+            "component": "billrechargemanagement/accountsreceivable/AccountsReceivable",
+            "meta": {
+                "icon": "el-icon-sugar",
+                "intercept": true,
+                "role": [1]
             }
-        ]
+        }]
     },
     {
         "path": "/dataAgg",
