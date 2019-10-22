@@ -1,10 +1,17 @@
 require("file-saver");
 let XLSX = require("xlsx");
 export default function Exl(n, t) {
+    let defaultCellStyle = {
+        font: { name: "仿宋", sz: 10, color: "#000000", bold: false },
+        fill: { fgColor: { rgb: "FFFFFF" } },
+        alignment: { horizontal: "center", vertical: "center" }
+    };
+
     let td = new Blob([s2ab(XLSX.write(t, {
         bookType: 'xlsx',
         bookSST: false,
-        type: 'binary'
+        type: 'binary',
+        defaultCellStyle
     }))], {
             type: "application/octet-stream"
         });

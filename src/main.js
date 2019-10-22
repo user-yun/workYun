@@ -4,9 +4,9 @@ import router from './router';
 import store from './store';
 import './f';
 
-// import ElementUI from 'element-ui';
+import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
-// Vue.use(ElementUI, { size: 'mini', zIndex: 1023 });
+Vue.use(ElementUI, { size: 'mini', zIndex: 1023 });
 
 import { fetchPost, fetchGet } from './http';
 Vue.prototype.$Post = fetchPost;

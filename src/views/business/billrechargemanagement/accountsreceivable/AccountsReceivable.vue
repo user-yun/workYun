@@ -1,11 +1,13 @@
 <template>
   <el-row style="height:100%;" class="alnlft">
     <Title>{{language.accountsReceivable}}</Title>
-    <el-col :span="24" style="height:95%">
+    <el-col :span="6" :offset="18" style="height:5%">
+      <el-button type="primary" @click="excelOut">账单导出</el-button>
+    </el-col>
+    <el-col :span="24" style="height:90%">
       <PageTable
         :tableData="tableData"
         :DataConfig="require('./AccountsReceivableDataConfig.js').default()"
-        @cellDblClick="cellDblClick"
       ></PageTable>
     </el-col>
   </el-row>
@@ -17,32 +19,14 @@ export default {
   name: "accountsReceivable",
   data() {
     return {
-      tableData: [],
-      rowData: {}
+      tableData: []
     };
   },
   components: {
     PageTable: () => import("@/assets/PageTable.vue"),
     Title: () => import("@/assets/Title.vue")
   },
-  computed: {
-    // test() {
-    //   let data = null;
-    //   return data;
-    // }
-  },
-  watch: {
-    //监听数据变化
-    // test: {
-    //   deep: true,
-    //   immediate: true,
-    //   handler(newv, oldv) {}
-    // }
-  },
   methods: {
-    cellDblClick(r, c) {
-      this.rowData = this.cellDataFormat(r, c);
-    },
     getRequest() {
       let projectId = this.userInfo.projectId;
       let userProject = this.userInfo.userProject;
@@ -55,13 +39,18 @@ export default {
         that.tableData = data;
       });
     },
-    postRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
+    excelOut() {
+      require("@/excelformat/seeGetExcel.js").default(
+        this,
+        "账单",
+        [
+          {
+            name: "账单",
+            list: this.tableData
+          }
+        ],
+        require("./AccountsReceivableDataConfig.js").default()
+      );
     }
   },
   created() {

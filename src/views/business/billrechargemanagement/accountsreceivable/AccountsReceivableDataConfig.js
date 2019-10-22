@@ -12,14 +12,14 @@ export default function f() {
     // json:true
     let arr = [
         {
-            width: "100",
+            width: "160",
             prop: "OrgTitle",
             align: "center",
             fixed: true,
             label: language.enterpriseName,
         },
         {
-            width: "180",
+            width: "230",
             prop: "billingCycle",
             align: "center",
             label: language.billingCycle,
