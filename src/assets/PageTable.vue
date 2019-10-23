@@ -192,6 +192,9 @@ export default {
         return { pointerEvents: "none", opacity: 0.4 };
       }
     },
+    refSelectAll() {
+      this.$refs.meltable.toggleAllSelection();
+    },
     select(s, r) {
       if (this.TableConfig.single) {
         this.$refs.meltable.clearSelection();
