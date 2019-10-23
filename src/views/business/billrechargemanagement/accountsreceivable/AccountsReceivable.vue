@@ -6,6 +6,7 @@
     </el-col>
     <el-col :span="24" style="height:90%">
       <PageTable
+        id="billExcel"
         :tableData="tableData"
         :DataConfig="require('./AccountsReceivableDataConfig.js').default()"
       ></PageTable>
@@ -40,6 +41,7 @@ export default {
       });
     },
     excelOut() {
+      // require("@/function/tableExcel.js").default("billExcel");
       require("@/excelformat/seeGetExcel.js").default(
         this,
         "账单",

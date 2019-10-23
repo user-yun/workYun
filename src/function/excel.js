@@ -2,22 +2,19 @@ require("file-saver");
 let XLSX = require("xlsx");
 export default function Exl(n, t) {
     let defaultCellStyle = {
-        font: { name: "仿宋", sz: 10, color: "#000000", bold: false },
-        fill: { fgColor: { rgb: "FFFFFF" } },
+        font: { name: "仿宋", sz: 12, color: "#000000", bold: false },// italic: false, underline: false
+        fill: { fgColor: "#00f" },
+        // fgColor: { rgb: "008000" }
         alignment: { horizontal: "center", vertical: "center" }
     };
-
-    let td = new Blob([s2ab(XLSX.write(t, {
-        bookType: 'xlsx',
-        bookSST: false,
-        type: 'binary',
-        defaultCellStyle
-    }))], {
-            type: "application/octet-stream"
-        });
-    saveAs(td, n + ".xlsx")
+    let xw = XLSX.write(t, { bookType: 'xlsx', bookSST: false, type: 'binary', defaultCellStyle });
+    try {
+        let td = new Blob([s2ab(xw)], { type: "application/octet-stream" });
+        saveAs(td, n + ".xlsx")
+    } catch (e) {
+        console.error(e, xw);
+    }
 }
-
 function s2ab(s) {
     if (typeof ArrayBuffer !== 'undefined') {
         var buf = new ArrayBuffer(s.length);
