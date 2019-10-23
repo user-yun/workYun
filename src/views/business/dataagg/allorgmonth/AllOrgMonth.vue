@@ -31,13 +31,8 @@ export default {
       this.selectDate = t;
       this.getRequest();
     },
-    tableSelect(d) {
-      console.log(d);
-    },
-    clickPage(d, l) {
-      console.log(d);
-      console.log(l);
-    },
+    tableSelect(d) {},
+    clickPage(d, l) {},
     getRequest() {
       let that = this;
       let userProject = this.userInfo.userProject;

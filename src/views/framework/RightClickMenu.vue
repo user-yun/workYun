@@ -134,7 +134,6 @@ export default {
       if (that.rmTime == null) {
         that.rmTime = setTimeout(() => {
           that.close();
-          console.log(1);
         }, 600);
       }
     },

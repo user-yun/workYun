@@ -332,8 +332,8 @@
         ]
     },
     {
-        "path": "/accountsReceivable",
-        "name": "accountsReceivable",
+        "path": "/billrechargemanagement",
+        "name": "billrechargemanagement",
         "component": "welcome/Main",
         "meta": {
             "icon": "el-icon-sugar",
@@ -344,6 +344,15 @@
             "path": "/accountsReceivable",
             "name": "accountsReceivable",
             "component": "billrechargemanagement/accountsreceivable/AccountsReceivable",
+            "meta": {
+                "icon": "el-icon-sugar",
+                "intercept": true,
+                "role": [1]
+            }
+        }, {
+            "path": "/rechargeRecord",
+            "name": "rechargeRecord",
+            "component": "billrechargemanagement/rechargerecord/RechargeRecord",
             "meta": {
                 "icon": "el-icon-sugar",
                 "intercept": true,

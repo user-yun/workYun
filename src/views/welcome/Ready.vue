@@ -71,6 +71,10 @@ export default {
       // }, 2000);
     }
   },
+  created() {
+    this.$setTitle("yun3");
+    this.$setIco("https://cloud.tencent.com/favicon.ico");
+  },
   mounted() {
     this.ready();
   }
