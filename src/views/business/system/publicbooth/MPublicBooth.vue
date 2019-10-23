@@ -57,7 +57,6 @@ export default {
   watch: {},
   methods: {
     tableSelect(l) {
-      console.log(l);
       this.TreeChartOption = [].concat([], [l]);
     },
     cellDblClick(r, c) {

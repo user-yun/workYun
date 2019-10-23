@@ -69,7 +69,7 @@ export default {
       } else {
         this.buttonText = this.language.selectExcelExport;
       }
-      this.selectBill = [].concat([], [l]);
+      this.selectBill = [].concat([], l);
     },
     excelOut() {
       // require("@/function/tableExcel.js").default("billExcel");//需要xlsx 现在换为了xlsx-style
