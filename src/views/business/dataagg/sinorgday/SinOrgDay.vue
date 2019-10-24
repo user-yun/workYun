@@ -1,5 +1,5 @@
 <template>
-  <el-row style="height:100%">
+  <el-row style="height:95%">
     <mt>{{language.sinOrgDay}}</mt>
     <el-col :sm="12" :md="6" :xl="3">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>

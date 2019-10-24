@@ -28,7 +28,6 @@ export default {
   methods: {
     async req() {
       this.systemLog = await this.$Get("/web-config/systemLog.json");
-      console.log(this.systemLog);
     }
   },
   mounted() {

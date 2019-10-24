@@ -40,7 +40,7 @@ body {
 }
 
 .el-divider--horizontal {
-    margin: 1% 0;
+    margin: 1.5% 0;
 }
 
 .el-badge {
@@ -148,7 +148,7 @@ body {
 }
 
 .treeMH {
-    height: 80vh;
+    height: 78vh;
     overflow: auto
 }
 

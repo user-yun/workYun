@@ -1,5 +1,5 @@
 <template>
-  <div style="height:97%">
+  <div style="height:95%">
     <mt>{{language.allOrgMonth}}</mt>
     <DatePicker :type="1" :dayNum="31" @change="pickerChange"></DatePicker>
     <div style="height:95%">

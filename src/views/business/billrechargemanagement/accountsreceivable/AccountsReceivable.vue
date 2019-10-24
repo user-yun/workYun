@@ -4,7 +4,7 @@
     <el-col :span="6" :offset="18" style="height:5%">
       <el-button :disabled="disabledButton" type="primary" @click="excelOut">{{excelExportButton}}</el-button>
     </el-col>
-    <el-col :span="24" style="height:90%">
+    <el-col :span="24" style="height:88%">
       <PageTable
         ref="billExcel"
         :tableData="tableData"

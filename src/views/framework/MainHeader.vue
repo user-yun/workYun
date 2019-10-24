@@ -115,7 +115,6 @@ export default {
     },
     noticeSelect(i) {
       if (i == "systemLog") {
-        console.log(i)
         this.$router.push({ name: i });
       }
     },

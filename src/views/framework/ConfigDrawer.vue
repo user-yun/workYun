@@ -46,6 +46,13 @@
         <el-switch v-model="menuUnique"></el-switch>
       </el-form-item>
       <el-form-item class="alnlft">
+        <span
+          slot="label"
+          class="emphasize"
+        >{{rightClickMenu?language.rightClickMenu:language.systemClickMenu}}</span>
+        <el-switch v-model="rightClickMenu"></el-switch>
+      </el-form-item>
+      <el-form-item class="alnlft">
         <span slot="label" class="emphasize">{{language.selectLanguage}}</span>
         <SelectLanguage></SelectLanguage>
       </el-form-item>
@@ -86,6 +93,14 @@ export default {
       },
       set(v) {
         this.setOtherInfo({ menuUnique: v });
+      }
+    },
+    rightClickMenu: {
+      get() {
+        return this.otherInfo.rightClickMenu;
+      },
+      set(v) {
+        this.setOtherInfo({ rightClickMenu: v });
       }
     },
     configThemeDisabled() {

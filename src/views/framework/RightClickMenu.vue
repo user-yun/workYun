@@ -87,13 +87,8 @@ export default {
       let path = this.PrintingEle.path;
       for (let i = 0, l = path.length; i < l; i++) {
         let id = path[i].id;
-        if (
-          id != "" &&
-          id != "app" &&
-          id != null &&
-          id != undefined &&
-          id != "rightClickMenuId"
-        ) {
+        if (id == "PrintBody") {
+          // id != "" && id != "app" && id != null && id != undefined && id != "rightClickMenuId"
           this.idEle = document.getElementById(id);
           return true;
         }

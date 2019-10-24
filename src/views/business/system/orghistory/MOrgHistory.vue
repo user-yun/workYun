@@ -1,7 +1,7 @@
 <template>
-  <div style="height:98%">
+  <div style="height:96%">
     <mt>{{language.organization}}</mt>
-    <div style="height:97%">
+    <div style="height:96%">
       <PageTable
         :tableData="tableData"
         :DataConfig="require('./MOrgHistoryDataConfig.js')"

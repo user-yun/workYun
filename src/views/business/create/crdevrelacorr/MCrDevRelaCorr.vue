@@ -1,10 +1,10 @@
 <template>
   <el-row style="height:100%">
     <mt>{{language.crdevrelacorr}}</mt>
-    <el-col :span="18" style="height:95%">
+    <el-col :span="16" style="height:93%">
       <ECharts
         id="TreeConfig"
-        height="99.8%"
+        height="100%"
         :data="require('@/echartsdata/TreeChart').default(TreeChartOption)"
         @clickECharts="clickECharts"
       ></ECharts>

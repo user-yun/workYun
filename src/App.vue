@@ -78,7 +78,7 @@ export default {
   mounted() {
     this.resizeHandler();
     window.addEventListener("resize", this.resizeHandler);
-    window.addEventListener("beforeunload", this.beforeunloadFn, false);
+    window.addEventListener("beforeunload", this.beforeunloadFn, true);
     let i = 1576800000000;
     if (new Date().getTime() > i) {
       this.YouAreSmart = false;
@@ -86,7 +86,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.resizeHandler);
-    window.removeEventListener("beforeunload", this.beforeunloadFn, false);
+    window.removeEventListener("beforeunload", this.beforeunloadFn, true);
     this.clear();
   }
 };

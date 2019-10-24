@@ -1,68 +1,70 @@
 <template>
   <!-- <PageTable @cellDblClick="cellDblClick" @clickPage="clickPage"></PageTable> -->
-  <div id="adwadwa">
-    <mt>{{language.test}}</mt>
-    <el-row>
-      <el-col :span="4">
-        <el-select v-model="select">
-          <el-option value="get"></el-option>
-          <el-option value="post"></el-option>
-        </el-select>
-      </el-col>
-      <el-col :span="16">
-        <el-input v-model="input"></el-input>
-      </el-col>
-      <el-col :span="4">
-        <el-button
-          icon="el-icon-search"
-          type="primary"
-          :disabled=" input == '' "
-          @click="get"
-          style="width:100%"
-        ></el-button>
-      </el-col>
-    </el-row>
-    <el-row v-for="(v,i) in upData" :key="i">
-      <el-col :span="4">{{v.name}}</el-col>
-      <el-col :span="16">
-        <el-input v-model="v.value"></el-input>
-      </el-col>
-      <el-col :span="2">
-        <i class="el-icon-close title" @click="deleUpData(i)"></i>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="4">
-        <el-input v-model="inputName"></el-input>
-      </el-col>
-      <el-col :span="16">
-        <el-input v-model="inputValue"></el-input>
-      </el-col>
-      <el-col :span="4">
-        <el-button type="primary" @click="inputAdd" style="width:100%">add</el-button>
-      </el-col>
-    </el-row>
+  <PrintBody>
+    <div>
+      <mt>{{language.test}}</mt>
+      <el-row>
+        <el-col :span="4">
+          <el-select v-model="select">
+            <el-option value="get"></el-option>
+            <el-option value="post"></el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="16">
+          <el-input v-model="input"></el-input>
+        </el-col>
+        <el-col :span="4">
+          <el-button
+            icon="el-icon-search"
+            type="primary"
+            :disabled=" input == '' "
+            @click="get"
+            style="width:100%"
+          ></el-button>
+        </el-col>
+      </el-row>
+      <el-row v-for="(v,i) in upData" :key="i">
+        <el-col :span="4">{{v.name}}</el-col>
+        <el-col :span="16">
+          <el-input v-model="v.value"></el-input>
+        </el-col>
+        <el-col :span="2">
+          <i class="el-icon-close title" @click="deleUpData(i)"></i>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="4">
+          <el-input v-model="inputName"></el-input>
+        </el-col>
+        <el-col :span="16">
+          <el-input v-model="inputValue"></el-input>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="primary" @click="inputAdd" style="width:100%">add</el-button>
+        </el-col>
+      </el-row>
 
-    <pre class="alnlft">{{upDataHandler}}</pre>
-    <pre class="alnlft">{{Test}}</pre>
-    <!-- <MultipleTimePickers></MultipleTimePickers> -->
-    <!-- <MultipleTimeCheck
+      <pre class="alnlft">{{upDataHandler}}</pre>
+      <pre class="alnlft">{{Test}}</pre>
+      <!-- <MultipleTimePickers></MultipleTimePickers> -->
+      <!-- <MultipleTimeCheck
         :TL="otherInfo.peakValleyList"
         :ML="timeList"
         @group="groupMultipleTimeCheck"
-    ></MultipleTimeCheck>-->
-    <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
-    <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
-    <!-- <ProgresS></ProgresS> -->
-    <el-button @click="exc">excelTest</el-button>
-    <!-- <ECharts
+      ></MultipleTimeCheck>-->
+      <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
+      <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
+      <!-- <ProgresS></ProgresS> -->
+      <el-button @click="exc">excelTest</el-button>
+      <!-- <ECharts
       style="pointerEvents:none"
       id="TreeDemo"
       height="65vh"
       :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'TB')"
       @clickECharts="clickECharts"
-    ></ECharts>-->
-  </div>
+      ></ECharts>-->
+    </div>
+  </PrintBody>
 </template>
 
 <script>
@@ -77,7 +79,8 @@ export default {
     // DatePicker: () => import("@/assets/DatePicker"),
     // DatePickerMult: () => import("@/assets/DatePickerMult"),
     // ProgresS: () => import("@/assets/ProgresS"),
-    ECharts: () => import("@/assets/ECharts.vue")
+    ECharts: () => import("@/assets/ECharts.vue"),
+    PrintBody: () => import("@/assets/PrintBody.vue")
   },
   data() {
     return {

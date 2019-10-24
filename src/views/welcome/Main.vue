@@ -1,5 +1,6 @@
 <template>
-  <div @contextmenu.prevent="rightClick">
+  <div id="mainApp">
+    <!-- @contextmenu.prevent="rightClick" -->
     <RightClickMenu
       v-if="RightClickMenuShow"
       :RightClickMenu="RightClickMenu"
@@ -45,7 +46,6 @@ export default {
     MainApp: () => import("@/views/framework/MainApp"),
     RightClickMenu: () => import("@/views/framework/RightClickMenu")
   },
-  props: {},
   computed: {
     asideWidth() {
       return this.otherInfo.asideVisible
@@ -55,7 +55,15 @@ export default {
         : "0%";
     }
   },
-  watch: {},
+  watch: {
+    "otherInfo.rightClickMenu": {
+      deep: true,
+      // immediate: true,
+      handler(newv, oldv) {
+        this.registerRight(newv);
+      }
+    }
+  },
   methods: {
     RightClickMenuClose() {
       this.RightClickMenuShow = false;
@@ -71,10 +79,19 @@ export default {
       return confirmationMessage;
     },
     rightClick(e) {
+      e.preventDefault();
       this.PrintingEle = e;
       this.$set(this.RightClickMenu, "x", e.x);
       this.$set(this.RightClickMenu, "y", e.y);
       this.RightClickMenuShow = true;
+    },
+    registerRight(i) {
+      let rig = document.getElementById("mainApp");
+      if (i && rig) {
+        rig.addEventListener("contextmenu", this.rightClick, true);
+      } else if (rig) {
+        rig.removeEventListener("contextmenu", this.rightClick, true);
+      }
     }
     // resizeHandler() {
     //   let clientWidth = document.body.clientWidth;
@@ -89,11 +106,12 @@ export default {
   mounted() {
     // this.resizeHandler();
     // window.addEventListener("resize", this.resizeHandler);
-    window.addEventListener("beforeunload", this.beforeunloadFn, false);
+    this.registerRight(this.otherInfo.rightClickMenu);
+    window.addEventListener("beforeunload", this.beforeunloadFn, true);
   },
   beforeDestroy() {
     // window.removeEventListener("resize", this.resizeHandler);
-    window.removeEventListener("beforeunload", this.beforeunloadFn, false);
+    window.removeEventListener("beforeunload", this.beforeunloadFn, true);
   }
 };
 </script>
