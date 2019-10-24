@@ -25,7 +25,7 @@
       <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
         <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="noticeSelect">
           <el-badge is-dot>
-            <i class="el-icon-bell icon"></i>
+            <i class="el-icon-bell icon" :style="{color:otherInfo.themeTextColor}"></i>
           </el-badge>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item
@@ -83,7 +83,6 @@ export default {
   components: {
     ConfigDrawer: () => import("@/views/framework/ConfigDrawer")
   },
-  props: {},
   computed: {
     iClassAsideVisible() {
       return this.otherInfo.asideVisible
@@ -97,7 +96,19 @@ export default {
       return [{ title: this.language.unreadMessage, command: "read" }];
     }
   },
-  watch: {},
+  watch: {
+    "otherInfo.themeTextColor": {
+      deep: true,
+      immediate: true,
+      handler(newv, oldv) {
+        this.$addCSS(
+          `.el-badge__content{ background-color:${this.$ColorReverse(
+            this.otherInfo.themeTextColor
+          )};}`
+        );
+      }
+    }
+  },
   methods: {
     menuSelect(name) {
       this.$router.push({ name });

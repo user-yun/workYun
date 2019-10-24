@@ -4,6 +4,7 @@
     :collapse="otherInfo.menuCollapse"
     :background-color="otherInfo.themeBackgroundColor"
     :text-color="otherInfo.themeTextColor"
+    :active-text-color="activeColor"
     :unique-opened="otherInfo.menuUnique"
     router
   >
@@ -27,6 +28,11 @@
 export default {
   mixins: [require("@/mymixins").default],
   name: "recursionMenu",
+  computed: {
+    activeColor() {
+      return this.$ColorReverse(this.otherInfo.themeTextColor);
+    }
+  },
   props: {
     mList: {
       type: Array,

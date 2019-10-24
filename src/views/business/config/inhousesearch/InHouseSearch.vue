@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col :sm="6" :md="4" :xl="3">
+    <el-col :sm="6" :md="3" :xl="3">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>
     <el-col :sm="6" :md="7" :xl="6">

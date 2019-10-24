@@ -287,7 +287,15 @@ Vue.prototype.$setIco = function (i) {
     document.getElementsByTagName('head')[0].appendChild(link);
 }
 
+Vue.prototype.$ColorReverse = function (o) {
+    //反转颜色
+    o = "0x" + o.replace(/#/g, "");
+    let str = "000000" + (0xffffff - o).toString(16);
+    return "#" + str.substring(str.length - 6, str.length);
+}
+
 Vue.prototype.$addCSS = function (cssText) {
+    //动态添加css
     var style = document.createElement('style'), //创建一个style元素 
         head = document.head || document.getElementsByTagName('head')[0]; //获取head元素 
     style.type = 'text/css'; //这里必须显示设置style元素的type属性为text/css，否则在ie中不起作用 
