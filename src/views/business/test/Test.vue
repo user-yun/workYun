@@ -1,17 +1,18 @@
 <template>
   <!-- <PageTable @cellDblClick="cellDblClick" @clickPage="clickPage"></PageTable> -->
   <div id="adwadwa">
+    <mt>{{language.test}}</mt>
     <el-row>
-      <el-col :xs="6" :sm="5" :md="4" :xl="3">
+      <el-col :span="4">
         <el-select v-model="select">
           <el-option value="get"></el-option>
           <el-option value="post"></el-option>
         </el-select>
       </el-col>
-      <el-col :xs="13" :sm="14" :md="16" :xl="18">
+      <el-col :span="16">
         <el-input v-model="input"></el-input>
       </el-col>
-      <el-col :xs="5" :sm="5" :md="4" :xl="3">
+      <el-col :span="4">
         <el-button
           icon="el-icon-search"
           type="primary"
@@ -76,7 +77,6 @@ export default {
     // DatePicker: () => import("@/assets/DatePicker"),
     // DatePickerMult: () => import("@/assets/DatePickerMult"),
     // ProgresS: () => import("@/assets/ProgresS"),
-    // Title: () => import("@/assets/Title"),
     ECharts: () => import("@/assets/ECharts.vue")
   },
   data() {
@@ -296,32 +296,6 @@ export default {
         this.List = data;
       });
     }
-  },
-  beforeCreate() {
-    //创建前
-  },
-  created() {
-    //创建
-  },
-  beforeMount() {
-    //渲染前
-    // this.$forceUpdate();
-    // this.$nextTick();
-  },
-  mounted() {
-    //渲染
-  },
-  beforeUpdate() {
-    //更新前
-  },
-  updated() {
-    //更新
-  },
-  beforeDestroy() {
-    //销毁前
-  },
-  destroyed() {
-    //销毁
   }
 };
 </script>

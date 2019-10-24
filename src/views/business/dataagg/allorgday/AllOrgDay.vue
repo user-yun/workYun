@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div style="height:97%">
+    <mt>{{language.allOrgDay}}</mt>
     <DatePickerMult @change="pickerChange"></DatePickerMult>
-    <div style="height:84vh">
+    <div style="height:95%">
       <PageTable :tableData="dataList" :DataConfig="require('./AllOrgDayDataConfig.js')"></PageTable>
     </div>
   </div>

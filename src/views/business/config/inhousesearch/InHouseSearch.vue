@@ -1,5 +1,6 @@
 <template>
   <el-row>
+    <mt>{{language.inHouseSearch}}</mt>
     <el-col :sm="6" :md="3" :xl="3">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>

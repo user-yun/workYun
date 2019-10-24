@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div style="height:97%">
+    <mt>{{language.allOrgMonth}}</mt>
     <DatePicker :type="1" :dayNum="31" @change="pickerChange"></DatePicker>
-    <div style="height:83vh">
+    <div style="height:95%">
       <PageTable
         :tableData="dataList"
         @select="tableSelect"

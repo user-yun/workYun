@@ -1,5 +1,6 @@
 <template>
   <el-row>
+    <mt>{{language.crGeTaPuBo}}</mt>
     <el-col :sm="12" :md="6" :xl="3">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>

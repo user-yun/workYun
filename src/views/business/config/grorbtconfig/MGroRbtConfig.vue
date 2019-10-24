@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <Title>{{language.groRbtConfig}}</Title>
+    <mt>{{language.groRbtConfig}}</mt>
     <el-col :sm="24" :md="12" :xl="6" class="alnlft">
       <el-form :model="ruleForm" label-width="40%">
         <el-form-item>
@@ -43,9 +43,6 @@ export default {
         RobotToken: ""
       }
     };
-  },
-  components: {
-    Title: () => import("@/assets/Title.vue")
   },
   mounted() {},
   computed: {

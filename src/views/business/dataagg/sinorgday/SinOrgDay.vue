@@ -1,18 +1,19 @@
 <template>
-  <div>
+  <el-row style="height:100%">
+    <mt>{{language.sinOrgDay}}</mt>
     <el-col :sm="12" :md="6" :xl="3">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>
-    <el-col :sm="12" :md="18" :xl="21">
+    <el-col :sm="12" :md="18" :xl="21" style="height:95%">
       <DatePickerMult @change="pickerChange"></DatePickerMult>
-      <div style="height:84vh">
+      <div style="height:95%">
         <PageTable
           :tableData="dataList"
           :DataConfig="require('../allorgday/AllOrgDayDataConfig.js')"
         ></PageTable>
       </div>
     </el-col>
-  </div>
+  </el-row>
 </template>
 
 <script>

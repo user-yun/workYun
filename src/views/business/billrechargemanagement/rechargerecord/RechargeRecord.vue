@@ -1,10 +1,12 @@
 <template>
-  <div>rechargeRecord</div>
+  <div>
+    <mt>{{language.rechargeRecord}}</mt>
+  </div>
 </template>
 
 <script>
 export default {
-  // mixins: [require("@/mymixins").default],
+  mixins: [require("@/mymixins").default],
   name: "rechargeRecord",
   data() {
     return {

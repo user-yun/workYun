@@ -1,6 +1,6 @@
 <template>
   <el-row style="height:100%;" class="alnlft">
-    <Title>{{language.accountsReceivable}}</Title>
+    <mt>{{language.accountsReceivable}}</mt>
     <el-col :span="6" :offset="18" style="height:5%">
       <el-button :disabled="disabledButton" type="primary" @click="excelOut">{{excelExportButton}}</el-button>
     </el-col>
@@ -34,8 +34,7 @@ export default {
     };
   },
   components: {
-    PageTable: () => import("@/assets/PageTable.vue"),
-    Title: () => import("@/assets/Title.vue")
+    PageTable: () => import("@/assets/PageTable.vue")
   },
   computed: {
     excelExportButton() {

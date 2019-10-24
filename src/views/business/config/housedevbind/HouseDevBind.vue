@@ -1,38 +1,37 @@
 <template>
-  <el-col>
-    <el-row>
-      <el-col :sm="6" :md="4" :xl="3">
-        <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
-      </el-col>
-      <el-col :sm="6" :md="7" :xl="6">
-        <MDeviceTree @MDeviceTree="MDeviceTreeClick"></MDeviceTree>
-      </el-col>
-      <el-col :sm="12" :md="13" :xl="15" class="alnlft">
-        <el-form label-width="20%">
-          <el-form-item :label="language.curOptHou">{{zoneData.Title}}</el-form-item>
-          <el-form-item :label="language.curOptDev">{{devData.Title}}{{devData.Pcode}}</el-form-item>
-          <!-- <el-form-item>
+  <el-row>
+    <mt>{{language.houseDevBind}}</mt>
+    <el-col :sm="6" :md="4" :xl="3">
+      <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
+    </el-col>
+    <el-col :sm="6" :md="7" :xl="6">
+      <MDeviceTree @MDeviceTree="MDeviceTreeClick"></MDeviceTree>
+    </el-col>
+    <el-col :sm="12" :md="13" :xl="15" class="alnlft">
+      <el-form label-width="20%">
+        <el-form-item :label="language.curOptHou">{{zoneData.Title}}</el-form-item>
+        <el-form-item :label="language.curOptDev">{{devData.Title}}{{devData.Pcode}}</el-form-item>
+        <!-- <el-form-item>
             <el-input v-model="devId" clearable :maxlength="30" style="width:80%"></el-input>
-          </el-form-item>-->
-          <el-form-item>
-            <el-radio-group v-model="shareTreeNode">
-              <el-radio
-                v-for="(item,index) in otherInfo.shareTreeNodeList"
-                :key="index+item.value"
-                :label="item.value"
-              >{{language[item.text]}}</el-radio>
-            </el-radio-group>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="getRequest">{{language.houseDevBind}}</el-button>
-          </el-form-item>
-        </el-form>
-        <div style="height:55vh" v-if="bindList">
-          <PageTable :tableData="bindList" :DataConfig="require('./HouseDevBindDataConfig.js')"></PageTable>
-        </div>
-      </el-col>
-    </el-row>
-  </el-col>
+        </el-form-item>-->
+        <el-form-item>
+          <el-radio-group v-model="shareTreeNode">
+            <el-radio
+              v-for="(item,index) in otherInfo.shareTreeNodeList"
+              :key="index+item.value"
+              :label="item.value"
+            >{{language[item.text]}}</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="getRequest">{{language.houseDevBind}}</el-button>
+        </el-form-item>
+      </el-form>
+      <div style="height:55vh" v-if="bindList">
+        <PageTable :tableData="bindList" :DataConfig="require('./HouseDevBindDataConfig.js')"></PageTable>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>

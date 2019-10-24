@@ -44,15 +44,15 @@ function hf(data, dataC) {
     return d;
 }
 function hd(l) {
-    let w1 = [{ top: '15%', left: '10%', bottom: '15%', right: '10%' }]
+    let w1 = [{ top: '15%', left: '15%', bottom: '15%', right: '15%' }]
 
-    let w2 = [{ top: '15%', left: '10%', bottom: '55%', right: '10%' },
-    { top: '55%', left: '10%', bottom: '15%', right: '10%' }]
+    let w2 = [{ top: '15%', left: '15%', bottom: '55%', right: '15%' },
+    { top: '55%', left: '15%', bottom: '15%', right: '15%' }]
 
-    let w4 = [{ top: '15%', left: '10%', bottom: '55%', right: '55%' },
-    { top: '15%', left: '55%', bottom: '55%', right: '10%' },
-    { top: '55%', left: '10%', bottom: '15%', right: '55%' },
-    { top: '55%', left: '55%', bottom: '15%', right: '10%' }]
+    let w4 = [{ top: '15%', left: '15%', bottom: '55%', right: '55%' },
+    { top: '15%', left: '55%', bottom: '55%', right: '15%' },
+    { top: '55%', left: '15%', bottom: '15%', right: '55%' },
+    { top: '55%', left: '55%', bottom: '15%', right: '15%' }]
 
     let wl = [0, w1, w2, w4, w4]
     return wl[l]
@@ -77,7 +77,7 @@ export default function (data, orient, dataC) {
                     position: 'left',
                     verticalAlign: 'middle',
                     align: 'right',
-                    fontSize: 18,
+                    fontSize: 14,
                 },
             },
             lineStyle: {

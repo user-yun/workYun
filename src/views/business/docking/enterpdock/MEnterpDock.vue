@@ -1,5 +1,6 @@
 <template>
   <el-row>
+    <mt>{{language.enterpDock}}</mt>
     <el-col :sm="12" :md="6" :xl="3">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>

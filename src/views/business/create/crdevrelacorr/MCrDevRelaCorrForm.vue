@@ -20,7 +20,7 @@
         ></el-option>
       </el-select>
     </el-form-item>
-    <el-divider>{{language.layerLower+language.add}}</el-divider>
+    <mt>{{language.layerLower+language.add}}</mt>
     <el-form-item :label="language.label" prop="name">
       <el-input v-model="ruleForm.name" clearable :maxlength="30" style="width:80%"></el-input>
     </el-form-item>

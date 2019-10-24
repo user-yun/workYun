@@ -99,7 +99,7 @@ export default {
   watch: {
     "otherInfo.themeTextColor": {
       deep: true,
-      immediate: true,
+      // immediate: true,
       handler(newv, oldv) {
         this.$addCSS(
           `.el-badge__content{ background-color:${this.$ColorReverse(

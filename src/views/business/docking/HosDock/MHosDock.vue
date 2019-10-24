@@ -1,5 +1,6 @@
 <template>
   <el-row>
+    <mt>{{language.hosDock}}</mt>
     <el-col :sm="12" :md="6" :xl="3">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>

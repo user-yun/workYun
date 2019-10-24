@@ -1,10 +1,13 @@
 <template>
-  <div style="height:100%;">
-    <PageTable
-      :tableData="tableData"
-      :DataConfig="require('./MZoneListDataConfig.js')"
-      @cellDblClick="cellDblClick"
-    ></PageTable>
+  <div style="height:98%;">
+    <mt>{{language.enterpriseSummary}}</mt>
+    <div style="height:97%">
+      <PageTable
+        :tableData="tableData"
+        :DataConfig="require('./MZoneListDataConfig.js')"
+        @cellDblClick="cellDblClick"
+      ></PageTable>
+    </div>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </div>
 </template>

@@ -71,7 +71,7 @@ export default {
       return rules;
     },
     dialogWidth() {
-      return this.otherInfo.menuCollapse ? "60%" : "30%";
+      return this.otherInfo.menuCollapse ? "50%" : "25%";
     }
   },
   watch: {},

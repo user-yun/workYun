@@ -1,6 +1,7 @@
 <template>
-  <el-row style="height:100%">
-    <el-col style="height:100%" :span="8">
+  <el-row style="height:98%">
+    <mt>{{language.publicBooth}}</mt>
+    <el-col style="height:97%" :span="8">
       <PageTable
         :tableData="tableData"
         :TableConfig="TableConfig"
@@ -9,11 +10,11 @@
         @select="tableSelect"
       ></PageTable>
     </el-col>
-    <el-col style="height:100%;pointerEvents:none" :span="16">
+    <el-col style="height:97%;pointerEvents:none" :span="16">
       <ECharts
         id="publicTree"
         height="100%"
-        :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'TB',TreeChartConfig)"
+        :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'',TreeChartConfig)"
       ></ECharts>
     </el-col>
     <!-- <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component> -->

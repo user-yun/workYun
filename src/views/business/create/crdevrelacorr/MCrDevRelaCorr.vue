@@ -1,6 +1,7 @@
 <template>
   <el-row style="height:100%">
-    <el-col :span="18" style="height:100%">
+    <mt>{{language.crdevrelacorr}}</mt>
+    <el-col :span="18" style="height:95%">
       <ECharts
         id="TreeConfig"
         height="99.8%"
@@ -16,7 +17,7 @@
 
 <script>
 export default {
-  // mixins: [require("@/mymixins").default],
+  mixins: [require("@/mymixins").default],
   name: "crdevrelacorr",
   components: {
     ECharts: () => import("@/assets/ECharts.vue"),
