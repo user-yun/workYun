@@ -29,6 +29,12 @@
       class="menuItem"
       size="mini"
       :style="rightBt"
+      @click="quickFeedback"
+    >{{language.quickFeedback}}</el-button>
+    <el-button
+      class="menuItem"
+      size="mini"
+      :style="rightBt"
       @click="openSetUp"
     >{{language.openSetUp}}</el-button>
     <el-button
@@ -97,6 +103,9 @@ export default {
     }
   },
   methods: {
+    quickFeedback() {
+      alert(this.language.quickFeedback);
+    },
     backUpPage() {
       this.$router.back();
     },

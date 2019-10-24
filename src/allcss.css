@@ -43,6 +43,10 @@ body {
     margin: 1% 0;
 }
 
+.el-badge {
+    /* margin-top: -10px; */
+}
+
 .alnlft {
     text-align: left;
 }

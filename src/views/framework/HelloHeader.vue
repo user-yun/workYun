@@ -24,14 +24,29 @@
       >{{language.getInto}}</el-button>
     </el-col>
     <el-col :xs="6" :sm="3" :lg="2" :xl="2" class="alnrit">
-      <el-tooltip effect="light">
+      <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="menuSelect">
+        <span class="emphasize" :style="{color:otherInfo.themeTextColor}">
+          <i class="el-icon-user icon"></i>
+          {{userInfo.userName}}
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item
+            v-for="(item) in otherInfo.helloMenuList"
+            :key="item.route"
+            :command="item.route"
+            :icon="item.icon"
+          >
+            <span class="emphasize">{{language[item.title]}}</span>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+      <!-- <el-tooltip effect="light">
         <el-menu slot="content" :collapse="otherInfo.menuCollapse" @select="menuSelect">
           <el-menu-item
             v-for="(item) in otherInfo.helloMenuList"
             :key="item.route"
             :index="item.route"
           >
-            <!-- :key="index+otherInfo.helloMenuList.length" -->
             <i :class="item.icon"></i>
             <span slot="title" class="emphasize">{{language[item.title]}}</span>
           </el-menu-item>
@@ -42,7 +57,7 @@
           class="emphasize"
           :style="{color:otherInfo.themeTextColor}"
         >{{userInfo.userName}}</el-button>
-      </el-tooltip>
+      </el-tooltip> -->
     </el-col>
   </el-row>
 </template>

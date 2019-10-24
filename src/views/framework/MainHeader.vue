@@ -1,7 +1,7 @@
 <template>
   <div :style="{backgroundColor:otherInfo.themeBackgroundColor }">
     <el-row type="flex" align="middle" class="hh5">
-      <el-col :xs="19" :sm="19" :md="21" :lg="21" :xl="21" class="alnlft">
+      <el-col :xs="18" :sm="18" :md="21" :lg="21" :xl="21" class="alnlft">
         <i
           :class="iClassAsideVisible"
           class="icon"
@@ -15,12 +15,50 @@
           @click="iClassMenuCollapseOnClick"
         ></i>
       </el-col>
-      <el-col :xs="5" :sm="5" :md="3" :lg="3" :xl="3" class="alnlft">
+      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
         <i
           class="el-icon-setting icon"
           :style="{color:otherInfo.themeTextColor}"
           @click="iClassDrawerCollapseOnClick"
         ></i>
+      </el-col>
+      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
+        <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="noticeSelect">
+          <el-badge is-dot>
+            <i class="el-icon-bell icon"></i>
+          </el-badge>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item
+              v-for="(item) in noticeMenuList"
+              :key="item.command"
+              :command="item.command"
+              icon="el-icon-chat-dot-square"
+            >
+              <span class="emphasize">{{item.title}}</span>
+            </el-dropdown-item>
+            <el-dropdown-item command="seeAll" divided icon="el-icon-chat-line-square">
+              <span class="emphasize">{{language.systemLog}}</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+      </el-col>
+      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
+        <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="menuSelect">
+          <span class="emphasize" :style="{color:otherInfo.themeTextColor}">
+            <i class="el-icon-user icon"></i>
+            {{userInfo.userName}}
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item
+              v-for="(item) in mainMenuList"
+              :key="item.route"
+              :command="item.route"
+              :icon="item.icon"
+            >
+              <span class="emphasize">{{language[item.title]}}</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </el-col>
     </el-row>
     <ConfigDrawer v-if="otherInfo.drawerVisible"></ConfigDrawer>
@@ -32,7 +70,15 @@ export default {
   mixins: [require("@/mymixins").default],
   name: "mainHeader",
   data() {
-    return {};
+    return {
+      mainMenuList: [
+        {
+          icon: "el-icon-switch-button",
+          title: "signOut",
+          route: "login"
+        }
+      ]
+    };
   },
   components: {
     ConfigDrawer: () => import("@/views/framework/ConfigDrawer")
@@ -46,10 +92,19 @@ export default {
     },
     iClassMenuCollapse() {
       return this.otherInfo.menuCollapse ? "el-icon-s-grid" : "el-icon-menu";
+    },
+    noticeMenuList() {
+      return [{ title: this.language.unreadMessage, command: "read" }];
     }
   },
   watch: {},
   methods: {
+    menuSelect(name) {
+      this.$router.push({ name });
+    },
+    noticeSelect(i) {
+      console.log(i);
+    },
     iClassAsideVisibleOnClick() {
       this.setOtherInfo({ asideVisible: !this.otherInfo.asideVisible });
     },
