@@ -60,6 +60,15 @@ axios.interceptors.response.use((res) => {
     return Promise.reject(error);
 });
 
+function mes() {
+    ELEMENT.Message({
+        message: store.state.language.serveError,
+        type: "error",
+        duration: 3000,
+        customClass: "messageBox"
+    });
+}
+
 //返回一个Promise(发送post请求)
 export function fetchPost(url, params) {
     return new Promise((resolve, reject) => {
@@ -68,9 +77,11 @@ export function fetchPost(url, params) {
                 resolve(response);
             }, err => {
                 reject(err);
+                mes();
             })
             .catch((error) => {
                 reject(error)
+                mes();
             })
     })
 }
@@ -82,9 +93,11 @@ export function fetchGet(url, param) {
                 resolve(response)
             }, err => {
                 reject(err)
+                mes();
             })
             .catch((error) => {
                 reject(error)
+                mes();
             })
     })
 }

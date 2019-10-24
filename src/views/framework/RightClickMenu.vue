@@ -6,6 +6,7 @@
     @mouseleave="runMenu"
     @mouseover="clear"
   >
+    <el-button class="menuItem" size="mini" :style="rightBt" @click="copy">{{language.copy}}</el-button>
     <el-button
       class="menuItem"
       size="mini"
@@ -53,7 +54,7 @@ export default {
   data() {
     return {
       rmTime: null,
-      printHTML: null,
+      idEle: null,
       show: { x: 0, y: 0 }
     };
   },
@@ -84,7 +85,6 @@ export default {
     },
     isPrint() {
       let path = this.PrintingEle.path;
-      let eleItem;
       for (let i = 0, l = path.length; i < l; i++) {
         let id = path[i].id;
         if (
@@ -94,8 +94,7 @@ export default {
           id != undefined &&
           id != "rightClickMenuId"
         ) {
-          eleItem = document.getElementById(id);
-          this.printHTML = eleItem.innerHTML;
+          this.idEle = document.getElementById(id);
           return true;
         }
       }
@@ -103,6 +102,9 @@ export default {
     }
   },
   methods: {
+    copy() {
+      document.execCommand("Copy");
+    },
     quickFeedback() {
       alert(this.language.quickFeedback);
     },
@@ -116,7 +118,7 @@ export default {
       let that = this;
       let newwindow = window.open(window.location.href);
       let t = setTimeout(() => {
-        newwindow.document.body.innerHTML = that.printHTML;
+        newwindow.document.body.innerHTML = that.idEle.innerHTML;
         newwindow.print();
         newwindow.close();
         clearTimeout(t);

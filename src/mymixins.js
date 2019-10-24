@@ -79,7 +79,9 @@ let m = {
           });
           let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
           let i = this.ifServerCode(c)
-          this.eleNotify(i, res.ErrMsg);
+          if (i != 1) {
+            this.eleNotify(i, res.ErrMsg);
+          }
         }).catch((e) => {
           reject(e)
         });
@@ -95,7 +97,9 @@ let m = {
           });
           let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
           let i = this.ifServerCode(c)
-          this.eleNotify(i, res.ErrMsg);
+          if (i != 1) {
+            this.eleNotify(i, res.ErrMsg);
+          }
         }).catch((e) => {
           reject(e)
         });

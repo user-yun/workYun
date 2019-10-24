@@ -8,6 +8,28 @@
         }
     },
     {
+        "path": "/systemLog",
+        "name": "systemLog",
+        "component": "welcome/Main",
+        "meta": {
+            "intercept": false,
+            "noQuickTabs": true,
+            "noKeepAlive": true,
+            "role": [1, 999]
+        },
+        "children": [{
+            "path": "/systemLog",
+            "name": "systemLog",
+            "component": "welcome/systemLog",
+            "meta": {
+                "intercept": true,
+                "noQuickTabs": true,
+                "noKeepAlive": true,
+                "role": [1, 999]
+            }
+        }]
+    },
+    {
         "path": "/home",
         "name": "home",
         "component": "welcome/Main",
@@ -19,38 +41,6 @@
             "role": [1, 999]
         },
         "children": [{
-            "path": "/home",
-            "name": "home",
-            "redirect": {
-                "name": "home"
-            },
-            "meta": {
-                "icon": "el-icon-house",
-                "intercept": true,
-                "noKeepAlive": true,
-                "role": [1, 999]
-            }
-        }, {
-            "path": "/test",
-            "name": "test",
-            "component": "test/Test",
-            "meta": {
-                "icon": "el-icon-sugar",
-                "intercept": true,
-                "noKeepAlive": false,
-                "role": [1, 999]
-            },
-            "children": [{
-                "path": "/test",
-                "name": "test",
-                "component": "test/Test",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "noKeepAlive": false,
-                    "role": [1, 999]
-                }
-            }, {
                 "path": "/home",
                 "name": "home",
                 "redirect": {
@@ -62,8 +52,44 @@
                     "noKeepAlive": true,
                     "role": [1, 999]
                 }
-            }]
-        }]
+            },
+            {
+                "path": "/test",
+                "name": "test",
+                "component": "test/Test",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "noKeepAlive": true,
+                    "role": [1, 999]
+                },
+                "children": [{
+                        "path": "/test",
+                        "name": "test",
+                        "component": "test/Test",
+                        "meta": {
+                            "icon": "el-icon-sugar",
+                            "intercept": true,
+                            "noKeepAlive": true,
+                            "role": [1, 999]
+                        }
+                    },
+                    {
+                        "path": "/home",
+                        "name": "home",
+                        "redirect": {
+                            "name": "home"
+                        },
+                        "meta": {
+                            "icon": "el-icon-house",
+                            "intercept": true,
+                            "noKeepAlive": true,
+                            "role": [1, 999]
+                        }
+                    }
+                ]
+            }
+        ]
     },
     {
         "path": "/test",
@@ -72,7 +98,7 @@
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
-            "noKeepAlive": false,
+            "noKeepAlive": true,
             "role": [1, 999]
         },
         "children": [{
@@ -82,7 +108,7 @@
             "meta": {
                 "icon": "el-icon-sugar",
                 "intercept": true,
-                "noKeepAlive": false,
+                "noKeepAlive": true,
                 "role": [1, 999]
             }
         }]
@@ -341,24 +367,26 @@
             "role": [1]
         },
         "children": [{
-            "path": "/accountsReceivable",
-            "name": "accountsReceivable",
-            "component": "billrechargemanagement/accountsreceivable/AccountsReceivable",
-            "meta": {
-                "icon": "el-icon-sugar",
-                "intercept": true,
-                "role": [1]
+                "path": "/accountsReceivable",
+                "name": "accountsReceivable",
+                "component": "billrechargemanagement/accountsreceivable/AccountsReceivable",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
+            },
+            {
+                "path": "/rechargeRecord",
+                "name": "rechargeRecord",
+                "component": "billrechargemanagement/rechargerecord/RechargeRecord",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
             }
-        }, {
-            "path": "/rechargeRecord",
-            "name": "rechargeRecord",
-            "component": "billrechargemanagement/rechargerecord/RechargeRecord",
-            "meta": {
-                "icon": "el-icon-sugar",
-                "intercept": true,
-                "role": [1]
-            }
-        }]
+        ]
     },
     {
         "path": "/dataAgg",
@@ -370,41 +398,45 @@
             "role": [1]
         },
         "children": [{
-            "path": "/allOrgDay",
-            "name": "allOrgDay",
-            "component": "dataagg/allorgday/AllOrgDay",
-            "meta": {
-                "icon": "el-icon-sugar",
-                "intercept": true,
-                "role": [1]
+                "path": "/allOrgDay",
+                "name": "allOrgDay",
+                "component": "dataagg/allorgday/AllOrgDay",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
+            },
+            {
+                "path": "/allOrgMonth",
+                "name": "allOrgMonth",
+                "component": "dataagg/allorgmonth/AllOrgMonth",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
+            },
+            {
+                "path": "/sinOrgDay",
+                "name": "sinOrgDay",
+                "component": "dataagg/sinorgday/SinOrgDay",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
+            },
+            {
+                "path": "/sinOrgMonth",
+                "name": "sinOrgMonth",
+                "component": "dataagg/sinorgmonth/SinOrgMonth",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
             }
-        }, {
-            "path": "/allOrgMonth",
-            "name": "allOrgMonth",
-            "component": "dataagg/allorgmonth/AllOrgMonth",
-            "meta": {
-                "icon": "el-icon-sugar",
-                "intercept": true,
-                "role": [1]
-            }
-        }, {
-            "path": "/sinOrgDay",
-            "name": "sinOrgDay",
-            "component": "dataagg/sinorgday/SinOrgDay",
-            "meta": {
-                "icon": "el-icon-sugar",
-                "intercept": true,
-                "role": [1]
-            }
-        }, {
-            "path": "/sinOrgMonth",
-            "name": "sinOrgMonth",
-            "component": "dataagg/sinorgmonth/SinOrgMonth",
-            "meta": {
-                "icon": "el-icon-sugar",
-                "intercept": true,
-                "role": [1]
-            }
-        }]
+        ]
     }
 ]

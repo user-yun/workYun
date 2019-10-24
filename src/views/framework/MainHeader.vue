@@ -36,7 +36,7 @@
             >
               <span class="emphasize">{{item.title}}</span>
             </el-dropdown-item>
-            <el-dropdown-item command="seeAll" divided icon="el-icon-chat-line-square">
+            <el-dropdown-item command="systemLog" divided icon="el-icon-chat-line-square">
               <span class="emphasize">{{language.systemLog}}</span>
             </el-dropdown-item>
           </el-dropdown-menu>
@@ -114,7 +114,10 @@ export default {
       this.$router.push({ name });
     },
     noticeSelect(i) {
-      console.log(i);
+      if (i == "systemLog") {
+        console.log(i)
+        this.$router.push({ name: i });
+      }
     },
     iClassAsideVisibleOnClick() {
       this.setOtherInfo({ asideVisible: !this.otherInfo.asideVisible });

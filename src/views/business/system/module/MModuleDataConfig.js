@@ -8,50 +8,46 @@
 // json:true
 let arr = [
     {
-        width: "140",
+        width: "170",
         prop: "title",
         sortable: true,
         fixed: true,
     },
     {
-        width: "180",
+        width: "240",
         prop: "id",
-        sortable: true,
+        fixed: true,
     },
     {
-        width: "100",
+        width: "240",
         prop: "pid",
         sortable: true,
-        format: true,
     },
+    // {
+    //     width: "130",
+    //     prop: "devid",
+    //     sortable: true,
+    // },
     {
-        width: "130",
-        prop: "devid",
-        sortable: true,
-        format: true,
-    },
-    {
-        width: "90",
+        width: "140",
         prop: "zoneid",
         sortable: true,
-        format: true
     },
     {
-        width: "90",
+        width: "180",
         prop: "pcode",
         sortable: true,
-        format: true,
     },
-    {
-        width: "100",
-        prop: "project",
-        sortable: true,
-    },
-    {
-        width: "130",
-        prop: "powerFactor",
-        sortable: true,
-    },
+    // {
+    //     width: "100",
+    //     prop: "project",
+    //     sortable: true,
+    // },
+    // {
+    //     width: "130",
+    //     prop: "powerFactor",
+    //     sortable: true,
+    // },
     {
         width: "80",
         prop: "type",
@@ -87,12 +83,12 @@ let arr = [
         sortable: true,
         format: true
     },
-    {
-        width: "100",
-        prop: "remark",
-        sortable: true,
-        format: true
-    },
+    // {
+    //     width: "100",
+    //     prop: "remark",
+    //     sortable: true,
+    //     format: true
+    // },
     {
         width: "110",
         prop: "status",

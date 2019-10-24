@@ -11,7 +11,7 @@
           v-model="outzoneid"
           clearable
           :maxlength="30"
-          placeholder="outzoneid"
+          placeholder="outorgid"
           style="width:95%"
         ></el-input>
       </li>
