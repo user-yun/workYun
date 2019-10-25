@@ -41,14 +41,14 @@ export default {
       let rkl = rk.length;
       if (t.path == this.$route.path) {
         if (rkl > 0) {
-          this.$router.push({ name: rk[rkl - 1] });
+          this.$router.replace({ name: rk[rkl - 1] });
         } else {
           this.$router.back();
         }
       }
     },
     TagClick(r) {
-      this.$router.push({ name: r });
+      this.$router.replace({ name: r });
     }
   }
 };

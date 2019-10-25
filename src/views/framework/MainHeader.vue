@@ -111,11 +111,11 @@ export default {
   },
   methods: {
     menuSelect(name) {
-      this.$router.push({ name });
+      this.$router.replace({ name });
     },
     noticeSelect(i) {
       if (i == "systemLog") {
-        this.$router.push({ name: i });
+        this.$router.replace({ name: i });
       }
     },
     iClassAsideVisibleOnClick() {

@@ -8,8 +8,8 @@
         }
     },
     {
-        "path": "/systemLog",
-        "name": "systemLog",
+        "path": "/hide",
+        "name": "hide",
         "component": "welcome/Main",
         "meta": {
             "intercept": false,
@@ -20,7 +20,17 @@
         "children": [{
             "path": "/systemLog",
             "name": "systemLog",
-            "component": "welcome/systemLog",
+            "component": "welcome/SystemLog",
+            "meta": {
+                "intercept": true,
+                "noQuickTabs": true,
+                "noKeepAlive": true,
+                "role": [1, 999]
+            }
+        }, {
+            "path": "/quickFeedback",
+            "name": "quickFeedback",
+            "component": "welcome/QuickFeedback",
             "meta": {
                 "intercept": true,
                 "noQuickTabs": true,

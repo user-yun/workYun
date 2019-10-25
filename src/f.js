@@ -256,7 +256,7 @@ Vue.directive('dialogDrag', {
  */
 Date.prototype.format = function (fmt) {
     //日期格式化
-    var o = {
+    let o = {
         "M+": this.getMonth() + 1, //月份
         "d+": this.getDate(), //日
         "h+": this.getHours(), //小时
@@ -266,7 +266,7 @@ Date.prototype.format = function (fmt) {
         "S": this.getMilliseconds() //毫秒
     };
     if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
+    for (let k in o)
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
@@ -296,25 +296,62 @@ Vue.prototype.$ColorReverse = function (o) {
 
 Vue.prototype.$addCSS = function (cssText) {
     //动态添加css
-    var style = document.createElement('style'), //创建一个style元素 
+    let ti = null;
+    let style = document.createElement('style'), //创建一个style元素 
         head = document.head || document.getElementsByTagName('head')[0]; //获取head元素 
     style.type = 'text/css'; //这里必须显示设置style元素的type属性为text/css，否则在ie中不起作用 
     if (style.styleSheet) { //IE 
-        var func = function () {
+        let func = function () {
             try { //防止IE中stylesheet数量超过限制而发生错误 
                 style.styleSheet.cssText = cssText;
             } catch (e) { }
+            if (ti != null) {
+                // clearImmediate
+                clearTimeout(ti);
+            }
         }
         //如果当前styleSheet还不能用，则放到异步中则行
         if (style.styleSheet.disabled) {
-            setTimeout(func, 10);
+            ti = setTimeout(func, 100);
         } else {
             func();
         }
     } else { //w3c
         //w3c浏览器中只要创建文本节点插入到style元素中就行了
-        var textNode = document.createTextNode(cssText);
+        let textNode = document.createTextNode(cssText);
         style.appendChild(textNode);
     }
     head.appendChild(style); //把创建的style元素插入到head中  
+}
+
+Vue.prototype.$analogKeyboard = function (el, evtType, keyCode) {
+    let evtObj;
+    if (document.createEvent) {
+        if (window.KeyEvent) {//firefox 浏览器下模拟事件
+            evtObj = document.createEvent('KeyEvents');
+            evtObj.initKeyEvent(evtType, true, true, window, true, false, false, false, keyCode, 0);
+        } else {//chrome 浏览器下模拟事件
+            evtObj = document.createEvent('UIEvents');
+            evtObj.initUIEvent(evtType, true, true, window, 1);
+
+            delete evtObj.keyCode;
+            if (typeof evtObj.keyCode === "undefined") {//为了模拟keycode
+                Object.defineProperty(evtObj, "keyCode", { value: keyCode });
+            } else {
+                evtObj.key = String.fromCharCode(keyCode);
+            }
+
+            if (typeof evtObj.ctrlKey === 'undefined') {//为了模拟ctrl键
+                Object.defineProperty(evtObj, "ctrlKey", { value: true });
+            } else {
+                evtObj.ctrlKey = true;
+            }
+        }
+        el.dispatchEvent(evtObj);
+
+    } else if (document.createEventObject) {//IE 浏览器下模拟事件
+        evtObj = document.createEventObject();
+        evtObj.keyCode = keyCode
+        el.fireEvent('on' + evtType, evtObj);
+    }
 }

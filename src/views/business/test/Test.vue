@@ -56,6 +56,7 @@
       <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
       <!-- <ProgresS></ProgresS> -->
       <el-button @click="exc">excelTest</el-button>
+      <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
       <!-- <ECharts
       style="pointerEvents:none"
       id="TreeDemo"
@@ -79,8 +80,9 @@ export default {
     // DatePicker: () => import("@/assets/DatePicker"),
     // DatePickerMult: () => import("@/assets/DatePickerMult"),
     // ProgresS: () => import("@/assets/ProgresS"),
-    ECharts: () => import("@/assets/ECharts.vue"),
-    PrintBody: () => import("@/assets/PrintBody.vue")
+    ECharts: () => import("@/assets/ECharts"),
+    PrintBody: () => import("@/assets/PrintBody"),
+    ProOrgSearch: () => import("#/multiplexing/proorgsearch/ProOrgSearch")
   },
   data() {
     return {
@@ -258,6 +260,9 @@ export default {
     // }
   },
   methods: {
+    proOrgSelect(o) {
+      console.log(o);
+    },
     deleUpData(i) {
       this.upData.splice(i);
     },

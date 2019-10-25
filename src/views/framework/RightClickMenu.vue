@@ -101,7 +101,7 @@ export default {
       document.execCommand("Copy");
     },
     quickFeedback() {
-      alert(this.language.quickFeedback);
+      this.$router.replace({ name: "quickFeedback" });
     },
     backUpPage() {
       this.$router.back();
