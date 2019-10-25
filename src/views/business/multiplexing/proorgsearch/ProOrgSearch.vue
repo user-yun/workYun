@@ -1,7 +1,9 @@
 <template>
   <el-row>
-    <el-col v-if="!proid" :span="12">
-      <span v-if="showText" class="emphasize">{{language.selectPark}}：</span>
+    <el-col v-if="!proid" :span="4">
+      <span v-if="showText&&!proid" class="emphasize">{{language.selectPark}}：</span>
+    </el-col>
+    <el-col v-if="!proid" :span="8">
       <el-select v-model="projectId" filterable clearable @change="proOrgSelect">
         <el-option
           v-for="item in projectList"
@@ -11,8 +13,10 @@
         ></el-option>
       </el-select>
     </el-col>
-    <el-col :span="12">
+    <el-col :span="4">
       <span v-if="showText" class="emphasize">{{language.selectOrg}}：</span>
+    </el-col>
+    <el-col :span="8">
       <el-select v-model="orgid" filterable clearable @change="proOrgSelect">
         <el-option
           v-for="item in orgList"
@@ -46,12 +50,6 @@ export default {
       type: Boolean,
       default: true
     }
-  },
-  computed: {
-    // test() {
-    //   let data = null;
-    //   return data;
-    // }
   },
   watch: {
     projectId: {

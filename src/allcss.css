@@ -59,7 +59,8 @@ body {
     text-align: center;
 }
 
-.el-menu--popup {
+.el-menu--popup,
+.el-submenu .el-menu-item {
     min-width: auto;
 }
 

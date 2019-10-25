@@ -5,7 +5,7 @@
     <div style="height:95%">
       <PageTable
         :tableData="dataList"
-        @select="tableSelect"
+        :TableConfig="TableConfig"
         :DataConfig="require('./AllOrgMonthDataConfig.js')"
         @clickPage="clickPage"
       ></PageTable>
@@ -20,11 +20,17 @@ export default {
   data() {
     return {
       selectDate: [],
-      dataList: []
+      dataList: [],
+      TableConfig: {
+        border: true,
+        stripe: true,
+        highlight: true,
+        disabled: true
+      }
     };
   },
   components: {
-    PageTable: () => import("@/assets/PageTable"),
+    PageTable: () => import("@/assets/UiPageTable"),
     DatePicker: () => import("@/assets/DatePicker")
   },
   methods: {
@@ -32,8 +38,9 @@ export default {
       this.selectDate = t;
       this.getRequest();
     },
-    tableSelect(d) {},
-    clickPage(d, l) {},
+    clickPage(d, l) {
+      console.log(d, l);
+    },
     getRequest() {
       let that = this;
       let userProject = this.userInfo.userProject;

@@ -42,7 +42,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-col class="alncnt" v-show="TableConfig.showPage" :style="{fontSize:'150%',height:'4%'}">
+    <el-col class="alncnt" v-if="TableConfig.disabled" :style="{fontSize:'150%',height:'4%'}">
       <i
         class="el-icon-arrow-left"
         :style="{color: pageDis == null || pageDis == 'right' ? '#409EFF':'transparent'}"
@@ -66,7 +66,6 @@ export default {
       singleRow: {}
     };
   },
-  components: {},
   props: {
     tableData: {
       type: Array,
@@ -88,7 +87,6 @@ export default {
           border: true,
           stripe: true,
           highlight: true,
-          showPage: false,
           multiple: false,
           single: false,
           disabled: ""
@@ -161,9 +159,7 @@ export default {
     },
     dataFormat(is, r, c) {
       let data = this.cellDataFormat(r, c);
-      if (!is) {
-        return data;
-      }
+      if (!is) return data;
       try {
         switch (typeof data) {
           case "string":

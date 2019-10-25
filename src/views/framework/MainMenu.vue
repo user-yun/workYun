@@ -1,5 +1,16 @@
 <template>
-  <RecursionMenu class="h997" :mList="menuList"></RecursionMenu>
+  <el-menu
+    :default-active="$route.path"
+    :collapse="otherInfo.menuCollapse"
+    :background-color="otherInfo.themeBackgroundColor"
+    :text-color="otherInfo.themeTextColor"
+    :active-text-color="activeColor"
+    :unique-opened="otherInfo.menuUnique"
+    router
+    class="h997"
+  >
+    <RecursionMenu :mList="menuList" :activeColor="activeColor"></RecursionMenu>
+  </el-menu>
   <!-- <keep-alive> </keep-alive> <component></component> -->
 </template>
 
@@ -7,9 +18,6 @@
 export default {
   mixins: [require("@/mymixins").default],
   name: "mainMenu",
-  data() {
-    return {};
-  },
   components: {
     RecursionMenu: () => import("@/views/framework/RecursionMenu")
   },
@@ -19,6 +27,9 @@ export default {
       let allMenuList = that.otherInfo.userRoutes;
       let menuList = that.handFor(allMenuList);
       return menuList;
+    },
+    activeColor() {
+      return this.$ColorReverse(this.otherInfo.themeTextColor);
     }
   },
   methods: {

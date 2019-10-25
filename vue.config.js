@@ -32,7 +32,8 @@ module.exports = {
       'xlsx': 'XLSX',
       'js-md5': 'md5',
       'nprogress': 'NProgress',
-      'vue-count-to': 'CountTo'
+      'vue-count-to': 'CountTo',
+      'vue-fragment': 'Fragment'
     }
   },
   css: {

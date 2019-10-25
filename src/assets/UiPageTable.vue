@@ -6,7 +6,7 @@
       :border="TableConfig.border"
       :stripe="TableConfig.stripe"
       :highlight-current-row="TableConfig.highlight"
-      :height="TableConfig.disabled?'100%':'93%'"
+      :height="TableConfig.disabled ? '100%':'95%'"
       :header-cell-style="headerCellStyle"
       :cell-style="cellStyle"
       @cell-dblclick="cellDblClick"
@@ -24,12 +24,15 @@
         v-for="(item,index) in DataConfig"
         :key="index"
         :align="item.align"
-        :width="item.width"
+        :width="item.width*widthScale"
         :prop="item.prop"
         :label=" item.label ? item.label : item.prop "
         :sortable="item.sortable"
         :fixed="item.fixed"
       >
+        <template slot="header" slot-scope="scope">
+          <span :class="item.class ? item.class: 'emphasize' ">{{scope.column.label}}</span>
+        </template>
         <template slot-scope="scope">
           <pre v-if="item.json" :class="item.class ? item.class: 'emphasize' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
           <span
@@ -59,7 +62,9 @@ export default {
   data() {
     return {
       page: 1,
-      pageSize: 10
+      pageSize: 10,
+      widthScale: 1,
+      singleRow: {}
     };
   },
   props: {
@@ -93,7 +98,6 @@ export default {
           border: true,
           stripe: true,
           highlight: true,
-          showPage: false,
           multiple: false,
           single: false,
           disabled: true
@@ -120,7 +124,26 @@ export default {
       }
     }
   },
+  computed: {
+    otherInfo() {
+      return this.$store.getters.getOtherInfo;
+    }
+  },
   methods: {
+    widthScaleHandler() {
+      if (this.otherInfo.tableSelfAW) {
+        let w = document.body.clientWidth;
+        let ws = w / 1920 <= 0.6 ? 0.6 : w / 1920;
+        this.widthScale = ws;
+      }
+    },
+    handCss() {
+      if (this.TableConfig.single) {
+        this.$addCSS(".el-checkbox__inner{ border-radius:7px;}");
+      } else {
+        this.$addCSS(".el-checkbox__inner{ border-radius:2px;}");
+      }
+    },
     cellDataFormat(r, c) {
       let iof = c.property.indexOf(".");
       if (iof == -1) {
@@ -129,11 +152,12 @@ export default {
         let s = c.property.substring(0, iof);
         let e = c.property.substring(iof + 1, c.property.length);
         let data = r[s][e];
-        return {
-          data,
-          s,
-          e
-        };
+        return data;
+        // return {
+        //   data,
+        //   s,
+        //   e
+        // };
       }
     },
     dataFormat(is, r, c) {
@@ -145,6 +169,12 @@ export default {
             return data.substr(0, 10);
           case "number":
             return data.toFixed(2);
+          case "object":
+            let t = "";
+            data.forEach(e => {
+              t += e;
+            });
+            return t;
           default:
             return JSON.stringify(data).substr(0, 10);
         }
@@ -156,18 +186,29 @@ export default {
       this.$emit("cellDblClick", r, c);
     },
     headerCellStyle(o) {
+      this.handCss();
       if (o.columnIndex == 0 && this.TableConfig.single) {
-        return { pointerEvents: "none", opacity: 0.1 };
+        return { pointerEvents: "none", opacity: 0.4 };
       }
     },
+    refSelectAll() {
+      this.$refs.meltable.toggleAllSelection();
+    },
     select(s, r) {
-      if (this.TableConfig.multiple) {
-        this.$emit("select", s);
-      } else if (this.TableConfig.single) {
+      if (this.TableConfig.single) {
         this.$refs.meltable.clearSelection();
-        this.$refs.meltable.toggleRowSelection(r);
-        this.$emit("select", r);
+        if (this.singleRow != r) {
+          this.$refs.meltable.toggleRowSelection(r);
+          this.singleRow = r;
+          this.$emit("select", [r]);
+          return;
+        } else {
+          this.singleRow = {};
+          this.$emit("select", []);
+          return;
+        }
       }
+      this.$emit("select", s);
     },
     selectAll(s) {
       this.$emit("select", s);
@@ -178,12 +219,24 @@ export default {
     },
     sizeChange(l) {
       this.pageSize = l;
+      this.page = 1;
       this.$emit("clickPage", this.page, l);
+    },
+    resetPage() {
+      this.page = 1;
+      this.$emit("clickPage", this.page, this.pageSize);
     }
   },
   mounted() {
     this.pageSize = this.PageConfig.size;
+    window.addEventListener("resize", this.widthScaleHandler);
     // this.$emit("clickPage", this.page, this.pageSize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.widthScaleHandler);
+  },
+  activated() {
+    this.handCss();
   }
 };
 </script>

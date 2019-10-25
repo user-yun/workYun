@@ -1,6 +1,31 @@
 <template>
-  <div>
+  <div style="height:95%">
     <mt>{{language.rechargeRecord}}</mt>
+    {{selectInfo}},
+    {{selectDate}},
+    {{page}},
+    {{pageSize}}
+    <el-row>
+      <el-col :span="8">
+        <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
+      </el-col>
+      <el-col :span="8">
+        <DatePickerMult :dayNum="31" @change="pickerChange"></DatePickerMult>
+      </el-col>
+      <el-col :span="8">
+        <el-button type="primary" icon="el-icon-search" @click="searchRecharge"></el-button>
+      </el-col>
+    </el-row>
+    <div style="height:95%">
+      <PageTable
+        ref="rechargeTable"
+        :tableData="dataList"
+        :TableConfig="TableConfig"
+        :PageConfig="PageConfig"
+        :DataConfig="require('./RechargeRecordDataConfig.js').default()"
+        @clickPage="clickPage"
+      ></PageTable>
+    </div>
   </div>
 </template>
 
@@ -10,88 +35,70 @@ export default {
   name: "rechargeRecord",
   data() {
     return {
-      // userInfo
-      // otherInfo
-      // language
+      TableConfig: {
+        border: true,
+        stripe: true,
+        highlight: true,
+        disabled: false
+      },
+      dataList: [],
+      selectDate: [],
+      page: 1,
+      pageSize: 30,
+      total: 0,
+      selectInfo: {}
     };
   },
-  components: {
-    // test: resolve => {require(['@/test/test.vue'], resolve)},//懒加载
-    //test: () => import('@/test/test.vue')
-  },
-  props: {
-    // test: {
-    //   type: String,
-    //   default: () => {
-    //     let colors = require("@/color.js");
-    //     return colors[Math.ceil(Math.random() * colors.length - 1)];
-    //   }
-    // }
-  },
   computed: {
-    // test() {
-    //   let data = null;
-    //   return data;
-    // }
+    PageConfig() {
+      return {
+        total: this.total,
+        size: this.pageSize
+      };
+    }
   },
-  watch: {
-    //监听数据变化
-    // test: {
-    //   deep: true,
-    //   immediate: true,
-    //   handler(newv, oldv) {}
-    // }
+  components: {
+    PageTable: () => import("@/assets/UiPageTable"),
+    DatePickerMult: () => import("@/assets/DatePickerMult"),
+    ProOrgSearch: () => import("#/multiplexing/proorgsearch/ProOrgSearch")
   },
   methods: {
-    getRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
+    searchRecharge() {
+      this.$refs.rechargeTable.resetPage();
+    },
+    proOrgSelect(o) {
+      this.selectInfo = o;
+    },
+    pickerChange(t) {
+      this.selectDate = t;
+    },
+    clickPage(d, l) {
+      this.page = d;
+      this.pageSize = l;
+      this.postRequest();
     },
     postRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
-        let data = res.Data;
-        this.List = data;
+      let orgId = this.selectInfo.orgid ? this.selectInfo.orgid : undefined;
+      let project = this.selectInfo.userProject
+        ? this.selectInfo.userProject
+        : undefined;
+      this.post("/api/get_order", {
+        project,
+        orgId,
+        startTime: this.selectDate[0],
+        endTime: this.selectDate[1],
+        payStatus: -1,
+        rechargeWay: -1,
+        page: this.page,
+        pageSize: this.pageSize
+      }).then(res => {
+        this.dataList = res.Data.body;
+        this.total = res.Data.total;
       });
     }
   },
-  beforeCreate() {
-    //创建前
-  },
-  created() {
-    //创建
-  },
-  beforeMount() {
-    //渲染前
-    // this.$forceUpdate();
-    // this.$nextTick();
-  },
   mounted() {
-    //渲染
-  },
-  activated() {
-    //可见
-  },
-  beforeUpdate() {
-    //更新前
-  },
-  updated() {
-    //更新
-  },
-  beforeDestroy() {
-    //销毁前
-  },
-  destroyed() {
-    //销毁
+    this.postRequest();
   }
 };
 </script>
-<style scoped>
-.test {
-}
-</style>
