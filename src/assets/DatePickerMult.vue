@@ -2,7 +2,7 @@
   <el-date-picker
     v-model="day"
     :editable="false"
-    :clearable="false"
+    :clearable="clearable"
     :type="typeS[type]"
     :value-format="valueF[type]"
     @change="picker"
@@ -31,6 +31,14 @@ export default {
       default: () => {
         return 30;
       }
+    },
+    default: {
+      type: Boolean,
+      default: true
+    },
+    clearable: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {},
@@ -41,12 +49,14 @@ export default {
   },
   mounted() {
     //渲染
-    let date = new Date();
-    date.setDate(date.getDate() - this.dayNum);
-    this.day.push(date.format(this.valueF[this.type]));
-    date = new Date();
-    this.day.push(date.format(this.valueF[this.type]));
-    this.$emit("change", this.day);
+    if (this.default) {
+      let date = new Date();
+      date.setDate(date.getDate() - this.dayNum);
+      this.day.push(date.format(this.valueF[this.type]));
+      date = new Date();
+      this.day.push(date.format(this.valueF[this.type]));
+      this.$emit("change", this.day);
+    }
   }
 };
 </script>

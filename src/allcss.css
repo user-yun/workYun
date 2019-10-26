@@ -28,6 +28,7 @@ body {
 .el-table,
 .el-date-editor .el-range-input,
 .el-form-item__content,
+.el-timeline,
 .emphasize {
     /* 主要文字 */
     font-size: 0.83334vw;

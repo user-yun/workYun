@@ -1,16 +1,12 @@
 <template>
   <div style="height:95%">
     <mt>{{language.rechargeRecord}}</mt>
-    {{selectInfo}},
-    {{selectDate}},
-    {{page}},
-    {{pageSize}}
     <el-row>
       <el-col :span="8">
         <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
       </el-col>
       <el-col :span="8">
-        <DatePickerMult :dayNum="31" @change="pickerChange"></DatePickerMult>
+        <DatePickerMult :dayNum="31" @change="pickerChange" :default="false" :clearable="true"></DatePickerMult>
       </el-col>
       <el-col :span="8">
         <el-button type="primary" icon="el-icon-search" @click="searchRecharge"></el-button>
@@ -78,15 +74,14 @@ export default {
       this.postRequest();
     },
     postRequest() {
-      let orgId = this.selectInfo.orgid ? this.selectInfo.orgid : undefined;
-      let project = this.selectInfo.userProject
-        ? this.selectInfo.userProject
-        : undefined;
+      let orgId = this.selectInfo.orgid;
+      let project = this.selectInfo.userProject;
+      let selectTime = this.selectDate;
       this.post("/api/get_order", {
-        project,
-        orgId,
-        startTime: this.selectDate[0],
-        endTime: this.selectDate[1],
+        project: project ? project : undefined,
+        orgId: orgId ? orgId : undefined,
+        startTime: selectTime ? selectTime[0] : undefined,
+        endTime: selectTime ? selectTime[1] : undefined,
         payStatus: -1,
         rechargeWay: -1,
         page: this.page,

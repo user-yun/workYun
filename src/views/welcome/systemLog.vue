@@ -1,37 +1,83 @@
 <template>
-  <el-timeline class="alnlft" style="width:40%;margin:5vw;">
-    <el-timeline-item
-      v-for="(item, index) in systemLog"
-      :key="index"
-      :timestamp="item.time"
-      color="#000"
-      placement="top"
-      size="large"
-    >
-      <el-card :body-style="{ padding: '0.5vw 1.5vw'}">
-        <p>{{item.zContent}}</p>
-        <p>{{item.eContent}}</p>
-        <p>{{item.oContent}}</p>
-      </el-card>
-    </el-timeline-item>
-  </el-timeline>
+  <el-row style="margin:5vw;">
+    <el-col :span="12" @dblclick.native="logTrue">
+      <i class="el-icon-refresh-right icon" @click="getLog"></i>
+      <el-timeline class="alnlft">
+        <el-timeline-item
+          v-for="(item, index) in systemLog"
+          :key="index"
+          :timestamp="item.Time"
+          color="#000"
+          placement="top"
+          size="large"
+        >
+          <el-card :body-style="{ padding: '0.5vw 1.5vw'}">
+            <p>{{item.ZContent}}</p>
+            <p>{{item.EContent}}</p>
+            <p>{{item.OContent}}</p>
+          </el-card>
+        </el-timeline-item>
+      </el-timeline>
+    </el-col>
+    <el-col :span="12" v-if="showSet" @click.native="getLog">
+      <el-form label-width="30%">
+        <el-form-item :label="language.zhcnContent">
+          <el-input v-model="ZContent" clearable :maxlength="60"></el-input>
+        </el-form-item>
+        <el-form-item :label="language.enusContent">
+          <el-input v-model="EContent" clearable :maxlength="60"></el-input>
+        </el-form-item>
+        <el-form-item :label="language.otherContent">
+          <el-input v-model="OContent" clearable :maxlength="60"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" icon="el-icon-edit" circle @click="setLog"></el-button>
+        </el-form-item>
+      </el-form>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
 export default {
+  mixins: [require("@/mymixins").default],
   name: "systemLog",
   data() {
     return {
-      systemLog: []
+      systemLog: [],
+      logSet: 0,
+      showSet: false,
+      ZContent: "",
+      EContent: "",
+      OContent: ""
     };
   },
   methods: {
-    async req() {
-      this.systemLog = await this.$Get("/web-config/systemLog.json");
+    logTrue() {
+      if (this.logSet >= 1) {
+        this.showSet = true;
+      } else {
+        this.logSet++;
+      }
+    },
+    setLog() {
+      let that = this;
+      this.post("/log/set", {
+        ZContent: that.ZContent,
+        EContent: that.EContent,
+        OContent: that.OContent
+      }).then(res => {
+        that.getLog();
+      });
+    },
+    getLog() {
+      this.get("/log/get", {}).then(res => {
+        this.systemLog = res.Data;
+      });
     }
   },
   mounted() {
-    this.req();
+    this.getLog();
   }
 };
 </script>

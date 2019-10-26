@@ -3,8 +3,8 @@
     <!-- 5vh -->
     <HelloHeader></HelloHeader>
     <!-- 4vh -->
-    <el-row>
-      <el-col :span="4" v-for="i in 6" :key="i" v-if="homeQuickNav">
+    <el-row v-if="homeQuickNav">
+      <el-col :span="4" v-for="i in 6" :key="i">
         <BriefSee></BriefSee>
         <!-- <BriefSeeS :bsSmall="false"></BriefSeeS> -->
       </el-col>
