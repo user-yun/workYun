@@ -12,83 +12,103 @@ export default function f() {
     // json:true
     let arr = [
         {
-            width: "160",
-            prop: "OrgTitle",
+            width: "230",
+            // prop: "OrgTitle",
+            prop: "Orgtitle",
             align: "center",
             fixed: true,
-            label: language.enterpriseName,
+            // label: language.enterpriseName,
 
         },
         {
-            width: "230",
-            prop: "billingCycle",
+            width: "160",
+            // prop: "billingCycle",
+            prop: "Month",
             align: "center",
-            label: language.billingCycle,
-        },
-        {
-            width: "100",
-            align: "center",
-            prop: "Paymodetext",
-            label: language.paymentMode,
-            // json: true
-        },
-        {
-            width: "130",
-            prop: "Sum",
+            // label: language.billingCycle,
             sortable: true,
-            align: "right",
-            format: true,
-            label: language.currentReceivable,
-            type: Number
         },
         {
-            width: "130",
-            prop: "Pending",
+            width: "180",
+            // prop: "Paymodetext",
+            prop: "AllPower",
             align: "right",
+            // label: language.paymentMode,
             sortable: true,
-            format: true,
-            label: language.currentToBeCollected,
-            type: Number
         },
         {
-            width: "130",
-            prop: "Harvest",
+            width: "180",
             align: "right",
-            label: language.realIncome,
+            // prop: "Paymodetext",
+            prop: "Totalcost",
+            // label: language.paymentMode,
             sortable: true,
-            format: true,
-            type: Number
         },
         {
-            width: "130",
-            prop: "Rechargetotal",
+            width: "180",
             align: "right",
+            // prop: "Paymodetext",
+            prop: "Status",
+            // label: language.paymentMode,
             sortable: true,
-            label: language.cumulativeRecharge,
-            format: true,
-            type: Number
         },
-        {
-            width: "130",
-            prop: "Balanceaccount",
-            align: "right",
-            sortable: true,
-            label: language.accountBalance,
-            format: true,
-            type: Number
-        },
-        {
-            width: "100",
-            align: "center",
-            prop: "Body",
-            label: language.contacts,
-        },
-        {
-            width: "130",
-            align: "right",
-            prop: "Mobile",
-            label: language.contactInFormation,
-        },
+        // {
+        //     width: "130",
+        //     prop: "Sum",
+        //     sortable: true,
+        //     align: "right",
+        //     format: true,
+        //     // label: language.currentReceivable,
+        //     type: Number
+        // },
+        // {
+        //     width: "130",
+        //     prop: "Pending",
+        //     align: "right",
+        //     sortable: true,
+        //     format: true,
+        //     // label: language.currentToBeCollected,
+        //     type: Number
+        // },
+        // {
+        //     width: "130",
+        //     prop: "Harvest",
+        //     align: "right",
+        //     // label: language.realIncome,
+        //     sortable: true,
+        //     format: true,
+        //     type: Number
+        // },
+        // {
+        //     width: "130",
+        //     prop: "Rechargetotal",
+        //     align: "right",
+        //     sortable: true,
+        //     // label: language.cumulativeRecharge,
+        //     format: true,
+        //     type: Number
+        // },
+        // {
+        //     width: "130",
+        //     prop: "Balanceaccount",
+        //     align: "right",
+        //     sortable: true,
+        //     // label: language.accountBalance,
+        //     format: true,
+        //     type: Number
+        // },
+        // {
+        //     width: "100",
+        //     align: "center",
+        //     prop: "Body",
+        //     // label: language.contacts,
+        // },
+        // {
+        //     width: "130",
+        //     align: "right",
+        //     prop: "Mobile",
+        //     // label: language.contactInFormation,
+        // },
     ]
     return arr;
 };

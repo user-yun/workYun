@@ -1,10 +1,24 @@
 <template>
-  <el-row style="height:100%;" class="alnlft">
+  <div style="height:95%;" class="alnlft">
     <mt>{{language.accountsReceivable}}</mt>
-    <el-col :span="6" :offset="18" style="height:5%">
-      <el-button :disabled="disabledButton" type="primary" @click="excelOut">{{excelExportButton}}</el-button>
-    </el-col>
-    <el-col :span="24" style="height:88%">
+    <el-row>
+      <el-col :span="8">
+        <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
+      </el-col>
+      <el-col :span="8">
+        <DatePicker
+          :type="1"
+          :dayNum="31"
+          @change="pickerChange"
+          :default="false"
+          :clearable="true"
+        ></DatePicker>
+      </el-col>
+      <el-col :span="8">
+        <el-button :disabled="disabledButton" type="primary" @click="excelOut">{{excelExportButton}}</el-button>
+      </el-col>
+    </el-row>
+    <div :span="24" style="height:94%">
       <PageTable
         ref="billExcel"
         :tableData="tableData"
@@ -12,8 +26,8 @@
         :DataConfig="require('./AccountsReceivableDataConfig.js').default()"
         @select="tableSelect"
       ></PageTable>
-    </el-col>
-  </el-row>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -30,11 +44,15 @@ export default {
         multiple: true
       },
       selectBill: [],
-      buttonText: ""
+      buttonText: "",
+      selectInfo: {},
+      selectDate: []
     };
   },
   components: {
-    PageTable: () => import("@/assets/PageTable.vue")
+    PageTable: () => import("@/assets/PageTable.vue"),
+    DatePicker: () => import("@/assets/DatePicker"),
+    ProOrgSearch: () => import("#/multiplexing/proorgsearch/ProOrgSearch")
   },
   computed: {
     excelExportButton() {
@@ -47,11 +65,22 @@ export default {
     }
   },
   methods: {
+    proOrgSelect(o) {
+      this.selectInfo = o;
+    },
+    pickerChange(t) {
+      this.selectDate = t;
+      this.getRequest();
+    },
     getRequest() {
       let projectId = this.userInfo.projectId;
       let userProject = this.userInfo.userProject;
       let that = this;
-      this.get(`/bill/project/${userProject}/0/0`, {}).then(res => {
+      // this.get(`/bill/project/${userProject}/0/0`, {}).then(res => {
+      this.get(
+        `/orgmonth/orgpowersearch/${userProject}/${this.selectDate}`,
+        {}
+      ).then(res => {
         let data = res.Data;
         data.forEach(e => {
           that.$set(e, "billingCycle", `${e.Begin}-${e.End}`);
@@ -87,7 +116,6 @@ export default {
   },
   created() {
     //创建
-    this.getRequest();
   },
   mounted() {
     //渲染

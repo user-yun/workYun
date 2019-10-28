@@ -3,12 +3,12 @@
     <mt>{{language.allOrgMonth}}</mt>
     <DatePicker :type="1" :dayNum="31" @change="pickerChange"></DatePicker>
     <div style="height:95%">
-      <PageTable
+      <UiPageTable
         :tableData="dataList"
         :TableConfig="TableConfig"
         :DataConfig="require('./AllOrgMonthDataConfig.js')"
         @clickPage="clickPage"
-      ></PageTable>
+      ></UiPageTable>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
     };
   },
   components: {
-    PageTable: () => import("@/assets/UiPageTable"),
+    UiPageTable: () => import("@/assets/UiPageTable"),
     DatePicker: () => import("@/assets/DatePicker")
   },
   methods: {

@@ -12,15 +12,15 @@
         <el-button type="primary" icon="el-icon-search" @click="searchRecharge"></el-button>
       </el-col>
     </el-row>
-    <div style="height:95%">
-      <PageTable
+    <div style="height:94%">
+      <UiPageTable
         ref="rechargeTable"
         :tableData="dataList"
         :TableConfig="TableConfig"
         :PageConfig="PageConfig"
         :DataConfig="require('./RechargeRecordDataConfig.js').default()"
         @clickPage="clickPage"
-      ></PageTable>
+      ></UiPageTable>
     </div>
   </div>
 </template>
@@ -54,7 +54,7 @@ export default {
     }
   },
   components: {
-    PageTable: () => import("@/assets/UiPageTable"),
+    UiPageTable: () => import("@/assets/UiPageTable"),
     DatePickerMult: () => import("@/assets/DatePickerMult"),
     ProOrgSearch: () => import("#/multiplexing/proorgsearch/ProOrgSearch")
   },

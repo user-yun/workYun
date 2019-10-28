@@ -11,7 +11,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    background: #fdfdfd;
+    background: #fafafa;
     font-size: 0.83334vw;
     overflow-x: hidden;
     width: 100vw;
@@ -135,8 +135,11 @@ video {
     margin: 1.5% 0;
 }
 
-.el-divider__text {
-    background-color: #fdfdfd;
+.el-divider__text,
+.el-table__body-wrapper,
+.el-table__footer-wrapper,
+.el-table__header-wrapper {
+    background-color: #fafafa;
 }
 
 .el-badge {
@@ -231,7 +234,7 @@ video {
     /* 阴影 */
     width: 100%;
     height: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 6px rgba(0, 0, 0, 0.35);
 }
 
 .messageBox {

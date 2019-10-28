@@ -45,10 +45,7 @@ export default {
       this.post("/robotBind/senddingmessage", {
         groupNumbers: that.otherInfo.groupNumbers,
         content
-      }).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
+      }).then(res => {});
     }
   },
   beforeDestroy() {
