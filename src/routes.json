@@ -22,8 +22,9 @@
             "name": "systemLog",
             "component": "welcome/SystemLog",
             "meta": {
-                "intercept": true,
-                "noQuickTabs": true,
+                "icon": "el-icon-house",
+                "intercept": false,
+                "noQuickTabs": false,
                 "noKeepAlive": true,
                 "role": [1, 999]
             }
@@ -32,8 +33,9 @@
             "name": "quickFeedback",
             "component": "welcome/QuickFeedback",
             "meta": {
-                "intercept": true,
-                "noQuickTabs": true,
+                "icon": "el-icon-house",
+                "intercept": false,
+                "noQuickTabs": false,
                 "noKeepAlive": true,
                 "role": [1, 999]
             }

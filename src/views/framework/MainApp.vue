@@ -14,7 +14,9 @@ export default {
       let list = [];
       let rh = this.otherInfo.routerHistory;
       for (let k in rh) {
-        list.push(k);
+        if (!rh[k].meta.noKeepAlive) {
+          list.push(k);
+        }
       }
       return list;
     },

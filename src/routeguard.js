@@ -19,7 +19,8 @@ function isFalse(o) {
 }
 
 function setRouterHistory(toHandler, to) {
-    if (!to.meta.noQuickTabs && !to.meta.noKeepAlive && to.meta.icon) {
+    // if (!to.meta.noQuickTabs && !to.meta.noKeepAlive && to.meta.icon) {
+    if ((!!to.meta.icon && !to.meta.noKeepAlive) || (!!to.meta.icon && !to.meta.noQuickTabs)) {
         let routerHistory = store.state.otherInfo.routerHistory
         if (isFalse(routerHistory)) {
             let rhObj = {};

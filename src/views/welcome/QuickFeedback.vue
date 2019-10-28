@@ -1,5 +1,30 @@
 <template>
-  <div>{{language.quickFeedback}}</div>
+  <fragment>
+    <mt>{{language.quickFeedback}}</mt>
+    <el-row style="margin:5vw;width:40%" class="alnlft">
+      <el-form label-width="30%">
+        <el-form-item :label="language.parkName">
+          <span>{{userInfo.headerTitle}}</span>
+        </el-form-item>
+        <el-form-item :label="language.contactInFormation">
+          <span>{{userInfo.userProject}}</span>
+        </el-form-item>
+        <el-form-item :label="language.quickFeedback">
+          <el-input
+            v-model="content"
+            type="textarea"
+            :autosize="{ minRows: 4, maxRows: 6}"
+            clearable
+            show-word-limit
+            :maxlength="220"
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" icon="el-icon-edit" @click="quickFee">{{language.quickFeedback}}</el-button>
+        </el-form-item>
+      </el-form>
+    </el-row>
+  </fragment>
 </template>
 
 <script>
@@ -8,21 +33,27 @@ export default {
   name: "quickFeedback",
   data() {
     return {
-      // userInfo
-      // otherInfo
-      // language
+      content: ""
     };
   },
   methods: {
-    postRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
+    quickFee() {
+      let that = this;
+      let content = `${that.content}\n\n${that.language.parkName}:${
+        that.userInfo.headerTitle
+      }\n${that.language.contactInFormation}:${that.userInfo.userProject}`;
+      this.post("/robotBind/senddingmessage", {
+        groupNumbers: that.otherInfo.groupNumbers,
+        content
+      }).then(res => {
         let data = res.Data;
         this.List = data;
       });
     }
   },
-  mounted() {}
+  beforeDestroy() {
+    let r = this.otherInfo.routerHistory;
+    this.$delete(r, "quickFeedback");
+  }
 };
 </script>

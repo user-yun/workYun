@@ -1,41 +1,44 @@
 <template>
-  <el-row style="margin:5vw;">
-    <el-col :span="12" @dblclick.native="logTrue">
-      <i class="el-icon-refresh-right icon" @click="getLog"></i>
-      <el-timeline class="alnlft">
-        <el-timeline-item
-          v-for="(item, index) in systemLog"
-          :key="index"
-          :timestamp="item.Time"
-          color="#000"
-          placement="top"
-          size="large"
-        >
-          <el-card :body-style="{ padding: '0.5vw 1.5vw'}">
-            <p>{{item.ZContent}}</p>
-            <p>{{item.EContent}}</p>
-            <p>{{item.OContent}}</p>
-          </el-card>
-        </el-timeline-item>
-      </el-timeline>
-    </el-col>
-    <el-col :span="12" v-if="showSet" @click.native="getLog">
-      <el-form label-width="30%">
-        <el-form-item :label="language.zhcnContent">
-          <el-input v-model="ZContent" clearable :maxlength="60"></el-input>
-        </el-form-item>
-        <el-form-item :label="language.enusContent">
-          <el-input v-model="EContent" clearable :maxlength="60"></el-input>
-        </el-form-item>
-        <el-form-item :label="language.otherContent">
-          <el-input v-model="OContent" clearable :maxlength="60"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" icon="el-icon-edit" circle @click="setLog"></el-button>
-        </el-form-item>
-      </el-form>
-    </el-col>
-  </el-row>
+  <fragment>
+    <mt>{{language.systemLog}}</mt>
+    <el-row style="margin:5vw;">
+      <el-col :span="12" @dblclick.native="logTrue">
+        <i class="el-icon-refresh-right icon" @click="getLog"></i>
+        <el-timeline class="alnlft">
+          <el-timeline-item
+            v-for="(item, index) in systemLog"
+            :key="index"
+            :timestamp="item.Time"
+            color="#000"
+            placement="top"
+            size="large"
+          >
+            <el-card :body-style="{ padding: '0.5vw 1.5vw'}">
+              <p>{{item.ZContent}}</p>
+              <p>{{item.EContent}}</p>
+              <p>{{item.OContent}}</p>
+            </el-card>
+          </el-timeline-item>
+        </el-timeline>
+      </el-col>
+      <el-col :span="12" v-if="showSet" @click.native="getLog">
+        <el-form label-width="30%">
+          <el-form-item :label="language.zhcnContent">
+            <el-input v-model="ZContent" clearable :maxlength="60"></el-input>
+          </el-form-item>
+          <el-form-item :label="language.enusContent">
+            <el-input v-model="EContent" clearable :maxlength="60"></el-input>
+          </el-form-item>
+          <el-form-item :label="language.otherContent">
+            <el-input v-model="OContent" clearable :maxlength="60"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" icon="el-icon-edit" @click="setLog">{{language.systemLog}}</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+  </fragment>
 </template>
 
 <script>
@@ -78,6 +81,10 @@ export default {
   },
   mounted() {
     this.getLog();
+  },
+  beforeDestroy() {
+    let r = this.otherInfo.routerHistory;
+    this.$delete(r, "systemLog");
   }
 };
 </script>
