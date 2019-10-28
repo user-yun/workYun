@@ -7,16 +7,22 @@ body {
 }
 
 #app {
-    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-family: KaiTi, STKaiti, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #606266;
+    background: #fdfdfd;
     font-size: 0.83334vw;
     overflow-x: hidden;
     width: 100vw;
     height: 100vh;
     /* 14/1920 */
+}
+
+#app:hover ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .el-divider__text,
@@ -44,25 +50,23 @@ body {
     margin: 1.5% 0;
 }
 
+.el-divider__text {
+    background-color: #fdfdfd;
+}
+
 .el-badge {
     /* margin-top: -10px; */
 }
 
-.alnlft {
-    text-align: left;
-}
-
-.alnrit {
-    text-align: right;
-}
-
-.alncnt {
-    text-align: center;
-}
-
 .el-menu--popup,
+.el-popover,
 .el-submenu .el-menu-item {
     min-width: auto;
+}
+
+.el-tree>.el-tree-node {
+    display: inline-block;
+    min-width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -79,16 +83,23 @@ body {
     background: rgba(0, 0, 0, 0.0);
 }
 
-#app:hover ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
-    background: rgba(0, 0, 0, 0.1);
-}
-
 ::-webkit-scrollbar-track {
     /*滚动条里面轨道*/
     -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0);
     border-radius: 0.625vw;
     background: rgba(0, 0, 0, 0);
+}
+
+.alnlft {
+    text-align: left;
+}
+
+.alnrit {
+    text-align: right;
+}
+
+.alncnt {
+    text-align: center;
 }
 
 .normal {
@@ -152,9 +163,4 @@ body {
 .treeMH {
     height: 78vh;
     overflow: auto
-}
-
-.el-tree>.el-tree-node {
-    display: inline-block;
-    min-width: 100%;
 }

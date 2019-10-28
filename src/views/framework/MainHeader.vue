@@ -16,11 +16,14 @@
         ></i>
       </el-col>
       <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
-        <i
-          class="el-icon-setting icon"
-          :style="{color:otherInfo.themeTextColor}"
-          @click="iClassDrawerCollapseOnClick"
-        ></i>
+        <el-popover :title="language.openSetUp" width="auto" trigger="hover">
+          <i
+            slot="reference"
+            class="el-icon-setting icon"
+            :style="{color:otherInfo.themeTextColor}"
+            @click="iClassDrawerCollapseOnClick"
+          ></i>
+        </el-popover>
       </el-col>
       <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
         <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="noticeSelect">

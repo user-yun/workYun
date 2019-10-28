@@ -100,7 +100,7 @@ router.beforeEach((to, from, next) => {
                         notAllowMessage(next);
                     }
                 } else {
-                    clearLocal();
+                    // clearLocal();
                     nextTo("login", to, next);
                 }
             } else {// 否

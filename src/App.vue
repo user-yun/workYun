@@ -55,7 +55,7 @@ export default {
   watch: {
     KickOutTime(n) {
       if (n >= 7) {
-        clearLocal();
+        // clearLocal();
         this.KickOutTime = 0;
         this.$router.replace({ path: "/" });
       }
