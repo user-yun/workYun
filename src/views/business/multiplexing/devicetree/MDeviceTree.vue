@@ -2,14 +2,14 @@
   <div>
     <el-row class="treeSearch">
       <el-col :span="20">
-        <el-input v-model="filterText" clearable :maxlength="20"></el-input>
+        <el-tooltip :content="language.searchDev">
+          <el-input v-model="filterText" clearable :maxlength="20"></el-input>
+        </el-tooltip>
       </el-col>
       <el-col :span="4">
-        <i
-          class="el-icon-refresh-left icon"
-          :style="{color:otherInfo.themeTextColor}"
-          @click="getRequest"
-        ></i>
+        <el-tooltip :content="language.refreshDev">
+          <i class="el-icon-refresh-left icon" @click="getRequest"></i>
+        </el-tooltip>
       </el-col>
     </el-row>
     <el-tree
@@ -75,7 +75,7 @@ export default {
       return data.Title.includes(value);
     },
     deviceTreeNodeClick(data, e) {
-      this.$emit("MDeviceTree", data, e.level);
+      this.$emit("MDeviceTree", data, Object.assign({}, e.level));
     }
   },
   mounted() {

@@ -26,14 +26,12 @@ Array.prototype.operation = function (i, o) {
                 s -= parseFloat(e);
             });
             s += a;
-        }
-        else if (o == "*") {
+        } else if (o == "*") {
             this.forEach(e => {
                 s *= parseFloat(e);
             });
             s /= a;
-        }
-        else if (o == "/") {
+        } else if (o == "/") {
             this.forEach(e => {
                 s /= parseFloat(e);
             });
@@ -53,14 +51,12 @@ Array.prototype.operation = function (i, o) {
                 s -= parseFloat(e[i]);
             });
             s += a;
-        }
-        else if (o == "*") {
+        } else if (o == "*") {
             this.forEach(e => {
                 s *= parseFloat(e[i]);
             });
             s /= a;
-        }
-        else if (o == "/") {
+        } else if (o == "/") {
             this.forEach(e => {
                 s /= parseFloat(e[i]);
             });
@@ -84,12 +80,12 @@ Array.prototype.operation = function (i, o) {
 
 import Vue from 'vue';
 /*
-*  使用方法
-*  将以下代码复制到一个js文件中，然后在入口文件main.js中import引入即可；
-*  给elementUI的dialog上加上 v-dialogDrag 指令就可以实现弹窗的全屏和拉伸了。
-*  给dialog设置 :close-on-click-modal="false" , 禁止点击遮罩层关闭弹出层
-*  如果是form表单，不要将提交等按钮放置el-form-item，以免在上下拉伸时被隐藏
-*/
+ *  使用方法
+ *  将以下代码复制到一个js文件中，然后在入口文件main.js中import引入即可；
+ *  给elementUI的dialog上加上 v-dialogDrag 指令就可以实现弹窗的全屏和拉伸了。
+ *  给dialog设置 :close-on-click-modal="false" , 禁止点击遮罩层关闭弹出层
+ *  如果是form表单，不要将提交等按钮放置el-form-item，以免在上下拉伸时被隐藏
+ */
 // v-dialogDrag: 弹窗拖拽+水平方向伸缩
 Vue.directive('dialogDrag', {
     bind(el, binding, vnode, oldVnode) {
@@ -201,8 +197,7 @@ Vue.directive('dialogDrag', {
                             }
                             //往右拖拽
                             if (clientX < e.clientX) {
-                                if (dragDom.clientWidth < minWidth) {
-                                } else {
+                                if (dragDom.clientWidth < minWidth) {} else {
                                     dragDom.style.width = elW - (e.clientX - clientX) * 2 + 'px';
                                 }
                             }
@@ -211,8 +206,7 @@ Vue.directive('dialogDrag', {
                         if (clientX > EloffsetLeft + elW - 10 && clientX < EloffsetLeft + elW) {
                             //往左拖拽
                             if (clientX > e.clientX) {
-                                if (dragDom.clientWidth < minWidth) {
-                                } else {
+                                if (dragDom.clientWidth < minWidth) {} else {
                                     dragDom.style.width = elW - (clientX - e.clientX) * 2 + 'px';
                                 }
                             }
@@ -225,8 +219,7 @@ Vue.directive('dialogDrag', {
                         if (ELscrollTop + clientY > EloffsetTop + elH - 20 && ELscrollTop + clientY < EloffsetTop + elH) {
                             //往上拖拽
                             if (clientY > e.clientY) {
-                                if (dragDom.clientHeight < minHeight) {
-                                } else {
+                                if (dragDom.clientHeight < minHeight) {} else {
                                     dragDom.style.height = elH - (clientY - e.clientY) * 2 + 'px';
                                 }
                             }
@@ -304,7 +297,7 @@ Vue.prototype.$addCSS = function (cssText) {
         let func = function () {
             try { //防止IE中stylesheet数量超过限制而发生错误 
                 style.styleSheet.cssText = cssText;
-            } catch (e) { }
+            } catch (e) {}
             if (ti != null) {
                 // clearImmediate
                 clearTimeout(ti);
@@ -327,31 +320,39 @@ Vue.prototype.$addCSS = function (cssText) {
 Vue.prototype.$analogKeyboard = function (el, evtType, keyCode) {
     let evtObj;
     if (document.createEvent) {
-        if (window.KeyEvent) {//firefox 浏览器下模拟事件
+        if (window.KeyEvent) { //firefox 浏览器下模拟事件
             evtObj = document.createEvent('KeyEvents');
             evtObj.initKeyEvent(evtType, true, true, window, true, false, false, false, keyCode, 0);
-        } else {//chrome 浏览器下模拟事件
+        } else { //chrome 浏览器下模拟事件
             evtObj = document.createEvent('UIEvents');
             evtObj.initUIEvent(evtType, true, true, window, 1);
 
             delete evtObj.keyCode;
-            if (typeof evtObj.keyCode === "undefined") {//为了模拟keycode
-                Object.defineProperty(evtObj, "keyCode", { value: keyCode });
+            if (typeof evtObj.keyCode === "undefined") { //为了模拟keycode
+                Object.defineProperty(evtObj, "keyCode", {
+                    value: keyCode
+                });
             } else {
                 evtObj.key = String.fromCharCode(keyCode);
             }
 
-            if (typeof evtObj.ctrlKey === 'undefined') {//为了模拟ctrl键
-                Object.defineProperty(evtObj, "ctrlKey", { value: true });
+            if (typeof evtObj.ctrlKey === 'undefined') { //为了模拟ctrl键
+                Object.defineProperty(evtObj, "ctrlKey", {
+                    value: true
+                });
             } else {
                 evtObj.ctrlKey = true;
             }
         }
         el.dispatchEvent(evtObj);
 
-    } else if (document.createEventObject) {//IE 浏览器下模拟事件
+    } else if (document.createEventObject) { //IE 浏览器下模拟事件
         evtObj = document.createEventObject();
         evtObj.keyCode = keyCode
         el.fireEvent('on' + evtType, evtObj);
     }
+}
+
+Vue.prototype.$avoid = function (j) {
+    return JSON.parse(JSON.stringify(j));
 }

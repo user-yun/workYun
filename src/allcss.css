@@ -120,6 +120,7 @@ video {
 .el-date-editor .el-range-input,
 .el-form-item__content,
 .el-timeline,
+.el-tooltip__popper,
 .emphasize {
     /* 主要文字 */
     font-size: 0.83334vw;
@@ -157,6 +158,10 @@ video {
 .el-tree>.el-tree-node {
     display: inline-block;
     min-width: 100%;
+}
+
+.el-menu {
+    border-right: 0;
 }
 
 ::-webkit-scrollbar {

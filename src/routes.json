@@ -256,36 +256,6 @@
                     "intercept": true,
                     "role": [1]
                 }
-            },
-            {
-                "path": "/orgHousBind",
-                "name": "orgHousBind",
-                "component": "config/orghousbind/OrgHousBind",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/inHouseSearch",
-                "name": "inHouseSearch",
-                "component": "config/inhousesearch/InHouseSearch",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/houseDevBind",
-                "name": "houseDevBind",
-                "component": "config/housedevbind/HouseDevBind",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
             }
         ]
     },
@@ -396,6 +366,65 @@
                 "component": "billrechargemanagement/rechargerecord/RechargeRecord",
                 "meta": {
                     "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
+            }
+        ]
+    },
+    {
+        "path": "/parkmanagement",
+        "name": "parkmanagement",
+        "component": "welcome/Main",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        },
+        "children": [{
+                "path": "/housManageMent",
+                "name": "housManageMent",
+                "component": "parkmanagement/housmanagement/HousManageMent",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
+            }, {
+                "path": "/orgManageMent",
+                "name": "orgManageMent",
+                "component": "parkmanagement/orgmanagement/OrgManageMent",
+                "meta": {
+                    "icon": "el-icon-sugar",
+                    "intercept": true,
+                    "role": [1]
+                }
+            }, {
+                "path": "/orgHousBind",
+                "name": "orgHousBind",
+                "component": "parkmanagement/orghousbind/OrgHousBind",
+                "meta": {
+                    "icon": "el-icon-s-help",
+                    "intercept": true,
+                    "role": [1]
+                }
+            },
+            {
+                "path": "/inHouseSearch",
+                "name": "inHouseSearch",
+                "component": "parkmanagement/inhousesearch/InHouseSearch",
+                "meta": {
+                    "icon": "el-icon-s-help",
+                    "intercept": true,
+                    "role": [1]
+                }
+            },
+            {
+                "path": "/houseDevBind",
+                "name": "houseDevBind",
+                "component": "parkmanagement/housedevbind/HouseDevBind",
+                "meta": {
+                    "icon": "el-icon-s-help",
                     "intercept": true,
                     "role": [1]
                 }

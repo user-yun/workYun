@@ -2,14 +2,14 @@
   <div>
     <el-row class="treeSearch">
       <el-col :span="20">
-        <el-input v-model="filterText" clearable :maxlength="20"></el-input>
+        <el-tooltip :content="language.searchHou">
+          <el-input v-model="filterText" clearable :maxlength="20"></el-input>
+        </el-tooltip>
       </el-col>
       <el-col :span="4">
-        <i
-          class="el-icon-refresh-left icon"
-          :style="{color:otherInfo.themeTextColor}"
-          @click="getRequest"
-        ></i>
+        <el-tooltip :content="language.refreshHou">
+          <i class="el-icon-refresh-left icon" @click="getRequest"></i>
+        </el-tooltip>
       </el-col>
     </el-row>
     <el-tree
@@ -69,7 +69,7 @@ export default {
       return data.Title.includes(value);
     },
     zoneTreeNodeClick(data, e) {
-      this.$emit("MFloorTree", data, e.level);
+      this.$emit("MFloorTree", data, Object.assign({}, e.level));
     }
   },
   mounted() {
