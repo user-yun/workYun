@@ -11,7 +11,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    background: #fafafa;
+    background: #fcfcfc;
     font-size: 0.83334vw;
     overflow-x: hidden;
     width: 100vw;
@@ -137,9 +137,11 @@ video {
 
 .el-divider__text,
 .el-table__body-wrapper,
+.el-tree,
+.el-table th,
 .el-table__footer-wrapper,
 .el-table__header-wrapper {
-    background-color: #fafafa;
+    background-color: #fcfcfc;
 }
 
 .el-badge {

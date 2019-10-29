@@ -9,6 +9,14 @@
     router
     class="h997"
   >
+    <el-menu-item index="logo" class="alnlft" style="padding:0">
+      <img
+        :width="otherInfo.menuCollapse?`100%`:`40%`"
+        src="http://www.powerbee.cn/design/pic/logo.png"
+        :style="otherInfo.menuCollapse?'transform:scale(2.5)':''"
+      >
+      <span slot="title" class="emphasize">{{userInfo.headerTitle}}</span>
+    </el-menu-item>
     <RecursionMenu :mList="menuList" :activeColor="activeColor"></RecursionMenu>
   </el-menu>
   <!-- <keep-alive> </keep-alive> <component></component> -->
