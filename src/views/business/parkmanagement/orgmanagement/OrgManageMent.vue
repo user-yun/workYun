@@ -9,8 +9,8 @@
       <el-form ref="form" :model="orgData" label-width="40%">
         <el-form-item :label="language.curOptOrg">{{orgData.Title}}</el-form-item>
         <el-form-item :label="language.area">
-          <el-input v-model.number="orgData.Area" :maxlength="5">
-            <span slot="suffix">{{language.squareMeter}}</span>
+          <el-input type="number" v-model.number="orgData.Area" :maxlength="5">
+            <span slot="append">{{language.squareMeter}}</span>
           </el-input>
         </el-form-item>
         <el-form-item>

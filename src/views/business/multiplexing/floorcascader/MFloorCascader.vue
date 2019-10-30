@@ -10,7 +10,7 @@
 <script>
 export default {
   mixins: [require("@/mymixins").default],
-  name: "MFloorTree",
+  name: "MFloorCascader",
   data() {
     return {
       zoneTree: []
@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     handleChange(d) {
-      console.log(d);
+      this.$emit("MFloorCascader", d);
     },
     handlerData(l) {
       let that = this;
