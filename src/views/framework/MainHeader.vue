@@ -1,7 +1,7 @@
 <template>
   <div :style="{backgroundColor:otherInfo.themeBackgroundColor }">
     <el-row type="flex" align="middle" class="hh5">
-      <el-col :xs="18" :sm="18" :md="21" :lg="21" :xl="21" class="alnlft">
+      <el-col :xs="18" :sm="18" :md="21" :lg="21" :xl="21">
         <i
           :class="iClassAsideVisible"
           class="icon"
@@ -15,7 +15,7 @@
           @click="iClassMenuCollapseOnClick"
         ></i>
       </el-col>
-      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
+      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1">
         <el-tooltip :content="language.openSetUp">
           <i
             class="el-icon-setting icon"
@@ -24,7 +24,7 @@
           ></i>
         </el-tooltip>
       </el-col>
-      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
+      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1">
         <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="noticeSelect">
           <el-badge is-dot>
             <i class="el-icon-bell icon" :style="{color:otherInfo.themeTextColor}"></i>
@@ -44,7 +44,7 @@
           </el-dropdown-menu>
         </el-dropdown>
       </el-col>
-      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1" class="alnlft">
+      <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1">
         <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="menuSelect">
           <span class="emphasize" :style="{color:otherInfo.themeTextColor}">
             <i class="el-icon-user icon"></i>

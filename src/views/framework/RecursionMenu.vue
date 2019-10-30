@@ -4,7 +4,6 @@
       <el-submenu
         v-if="mli.children&&mli.children.length>1"
         :index="mli.path"
-        class="alnlft"
         :key="i+mList.length"
       >
         <template slot="title">
@@ -16,7 +15,7 @@
         </template>
         <recursionMenu style="margin-left:0.5vw" :mList="mli.children"></recursionMenu>
       </el-submenu>
-      <el-menu-item v-else :index="mli.path" class="alnlft" :key="i+mList.length">
+      <el-menu-item v-else :index="mli.path" :key="i+mList.length">
         <i
           :class="mli.meta.icon"
           :style="{color:mli.path == $route.path ?activeColor:otherInfo.themeTextColor}"

@@ -1,15 +1,8 @@
 <template>
   <el-row>
     <mt>{{language.publicBoothConfig}}</mt>
-    <el-col :sm="24" :md="12" :xl="6" class="alnlft">
-      <el-form
-        :model="ruleForm"
-        :rules="rules"
-        ref="ruleForm"
-        inline-message
-        status-icon
-        label-width="30%"
-      >
+    <el-col :sm="24" :md="12" :xl="12">
+      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" inline-message label-width="30%">
         <el-form-item :label="language.shareMethod" prop="shareType">
           <el-select v-model="ruleForm.shareType">
             <el-option
@@ -80,6 +73,9 @@
             ></el-option>
           </el-select>
         </el-form-item>
+        <el-form-item :label="language.shareMethod">
+          <MFloorCascader style="width:60%"></MFloorCascader>
+        </el-form-item>
         <el-form-item :label="language.proportion" prop="factors" class="alnrit">
           <span v-for="(item,iindex) in ruleForm.son" :key="iindex">
             {{item.title}}
@@ -94,7 +90,13 @@
           </span>
         </el-form-item>
         <el-form-item :label="language.shareConfigName">
-          <el-input v-model="ruleForm.title" clearable :maxlength="10" show-word-limit></el-input>
+          <el-input
+            v-model="ruleForm.title"
+            clearable
+            :maxlength="10"
+            show-word-limit
+            style="width:60%"
+          ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')">{{language.sure}}</el-button>
@@ -108,6 +110,9 @@
 export default {
   mixins: [require("@/mymixins").default],
   name: "publicBoothConfig",
+  components: {
+    MFloorCascader: () => import("#/multiplexing/floorcascader/MFloorCascader")
+  },
   data() {
     return {
       List: [],

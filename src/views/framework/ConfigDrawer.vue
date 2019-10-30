@@ -11,15 +11,15 @@
     :destroy-on-close="true"
   >
     <el-form label-width="30%">
-      <el-form-item class="alnlft">
+      <el-form-item>
         <span slot="label" class="emphasize">{{language.themeBackgroundColor}}</span>
         <el-color-picker v-model="themeBackgroundColor" :disabled="configThemeDisabled"></el-color-picker>
       </el-form-item>
-      <el-form-item class="alnlft">
+      <el-form-item>
         <span slot="label" class="emphasize">{{language.themeTextColor}}</span>
         <el-color-picker v-model="themeTextColor" :disabled="configThemeDisabled"></el-color-picker>
       </el-form-item>
-      <el-form-item class="alnlft">
+      <el-form-item>
         <span slot="label" class="emphasize">{{language.presetTheme}}</span>
         <el-col :span="2" v-for="(item,index) in otherInfo.themePresetList" :key="index">
           <span
@@ -33,26 +33,26 @@
           ></span>
         </el-col>
       </el-form-item>
-      <el-form-item class="alnlft">
+      <el-form-item>
         <span slot="label" class="emphasize">{{language.homeQuickNav}}</span>
         <el-switch v-model="homeQuickNav"></el-switch>
       </el-form-item>
-      <el-form-item class="alnlft">
+      <el-form-item>
         <span slot="label" class="emphasize">{{language.tableSelfAW}}</span>
         <el-switch v-model="tableSelfAW"></el-switch>
       </el-form-item>
-      <el-form-item class="alnlft">
+      <el-form-item>
         <span slot="label" class="emphasize">{{language.menuUnique}}</span>
         <el-switch v-model="menuUnique"></el-switch>
       </el-form-item>
-      <el-form-item class="alnlft">
+      <el-form-item>
         <span
           slot="label"
           class="emphasize"
         >{{rightClickMenu?language.rightClickMenu:language.systemClickMenu}}</span>
         <el-switch v-model="rightClickMenu"></el-switch>
       </el-form-item>
-      <el-form-item class="alnlft">
+      <el-form-item>
         <span slot="label" class="emphasize">{{language.selectLanguage}}</span>
         <SelectLanguage></SelectLanguage>
       </el-form-item>

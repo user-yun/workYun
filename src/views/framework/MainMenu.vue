@@ -9,7 +9,7 @@
     router
     class="h997"
   >
-    <el-menu-item index="logo" class="alnlft" style="padding:0">
+    <el-menu-item index="logo" style="padding:0">
       <img
         :width="otherInfo.menuCollapse?`100%`:`40%`"
         src="http://www.powerbee.cn/design/pic/logo.png"

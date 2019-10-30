@@ -1,5 +1,5 @@
 <template>
-  <div class="alnlft th4 mainTag" style="white-space:nowrap;">
+  <div class="th4 mainTag" style="white-space:nowrap;">
     <fragment v-for="(tag,key) in routerTag" :key="key">
       <el-tag
         v-if="!tag.meta.noQuickTabs"

@@ -1,5 +1,5 @@
 <template>
-  <div style="height:95%;" class="alnlft">
+  <div style="height:95%;">
     <mt>{{language.accountsReceivable}}</mt>
     <el-row>
       <el-col :span="8">

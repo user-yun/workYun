@@ -4,7 +4,6 @@
     <!-- <el-input v-model="city">
       <el-button slot="append" icon="el-icon-search" @click="get"></el-button>
     </el-input>-->
-    <!-- <pre class="alnlft">{{weather}}</pre> -->
     <br>
     <span v-if="weather.hasOwnProperty('country')">
       <img

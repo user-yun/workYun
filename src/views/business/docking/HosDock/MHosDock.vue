@@ -4,7 +4,7 @@
     <el-col :sm="12" :md="6" :xl="3">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>
-    <el-col :sm="12" :md="9" :xl="6" class="alnlft">
+    <el-col :sm="12" :md="9" :xl="6">
       <li class="emphasize creamsLi">{{treeData.Title}}：{{treeData.Id}}</li>
       <li class="creamsLi">
         <el-input

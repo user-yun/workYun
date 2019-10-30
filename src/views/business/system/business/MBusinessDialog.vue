@@ -1,6 +1,6 @@
 <template>
   <el-dialog v-if="show" :visible.sync="show" :before-close="handleClose" destroy-on-close>
-    <pre class="alnlft" v-if="typeof showData == 'object'">{{showData}}</pre>
+    <pre v-if="typeof showData == 'object'">{{showData}}</pre>
     <div v-else>{{showData}}</div>
     <span slot="footer"></span>
   </el-dialog>

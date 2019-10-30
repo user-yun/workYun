@@ -10,9 +10,7 @@ body {
     font-family: STKaiti, KaiTi, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     background: #fcfcfc;
-    font-size: 0.83334vw;
     overflow-x: hidden;
     width: 100vw;
     height: 100vh;
@@ -24,112 +22,10 @@ body {
     background: rgba(0, 0, 0, 0.1);
 }
 
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-input,
-video {
-    font-family: STKaiti, KaiTi, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-}
-
-.el-divider__text,
-.el-link,
-.el-button,
-.el-form-item__label,
-.el-radio__label,
-.el-input,
-.el-table,
-.el-date-editor .el-range-input,
-.el-form-item__content,
-.el-timeline,
-.el-tooltip__popper,
-.emphasize {
-    /* 主要文字 */
-    font-size: 0.83334vw;
-}
-
 .el-tag--mini,
 .el-tag--medium {
-    height: 3.2vh;
-    line-height: 3vh;
+    /* height: 3.2vh; */
+    /* line-height: 3vh; */
 }
 
 .el-divider--horizontal {
@@ -162,6 +58,10 @@ video {
 
 .el-menu {
     border-right: 0;
+}
+
+.el-cascader__search-input {
+    height: 0;
 }
 
 ::-webkit-scrollbar {

@@ -1,5 +1,5 @@
 <template>
-  <el-row class="alnlft">
+  <el-row>
     <mt>{{language.housManageMent}}</mt>
     <el-col :span="4">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>

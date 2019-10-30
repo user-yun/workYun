@@ -1,7 +1,6 @@
 <template>
   <div
     id="rightClickMenuId"
-    class="alnlft"
     :style="`position: fixed;top:${show.y}px;left:${show.x}px;z-index:5235`"
     @mouseleave="runMenu"
     @mouseover="clear"

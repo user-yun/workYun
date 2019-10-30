@@ -4,7 +4,7 @@
     <el-row style="margin:5vw;">
       <el-col :span="12" @dblclick.native="logTrue">
         <i class="el-icon-refresh-right icon" @click="getLog"></i>
-        <el-timeline class="alnlft">
+        <el-timeline>
           <el-timeline-item
             v-for="(item, index) in systemLog"
             :key="index"

@@ -1,7 +1,7 @@
 <template>
   <el-row>
     <mt>{{language.groRbtConfig}}</mt>
-    <el-col :sm="24" :md="12" :xl="6" class="alnlft">
+    <el-col :sm="24" :md="12" :xl="6">
       <el-form :model="ruleForm" label-width="40%">
         <el-form-item>
           <el-input

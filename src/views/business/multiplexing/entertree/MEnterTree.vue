@@ -18,6 +18,7 @@
       :props="enterTreeProps"
       node-key="/org/list/"
       highlight-current
+      default-expand-all
       :filter-node-method="filterNode"
       :expand-on-click-node="false"
       @node-click="enterTreeNodeClick"

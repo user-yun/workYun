@@ -18,6 +18,7 @@
       :props="zoneTreeProps"
       node-key="/zone/tree/"
       highlight-current
+      default-expand-all
       :filter-node-method="filterNode"
       :expand-on-click-node="false"
       @node-click="zoneTreeNodeClick"
@@ -34,9 +35,6 @@ export default {
   name: "MFloorTree",
   data() {
     return {
-      // userInfo
-      // otherInfo
-      // language
       zoneTree: [],
       zoneTreeProps: {
         children: "Children",

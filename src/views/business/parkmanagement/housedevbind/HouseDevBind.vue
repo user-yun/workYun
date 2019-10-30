@@ -7,7 +7,7 @@
     <el-col :sm="6" :md="7" :xl="6">
       <MDeviceTree @MDeviceTree="MDeviceTreeClick"></MDeviceTree>
     </el-col>
-    <el-col :sm="12" :md="13" :xl="15" class="alnlft">
+    <el-col :sm="12" :md="13" :xl="15">
       <el-form label-width="20%">
         <el-form-item :label="language.curOptHou">{{zoneData.Title}}</el-form-item>
         <el-form-item :label="language.curOptDev">{{devData.Title}}{{devData.Pcode}}</el-form-item>

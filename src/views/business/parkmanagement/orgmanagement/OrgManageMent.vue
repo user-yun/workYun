@@ -1,5 +1,5 @@
 <template>
-  <el-row class="alnlft">
+  <el-row>
     <mt>{{language.orgManageMent}}</mt>
     <el-col :span="4">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>

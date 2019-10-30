@@ -10,7 +10,6 @@
       :sm="{span: 16, offset: 1}"
       :lg="{span: 16, offset: 2}"
       :xl="{span: 16, offset: 3}"
-      class="alnlft"
     >
       <b class="emphasize" :style="{color:otherInfo.themeTextColor}">{{userInfo.headerTitle}}</b>
     </el-col>
@@ -57,7 +56,7 @@
           class="emphasize"
           :style="{color:otherInfo.themeTextColor}"
         >{{userInfo.userName}}</el-button>
-      </el-tooltip> -->
+      </el-tooltip>-->
     </el-col>
   </el-row>
 </template>

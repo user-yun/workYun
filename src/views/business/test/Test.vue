@@ -44,8 +44,8 @@
         </el-col>
       </el-row>
 
-      <pre class="alnlft">{{upDataHandler}}</pre>
-      <pre class="alnlft">{{Test}}</pre>
+      <pre>{{upDataHandler}}</pre>
+      <pre>{{Test}}</pre>
       <!-- <MultipleTimePickers></MultipleTimePickers> -->
       <!-- <MultipleTimeCheck
         :TL="otherInfo.peakValleyList"

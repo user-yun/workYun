@@ -14,6 +14,7 @@ Vue.prototype.$Post = fetchPost;
 Vue.prototype.$Get = fetchGet;
 
 import "./allcss.css";
+import "./font.css";
 import './routeguard';//路由守卫
 // import "./assets";//全局注册组件
 

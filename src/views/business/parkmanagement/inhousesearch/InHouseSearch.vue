@@ -7,7 +7,7 @@
     <el-col :sm="6" :md="7" :xl="6">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>
-    <el-col :sm="12" :md="14" :xl="15" class="alnlft">
+    <el-col :sm="12" :md="14" :xl="15">
       <el-form label-width="40%">
         <el-form-item :label="language.curOptHou">
           <el-col :span="22">{{zoneTree.Title}}</el-col>

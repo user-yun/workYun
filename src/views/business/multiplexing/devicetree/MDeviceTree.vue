@@ -18,6 +18,7 @@
       :props="deviceTreeProps"
       node-key="/zone/allmodulebrief/"
       highlight-current
+      default-expand-all
       :filter-node-method="filterNode"
       :expand-on-click-node="false"
       @node-click="deviceTreeNodeClick"
