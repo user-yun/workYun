@@ -15,6 +15,14 @@ function isFalse(o) {
     return false;
 }
 
+function formData(item) {
+    let form = new FormData();
+    for (let key in item) {
+        form.append(key, item[key]);
+    }
+    return form;
+}
+
 axios.defaults.timeout = 10000;                        //响应时间
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';        //配置请求头
 // axios.defaults.baseURL = 'https://cs01.zg118.com/api/sp';   //配置接口地址
@@ -32,19 +40,7 @@ axios.interceptors.request.use((config) => {
     //在发送请求之前做某件事
     NProgress.start();
     let token = store.state.userInfo.userToken
-    let reqTime = new Date().getTime();
     config.headers.Authorization = `${isFalse(token) ? '' : token}`
-    if (config.method === 'post') {
-        config.data = {
-            ...config.data,
-            reqTime: reqTime
-        }
-    } else if (config.method === 'get') {
-        config.params = {
-            ...config.params,
-            reqTime: reqTime
-        }
-    }
     return config;
 }, (error) => {
     return Promise.reject(error);
@@ -70,7 +66,14 @@ function mes() {
 }
 
 //返回一个Promise(发送post请求)
-export function fetchPost(url, params) {
+export function fetchPost(url, params, form) {
+    if (params) {
+        let reqTime = new Date().getTime();
+        params.reqTime = reqTime;
+    }
+    if (form) {
+        params = formData(params);
+    }
     return new Promise((resolve, reject) => {
         axios.post(url, params)
             .then(response => {
@@ -86,7 +89,14 @@ export function fetchPost(url, params) {
     })
 }
 ////返回一个Promise(发送get请求)
-export function fetchGet(url, param) {
+export function fetchGet(url, param, form) {
+    if (param) {
+        let reqTime = new Date().getTime();
+        param.reqTime = reqTime;
+    }
+    if (form) {
+        param = formData(param);
+    }
     return new Promise((resolve, reject) => {
         axios.get(url, { params: param })
             .then(response => {

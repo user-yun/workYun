@@ -1,6 +1,23 @@
 export default function log(l) {
     console.log(l);
 }
+
+export function formData(item) {
+    //转换成表单
+    let form = new FormData();
+    // let logF = object.entries();
+    // for (; ;) {
+    //   let i = logF.next();
+    //   log(i);
+    //   if (i.done) break;
+    // }
+    for (let key in item) {
+        // log(item[key]);
+        form.append(key, item[key]);
+    }
+    return form;
+}
+
 /*-----------------cookie---------------------*/
 /*设置cookie*/
 export function setCookie(name, value, day) {

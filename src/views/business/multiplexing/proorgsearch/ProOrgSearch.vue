@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <el-col v-if="!proid" :span="4">
+    <el-col v-if="!proid" :span="4" class="alnrit">
       <span v-if="showText&&!proid" class="emphasize">{{language.selectPark}}：</span>
     </el-col>
     <el-col v-if="!proid" :span="8">
@@ -13,7 +13,7 @@
         ></el-option>
       </el-select>
     </el-col>
-    <el-col :span="4">
+    <el-col :span="4" class="alnrit">
       <span v-if="showText" class="emphasize">{{language.selectOrg}}：</span>
     </el-col>
     <el-col :span="8">

@@ -1,4 +1,12 @@
 [{
+        "path": "/home",
+        "name": "home",
+        "component": "welcome/Home",
+        "meta": {
+            "intercept": true,
+            "role": [1, 999]
+        }
+    }, {
         "path": "/logo",
         "name": "logo",
         "redirect": {

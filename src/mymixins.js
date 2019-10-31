@@ -70,9 +70,9 @@ let m = {
         value: v
       });
     },
-    post(u, p) {
+    post(u, p, f) {
       return new Promise((resolve, reject) => {
-        this.$Post(this.h + u, p).then(res => {
+        this.$Post(this.h + u, p, f).then(res => {
           resolve(res)
           this.log({
             u,
@@ -88,9 +88,9 @@ let m = {
         });
       });
     },
-    get(u, p) {
+    get(u, p, f) {
       return new Promise((resolve, reject) => {
-        this.$Get(this.h + u, p).then(res => {
+        this.$Get(this.h + u, p, f).then(res => {
           resolve(res)
           this.log({
             u,

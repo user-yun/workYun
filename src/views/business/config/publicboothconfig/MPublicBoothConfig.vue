@@ -45,104 +45,115 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item :label="language.sumMeter">
-          <el-select v-model="ruleForm.father">
-            <el-option
-              v-for="(item,index) in moduleList"
-              :key="item.Pid+index"
-              :value="item.Pid"
-              :label="item.Title"
+        <fragment v-if="ruleForm.shareMethodType==1">
+          <el-form-item :label="language.organization">
+            <el-select v-model="ruleForm.org" multiple value-key="id">
+              <el-option
+                v-for="(item,index) in orgList"
+                :key="index"
+                :value="{id:item.Id,title:item.Title,value:0.01}"
+                :label="item.Title"
+              >{{item.Title}}</el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item v-if="ruleForm.mode==1" :label="language.proportion">
+            <el-input
+              v-for="(item,iindex) in ruleForm.org"
+              :key="iindex"
+              type="number"
+              v-model.number="item.value"
+              :maxlength="5"
+              :min="0.00"
+              :max="100.00"
+              style="width:80%"
             >
-              {{item.Title}}
-              pid:{{item.Pid}}
-              pcode:{{item.Pcode}}
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="language.boothMeter">
-          <!-- <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0"> -->
-          <el-select v-model="ruleForm.arr" multiple value-key="id">
-            <el-option
-              v-for="(item,index) in moduleList"
-              :key="item.Pcode+index"
-              :value="{id:item.Pid,title:item.Title,value:0.01}"
-              :label="item.Title"
+              <span slot="prepend">{{item.title}}</span>
+              <span slot="append">%</span>
+            </el-input>
+          </el-form-item>
+        </fragment>
+        <fragment v-if="ruleForm.shareMethodType==2">
+          <el-form-item :label="language.shareHous">
+            <MFloorCascader @MFloorCascader="MFloorCascader" style="width:80%"></MFloorCascader>
+          </el-form-item>
+          <el-form-item v-if="ruleForm.mode==1" :label="language.proportion">
+            <el-input
+              v-for="(item,iindex) in housList"
+              :key="iindex"
+              type="number"
+              v-model.number="item[item.length-1].value"
+              :maxlength="5"
+              :min="0.00"
+              :max="100.00"
+              style="width:80%"
             >
-              {{item.Title}}
-              pid:{{item.Pid}}
-              pcode:{{item.Pcode}}
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="language.sonMeter">
-          <!-- <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0"> -->
-          <el-select v-model="ruleForm.son" multiple value-key="id">
-            <el-option
-              v-for="(item,index) in moduleList"
-              :key="item.Pcode+index"
-              :value="{id:item.Pid,title:item.Title,value:0.01}"
-              :label="item.Title"
+              <span slot="prepend">{{item[item.length-1].Title}}</span>
+              <span slot="append">%</span>
+            </el-input>
+          </el-form-item>
+        </fragment>
+        <fragment v-if="ruleForm.shareMethodType==3">
+          <el-form-item :label="language.sumMeter">
+            <el-select v-model="ruleForm.father">
+              <el-option
+                v-for="(item,index) in moduleList"
+                :key="item.Pid+index"
+                :value="item.Pid"
+                :label="item.Title"
+              >
+                {{item.Title}}
+                pid:{{item.Pid}}
+                pcode:{{item.Pcode}}
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item :label="language.boothMeter">
+            <!-- <el-select v-model="ruleForm.arr" multiple :disabled="ruleForm.son.length>0"> -->
+            <el-select v-model="ruleForm.arr" multiple value-key="id">
+              <el-option
+                v-for="(item,index) in moduleList"
+                :key="item.Pcode+index"
+                :value="{id:item.Pid,title:item.Title,value:0.01}"
+                :label="item.Title"
+              >
+                {{item.Title}}
+                pid:{{item.Pid}}
+                pcode:{{item.Pcode}}
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item :label="language.sonMeter">
+            <!-- <el-select v-model="ruleForm.son" multiple :disabled="ruleForm.arr.length>0"> -->
+            <el-select v-model="ruleForm.son" multiple value-key="id">
+              <el-option
+                v-for="(item,index) in moduleList"
+                :key="item.Pcode+index"
+                :value="{id:item.Pid,title:item.Title,value:0.01}"
+                :label="item.Title"
+              >
+                {{item.Title}}
+                pid:{{item.Pid}}
+                pcode:{{item.Pcode}}
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item v-if="ruleForm.mode==1" :label="language.proportion">
+            <el-input
+              v-for="(item,iindex) in ruleForm.son"
+              :key="iindex"
+              type="number"
+              v-model.number="item.value"
+              :maxlength="5"
+              :min="0.00"
+              :max="100.00"
+              style="width:80%"
             >
-              {{item.Title}}
-              pid:{{item.Pid}}
-              pcode:{{item.Pcode}}
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="language.organization">
-          <el-select v-model="ruleForm.org" multiple value-key="id">
-            <el-option
-              v-for="(item,index) in orgList"
-              :key="index"
-              :value="{id:item.Id,title:item.Title,value:0.01}"
-              :label="item.Title"
-            >{{item.Title}}</el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="language.shareHous">
-          <MFloorCascader @MFloorCascader="MFloorCascader" style="width:80%"></MFloorCascader>
-        </el-form-item>
-        <el-form-item :label="language.proportion" class="alnrit">
-          <el-input
-            v-for="(item,iindex) in ruleForm.son"
-            :key="iindex"
-            type="number"
-            v-model.number="item.value"
-            :maxlength="5"
-            :min="0.00"
-            :max="100.00"
-            style="width:80%"
-          >
-            <span slot="prepend">{{item.title}}</span>
-            <span slot="append">%</span>
-          </el-input>
-          <el-input
-            v-for="(item,iindex) in ruleForm.org"
-            :key="iindex"
-            type="number"
-            v-model.number="item.value"
-            :maxlength="5"
-            :min="0.00"
-            :max="100.00"
-            style="width:80%"
-          >
-            <span slot="prepend">{{item.title}}</span>
-            <span slot="append">%</span>
-          </el-input>
-          <el-input
-            v-for="(item,iindex) in housList"
-            :key="iindex"
-            type="number"
-            v-model.number="item[item.length-1].value"
-            :maxlength="5"
-            :min="0.00"
-            :max="100.00"
-            style="width:80%"
-          >
-            <span slot="prepend">{{item[item.length-1].Title}}</span>
-            <span slot="append">%</span>
-          </el-input>
-        </el-form-item>
+              <span slot="prepend">{{item.title}}</span>
+              <span slot="append">%</span>
+            </el-input>
+          </el-form-item>
+        </fragment>
+
         <el-form-item :label="language.shareConfigName">
           <el-input
             v-model="ruleForm.title"

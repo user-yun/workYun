@@ -35,7 +35,7 @@
             prefix-icon="el-icon-tickets"
           ></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item class="alncnt">
           <el-button type="primary" @click="submitForm('ruleForm')">
             <span class="emphasize">{{language.signIn}}</span>
           </el-button>
