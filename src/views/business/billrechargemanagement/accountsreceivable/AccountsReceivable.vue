@@ -1,5 +1,5 @@
 <template>
-  <div style="height:95%;">
+  <el-row>
     <mt>{{language.accountsReceivable}}</mt>
     <el-row>
       <el-col :span="8">
@@ -18,7 +18,7 @@
         <el-button :disabled="disabledButton" type="primary" @click="excelOut">{{excelExportButton}}</el-button>
       </el-col>
     </el-row>
-    <div :span="24" style="height:94%">
+    <div :span="24" style="height:90%">
       <PageTable
         ref="billExcel"
         :tableData="tableData"
@@ -27,7 +27,7 @@
         @select="tableSelect"
       ></PageTable>
     </div>
-  </div>
+  </el-row>
 </template>
 
 <script>

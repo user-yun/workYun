@@ -67,9 +67,11 @@ function mes() {
 
 //返回一个Promise(发送post请求)
 export function fetchPost(url, params, form) {
+    let reqTime = new Date().getTime();
     if (params) {
-        let reqTime = new Date().getTime();
         params.reqTime = reqTime;
+    } else {
+        params = { reqTime }
     }
     if (form) {
         params = formData(params);
@@ -90,9 +92,11 @@ export function fetchPost(url, params, form) {
 }
 ////返回一个Promise(发送get请求)
 export function fetchGet(url, param, form) {
+    let reqTime = new Date().getTime();
     if (param) {
-        let reqTime = new Date().getTime();
         param.reqTime = reqTime;
+    } else {
+        param = { reqTime }
     }
     if (form) {
         param = formData(param);

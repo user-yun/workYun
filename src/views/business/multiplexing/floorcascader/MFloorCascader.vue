@@ -30,10 +30,11 @@ export default {
         }
         that.$set(e, "label", e.Title);
         that.$set(e, "value", {
-          Title: e.Title,
-          Id: e.Id,
-          Address: e.Address,
-          District: e.District
+          title: e.Title,
+          zoneid: e.Id,
+          address: e.Address,
+          district: e.District,
+          area: e.Area
         });
       });
       return l;

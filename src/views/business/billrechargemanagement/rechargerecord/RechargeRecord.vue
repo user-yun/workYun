@@ -1,5 +1,5 @@
 <template>
-  <div style="height:95%">
+  <el-row>
     <mt>{{language.rechargeRecord}}</mt>
     <el-row>
       <el-col :span="8">
@@ -12,7 +12,7 @@
         <el-button type="primary" icon="el-icon-search" @click="searchRecharge"></el-button>
       </el-col>
     </el-row>
-    <div style="height:94%">
+    <div style="height:90%">
       <UiPageTable
         ref="rechargeTable"
         :tableData="dataList"
@@ -22,7 +22,7 @@
         @clickPage="clickPage"
       ></UiPageTable>
     </div>
-  </div>
+  </el-row>
 </template>
 
 <script>

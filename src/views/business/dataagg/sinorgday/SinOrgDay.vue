@@ -1,12 +1,12 @@
 <template>
-  <el-row style="height:95%">
+  <el-row>
     <mt>{{language.sinOrgDay}}</mt>
     <el-col :sm="12" :md="6" :xl="3">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>
-    <el-col :sm="12" :md="18" :xl="21" style="height:95%">
+    <el-col :sm="12" :md="18" :xl="21" style="height:94%">
       <DatePickerMult @change="pickerChange"></DatePickerMult>
-      <div style="height:95%">
+      <div style="height:94%">
         <PageTable
           :tableData="dataList"
           :DataConfig="require('../allorgday/AllOrgDayDataConfig.js')"

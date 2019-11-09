@@ -1,5 +1,5 @@
 <template>
-  <el-row style="height:100%">
+  <el-row>
     <mt>{{language.crdevrelacorr}}</mt>
     <el-col :span="16" style="height:93%">
       <ECharts

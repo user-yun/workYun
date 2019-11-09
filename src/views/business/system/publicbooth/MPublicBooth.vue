@@ -1,7 +1,7 @@
 <template>
-  <el-row style="height:96%">
+  <el-row>
     <mt>{{language.publicBooth}}</mt>
-    <el-col style="height:96%" :span="8">
+    <el-col style="height:94%" :span="8">
       <PageTable
         :tableData="tableData"
         :TableConfig="TableConfig"
@@ -10,7 +10,7 @@
         @select="tableSelect"
       ></PageTable>
     </el-col>
-    <el-col style="height:96%;pointerEvents:none" :span="16">
+    <el-col style="height:94%;pointerEvents:none" :span="16">
       <ECharts
         id="publicTree"
         height="100%"

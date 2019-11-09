@@ -7,7 +7,7 @@
     <el-col :sm="6" :md="7" :xl="6">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>
-    <el-col :sm="12" :md="14" :xl="15">
+    <el-col :sm="12" :md="14" :xl="15"  style="height:94%">
       <el-form label-width="40%">
         <el-form-item :label="language.curOptHou">
           <el-col :span="22">{{zoneTree.Title}}</el-col>
@@ -34,7 +34,7 @@
           <el-button type="primary" @click="getRequest">{{language.inHouseSearch}}</el-button>
         </el-form-item>
       </el-form>
-      <div style="height:45vh">
+      <div style="height:70%">
         <PageTable
           :tableData="checkData"
           :DataConfig="require('../orghousbind/OrgHousBindDataConfig.js')"

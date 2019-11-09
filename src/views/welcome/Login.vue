@@ -5,7 +5,7 @@
     <el-dialog :visible="true" :show-close="false" top="30vh" :width="dialogWidth">
       <el-row slot="title">
         <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="18">
-          <h2 class="title">{{language.title}}</h2>
+          <h2 class="title" @dblclick="hiddRefresh">{{language.title}}</h2>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="6" class="alnrit">
           <SelectLanguage></SelectLanguage>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { setLocal, getLocal } from "@/function";
+import { setLocal, getLocal, clearLocal } from "@/function";
 export default {
   mixins: [require("@/mymixins").default],
   name: "login",
@@ -76,6 +76,10 @@ export default {
   },
   watch: {},
   methods: {
+    hiddRefresh() {
+      clearLocal();
+      history.go(0);
+    },
     resizeHandler() {
       let clientWidth = document.body.clientWidth;
       if (clientWidth <= 992) {
@@ -141,5 +145,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-</style>

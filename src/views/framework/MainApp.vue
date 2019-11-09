@@ -1,7 +1,7 @@
 <template >
-  <div class="shadow" style="overflow: auto;">
+  <div class="shadow mainAppContent" style="overflow: auto;">
     <keep-alive :include="include">
-      <router-view :key="key"/>
+      <router-view class="wh100" :key="key"/>
     </keep-alive>
   </div>
 </template>

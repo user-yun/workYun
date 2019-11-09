@@ -1,5 +1,5 @@
 <template>
-  <div id="mainApp">
+  <div id="mainOverallSituation">
     <!-- @contextmenu.prevent="rightClick" -->
     <RightClickMenu
       v-if="RightClickMenuShow"
@@ -86,7 +86,7 @@ export default {
       this.RightClickMenuShow = true;
     },
     registerRight(i) {
-      let rig = document.getElementById("mainApp");
+      let rig = document.getElementById("mainOverallSituation");
       if (i && rig) {
         rig.addEventListener("contextmenu", this.rightClick, true);
       } else if (rig) {

@@ -7,7 +7,7 @@
     <el-col :sm="6" :md="7" :xl="6">
       <MDeviceTree @MDeviceTree="MDeviceTreeClick"></MDeviceTree>
     </el-col>
-    <el-col :sm="12" :md="13" :xl="15">
+    <el-col :sm="12" :md="13" :xl="15" style="height:94%">
       <el-form label-width="20%">
         <el-form-item :label="language.curOptHou">{{zoneData.Title}}</el-form-item>
         <el-form-item :label="language.curOptDev">{{devData.Title}}{{devData.Pcode}}</el-form-item>
@@ -27,7 +27,7 @@
           <el-button type="primary" @click="getRequest">{{language.houseDevBind}}</el-button>
         </el-form-item>
       </el-form>
-      <div style="height:55vh" v-if="bindList">
+      <div style="height:75%" v-if="bindList">
         <PageTable :tableData="bindList" :DataConfig="require('./HouseDevBindDataConfig.js')"></PageTable>
       </div>
     </el-col>

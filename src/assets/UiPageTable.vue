@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100%;">
+  <div class="wh100 alncnt">
     <el-table
       ref="meltable"
       :data="tableData"
@@ -41,6 +41,23 @@
           >{{dataFormat(item.format,scope.row,scope.column)}}</span>
         </template>
       </el-table-column>
+      <fragment v-if="TableConfig.button">
+        <el-table-column
+          :width="TableConfig.button.width*widthScale"
+          :fixed="TableConfig.button.fixed?TableConfig.button.fixed:'right'"
+          :label="TableConfig.button.label?TableConfig.button.label:'*'"
+          :align="TableConfig.button.align?TableConfig.button.align:'center'"
+        >
+          <template slot-scope="scope">
+            <fragment v-for="(btitem,bti) in TableConfig.button.list" :key="bti">
+              <el-button
+                :type="btitem.type"
+                @click="handleButton(scope.row,btitem.text)"
+              >{{btitem.text}}</el-button>
+            </fragment>
+          </template>
+        </el-table-column>
+      </fragment>
     </el-table>
     <el-pagination
       v-if="!TableConfig.disabled"
@@ -100,7 +117,16 @@ export default {
           highlight: true,
           multiple: false,
           single: false,
-          disabled: true
+          disabled: true,
+          button: {
+            fixed: "right",
+            label: "manage",
+            width: 100,
+            list: [
+              { text: "add", type: "primary" },
+              { text: "delete", type: "danger" }
+            ]
+          }
         };
         return obj;
       }
@@ -225,6 +251,9 @@ export default {
     resetPage() {
       this.page = 1;
       this.$emit("clickPage", this.page, this.pageSize);
+    },
+    handleButton(r, b) {
+      this.$emit("clickButton", r, b);
     }
   },
   mounted() {

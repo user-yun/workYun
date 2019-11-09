@@ -1,7 +1,7 @@
 <template>
-  <div style="height:96%">
+  <el-row>
     <mt>{{language.business}}</mt>
-    <div style="height:96%">
+    <div style="height:94%">
       <PageTable
         :tableData="tableData"
         :DataConfig="require('./MBusinessDataConfig.js')"
@@ -9,7 +9,7 @@
       ></PageTable>
     </div>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
-  </div>
+  </el-row>
 </template>
 
 <script>

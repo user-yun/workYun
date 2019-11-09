@@ -1,11 +1,11 @@
 <template>
-  <div style="height:95%">
+  <el-row>
     <mt>{{language.allOrgDay}}</mt>
     <DatePickerMult @change="pickerChange"></DatePickerMult>
-    <div style="height:95%">
+    <div style="height:90%">
       <PageTable :tableData="dataList" :DataConfig="require('./AllOrgDayDataConfig.js')"></PageTable>
     </div>
-  </div>
+  </el-row>
 </template>
 
 <script>

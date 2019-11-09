@@ -33,7 +33,7 @@ module.exports = {
       'js-md5': 'md5',
       'nprogress': 'NProgress',
       'vue-count-to': 'CountTo',
-      'vue-fragment': 'Fragment'
+      'vue-fragment': 'Fragment',
     }
   },
   css: {

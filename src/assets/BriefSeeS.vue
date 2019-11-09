@@ -28,7 +28,7 @@ export default {
   components: {
     CountTo: () => import("vue-count-to")
   },
-  name: "BriefSee",
+  name: "BriefSeeS",
   data() {
     return {
       isMove: false

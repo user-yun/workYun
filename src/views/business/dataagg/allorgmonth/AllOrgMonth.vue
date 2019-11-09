@@ -1,8 +1,8 @@
 <template>
-  <div style="height:95%">
+  <el-row>
     <mt>{{language.allOrgMonth}}</mt>
     <DatePicker :type="1" :dayNum="31" @change="pickerChange"></DatePicker>
-    <div style="height:95%">
+    <div style="height:90%">
       <UiPageTable
         :tableData="dataList"
         :TableConfig="TableConfig"
@@ -10,7 +10,7 @@
         @clickPage="clickPage"
       ></UiPageTable>
     </div>
-  </div>
+  </el-row>
 </template>
 x``
 <script>
@@ -25,7 +25,16 @@ export default {
         border: true,
         stripe: true,
         highlight: true,
-        disabled: true
+        disabled: true,
+        // button: {
+        //   fixed: "right",
+        //   label: "manage",
+        //   width: 200,
+        //   list: [
+        //     { text: "add", type: "primary" },
+        //     { text: "delete", type: "danger" }
+        //   ]
+        // }
       }
     };
   },

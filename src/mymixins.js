@@ -2,9 +2,9 @@ let m = {
   data() {
     return {
       h: "https://spmp.zg118.com/server"
-      // h: "http://192.168.8.48:8888"
-      // h: "http://192.168.8.45:8888"
-      // h: "http://192.168.8.44:8888"
+      // h: "http://192.168.8.48:8888"//峰哥
+      // h: "http://192.168.8.45:8888"//洋哥
+      // h: "http://192.168.8.44:8888"//杨哥
     };
   },
   computed: {
@@ -70,7 +70,7 @@ let m = {
         value: v
       });
     },
-    post(u, p, f) {
+    post(u, p, f, ts) {
       return new Promise((resolve, reject) => {
         this.$Post(this.h + u, p, f).then(res => {
           resolve(res)
@@ -80,7 +80,7 @@ let m = {
           });
           let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
           let i = this.ifServerCode(c)
-          if (i != 1) {
+          if (i != 1 || ts) {
             this.eleNotify(i, res.ErrMsg);
           }
         }).catch((e) => {
@@ -88,7 +88,7 @@ let m = {
         });
       });
     },
-    get(u, p, f) {
+    get(u, p, f, ts) {
       return new Promise((resolve, reject) => {
         this.$Get(this.h + u, p, f).then(res => {
           resolve(res)
@@ -98,7 +98,7 @@ let m = {
           });
           let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
           let i = this.ifServerCode(c)
-          if (i != 1) {
+          if (i != 1 || ts) {
             this.eleNotify(i, res.ErrMsg);
           }
         }).catch((e) => {
@@ -160,6 +160,7 @@ let m = {
         message: t,
         type: this.eleIfType(i),
         duration: 3000,
+        offset: 100,
         customClass: "messageBox"
       });
     },

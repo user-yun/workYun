@@ -18,7 +18,7 @@
 <script>
 let colors = require("@/color.js");
 export default {
-  name: "Title",
+  name: "TitleCool",
   data() {
     return {};
   },
