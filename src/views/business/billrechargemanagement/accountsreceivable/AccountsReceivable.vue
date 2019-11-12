@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.accountsReceivable}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-row>
       <el-col :span="8">
         <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>

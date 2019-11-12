@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.orgHousBind}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-col :sm="6" :md="4" :xl="3">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>

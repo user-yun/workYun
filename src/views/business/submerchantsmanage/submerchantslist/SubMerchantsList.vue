@@ -1,13 +1,11 @@
 <template>
-  <el-row>
-    <mt>{{language[$options.name]}}</mt>
-  </el-row>
+  <el-row>subMerchantsList</el-row>
 </template>
 
 <script>
 export default {
-  mixins: [require("@/mymixins").default],
-  name: "New",
+  // mixins: [require("@/mymixins").default],
+  name: "subMerchantsList",
   data() {
     return {
       // userInfo

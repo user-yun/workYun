@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.orgManageMent}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-col :span="4">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>

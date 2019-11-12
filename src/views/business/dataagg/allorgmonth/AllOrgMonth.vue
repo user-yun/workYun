@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.allOrgMonth}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <DatePicker :type="1" :dayNum="31" @change="pickerChange"></DatePicker>
     <div style="height:90%">
       <UiPageTable
@@ -12,7 +12,6 @@
     </div>
   </el-row>
 </template>
-x``
 <script>
 export default {
   mixins: [require("@/mymixins").default],
@@ -25,7 +24,7 @@ export default {
         border: true,
         stripe: true,
         highlight: true,
-        disabled: true,
+        disabled: true
         // button: {
         //   fixed: "right",
         //   label: "manage",

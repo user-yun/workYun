@@ -1,122 +1,81 @@
 [{
-        "path": "/home",
-        "name": "home",
-        "component": "welcome/Home",
+    "path": "/home",
+    "name": "home",
+    "component": "welcome/Home",
+    "meta": {
+        "intercept": true,
+        "role": [1, 999]
+    }
+}, {
+    "path": "/logo",
+    "name": "logo",
+    "redirect": {
+        "name": "home"
+    },
+    "meta": {
+        "intercept": true,
+        "role": [1, 999]
+    }
+}, {
+    "path": "/hide",
+    "name": "hide",
+    "component": "welcome/Main",
+    "meta": {
+        "intercept": false,
+        "noQuickTabs": true,
+        "noKeepAlive": true,
+        "role": [1, 999]
+    },
+    "children": [{
+        "path": "/systemLog",
+        "name": "systemLog",
+        "component": "welcome/SystemLog",
         "meta": {
-            "intercept": true,
+            "icon": "el-icon-house",
+            "intercept": false,
+            "noQuickTabs": false,
+            "noKeepAlive": true,
             "role": [1, 999]
         }
     }, {
-        "path": "/logo",
-        "name": "logo",
+        "path": "/quickFeedback",
+        "name": "quickFeedback",
+        "component": "welcome/QuickFeedback",
+        "meta": {
+            "icon": "el-icon-house",
+            "intercept": false,
+            "noQuickTabs": false,
+            "noKeepAlive": true,
+            "role": [1, 999]
+        }
+    }]
+}, {
+    "path": "/home",
+    "name": "home",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-house",
+        "intercept": true,
+        "noKeepAlive": true,
+        "noQuickTabs": true,
+        "role": [1, 999]
+    },
+    "children": [{
+        "path": "/home",
+        "name": "home",
         "redirect": {
             "name": "home"
         },
         "meta": {
-            "intercept": true,
-            "role": [1, 999]
-        }
-    },
-    {
-        "path": "/hide",
-        "name": "hide",
-        "component": "welcome/Main",
-        "meta": {
-            "intercept": false,
-            "noQuickTabs": true,
-            "noKeepAlive": true,
-            "role": [1, 999]
-        },
-        "children": [{
-            "path": "/systemLog",
-            "name": "systemLog",
-            "component": "welcome/SystemLog",
-            "meta": {
-                "icon": "el-icon-house",
-                "intercept": false,
-                "noQuickTabs": false,
-                "noKeepAlive": true,
-                "role": [1, 999]
-            }
-        }, {
-            "path": "/quickFeedback",
-            "name": "quickFeedback",
-            "component": "welcome/QuickFeedback",
-            "meta": {
-                "icon": "el-icon-house",
-                "intercept": false,
-                "noQuickTabs": false,
-                "noKeepAlive": true,
-                "role": [1, 999]
-            }
-        }]
-    },
-    {
-        "path": "/home",
-        "name": "home",
-        "component": "welcome/Main",
-        "meta": {
             "icon": "el-icon-house",
             "intercept": true,
             "noKeepAlive": true,
-            "noQuickTabs": true,
             "role": [1, 999]
-        },
-        "children": [{
-                "path": "/home",
-                "name": "home",
-                "redirect": {
-                    "name": "home"
-                },
-                "meta": {
-                    "icon": "el-icon-house",
-                    "intercept": true,
-                    "noKeepAlive": true,
-                    "role": [1, 999]
-                }
-            },
-            {
-                "path": "/test",
-                "name": "test",
-                "component": "test/Test",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "noKeepAlive": true,
-                    "role": [1, 999]
-                },
-                "children": [{
-                        "path": "/test",
-                        "name": "test",
-                        "component": "test/Test",
-                        "meta": {
-                            "icon": "el-icon-sugar",
-                            "intercept": true,
-                            "noKeepAlive": true,
-                            "role": [1, 999]
-                        }
-                    },
-                    {
-                        "path": "/home",
-                        "name": "home",
-                        "redirect": {
-                            "name": "home"
-                        },
-                        "meta": {
-                            "icon": "el-icon-house",
-                            "intercept": true,
-                            "noKeepAlive": true,
-                            "role": [1, 999]
-                        }
-                    }
-                ]
-            }
-        ]
-    },
-    {
+        }
+    }, {
         "path": "/test",
         "name": "test",
-        "component": "welcome/Main",
+        "component": "test/Test",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
@@ -133,361 +92,408 @@
                 "noKeepAlive": true,
                 "role": [1, 999]
             }
+        }, {
+            "path": "/home",
+            "name": "home",
+            "redirect": {
+                "name": "home"
+            },
+            "meta": {
+                "icon": "el-icon-house",
+                "intercept": true,
+                "noKeepAlive": true,
+                "role": [1, 999]
+            }
         }]
+    }]
+}, {
+    "path": "/test",
+    "name": "test",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "noKeepAlive": true,
+        "role": [1, 999]
     },
-    {
-        "path": "/system",
-        "name": "system",
-        "component": "welcome/Main",
+    "children": [{
+        "path": "/test",
+        "name": "test",
+        "component": "test/Test",
         "meta": {
-            "icon": "el-icon-s-platform",
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "noKeepAlive": true,
+            "role": [1, 999]
+        }
+    }]
+}, {
+    "path": "/system",
+    "name": "system",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-s-platform",
+        "intercept": true,
+        "role": [1]
+    },
+    "children": [{
+        "path": "/device",
+        "name": "device",
+        "component": "system/device/MDevice",
+        "meta": {
+            "icon": "el-icon-odometer",
             "intercept": true,
             "role": [1]
-        },
-        "children": [{
-                "path": "/device",
-                "name": "device",
-                "component": "system/device/MDevice",
-                "meta": {
-                    "icon": "el-icon-odometer",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/business",
-                "name": "business",
-                "component": "system/business/MBusiness",
-                "meta": {
-                    "icon": "el-icon-tickets",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/organization",
-                "name": "organization",
-                "component": "system/orghistory/MOrgHistory",
-                "meta": {
-                    "icon": "el-icon-s-check",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/bill",
-                "name": "bill",
-                "component": "system/bill/MBill",
-                "meta": {
-                    "icon": "el-icon-s-order",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/enterpriseSummary",
-                "name": "enterpriseSummary",
-                "component": "system/orgsummary/MOrgSummary",
-                "meta": {
-                    "icon": "el-icon-s-order",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/regionalSummary",
-                "name": "regionalSummary",
-                "component": "system/zonesummary/MZoneSummary",
-                "meta": {
-                    "icon": "el-icon-s-order",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/module",
-                "name": "module",
-                "component": "system/module/MModule",
-                "meta": {
-                    "icon": "el-icon-s-order",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/region",
-                "name": "region",
-                "component": "system/zonesummary/MZoneList",
-                "meta": {
-                    "icon": "el-icon-s-order",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/publicBooth",
-                "name": "publicBooth",
-                "component": "system/publicbooth/MPublicBooth",
-                "meta": {
-                    "icon": "el-icon-s-order",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }
-        ]
+        }
+    }, {
+        "path": "/business",
+        "name": "business",
+        "component": "system/business/MBusiness",
+        "meta": {
+            "icon": "el-icon-tickets",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/organization",
+        "name": "organization",
+        "component": "system/orghistory/MOrgHistory",
+        "meta": {
+            "icon": "el-icon-s-check",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/bill",
+        "name": "bill",
+        "component": "system/bill/MBill",
+        "meta": {
+            "icon": "el-icon-s-order",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/enterpriseSummary",
+        "name": "enterpriseSummary",
+        "component": "system/orgsummary/MOrgSummary",
+        "meta": {
+            "icon": "el-icon-s-order",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/regionalSummary",
+        "name": "regionalSummary",
+        "component": "system/zonesummary/MZoneSummary",
+        "meta": {
+            "icon": "el-icon-s-order",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/module",
+        "name": "module",
+        "component": "system/module/MModule",
+        "meta": {
+            "icon": "el-icon-s-order",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/region",
+        "name": "region",
+        "component": "system/zonesummary/MZoneList",
+        "meta": {
+            "icon": "el-icon-s-order",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/publicBooth",
+        "name": "publicBooth",
+        "component": "system/publicbooth/MPublicBooth",
+        "meta": {
+            "icon": "el-icon-s-order",
+            "intercept": true,
+            "role": [1]
+        }
+    }]
+}, {
+    "path": "/config",
+    "name": "config",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-s-help",
+        "intercept": true,
+        "role": [1]
     },
-    {
-        "path": "/config",
-        "name": "config",
-        "component": "welcome/Main",
+    "children": [{
+        "path": "/publicBoothConfig",
+        "name": "publicBoothConfig",
+        "component": "config/publicboothconfig/MPublicBoothConfig",
         "meta": {
             "icon": "el-icon-s-help",
             "intercept": true,
             "role": [1]
-        },
-        "children": [{
-                "path": "/publicBoothConfig",
-                "name": "publicBoothConfig",
-                "component": "config/publicboothconfig/MPublicBoothConfig",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/groRbtConfig",
-                "name": "groRbtConfig",
-                "component": "config/grorbtconfig/MGroRbtConfig",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }
-        ]
-    },
-    {
-        "path": "/create",
-        "name": "create",
-        "component": "welcome/Main",
+        }
+    }, {
+        "path": "/groRbtConfig",
+        "name": "groRbtConfig",
+        "component": "config/grorbtconfig/MGroRbtConfig",
         "meta": {
             "icon": "el-icon-s-help",
             "intercept": true,
             "role": [1]
-        },
-        "children": [{
-                "path": "/crGeTaPuBo",
-                "name": "crGeTaPuBo",
-                "component": "create/crgetapubo/MCrGeTaPuBo",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/crInTaPuBo",
-                "name": "crInTaPuBo",
-                "component": "create/crintapubo/MCrInTaPuBo",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/crModuRela",
-                "name": "crModuRela",
-                "component": "create/crmodurela/MCrModuRela",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/crdevrelacorr",
-                "name": "crdevrelacorr",
-                "component": "create/crdevrelacorr/MCrDevRelaCorr",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }
-        ]
+        }
+    }]
+}, {
+    "path": "/create",
+    "name": "create",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-s-help",
+        "intercept": true,
+        "role": [1]
     },
-    {
-        "path": "/docking",
-        "name": "docking",
-        "component": "welcome/Main",
+    "children": [{
+        "path": "/crGeTaPuBo",
+        "name": "crGeTaPuBo",
+        "component": "create/crgetapubo/MCrGeTaPuBo",
+        "meta": {
+            "icon": "el-icon-s-help",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/crInTaPuBo",
+        "name": "crInTaPuBo",
+        "component": "create/crintapubo/MCrInTaPuBo",
+        "meta": {
+            "icon": "el-icon-s-help",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/crModuRela",
+        "name": "crModuRela",
+        "component": "create/crmodurela/MCrModuRela",
+        "meta": {
+            "icon": "el-icon-s-help",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/crdevrelacorr",
+        "name": "crdevrelacorr",
+        "component": "create/crdevrelacorr/MCrDevRelaCorr",
+        "meta": {
+            "icon": "el-icon-s-help",
+            "intercept": true,
+            "role": [1]
+        }
+    }]
+}, {
+    "path": "/docking",
+    "name": "docking",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [1]
+    },
+    "children": [{
+        "path": "/hosDock",
+        "name": "hosDock",
+        "component": "docking/hosdock/MHosDock",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
             "role": [1]
-        },
-        "children": [{
-                "path": "/hosDock",
-                "name": "hosDock",
-                "component": "docking/hosdock/MHosDock",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/enterpDock",
-                "name": "enterpDock",
-                "component": "docking/enterpdock/MEnterpDock",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }
-        ]
-    },
-    {
-        "path": "/billrechargemanagement",
-        "name": "billrechargemanagement",
-        "component": "welcome/Main",
+        }
+    }, {
+        "path": "/enterpDock",
+        "name": "enterpDock",
+        "component": "docking/enterpdock/MEnterpDock",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
             "role": [1]
-        },
-        "children": [{
-                "path": "/accountsReceivable",
-                "name": "accountsReceivable",
-                "component": "billrechargemanagement/accountsreceivable/AccountsReceivable",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/rechargeRecord",
-                "name": "rechargeRecord",
-                "component": "billrechargemanagement/rechargerecord/RechargeRecord",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }
-        ]
+        }
+    }]
+}, {
+    "path": "/billrechargemanagement",
+    "name": "billrechargemanagement",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [1]
     },
-    {
-        "path": "/parkmanagement",
-        "name": "parkmanagement",
-        "component": "welcome/Main",
+    "children": [{
+        "path": "/accountsReceivable",
+        "name": "accountsReceivable",
+        "component": "billrechargemanagement/accountsreceivable/AccountsReceivable",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
             "role": [1]
-        },
-        "children": [{
-                "path": "/housManageMent",
-                "name": "housManageMent",
-                "component": "parkmanagement/housmanagement/HousManageMent",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }, {
-                "path": "/orgManageMent",
-                "name": "orgManageMent",
-                "component": "parkmanagement/orgmanagement/OrgManageMent",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }, {
-                "path": "/orgHousBind",
-                "name": "orgHousBind",
-                "component": "parkmanagement/orghousbind/OrgHousBind",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/inHouseSearch",
-                "name": "inHouseSearch",
-                "component": "parkmanagement/inhousesearch/InHouseSearch",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/houseDevBind",
-                "name": "houseDevBind",
-                "component": "parkmanagement/housedevbind/HouseDevBind",
-                "meta": {
-                    "icon": "el-icon-s-help",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }
-        ]
-    },
-    {
-        "path": "/dataAgg",
-        "name": "dataAgg",
-        "component": "welcome/Main",
+        }
+    }, {
+        "path": "/rechargeRecord",
+        "name": "rechargeRecord",
+        "component": "billrechargemanagement/rechargerecord/RechargeRecord",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
             "role": [1]
-        },
-        "children": [{
-                "path": "/allOrgDay",
-                "name": "allOrgDay",
-                "component": "dataagg/allorgday/AllOrgDay",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/allOrgMonth",
-                "name": "allOrgMonth",
-                "component": "dataagg/allorgmonth/AllOrgMonth",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/sinOrgDay",
-                "name": "sinOrgDay",
-                "component": "dataagg/sinorgday/SinOrgDay",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            },
-            {
-                "path": "/sinOrgMonth",
-                "name": "sinOrgMonth",
-                "component": "dataagg/sinorgmonth/SinOrgMonth",
-                "meta": {
-                    "icon": "el-icon-sugar",
-                    "intercept": true,
-                    "role": [1]
-                }
-            }
-        ]
-    }
-]
+        }
+    }]
+}, {
+    "path": "/parkmanagement",
+    "name": "parkmanagement",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [1]
+    },
+    "children": [{
+        "path": "/housManageMent",
+        "name": "housManageMent",
+        "component": "parkmanagement/housmanagement/HousManageMent",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/orgManageMent",
+        "name": "orgManageMent",
+        "component": "parkmanagement/orgmanagement/OrgManageMent",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/orgHousBind",
+        "name": "orgHousBind",
+        "component": "parkmanagement/orghousbind/OrgHousBind",
+        "meta": {
+            "icon": "el-icon-s-help",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/inHouseSearch",
+        "name": "inHouseSearch",
+        "component": "parkmanagement/inhousesearch/InHouseSearch",
+        "meta": {
+            "icon": "el-icon-s-help",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/houseDevBind",
+        "name": "houseDevBind",
+        "component": "parkmanagement/housedevbind/HouseDevBind",
+        "meta": {
+            "icon": "el-icon-s-help",
+            "intercept": true,
+            "role": [1]
+        }
+    }]
+}, {
+    "path": "/dataAgg",
+    "name": "dataAgg",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [1]
+    },
+    "children": [{
+        "path": "/allOrgDay",
+        "name": "allOrgDay",
+        "component": "dataagg/allorgday/AllOrgDay",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/allOrgMonth",
+        "name": "allOrgMonth",
+        "component": "dataagg/allorgmonth/AllOrgMonth",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/sinOrgDay",
+        "name": "sinOrgDay",
+        "component": "dataagg/sinorgday/SinOrgDay",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/sinOrgMonth",
+        "name": "sinOrgMonth",
+        "component": "dataagg/sinorgmonth/SinOrgMonth",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        }
+    }]
+}, {
+    "path": "/fundManagement",
+    "name": "fundManagement",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [1, 999]
+    },
+    "children": [{
+        "path": "/accountBalanceStatistics",
+        "name": "accountBalanceStatistics",
+        "component": "fundmanagement/accountbalancestatistics/AccountBalanceStatistics",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1, 999]
+        }
+    }, {
+        "path": "/entryDetailsSummary",
+        "name": "entryDetailsSummary",
+        "component": "fundmanagement/entrydetailssummary/EntryDetailsSummary",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1, 999]
+        }
+    }]
+}, {
+    "path": "/subMerchantsList",
+    "name": "subMerchantsList",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [1, 999]
+    },
+    "children": [{
+        "path": "/subMerchantsList",
+        "name": "subMerchantsList",
+        "component": "submerchantsmanage/submerchantslist/SubMerchantsList",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1, 999]
+        }
+    }]
+}]

@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.crdevrelacorr}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-col :span="16" style="height:93%">
       <ECharts
         id="TreeConfig"

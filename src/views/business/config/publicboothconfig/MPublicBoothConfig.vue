@@ -1,6 +1,6 @@
 <template>
   <el-row style=" width:80%">
-    <mt>{{language.publicBoothConfig}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" inline-message label-width="30%">
       <br>
       <br>

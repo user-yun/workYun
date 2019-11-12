@@ -1,90 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#app {
-    font-family: STKaiti, KaiTi, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background: #fcfcfc;
-    overflow-x: hidden;
-    width: 100vw;
-    height: 100vh;
-    /* 14/1920 */
-}
-
-#app:hover ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.el-tag--mini,
-.el-tag--medium {
-    /* height: 3.2vh; */
-    /* line-height: 3vh; */
-}
-
-.el-divider--horizontal {
-    margin: 1.5% 0;
-}
-
-.el-divider__text,
-.el-table__body-wrapper,
-.el-tree,
-.el-table th,
-.el-table__footer-wrapper,
-.el-table__header-wrapper {
-    background-color: #fcfcfc;
-}
-
-.el-badge {
-    /* margin-top: -10px; */
-}
-
-.el-menu--popup,
-.el-popover,
-.el-submenu .el-menu-item {
-    min-width: auto;
-}
-
-.el-tree>.el-tree-node {
-    display: inline-block;
-    min-width: 100%;
-}
-
-.el-menu {
-    border-right: 0;
-}
-
-.el-cascader__search-input {
-    height: 0;
-}
-
-::-webkit-scrollbar {
-    /*滚动条整体样式*/
-    width: 0.625vw;
-    /*高宽分别对应横竖滚动条的尺寸*/
-    height: 0.625vw;
-}
-
-::-webkit-scrollbar-thumb {
-    /*滚动条里面小方块*/
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0);
-    border-radius: 0.625vw;
-    background: rgba(0, 0, 0, 0.0);
-}
-
-::-webkit-scrollbar-track {
-    /*滚动条里面轨道*/
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0);
-    border-radius: 0.625vw;
-    background: rgba(0, 0, 0, 0);
-}
-
 .alnlft {
     text-align: left;
 }
@@ -166,4 +79,92 @@ body {
 .treeMH {
     height: 78vh;
     overflow: auto
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 0.83334vw;
+}
+
+#app {
+    font-family: STKaiti, KaiTi, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #fcfcfc;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+    /* 14/1920 */
+}
+
+#app:hover ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.el-tag--mini,
+.el-tag--medium {
+    /* height: 3.2vh; */
+    /* line-height: 3vh; */
+}
+
+.el-divider--horizontal {
+    margin: 1.5% 0;
+}
+
+.el-divider__text,
+.el-table__body-wrapper,
+.el-tree,
+.el-table th,
+.el-table__footer-wrapper,
+.el-table__header-wrapper {
+    background-color: #fcfcfc;
+}
+
+.el-badge {
+    /* margin-top: -10px; */
+}
+
+.el-menu--popup,
+.el-popover,
+.el-submenu .el-menu-item {
+    min-width: auto;
+}
+
+.el-tree>.el-tree-node {
+    display: inline-block;
+    min-width: 100%;
+}
+
+.el-menu {
+    border-right: 0;
+}
+
+.el-cascader__search-input {
+    height: 0;
+}
+
+::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 0.625vw;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 0.625vw;
+}
+
+::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0);
+    border-radius: 0.625vw;
+    background: rgba(0, 0, 0, 0.0);
+}
+
+::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0);
+    border-radius: 0.625vw;
+    background: rgba(0, 0, 0, 0);
 }

@@ -1,6 +1,6 @@
 <template>
   <fragment>
-    <mt>{{language.quickFeedback}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-row style="margin:5vw;width:40%">
       <el-form label-width="30%">
         <el-form-item :label="language.parkName">

@@ -2,7 +2,7 @@
   <!-- <PageTable @cellDblClick="cellDblClick" @clickPage="clickPage"></PageTable> -->
   <PrintBody>
     <div>
-      <mt>{{language.test}}</mt>
+      <mt>{{language[$options.name]}}</mt>
       <el-row>
         <el-col :span="4">
           <el-select v-model="select">

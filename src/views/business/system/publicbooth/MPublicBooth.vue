@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.publicBooth}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-col style="height:94%" :span="8">
       <PageTable
         :tableData="tableData"

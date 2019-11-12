@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.allOrgDay}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <DatePickerMult @change="pickerChange"></DatePickerMult>
     <div style="height:90%">
       <PageTable :tableData="dataList" :DataConfig="require('./AllOrgDayDataConfig.js')"></PageTable>

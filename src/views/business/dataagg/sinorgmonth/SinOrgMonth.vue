@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.sinOrgMonth}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-col :sm="12" :md="6" :xl="3">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>

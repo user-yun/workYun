@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.housManageMent}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-col :span="4">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>

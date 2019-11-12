@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.crModuRela}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-col :sm="8" :md="6" :xl="3">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>

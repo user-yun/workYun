@@ -1,8 +1,16 @@
 <template >
   <div class="shadow mainAppContent" style="overflow: auto;">
+    <!-- <transition
+      name="custom-classes-transition"
+      enter-active-class="animated zoomInDown"
+      leave-active-class="animated zoomOutDown"
+      :duration="{ enter: 500, leave: 300 }"
+      mode="out-in"
+    >-->
     <keep-alive :include="include">
       <router-view class="wh100" :key="key"/>
     </keep-alive>
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -29,3 +37,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.flip-list-move {
+  transition: transform 1s;
+}
+</style>

@@ -79,7 +79,10 @@ time,
 mark,
 audio,
 input,
-video,
+video {
+    font-family: STKaiti, KaiTi, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
 .el-divider__text,
 .el-link,
 .el-button,
@@ -91,6 +94,7 @@ video,
 .el-form-item__content,
 .el-timeline,
 .el-tooltip__popper,
+.el-card__header,
 .emphasize {
     font-family: STKaiti, KaiTi, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
     font-size: 0.83334vw;

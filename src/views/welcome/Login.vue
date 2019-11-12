@@ -107,23 +107,25 @@ export default {
         Username: this.ruleForm.username,
         Password: require("js-md5")(this.ruleForm.password)
       }).then(res => {
-        let data = res.Data;
-        that.setUserInfo({
-          userName: data.Username,
-          headerTitle: data.Nickname,
-          userId: data.Id,
-          userToken: data.Token,
-          userRole: data.Role,
-          userProject: data.Project,
-          projectId: that.isFalse(res.Expand) ? null : res.Expand.Id
-        });
-        setLocal("userMemory", {
-          userInfo: that.userInfo,
-          otherInfo: that.otherInfo,
-          language: that.language
-        });
-        // that.$router.replace({ name: "home" });
-        that.$router.replace({ name: "test" });
+        if (res.Code == 0) {
+          let data = res.Data;
+          that.setUserInfo({
+            userName: data.Username,
+            headerTitle: data.Nickname,
+            userId: data.Id,
+            userToken: data.Token,
+            userRole: data.Role,
+            userProject: data.Project,
+            projectId: that.isFalse(res.Expand) ? null : res.Expand.Id
+          });
+          setLocal("userMemory", {
+            userInfo: that.userInfo,
+            otherInfo: that.otherInfo,
+            language: that.language
+          });
+          // that.$router.replace({ name: "home" });
+          that.$router.replace({ name: "test" });
+        }
       });
     }
   },

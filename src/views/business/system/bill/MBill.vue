@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.bill}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <div style="height:94%">
       <PageTable
         :tableData="tableData"

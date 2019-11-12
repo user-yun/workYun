@@ -1,6 +1,6 @@
 <template>
   <el-row>
-    <mt>{{language.rechargeRecord}}</mt>
+    <mt>{{language[$options.name]}}</mt>
     <el-row>
       <el-col :span="8">
         <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
