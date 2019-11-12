@@ -7,20 +7,22 @@
         :key="i+mList.length"
       >
         <template slot="title">
-          <i
-            :class="mli.meta.icon"
-            :style="{color:mli.path == $route.path ?activeColor:otherInfo.themeTextColor}"
-          ></i>
-          <span slot="title" class="emphasize">{{language[mli.name]}}</span>
+          <i :class="mli.meta.icon"></i>
+          <!-- :style="{color:mli.path == $route.path ? activeColor : otherInfo.themeTextColor}" -->
+          <span
+            slot="title"
+            :class="mli.path == $route.path ? 'title' : 'emphasize'"
+          >{{language[mli.name]}}</span>
         </template>
         <recursionMenu style="margin-left:0.5vw" :mList="mli.children"></recursionMenu>
       </el-submenu>
       <el-menu-item v-else :index="mli.path" :key="i+mList.length">
-        <i
-          :class="mli.meta.icon"
-          :style="{color:mli.path == $route.path ?activeColor:otherInfo.themeTextColor}"
-        ></i>
-        <span slot="title" class="emphasize">{{language[mli.name]}}</span>
+        <i :class="mli.meta.icon"></i>
+        <!-- :style="{color:mli.path == $route.path ?activeColor:otherInfo.themeTextColor}" -->
+        <span
+          slot="title"
+          :class="mli.path == $route.path ? 'title' : 'emphasize'"
+        >{{language[mli.name]}}</span>
       </el-menu-item>
     </template>
   </fragment>

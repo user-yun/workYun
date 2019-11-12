@@ -48,7 +48,6 @@ export default {
     }
   },
   mounted() {
-    //渲染
     if (this.default) {
       let date = new Date();
       date.setDate(date.getDate() - this.dayNum);

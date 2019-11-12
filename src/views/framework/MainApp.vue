@@ -37,8 +37,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.flip-list-move {
-  transition: transform 1s;
-}
-</style>

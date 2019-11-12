@@ -37,6 +37,7 @@ export default {
       return menuList;
     },
     activeColor() {
+      return "#1bb8ce";
       return this.$ColorReverse(this.otherInfo.themeTextColor);
     }
   },

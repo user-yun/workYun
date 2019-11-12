@@ -1,6 +1,13 @@
 <template>
   <el-row>
     <mt>{{language[$options.name]}}</mt>
+    <el-row>
+      <el-col :span="12">
+        <DatePicker :type="1" :dayNum="31" :default="false" @change="pickerChangeMonth"></DatePicker>
+        <DatePicker :dayNum="0" :default="false" @change="pickerChangeMonth"></DatePicker>
+      </el-col>
+      <el-col :span="12"></el-col>
+    </el-row>
     <div style="height:90%">
       <UiPageTable
         ref="entryDetailsSummaryTable"
@@ -19,7 +26,8 @@ export default {
   mixins: [require("@/mymixins").default],
   name: "entryDetailsSummary",
   components: {
-    UiPageTable: () => import("@/assets/UiPageTable")
+    UiPageTable: () => import("@/assets/UiPageTable"),
+    DatePicker: () => import("@/assets/DatePicker")
   },
   data() {
     return {
@@ -44,6 +52,12 @@ export default {
     }
   },
   methods: {
+    pickerChangeMonth(t) {
+      this.log(t);
+    },
+    pickerChangeDay(t) {
+      this.log(t);
+    },
     getRequest() {
       let projectId = this.userInfo.projectId;
       let userProject = this.userInfo.userProject;

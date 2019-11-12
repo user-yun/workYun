@@ -16,7 +16,8 @@
         ></i>
       </el-col>
       <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1">
-        <el-tooltip :content="language.openSetUp">
+        &nbsp;
+        <el-tooltip :content="language.openSetUp" v-if="false">
           <i
             class="el-icon-setting icon"
             :style="{color:otherInfo.themeTextColor}"
