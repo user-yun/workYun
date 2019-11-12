@@ -50,10 +50,10 @@
         >
           <template slot-scope="scope">
             <fragment v-for="(btitem,bti) in TableConfig.button.list" :key="bti">
-              <el-button
+              <mdb
                 :type="btitem.type"
                 @click="handleButton(scope.row,btitem.text)"
-              >{{btitem.text}}</el-button>
+              >{{btitem.text}}</mdb>
             </fragment>
           </template>
         </el-table-column>

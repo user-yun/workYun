@@ -9,7 +9,7 @@
         <DatePickerMult :dayNum="31" @change="pickerChange" :default="false" :clearable="true"></DatePickerMult>
       </el-col>
       <el-col :span="8">
-        <el-button type="primary" icon="el-icon-search" @click="searchRecharge"></el-button>
+        <mdb type="primary" icon="el-icon-search" @click="searchRecharge"></mdb>
       </el-col>
     </el-row>
     <div style="height:90%">

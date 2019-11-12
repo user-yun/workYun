@@ -53,8 +53,8 @@
       <br>3：0.4
     </el-form-item>
     <el-form-item>
-      <el-button type="danger" :disabled="ruleForm.cl>1">{{language.delete}}</el-button>
-      <el-button type="primary" @click="submitForm('ruleForm')">{{language.sure}}</el-button>
+      <mdb type="danger" :disabled="ruleForm.cl>1">{{language.delete}}</mdb>
+      <mdb type="primary" @click="submitForm('ruleForm')">{{language.sure}}</mdb>
     </el-form-item>
   </el-form>
 </template>

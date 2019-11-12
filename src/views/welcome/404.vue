@@ -2,7 +2,7 @@
   <el-card class="h997">
     <h1>404</h1>
     <!-- <el-input v-model="city">
-      <el-button slot="append" icon="el-icon-search" @click="get"></el-button>
+      <mdb slot="append" icon="el-icon-search" @click="get"></mdb>
     </el-input>-->
     <br>
     <span v-if="weather.hasOwnProperty('country')">

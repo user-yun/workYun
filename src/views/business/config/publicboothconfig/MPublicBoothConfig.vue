@@ -33,7 +33,7 @@
                 v-for="(text,texti) in item.text"
                 :key="texti+item.text.length"
               >{{language[text]}}</span>
-              <span style="float: right; color: #ccc">{{item.value}}</span>
+              <span style="float: right; color: #eee">{{item.value}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -99,7 +99,7 @@
               :label="language[item.text]"
             >
               <span style="float: left">{{language[item.text]}}</span>
-              <span style="float: right; color: #ccc">{{item.value}}</span>
+              <span style="float: right; color: #eee">{{item.value}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -113,7 +113,7 @@
               :label="language[item.text]"
             >
               <span style="float: left">{{language[item.text]}}</span>
-              <span style="float: right; color: #ccc">{{item.value}}</span>
+              <span style="float: right; color: #eee">{{item.value}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -121,13 +121,13 @@
         <!-- <el-form-item v-if="ruleForm.apportionType==3" :label="language.proportion">
           <el-select v-model="ruleForm.elecGrade">
             <el-option
-              v-for="(item,index) in otherInfo.byElecCalculatingGrade"
+              v-for="(item,index) in otherInfo.byElecCalculatingGradeList"
               :key="index+item.value"
               :value="item.value"
               :label="language[item.text]"
             >
               <span style="float: left">{{language[item.text]}}</span>
-              <span style="float: right; color: #ccc">{{item.value}}</span>
+              <span style="float: right; color: #eee">{{item.value}}</span>
             </el-option>
           </el-select>
         </el-form-item>-->
@@ -284,11 +284,11 @@
           ></el-input>
         </el-form-item>-->
         <el-form-item>
-          <el-button
+          <mdb
             type="primary"
             style="width:50%"
             @click="submitForm('ruleForm')"
-          >{{language.sure}}</el-button>
+          >{{language.sure}}</mdb>
         </el-form-item>
       </el-col>
     </el-form>

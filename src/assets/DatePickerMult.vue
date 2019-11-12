@@ -32,6 +32,12 @@ export default {
         return 30;
       }
     },
+    currentNum: {
+      type: Number,
+      default: () => {
+        return 0;
+      }
+    },
     default: {
       type: Boolean,
       default: true
@@ -53,6 +59,7 @@ export default {
       date.setDate(date.getDate() - this.dayNum);
       this.day.push(date.format(this.valueF[this.type]));
       date = new Date();
+      date.setDate(date.getDate() - this.currentNum);
       this.day.push(date.format(this.valueF[this.type]));
       this.$emit("change", this.day);
     }

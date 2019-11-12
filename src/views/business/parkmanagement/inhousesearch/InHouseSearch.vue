@@ -31,7 +31,7 @@
           <DatePickerMult @change="pickerChange"></DatePickerMult>
         </el-form-item>
         <el-form-item :label="language.selectDate">
-          <el-button type="primary" @click="getRequest">{{language.inHouseSearch}}</el-button>
+          <mdb type="primary" @click="getRequest">{{language.inHouseSearch}}</mdb>
         </el-form-item>
       </el-form>
       <div style="height:70%">

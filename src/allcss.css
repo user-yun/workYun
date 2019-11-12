@@ -10,9 +10,18 @@
     text-align: center;
 }
 
+.margin1vw {
+    margin: 1vw;
+}
+
+.margin1vw-t {
+    margin-top: 1vw;
+}
+
 .normal {
     /* 普通文字 */
     font-size: 14px;
+    color: #666;
 }
 
 .title {

@@ -5,44 +5,34 @@
     @mouseleave="runMenu"
     @mouseover="clear"
   >
-    <el-button class="menuItem" size="mini" :style="rightBt" @click="copy">{{language.copy}}</el-button>
-    <el-button
-      class="menuItem"
-      size="mini"
-      :style="rightBt"
-      @click="backUpPage"
-    >{{language.backUpPage}}</el-button>
-    <el-button
+    <mdb class="menuItem" size="mini" :style="rightBt" @click="copy">{{language.copy}}</mdb>
+    <mdb class="menuItem" size="mini" :style="rightBt" @click="backUpPage">{{language.backUpPage}}</mdb>
+    <mdb
       class="menuItem"
       size="mini"
       :style="rightBt"
       @click="reloadThisPage"
-    >{{language.reloadThisPage}}</el-button>
-    <el-button
+    >{{language.reloadThisPage}}</mdb>
+    <mdb
       size="mini"
       :style="rightBt"
       v-if="isPrint"
       class="menuItem"
       @click="printCurrentElement"
-    >{{language.printCurrentElement}}</el-button>
-    <el-button
+    >{{language.printCurrentElement}}</mdb>
+    <mdb
       class="menuItem"
       size="mini"
       :style="rightBt"
       @click="quickFeedback"
-    >{{language.quickFeedback}}</el-button>
-    <el-button
-      class="menuItem"
-      size="mini"
-      :style="rightBt"
-      @click="openSetUp"
-    >{{language.openSetUp}}</el-button>
-    <el-button
+    >{{language.quickFeedback}}</mdb>
+    <mdb class="menuItem" size="mini" :style="rightBt" @click="openSetUp">{{language.openSetUp}}</mdb>
+    <mdb
       class="menuItem"
       size="mini"
       :style="rightBt"
       @click="signOutLogin"
-    >{{language.signOutLogin}}</el-button>
+    >{{language.signOutLogin}}</mdb>
   </div>
 </template>
 

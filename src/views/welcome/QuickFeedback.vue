@@ -20,7 +20,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" icon="el-icon-edit" @click="quickFee">{{language.quickFeedback}}</el-button>
+          <mdb type="primary" icon="el-icon-edit" @click="quickFee">{{language.quickFeedback}}</mdb>
         </el-form-item>
       </el-form>
     </el-row>

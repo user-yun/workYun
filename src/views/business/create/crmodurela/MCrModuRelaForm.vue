@@ -44,7 +44,7 @@
       </el-select>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm('ruleForm')">{{language.sure}}</el-button>
+      <mdb type="primary" @click="submitForm('ruleForm')">{{language.sure}}</mdb>
     </el-form-item>
   </el-form>
 </template>

@@ -16,12 +16,12 @@
         ></el-input>
       </li>
       <li class="creamsLi">
-        <el-button
+        <mdb
           type="primary"
           :disabled="!treeData.Id || outzoneid == '' "
           style="width:95%"
           @click="getRequest"
-        >{{language.sure}}</el-button>
+        >{{language.sure}}</mdb>
       </li>
     </el-col>
   </el-row>

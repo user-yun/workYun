@@ -33,7 +33,7 @@
             <el-input v-model="OContent" clearable :maxlength="60"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" icon="el-icon-edit" @click="setLog">{{language.systemLog}}</el-button>
+            <mdb type="primary" icon="el-icon-edit" @click="setLog">{{language.systemLog}}</mdb>
           </el-form-item>
         </el-form>
       </el-col>

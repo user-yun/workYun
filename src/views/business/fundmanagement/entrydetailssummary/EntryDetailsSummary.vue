@@ -1,14 +1,49 @@
 <template>
   <el-row>
     <mt>{{language[$options.name]}}</mt>
-    <el-row>
-      <el-col :span="12">
-        <DatePicker :type="1" :dayNum="31" :default="false" @change="pickerChangeMonth"></DatePicker>
-        <DatePicker :dayNum="0" :default="false" @change="pickerChangeMonth"></DatePicker>
+    <el-row class="margin1vw">
+      <span class="normal">{{language.queryPrompt}}{{language.queryPromptRecordedInfo}}</span>
+      <el-col class="margin1vw-t" :span="24">
+        {{language.timeSlotEnquiry}}
+        <DatePickerMult
+          :dayNum="31"
+          :currentNum="1"
+          @change="pickerChange"
+          :default="true"
+          :clearable="true"
+        ></DatePickerMult>
+        {{language.liquidationStateEnquiry}}
+        <el-select v-model="liquidationState">
+          <el-option
+            v-for="(item,index) in otherInfo.liquidationStateList"
+            :key="index+item.value"
+            :value="item.value"
+            :label="language[item.text]"
+          >
+            <span style="float: left">{{language[item.text]}}</span>
+            <span style="float: right; color: #eee">{{item.value}}</span>
+          </el-option>
+        </el-select>
+        {{language.rechargeModeEnquiry}}
+        <el-select v-model="rechargeMode">
+          <el-option
+            v-for="(item,index) in otherInfo.rechargeModeList"
+            :key="index+item.value"
+            :value="item.value"
+            :label="language[item.text]"
+          >
+            <span style="float: left">{{language[item.text]}}</span>
+            <span style="float: right; color: #eee">{{item.value}}</span>
+          </el-option>
+        </el-select>
       </el-col>
-      <el-col :span="12"></el-col>
+      <el-col :span="24">
+        {{language.oddNumbersEnquiry}}
+        {{language.businessPhoneEnquiry}}
+        <mdb type="primary">{{language.excelSelectRecordedInfo}}</mdb>
+      </el-col>
     </el-row>
-    <div style="height:90%">
+    <div class="margin1vw" style="height:70%;">
       <UiPageTable
         ref="entryDetailsSummaryTable"
         :tableData="dataList"
@@ -27,7 +62,7 @@ export default {
   name: "entryDetailsSummary",
   components: {
     UiPageTable: () => import("@/assets/UiPageTable"),
-    DatePicker: () => import("@/assets/DatePicker")
+    DatePickerMult: () => import("@/assets/DatePickerMult")
   },
   data() {
     return {
@@ -40,7 +75,9 @@ export default {
       dataList: [],
       page: 1,
       pageSize: 30,
-      total: 0
+      total: 0,
+      liquidationState: 2,
+      rechargeMode: 5
     };
   },
   computed: {
@@ -52,10 +89,7 @@ export default {
     }
   },
   methods: {
-    pickerChangeMonth(t) {
-      this.log(t);
-    },
-    pickerChangeDay(t) {
+    pickerChange(t) {
       this.log(t);
     },
     getRequest() {

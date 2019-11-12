@@ -15,7 +15,7 @@
         ></DatePicker>
       </el-col>
       <el-col :span="8">
-        <el-button :disabled="disabledButton" type="primary" @click="excelOut">{{excelExportButton}}</el-button>
+        <mdb :disabled="disabledButton" type="primary" @click="excelOut">{{excelExportButton}}</mdb>
       </el-col>
     </el-row>
     <div :span="24" style="height:90%">

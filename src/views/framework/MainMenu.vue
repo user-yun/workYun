@@ -11,22 +11,24 @@
   >
     <el-menu-item index="logo" style="padding:0;pointerEvents:none">
       <img
-        :width="otherInfo.menuCollapse?`100%`:`100%`"
+        width="100%"
         height="100%"
-        src="http://www.powerbee.cn/design/pic/logo.png"
-        :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'"
+        :src="'http://www.powerbee.cn/design/pic/logo.png'"
         style="object-fit:contain"
       >
+      <!-- :width="otherInfo.menuCollapse?`100%`:`100%`" -->
+      <!-- :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'" -->
       <!-- <span slot="title" class="emphasize">{{userInfo.headerTitle}}</span> -->
     </el-menu-item>
     <el-menu-item index="cooplogo" style="padding:0;pointerEvents:none">
       <img
-        :width="otherInfo.menuCollapse?`100%`:`100%`"
+        width="100%"
         height="100%"
-        :src="otherInfo.menuCollapse?'https://spmp.zg118.com/web-config/nongyelogo.png':'https://spmp.zg118.com/web-config/nongyelogo2.png'"
-        :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'"
+        :src="'http://www.abchina.com/cn/images/logo_ue2.png'"
         style="object-fit:contain"
       >
+      <!-- :width="otherInfo.menuCollapse?`100%`:`100%`" -->
+      <!-- :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'" -->
       <!-- <span slot="title" class="emphasize">{{userInfo.cooperativePartner}}</span> -->
     </el-menu-item>
     <RecursionMenu :mList="menuList" :activeColor="activeColor"></RecursionMenu>

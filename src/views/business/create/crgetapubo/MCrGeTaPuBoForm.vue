@@ -53,7 +53,7 @@
       <el-input-number v-model="ruleForm.factors" :precision="2" :step="0.1" :min="0.1" :max="99"></el-input-number>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submitForm('ruleForm')">{{language.sure}}</el-button>
+      <mdb type="primary" @click="submitForm('ruleForm')">{{language.sure}}</mdb>
     </el-form-item>
   </el-form>
 </template>

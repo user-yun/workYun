@@ -14,13 +14,13 @@
       <b class="emphasize" :style="{color:otherInfo.themeTextColor}">{{userInfo.headerTitle}}</b>
     </el-col>
     <el-col :xs="6" :sm="4" :lg="3" :xl="2">
-      <el-button
+      <mdb
         type="text"
         class="emphasize"
         autofocus
         :style="{color:otherInfo.themeTextColor}"
         @click="getInto"
-      >{{language.getInto}}</el-button>
+      >{{language.getInto}}</mdb>
     </el-col>
     <el-col :xs="6" :sm="3" :lg="2" :xl="2" class="alnrit">
       <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="menuSelect">
@@ -50,12 +50,12 @@
             <span slot="title" class="emphasize">{{language[item.title]}}</span>
           </el-menu-item>
         </el-menu>
-        <el-button
+        <mdb
           type="text"
           icon="el-icon-user"
           class="emphasize"
           :style="{color:otherInfo.themeTextColor}"
-        >{{userInfo.userName}}</el-button>
+        >{{userInfo.userName}}</mdb>
       </el-tooltip>-->
     </el-col>
   </el-row>

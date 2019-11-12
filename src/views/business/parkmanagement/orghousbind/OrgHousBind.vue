@@ -15,7 +15,7 @@
           <DatePickerMult @change="pickerChange"></DatePickerMult>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="getRequest">{{language.orgHousBind}}</el-button>
+          <mdb type="primary" @click="getRequest">{{language.orgHousBind}}</mdb>
         </el-form-item>
       </el-form>
       <div style="height:55vh" v-if="checkData">

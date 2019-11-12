@@ -20,12 +20,12 @@
           ></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button
+          <mdb
             type="primary"
             @click="bind"
             style="width:100%"
             :disabled="bindDis"
-          >{{language.sure}}</el-button>
+          >{{language.sure}}</mdb>
         </el-form-item>
       </el-form>
     </el-col>

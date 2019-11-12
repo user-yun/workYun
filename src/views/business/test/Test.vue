@@ -14,13 +14,13 @@
           <el-input v-model="input"></el-input>
         </el-col>
         <el-col :span="4">
-          <el-button
+          <mdb
             icon="el-icon-search"
             type="primary"
             :disabled=" input == '' "
             @click="get"
             style="width:100%"
-          ></el-button>
+          ></mdb>
         </el-col>
       </el-row>
       <el-row v-for="(v,i) in upData" :key="i">
@@ -40,7 +40,7 @@
           <el-input v-model="inputValue"></el-input>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary" @click="inputAdd" style="width:100%">add</el-button>
+          <mdb type="primary" @click="inputAdd" style="width:100%">add</mdb>
         </el-col>
       </el-row>
 
@@ -55,7 +55,7 @@
       <!-- <DatePicker :type="1" @change="pickerChange"></DatePicker> -->
       <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
       <!-- <ProgresS></ProgresS> -->
-      <el-button @click="exc">excelTest</el-button>
+      <mdb @click="exc">excelTest</mdb>
       <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
       <!-- <ECharts
       style="pointerEvents:none"

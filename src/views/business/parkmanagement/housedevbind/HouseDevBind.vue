@@ -24,7 +24,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="getRequest">{{language.houseDevBind}}</el-button>
+          <mdb type="primary" @click="getRequest">{{language.houseDevBind}}</mdb>
         </el-form-item>
       </el-form>
       <div style="height:75%" v-if="bindList">

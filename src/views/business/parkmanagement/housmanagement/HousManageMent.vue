@@ -13,13 +13,13 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="theHousLowerAdd">{{language.theHousLowerAdd}}</el-button>
+          <mdb type="primary" @click="theHousLowerAdd">{{language.theHousLowerAdd}}</mdb>
         </el-form-item>
         <el-form-item>
-          <el-button type="warning" @click="upTheHous">{{language.upTheHous}}</el-button>
+          <mdb type="warning" @click="upTheHous">{{language.upTheHous}}</mdb>
         </el-form-item>
         <el-form-item>
-          <el-button type="danger" @click="deleThehous">{{language.deleThehous}}</el-button>
+          <mdb type="danger" @click="deleThehous">{{language.deleThehous}}</mdb>
         </el-form-item>
       </el-form>
     </el-col>

@@ -40,7 +40,7 @@
         ></el-time-picker>
       </el-col>
     </el-row>
-    <el-button type="primary" style="width:100%" icon="el-icon-circle-plus-outline" @click="addT"></el-button>
+    <mdb type="primary" style="width:100%" icon="el-icon-circle-plus-outline" @click="addT"></mdb>
   </span>
 </template>
 

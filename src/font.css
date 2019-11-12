@@ -87,7 +87,7 @@ video {
 #app,
 .el-divider__text,
 .el-link,
-.el-button,
+.mdb,
 .el-form-item__label,
 .el-radio__label,
 .el-input,
@@ -97,6 +97,9 @@ video {
 .el-timeline,
 .el-tooltip__popper,
 .el-card__header,
+.el-button--mini,
+.el-button--small,
+.el-input__inner,
 .emphasize {
     font-family: "Microsoft YaHei", "微软雅黑", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
     font-size: 16px;
