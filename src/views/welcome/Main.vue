@@ -21,7 +21,6 @@
         <el-main style="padding:0.2vw 0.5vw;">
           <MainApp></MainApp>
         </el-main>
-        <!-- <el-footer height="5vh">Footer</el-footer> -->
       </el-container>
     </el-container>
   </div>

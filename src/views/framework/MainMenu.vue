@@ -9,13 +9,25 @@
     router
     class="h997"
   >
-    <el-menu-item index="logo" style="padding:0">
+    <el-menu-item index="logo" style="padding:0;pointerEvents:none">
       <img
-        :width="otherInfo.menuCollapse?`100%`:`40%`"
+        :width="otherInfo.menuCollapse?`100%`:`100%`"
+        height="100%"
         src="http://www.powerbee.cn/design/pic/logo.png"
-        :style="otherInfo.menuCollapse?'transform:scale(2.5)':''"
+        :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'"
+        style="object-fit:contain"
       >
-      <span slot="title" class="emphasize">{{userInfo.headerTitle}}</span>
+      <!-- <span slot="title" class="emphasize">{{userInfo.headerTitle}}</span> -->
+    </el-menu-item>
+    <el-menu-item index="cooplogo" style="padding:0;pointerEvents:none">
+      <img
+        :width="otherInfo.menuCollapse?`100%`:`100%`"
+        height="100%"
+        :src="otherInfo.menuCollapse?'https://spmp.zg118.com/web-config/nongyelogo.png':'https://spmp.zg118.com/web-config/nongyelogo2.png'"
+        :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'"
+        style="object-fit:contain"
+      >
+      <!-- <span slot="title" class="emphasize">{{userInfo.cooperativePartner}}</span> -->
     </el-menu-item>
     <RecursionMenu :mList="menuList" :activeColor="activeColor"></RecursionMenu>
   </el-menu>

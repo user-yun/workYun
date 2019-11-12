@@ -111,12 +111,14 @@ export default {
           let data = res.Data;
           that.setUserInfo({
             userName: data.Username,
-            headerTitle: data.Nickname,
+            // headerTitle: data.Nickname,
+            headerTitle: that.language.subject,
             userId: data.Id,
             userToken: data.Token,
             userRole: data.Role,
             userProject: data.Project,
-            projectId: that.isFalse(res.Expand) ? null : res.Expand.Id
+            projectId: that.isFalse(res.Expand) ? null : res.Expand.Id,
+            cooperativePartner: that.language.ABC
           });
           setLocal("userMemory", {
             userInfo: that.userInfo,

@@ -17,6 +17,16 @@
         "role": [1, 999]
     }
 }, {
+    "path": "/cooplogo",
+    "name": "cooplogo",
+    "redirect": {
+        "name": "home"
+    },
+    "meta": {
+        "intercept": true,
+        "role": [1, 999]
+    }
+}, {
     "path": "/hide",
     "name": "hide",
     "component": "welcome/Main",

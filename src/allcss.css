@@ -25,7 +25,7 @@
 
 .icon {
     /* 图标 */
-    font-size: 18px;
+    font-size: 27px;
 }
 
 .h997 {
@@ -90,7 +90,6 @@ body {
 }
 
 #app {
-    font-family: "Microsoft YaHei", "微软雅黑", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #fcfcfc;
