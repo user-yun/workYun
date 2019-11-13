@@ -43,6 +43,22 @@ export default {
       default: false
     }
   },
+  watch: {
+    disabled: {
+      deep: true,
+      immediate: true,
+      handler(newv, oldv) {
+        this.handlerDisabled = newv;
+      }
+    },
+    loading: {
+      deep: true,
+      immediate: true,
+      handler(newv, oldv) {
+        this.handlerLoading = newv;
+      }
+    }
+  },
   methods: {
     emtiClick() {
       this.$emit("click");
@@ -55,9 +71,6 @@ export default {
       }, 2500);
     }
   },
-  mounted() {
-    this.handlerDisabled = this.disabled;
-    this.handlerLoading = this.loading;
-  }
+  mounted() {}
 };
 </script>

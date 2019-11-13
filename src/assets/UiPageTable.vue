@@ -16,7 +16,7 @@
       <el-table-column
         v-if="TableConfig.multiple || TableConfig.single"
         type="selection"
-        width="44"
+        width="50"
         fixed
       ></el-table-column>
       <el-table-column type="index" width="60" align="center" fixed></el-table-column>
@@ -31,13 +31,13 @@
         :fixed="item.fixed"
       >
         <template slot="header" slot-scope="scope">
-          <span :class="item.class ? item.class: 'emphasize' ">{{scope.column.label}}</span>
+          <span :class="item.class ? item.class: 'tableClass' ">{{scope.column.label}}</span>
         </template>
         <template slot-scope="scope">
-          <pre v-if="item.json" :class="item.class ? item.class: 'emphasize' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
+          <pre v-if="item.json" :class="item.class ? item.class: 'tableClass' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
           <span
             v-else
-            :class="item.class ? item.class: 'emphasize' "
+            :class="item.class ? item.class: 'tableClass' "
           >{{dataFormat(item.format,scope.row,scope.column)}}</span>
         </template>
       </el-table-column>
@@ -50,10 +50,7 @@
         >
           <template slot-scope="scope">
             <fragment v-for="(btitem,bti) in TableConfig.button.list" :key="bti">
-              <mdb
-                :type="btitem.type"
-                @click="handleButton(scope.row,btitem.text)"
-              >{{btitem.text}}</mdb>
+              <mdb :type="btitem.type" @click="handleButton(scope.row,btitem.text)">{{btitem.text}}</mdb>
             </fragment>
           </template>
         </el-table-column>
@@ -63,13 +60,14 @@
       v-if="!TableConfig.disabled"
       :small="false"
       background
-      layout="total, sizes, prev, pager, next, jumper"
+      layout="total, prev, pager, next, jumper"
       :total="PageConfig.total"
       :page-size="PageConfig.size"
       :current-page="page"
       @current-change="clickPage"
       @size-change="sizeChange"
     ></el-pagination>
+    <!-- layout="total, sizes, prev, pager, next, jumper" -->
   </div>
 </template>
 
@@ -94,7 +92,7 @@ export default {
     },
     cellStyle: {
       default: () => {
-        let c = "padding:0vw";
+        let c = "padding:4px";
         return c;
       }
     },
@@ -269,3 +267,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.tableClass {
+  font-size: 14px;
+}
+</style>

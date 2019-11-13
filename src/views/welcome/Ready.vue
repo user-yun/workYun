@@ -5,7 +5,9 @@ export default {
   mixins: [require("@/mymixins").default],
   name: "Ready",
   data() {
-    return {};
+    return {
+      // icon: require("@/icon.json")
+    };
   },
   methods: {
     hr(l) {
@@ -17,6 +19,7 @@ export default {
           children = that.hr(le.children);
         }
         let ro;
+        // let icon = that.icon[le.name];
         let lect = le.component;
         if (lect != undefined) {
           let component;
@@ -30,6 +33,7 @@ export default {
             path: le.path,
             name: le.name,
             component,
+            // meta: { ...le.meta, icon },
             meta: le.meta,
             children
           };
@@ -38,6 +42,7 @@ export default {
             path: le.path,
             name: le.name,
             redirect: le.redirect,
+            // meta: { ...le.meta, icon },
             meta: le.meta,
             children
           };

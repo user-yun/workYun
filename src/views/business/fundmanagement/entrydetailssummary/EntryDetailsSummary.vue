@@ -2,18 +2,19 @@
   <el-row>
     <mt>{{language[$options.name]}}</mt>
     <el-row class="margin1vw">
-      <span class="normal">{{language.queryPrompt}}{{language.queryPromptRecordedInfo}}</span>
-      <el-col class="margin1vw-t" :span="24">
-        {{language.timeSlotEnquiry}}
+      <el-col class="normal" :span="24">{{language.queryPrompt}}{{language.queryPromptRecordedInfo}}</el-col>
+      <el-col class="margin1vw-t" :xl="12" :lg="24">
+        {{language.billTimeSlot}}
         <DatePickerMult
-          :dayNum="31"
+          class="margin1vw-r"
+          :dayNum="3"
           :currentNum="1"
           @change="pickerChange"
-          :default="true"
           :clearable="true"
+          style="width:32%"
         ></DatePickerMult>
-        {{language.liquidationStateEnquiry}}
-        <el-select v-model="liquidationState">
+        {{language.billState}}
+        <el-select v-model="liquidationState" class="margin1vw-r" style="width:13%">
           <el-option
             v-for="(item,index) in otherInfo.liquidationStateList"
             :key="index+item.value"
@@ -24,8 +25,8 @@
             <span style="float: right; color: #eee">{{item.value}}</span>
           </el-option>
         </el-select>
-        {{language.rechargeModeEnquiry}}
-        <el-select v-model="rechargeMode">
+        {{language.rechargeMode}}
+        <el-select v-model="rechargeMode" style="width:18%">
           <el-option
             v-for="(item,index) in otherInfo.rechargeModeList"
             :key="index+item.value"
@@ -37,13 +38,25 @@
           </el-option>
         </el-select>
       </el-col>
-      <el-col :span="24">
-        {{language.oddNumbersEnquiry}}
-        {{language.businessPhoneEnquiry}}
-        <mdb type="primary">{{language.excelSelectRecordedInfo}}</mdb>
+      <el-col class="margin1vw-t" :xl="12" :lg="24">
+        {{language.numbersEnquiry}}
+        <el-input
+          v-model="queryNumbers"
+          clearable
+          :maxlength="30"
+          :placeholder="language.oddNumAndPhoneEnquiry"
+          style="width:35%"
+          class="margin1vw-r"
+        ></el-input>
+        <mdb class="margin1vw-r" @click="searchRecharge">{{language.query}}</mdb>
+        <mdb :disabled="selectExcelOut.length<1" class="margin1vw-r">{{language.selectLiquidation}}</mdb>
+        <mdb
+          :disabled="selectExcelOut.length<1"
+          @click="excelOut"
+        >{{language.excelSelectRecordedInfo}}</mdb>
       </el-col>
     </el-row>
-    <div class="margin1vw" style="height:70%;">
+    <div class="margin1vw" style="height:80%;">
       <UiPageTable
         ref="entryDetailsSummaryTable"
         :tableData="dataList"
@@ -51,6 +64,7 @@
         :PageConfig="PageConfig"
         :DataConfig="require('./EntryDetailsSummaryDataConfig.js').default()"
         @clickPage="clickPage"
+        @select="selectTable"
       ></UiPageTable>
     </div>
   </el-row>
@@ -70,14 +84,19 @@ export default {
         border: true,
         stripe: true,
         highlight: true,
+        multiple: true,
         disabled: false
       },
       dataList: [],
       page: 1,
-      pageSize: 30,
+      pageSize: 20,
       total: 0,
       liquidationState: 2,
-      rechargeMode: 5
+      rechargeMode: 5,
+      queryNumbers: "",
+      dateSlot: [],
+      firstEntry: true,
+      selectExcelOut: []
     };
   },
   computed: {
@@ -89,24 +108,94 @@ export default {
     }
   },
   methods: {
-    pickerChange(t) {
-      this.log(t);
+    excelOut() {
+      require("@/excelformat/seeGetExcel.js").default(
+        this,
+        this.language.entryDetailsSummary,
+        [
+          {
+            name: this.language.entryDetailsSummary,
+            list: this.selectExcelOut
+          }
+        ],
+        require("./EntryDetailsSummaryDataConfig.js").default()
+      );
     },
-    getRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
+    searchRecharge() {
+      this.$refs.entryDetailsSummaryTable.resetPage();
+    },
+    clickPage(d, l) {
+      this.page = d;
+      this.pageSize = l;
+      this.postRequest();
+    },
+    selectTable(t) {
+      this.selectExcelOut = t;
+    },
+    pickerChange(t) {
+      this.dateSlot = t;
+      if (this.firstEntry) {
+        this.postRequest();
+      }
     },
     postRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
-        let data = res.Data;
-        this.List = data;
-      });
+      this.firstEntry = false;
+      let that = this;
+      that.dataList = [];
+      // let projectId = this.userInfo.projectId;
+      // let userProject = this.userInfo.userProject;
+      let qnl = that.queryNumbers ? that.queryNumbers.length : 0; //获取输入框值的长度
+      let orderid = qnl != 11 && qnl != 0 ? that.queryNumbers : undefined; //长度不为11且不为0，则认为是商户号 （undefined是为了不传字段）
+      let phone = qnl == 11 ? that.queryNumbers : undefined; //长度为11则认为是手机号
+      let startdate = that.dateSlot ? that.dateSlot[0] : undefined; //如果时间段有值则取值
+      let enddate = that.dateSlot ? that.dateSlot[1] : undefined;
+      let rechargeway = that.rechargeMode; //充值方式
+      let status = that.liquidationState; //账单状态
+
+      if (orderid != undefined || phone != undefined) {
+        //如果商户号或者手机号有一个有则按照号的为准
+        startdate = undefined;
+        enddate = undefined;
+        status = undefined;
+        rechargeway = undefined;
+      }
+
+      that
+        .post("/api/client/abc/orderinfo", {
+          pagesize: that.pageSize,
+          page: that.page,
+          phone,
+          orderid,
+          rechargeway,
+          status,
+          startdate,
+          enddate
+        })
+        .then(res => {
+          let data = res.Data.data;
+          that.dataList = data != null ? data : [];
+          that.dataList.forEach(e => {
+            let typeText =
+              that.language[
+                that.otherInfo.rechargeModeList.itemByValue(
+                  "value",
+                  e.Rechargeway,
+                  "text"
+                )
+              ];
+            let statusText =
+              that.language[
+                that.otherInfo.liquidationStateList.itemByValue(
+                  "value",
+                  e.Status,
+                  "text"
+                )
+              ];
+            that.$set(e, "PaymentChannel", typeText);
+            that.$set(e, "billState", statusText);
+          });
+          that.total = res.Data.total;
+        });
     }
   },
   mounted() {}

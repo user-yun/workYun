@@ -24,7 +24,7 @@ export default function sg(that, n, o, c) {
         that.$set(p, "A1", { v: oe.name, s: align("center", true) });
         let i = 2;
         c.forEach((ce, cei) => {
-            p["!cols"].push({ wch: parseInt(ce.width) / 10 });
+            p["!cols"].push({ wch: parseInt(ce.width) / 8 });
             that.$set(p, row[cei] + i, { v: ce.label ? ce.label : ce.prop, s: align(ce.align ? ce.align : "center") });
         })
         oe.list.forEach((oee, oeei) => {

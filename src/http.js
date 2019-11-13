@@ -25,14 +25,12 @@ function formData(item) {
 
 axios.defaults.timeout = 10000;                        //响应时间
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';        //配置请求头
-// axios.defaults.baseURL = 'https://cs01.zg118.com/api/sp';   //配置接口地址
-// axios.defaults.baseURL = 'http://121.196.211.83:7779';
 
 axios.defaults.onUploadProgress = function (p) {
-    NProgress.set((p.loaded / p.total));
+    // NProgress.set((p.loaded / p.total));
 }
 axios.defaults.onDownloadProgress = function (p) {
-    NProgress.set((p.loaded / p.total));
+    // NProgress.set((p.loaded / p.total));
 }
 
 //POST传参序列化(添加请求拦截器)
@@ -43,6 +41,7 @@ axios.interceptors.request.use((config) => {
     config.headers.Authorization = `${isFalse(token) ? '' : token}`
     return config;
 }, (error) => {
+    NProgress.done();
     return Promise.reject(error);
 });
 

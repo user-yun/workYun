@@ -506,4 +506,23 @@
             "role": [1, 999]
         }
     }]
+}, {
+    "path": "/routeManagement",
+    "name": "routeManagement",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [1, 999]
+    },
+    "children": [{
+        "path": "/routeManagement",
+        "name": "routeManagement",
+        "component": "admin/routemanagement/RouteManagement",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1, 999]
+        }
+    }]
 }]

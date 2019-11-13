@@ -18,10 +18,14 @@
     margin-top: 1vw;
 }
 
+.margin1vw-r {
+    margin-right: 1vw;
+}
+
 .normal {
     /* 普通文字 */
     font-size: 14px;
-    color: #666;
+    color: #ccc;
 }
 
 .title {
@@ -30,6 +34,13 @@
     font-weight: 500;
     /* 18/1920 */
     cursor: default;
+}
+
+.messageBox {
+    /* 消息框 */
+    min-width: 3vw;
+    font-size: 18px;
+    padding: 1vh;
 }
 
 .icon {
@@ -64,16 +75,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 6px rgba(0, 0, 0, 0.35);
 }
 
-.messageBox {
-    /* 消息框 */
-    min-width: 3vw;
-    font-size: 18px;
-    padding: 1vh;
-}
-
 .mainAppContent {
     height: 89vh;
     width: 100%;
+    border-radius: 4px;
 }
 
 .wh100 {

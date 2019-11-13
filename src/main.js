@@ -7,7 +7,7 @@ import './c';
 
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
-Vue.use(ElementUI, { size: 'mini', zIndex: 1023 });
+Vue.use(ElementUI, { size: 'small', zIndex: 1023 });
 
 import { fetchPost, fetchGet } from './http';
 Vue.prototype.$Post = fetchPost;

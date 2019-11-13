@@ -7,12 +7,13 @@ Array.prototype.min = function () {
     return Math.min.apply({}, this);
 }
 Array.prototype.itemByValue = function (v, ii, t) {
-    //比较数组中对象的某个值等于传如的值返回另一个值
-    for (let i = 0, l = this.length; i < l; i++) {
-        if (this[i][v] == ii) {
-            return this[i][t]
-        }
-    }
+    //比较数组中对象的某个值等于传入的值返回另一个值
+    return this.find(i => i[v] == ii)[t]
+    // for (let i = 0, l = this.length; i < l; i++) {
+    //     if (this[i][v] == ii) {
+    //         return this[i][t]
+    //     }
+    // }
 }
 Array.prototype.operation = function (i, o) {
     //单个item的数组的计算
@@ -197,7 +198,7 @@ Vue.directive('dialogDrag', {
                             }
                             //往右拖拽
                             if (clientX < e.clientX) {
-                                if (dragDom.clientWidth < minWidth) {} else {
+                                if (dragDom.clientWidth < minWidth) { } else {
                                     dragDom.style.width = elW - (e.clientX - clientX) * 2 + 'px';
                                 }
                             }
@@ -206,7 +207,7 @@ Vue.directive('dialogDrag', {
                         if (clientX > EloffsetLeft + elW - 10 && clientX < EloffsetLeft + elW) {
                             //往左拖拽
                             if (clientX > e.clientX) {
-                                if (dragDom.clientWidth < minWidth) {} else {
+                                if (dragDom.clientWidth < minWidth) { } else {
                                     dragDom.style.width = elW - (clientX - e.clientX) * 2 + 'px';
                                 }
                             }
@@ -219,7 +220,7 @@ Vue.directive('dialogDrag', {
                         if (ELscrollTop + clientY > EloffsetTop + elH - 20 && ELscrollTop + clientY < EloffsetTop + elH) {
                             //往上拖拽
                             if (clientY > e.clientY) {
-                                if (dragDom.clientHeight < minHeight) {} else {
+                                if (dragDom.clientHeight < minHeight) { } else {
                                     dragDom.style.height = elH - (clientY - e.clientY) * 2 + 'px';
                                 }
                             }
@@ -297,7 +298,7 @@ Vue.prototype.$addCSS = function (cssText) {
         let func = function () {
             try { //防止IE中stylesheet数量超过限制而发生错误 
                 style.styleSheet.cssText = cssText;
-            } catch (e) {}
+            } catch (e) { }
             if (ti != null) {
                 // clearImmediate
                 clearTimeout(ti);

@@ -20,17 +20,17 @@
       <!-- :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'" -->
       <!-- <span slot="title" class="emphasize">{{userInfo.headerTitle}}</span> -->
     </el-menu-item>
-    <el-menu-item index="cooplogo" style="padding:0;pointerEvents:none">
-      <img
+    <!-- <el-menu-item index="cooplogo" style="padding:0;pointerEvents:none"> -->
+    <!-- <img
         width="100%"
         height="100%"
         :src="'http://www.abchina.com/cn/images/logo_ue2.png'"
         style="object-fit:contain"
-      >
-      <!-- :width="otherInfo.menuCollapse?`100%`:`100%`" -->
-      <!-- :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'" -->
-      <!-- <span slot="title" class="emphasize">{{userInfo.cooperativePartner}}</span> -->
-    </el-menu-item>
+    >-->
+    <!-- :width="otherInfo.menuCollapse?`100%`:`100%`" -->
+    <!-- :style="otherInfo.menuCollapse?'transform:scale(0.9)':'transform:scale(0.9)'" -->
+    <!-- <span slot="title" class="emphasize">{{userInfo.cooperativePartner}}</span> -->
+    <!-- </el-menu-item> -->
     <RecursionMenu :mList="menuList" :activeColor="activeColor"></RecursionMenu>
   </el-menu>
   <!-- <keep-alive> </keep-alive> <component></component> -->
