@@ -21,7 +21,7 @@
       ></el-table-column>
       <el-table-column type="index" width="60" align="center" fixed></el-table-column>
       <el-table-column
-        v-for="(item,index) in DataConfig"
+        v-for="(item,index) in handlerDataConfig.table"
         :key="index"
         :align="item.align"
         :width="item.width*widthScale"
@@ -39,6 +39,17 @@
             v-else
             :class="item.class ? item.class: 'tableClass' "
           >{{dataFormat(item.format,scope.row,scope.column)}}</span>
+        </template>
+      </el-table-column>
+      <el-table-column type="expand">
+        <template slot-scope="scope">
+          <el-form style="width:100%" inline label-width="30%">
+            <fragment v-for="(item,index) in handlerDataConfig.expand" :key="index">
+              <el-form-item style="width:32%" :label="item.label">
+                <span>{{dataFormat(item.format,scope.row,{property:item.prop})}}</span>
+              </el-form-item>
+            </fragment>
+          </el-form>
         </template>
       </el-table-column>
       <fragment v-if="TableConfig.button">
@@ -141,7 +152,8 @@ export default {
             sortable: true,
             fixed: true,
             format: true,
-            json: true
+            json: true,
+            type: "expand"
           }
         ];
         return arr;
@@ -151,9 +163,25 @@ export default {
   computed: {
     otherInfo() {
       return this.$store.getters.getOtherInfo;
+    },
+    handlerDataConfig() {
+      let table = [];
+      let expand = [];
+      this.DataConfig.forEach(e => {
+        if (e.type == "expand") {
+          expand.push(e);
+        } else {
+          table.push(e);
+        }
+      });
+      return { table, expand };
     }
   },
   methods: {
+    test(r) {
+      console.log(r);
+      return "";
+    },
     widthScaleHandler() {
       if (this.otherInfo.tableSelfAW) {
         let w = document.body.clientWidth;

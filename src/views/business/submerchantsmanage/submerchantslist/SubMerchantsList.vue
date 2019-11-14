@@ -111,7 +111,6 @@ export default {
     getRequest() {
       this.firstEntry = false;
       let that = this;
-      that.dataList = [];
       let qnl = that.businessPhoneNum ? that.businessPhoneNum.length : 0; //获取输入框值的长度
       let submerid = qnl != 11 && qnl != 0 ? that.businessPhoneNum : undefined; //长度不为11且不为0，则认为是商户号 （undefined是为了不传字段）
       let phone = qnl == 11 ? that.businessPhoneNum : undefined; //长度为11则认为是手机号
@@ -139,6 +138,7 @@ export default {
           enddate
         })
         .then(res => {
+          that.dataList = [];
           let data = res.Data.data;
           that.dataList = data;
           if (data != null) {

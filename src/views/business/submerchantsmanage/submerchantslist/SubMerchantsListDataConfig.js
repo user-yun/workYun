@@ -25,60 +25,65 @@ export default function f() {
             label: language.subMerchantsName,
             fixed: true,
         },
-        // {
-        //     width: "130",
-        //     prop: "SubMerType",
-        //     align: "center",
-        //     label: language.subMerchantsType,
-        // },
+        {
+            width: "130",
+            prop: "SubMerType",
+            align: "center",
+            label: language.subMerchantsType,
+            type: "expand"
+        },
         {
             width: "120",
             prop: "ContactName",
             align: "center",
             label: language.personInChargeName,
         },
-        // {
-        //     width: "160",
-        //     prop: "CertificateType",
-        //     align: "center",
-        //     label: language.personInChargeCertificatesType,
-        // },
-        // {
-        //     width: "200",
-        //     prop: "CertificateNo",
-        //     align: "center",
-        //     label: language.personInChargeCertificatesNum,
-        // },
+        {
+            width: "160",
+            prop: "CertificateType",
+            align: "center",
+            label: language.personInChargeCertificatesType,
+            type: "expand"
+        },
+        {
+            width: "200",
+            prop: "CertificateNo",
+            align: "center",
+            label: language.personInChargeCertificatesNum,
+            type: "expand"
+        },
         {
             width: "200",
             prop: "MerchantName",
             align: "center",
             label: language.enterpriseName,
         },
-        // {
-        //     width: "180",
-        //     prop: "MerCertificateType",
-        //     align: "center",
-        //     label: language.enterpriseCertificatesType,
-        // },
-        // {
-        //     width: "250",
-        //     prop: "MerCertificateNum",
-        //     align: "center",
-        //     label: language.enterpriseCertificatesNum,
-        // },
+        {
+            width: "180",
+            prop: "MerCertificateType",
+            align: "center",
+            label: language.enterpriseCertificatesType,
+            type: "expand"
+        },
+        {
+            width: "250",
+            prop: "MerCertificateNum",
+            align: "center",
+            label: language.enterpriseCertificatesNum,
+            type: "expand"
+        },
         {
             width: "120",
             prop: "ReceiveAccountName",
             align: "center",
             label: language.receiveName,
         },
-        // {
-        //     width: "280",
-        //     prop: "ReceiveAccount",
-        //     align: "center",
-        //     label: language.receiveAccount,
-        // },
+        {
+            width: "280",
+            prop: "ReceiveAccount",
+            align: "center",
+            label: language.receiveAccount,
+        },
         {
             width: "230",
             prop: "ReceiveBankName",
@@ -90,12 +95,14 @@ export default function f() {
             prop: "ReceiveAccountType",
             align: "center",
             label: language.receiveAccountType,
+            type: "expand"
         },
         {
             width: "140",
             prop: "BankMobileNum",
             align: "center",
             label: language.bankReservePhone,
+            type: "expand"
         },
         {
             width: "140",
@@ -108,18 +115,21 @@ export default function f() {
             prop: "OpenDate",
             align: "center",
             label: language.subMerchantsOpenTime,
+            type: "expand"
         },
         {
             width: "200",
             prop: "ReviewDate",
             align: "center",
             label: language.subMerchantsAuditTime,
+            type: "expand"
         },
         {
             width: "170",
             prop: "Status",
             align: "center",
             label: language.auditState,
+            type: "expand"
         },
     ]
     return arr;
