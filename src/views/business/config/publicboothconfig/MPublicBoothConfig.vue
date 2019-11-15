@@ -29,11 +29,11 @@
               :label="language[item.label]"
             >
               <span
-                style="float: left"
+                class="float-l"
                 v-for="(text,texti) in item.text"
                 :key="texti+item.text.length"
               >{{language[text]}}</span>
-              <span style="float: right; color: #eee">{{item.value}}</span>
+              <span class="float-r option-r">{{item.value}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -98,8 +98,8 @@
               :value="item.value"
               :label="language[item.text]"
             >
-              <span style="float: left">{{language[item.text]}}</span>
-              <span style="float: right; color: #eee">{{item.value}}</span>
+              <span class="float-l">{{language[item.text]}}</span>
+              <span class="float-r option-r">{{item.value}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -112,8 +112,8 @@
               :value="item.value"
               :label="language[item.text]"
             >
-              <span style="float: left">{{language[item.text]}}</span>
-              <span style="float: right; color: #eee">{{item.value}}</span>
+              <span class="float-l">{{language[item.text]}}</span>
+              <span class="float-r option-r">{{item.value}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -126,8 +126,8 @@
               :value="item.value"
               :label="language[item.text]"
             >
-              <span style="float: left">{{language[item.text]}}</span>
-              <span style="float: right; color: #eee">{{item.value}}</span>
+              <span class="float-l">{{language[item.text]}}</span>
+              <span class="float-r option-r">{{item.value}}</span>
             </el-option>
           </el-select>
         </el-form-item>-->
@@ -284,11 +284,7 @@
           ></el-input>
         </el-form-item>-->
         <el-form-item>
-          <mdb
-            type="primary"
-            style="width:50%"
-            @click="submitForm('ruleForm')"
-          >{{language.sure}}</mdb>
+          <mdb type="primary" style="width:50%" @click="submitForm('ruleForm')">{{language.sure}}</mdb>
         </el-form-item>
       </el-col>
     </el-form>

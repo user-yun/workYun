@@ -2,7 +2,7 @@
   <span>
     <el-row v-for="(v,k) in ML" :key="k">
       <el-col :span="6">
-        <el-select v-model="v.type" style="width:100%">
+        <el-select v-model="v.type" class="w100">
           <el-option
             v-for="(item,index) in TL"
             :key="index+item.value"
@@ -19,7 +19,7 @@
           :editable="false"
           format="HH:mm:ss"
           value-format="HH:mm:ss"
-          style="width:100%"
+          class="w100"
           :picker-options="{
             selectableRange:`${ML[k-1]?ML[k-1].time.e:'00:00:00'}-${v.time.e!=''?v.time.e:'23:59:59'}`
           }"
@@ -33,14 +33,14 @@
           :editable="false"
           format="HH:mm:ss"
           value-format="HH:mm:ss"
-          style="width:100%"
+          class="w100"
           :picker-options="{
             selectableRange:`${v.time.s}-${ML[k+1]?ML[k+1].time.s:'23:59:59'}`
           }"
         ></el-time-picker>
       </el-col>
     </el-row>
-    <mdb type="primary" style="width:100%" icon="el-icon-circle-plus-outline" @click="addT"></mdb>
+    <mdb type="primary" class="w100" icon="el-icon-circle-plus-outline" @click="addT"></mdb>
   </span>
 </template>
 

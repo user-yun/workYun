@@ -43,7 +43,7 @@
       </el-table-column>
       <el-table-column type="expand">
         <template slot-scope="scope">
-          <el-form style="width:100%" inline label-width="30%">
+          <el-form class="w100" inline label-width="30%">
             <fragment v-for="(item,index) in handlerDataConfig.expand" :key="index">
               <el-form-item style="width:32%" :label="item.label">
                 <span>{{dataFormat(item.format,scope.row,{property:item.prop})}}</span>
@@ -295,8 +295,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.tableClass {
-  font-size: 14px;
-}
-</style>

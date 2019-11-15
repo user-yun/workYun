@@ -19,7 +19,7 @@
             type="primary"
             :disabled=" input == '' "
             @click="get"
-            style="width:100%"
+            class="w100"
           ></mdb>
         </el-col>
       </el-row>
@@ -40,7 +40,7 @@
           <el-input v-model="inputValue"></el-input>
         </el-col>
         <el-col :span="4">
-          <mdb type="primary" @click="inputAdd" style="width:100%">add</mdb>
+          <mdb type="primary" @click="inputAdd" class="w100">add</mdb>
         </el-col>
       </el-row>
 
@@ -307,7 +307,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.test {
-}
-</style>

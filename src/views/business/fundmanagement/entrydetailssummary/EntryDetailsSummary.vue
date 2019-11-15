@@ -21,8 +21,8 @@
             :value="item.value"
             :label="language[item.text]"
           >
-            <span style="float: left">{{language[item.text]}}</span>
-            <span style="float: right; color: #eee">{{item.value}}</span>
+            <span class="float-l">{{language[item.text]}}</span>
+            <span class="float-r option-r">{{item.value}}</span>
           </el-option>
         </el-select>
         {{language.rechargeMode}}
@@ -33,8 +33,8 @@
             :value="item.value"
             :label="language[item.text]"
           >
-            <span style="float: left">{{language[item.text]}}</span>
-            <span style="float: right; color: #eee">{{item.value}}</span>
+            <span class="float-l">{{language[item.text]}}</span>
+            <span class="float-r option-r">{{item.value}}</span>
           </el-option>
         </el-select>
       </el-col>
@@ -141,7 +141,6 @@ export default {
     postRequest() {
       this.firstEntry = false;
       let that = this;
-      that.dataList = [];
       // let projectId = this.userInfo.projectId;
       // let userProject = this.userInfo.userProject;
       let qnl = that.queryNumbers ? that.queryNumbers.length : 0; //获取输入框值的长度
@@ -172,6 +171,7 @@ export default {
           enddate
         })
         .then(res => {
+          that.dataList = [];
           let data = res.Data.data;
           that.dataList = data != null ? data : [];
           that.dataList.forEach(e => {

@@ -24,8 +24,8 @@
             :value="item.value"
             :label="language[item.text]"
           >
-            <span style="float: left">{{language[item.text]}}</span>
-            <span style="float: right; color: #eee">{{item.value}}</span>
+            <span class="float-l">{{language[item.text]}}</span>
+            <span class="float-r option-r">{{item.value}}</span>
           </el-option>
         </el-select>
         {{language.numbersEnquiry}}
@@ -38,7 +38,8 @@
           style="width:16%"
         ></el-input>
         <mdb @click="searchRecharge" class="margin1vw-r">{{language.query}}</mdb>
-        <mdb @click="searchRecharge">{{language.viewDetails}}</mdb>
+        <mdb @click="SubMerchantsShowFun(1)" class="margin1vw-r">{{language.viewDetails}}</mdb>
+        <mdb @click="SubMerchantsShowFun(2)">{{language.subMerchantsAdd}}</mdb>
       </el-col>
     </el-row>
     <div class="margin1vw" style="height:70%;">
@@ -52,6 +53,12 @@
         @select="selectTable"
       ></UiPageTable>
     </div>
+    <SubMerchants
+      v-if="SubMerchantsShow"
+      :show="SubMerchantsShow"
+      :data="SubMerchantsData"
+      @onColse="SubMerchantsShowFun"
+    ></SubMerchants>
   </el-row>
 </template>
 
@@ -61,7 +68,8 @@ export default {
   name: "subMerchantsList",
   components: {
     UiPageTable: () => import("@/assets/UiPageTable"),
-    DatePickerMult: () => import("@/assets/DatePickerMult")
+    DatePickerMult: () => import("@/assets/DatePickerMult"),
+    SubMerchants: () => import("./SubMerchants")
   },
   data() {
     return {
@@ -79,7 +87,10 @@ export default {
       total: 0,
       bankAuditState: 2,
       dateSlot: [],
-      firstEntry: true
+      firstEntry: true,
+      selectTableItem: {},
+      SubMerchantsData: {},
+      SubMerchantsShow: false
     };
   },
   computed: {
@@ -91,8 +102,19 @@ export default {
     }
   },
   methods: {
+    SubMerchantsShowFun(i) {
+      if (i == 1) {
+        this.SubMerchantsData = this.selectTableItem;
+      } else if (i == 2) {
+        this.SubMerchantsData = {};
+      } else if (!i) {
+        this.SubMerchantsShow = i;
+        return;
+      }
+      this.SubMerchantsShow = true;
+    },
     selectTable(t) {
-      this.log(t);
+      this.selectTableItem = t[0];
     },
     searchRecharge() {
       this.$refs.subMerchantsListTable.resetPage();

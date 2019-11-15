@@ -194,30 +194,3 @@ export default {
   destroyed() {}
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.list-complete-item {
-  transition: all 4s;
-  display: block;
-}
-.list-complete-item:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-.list-complete-enter
-/* .list-complete-leave-active for below version 2.1.8 */ {
-  opacity: 0;
-  transition: all 2s;
-  transform: translateY(1vh);
-  /* transform: scale(1.2) translateY(4.16666vh); */
-}
-.list-complete-leave-to {
-  opacity: 0;
-  transition: all 0.5s;
-  transform: translateY(-1vh);
-  /* transform: scale(0.1) translateY(-4.16666vh); */
-}
-.list-complete-leave-active {
-  position: absolute;
-}
-</style>

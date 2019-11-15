@@ -17,7 +17,10 @@
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
-        ></el-option>
+        >
+          <span class="float-l">{{language[item.text]}}</span>
+          <span class="float-r option-r">{{item.value}}</span>
+        </el-option>
       </el-select>
     </el-form-item>
     <mt>{{language.layerLower+language.add}}</mt>
@@ -34,7 +37,10 @@
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
-        ></el-option>
+        >
+          <span class="float-l">{{language[item.text]}}</span>
+          <span class="float-r option-r">{{item.value}}</span>
+        </el-option>
       </el-select>
     </el-form-item>
     <el-form-item :label="language.shareMethod" prop="mode">
@@ -44,7 +50,10 @@
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
-        ></el-option>
+        >
+          <span class="float-l">{{language[item.text]}}</span>
+          <span class="float-r option-r">{{item.value}}</span>
+        </el-option>
       </el-select>
     </el-form-item>
     <el-form-item :label="language.organization">

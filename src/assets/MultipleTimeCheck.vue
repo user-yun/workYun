@@ -16,6 +16,7 @@
       :key="oindex"
       :style="{background:`${colors[oitem.type]}`}"
       class="themeSpan"
+      style="padding: 2px 4px;"
       @click="groupChange(oindex)"
     >{{oitem.text?oitem.text:oitem.value}}</span>
     <!-- <el-row>
@@ -77,15 +78,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.themeSpan {
-  padding: 2px 4px;
-  display: inline-block;
-  height: 25px;
-  min-width: 25px;
-  border-radius: 5px;
-  /* cursor: not-allowed; */
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3);
-}
-</style>

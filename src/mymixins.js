@@ -3,8 +3,8 @@ let m = {
     return {
       // h: "https://spmp.zg118.com/server"
       // h: "http://192.168.8.48:8888"//峰哥
-      h: "http://192.168.8.45:9031"//洋哥
-      // h: "http://192.168.8.44:9031"//杨哥
+      // h: "http://192.168.8.45:9031"//洋哥
+      h: "http://192.168.8.44:9031"//杨哥
     };
   },
   computed: {
@@ -170,11 +170,11 @@ let m = {
       let e = [10101, 10211, 10212, 10213, 10214, 10215, 10216];//失败
       if (s.includes(i)) {
         return 1;
-        // } else if (w.includes(i)) {
-        // return 2;
+      } else if (w.includes(i)) {
+        return 2;
       } else if (e.includes(i)) {
         return 3;
-      } else return 2;
+      } else return 1;
     },
     eleIfType(i) {
       switch (i) {

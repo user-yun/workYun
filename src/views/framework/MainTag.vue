@@ -65,13 +65,6 @@ export default {
 };
 </script>
 <style scoped>
-.mainTag {
-  overflow: hidden;
-}
-.mainTag:hover {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
 ::-webkit-scrollbar {
   /*滚动条整体样式*/
   width: 0.333vw;

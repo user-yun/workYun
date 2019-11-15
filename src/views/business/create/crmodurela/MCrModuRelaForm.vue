@@ -30,7 +30,10 @@
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
-        ></el-option>
+        >
+          <span class="float-l">{{language[item.text]}}</span>
+          <span class="float-r option-r">{{item.value}}</span>
+        </el-option>
       </el-select>
     </el-form-item>
     <el-form-item :label="language.deviceState" prop="Status">
@@ -40,7 +43,10 @@
           :key="index+item.value"
           :value="item.value"
           :label="language[item.text]"
-        ></el-option>
+        >
+          <span class="float-l">{{language[item.text]}}</span>
+          <span class="float-r option-r">{{item.value}}</span>
+        </el-option>
       </el-select>
     </el-form-item>
     <el-form-item>

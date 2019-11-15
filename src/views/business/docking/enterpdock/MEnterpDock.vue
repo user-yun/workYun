@@ -58,10 +58,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.creamsLi {
-  margin-top: 1vh;
-  height: 5vh;
-  list-style-type: none;
-}
-</style>

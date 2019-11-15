@@ -161,10 +161,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.menuItem {
-  width: 100%;
-  display: block;
-  margin: 0;
-}
-</style>

@@ -140,14 +140,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.themeSpan {
-  display: inline-block;
-  height: 25px;
-  width: 25px;
-  border-radius: 5px;
-  /* cursor: not-allowed; */
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3);
-}
-</style>
