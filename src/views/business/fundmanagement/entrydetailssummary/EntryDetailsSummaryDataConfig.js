@@ -12,17 +12,24 @@ export default function f() {
     // json:true
     let arr = [
         {
-            width: "250",
-            prop: "Uuid",
+            width: "300",
+            prop: "Thirdorderno",
             align: "right",
-            label: language.orderNumber,
-            fixed: true,
+            label: language.merchantsOrderNumber,
+            // fixed: true,
+            type: "expand"
         },
         {
             width: "200",
             prop: "Name",
             align: "center",
-            label: language.payer,
+            label: language.resident,
+        },
+        {
+            width: "200",
+            prop: "Phone",
+            align: "center",
+            label: language.residentPhone,
         },
         {
             width: "140",
@@ -43,14 +50,41 @@ export default function f() {
             label: language.billState,
         },
         {
-            width: "200",
-            prop: "Title",
+            width: "160",
+            prop: "Submername",
             align: "center",
             label: language.paymentMerchant,
         },
         {
+            width: "160",
+            prop: "Devid",
+            align: "center",
+            label: language.deviceId,
+            type: "expand"
+        },
+        {
+            width: "160",
+            prop: "Title",
+            align: "center",
+            label: language.devBindHouseName,
+            type: "expand"
+        },
+        {
+            width: "160",
+            prop: "Mermobilephonenum",
+            align: "center",
+            label: language.businessPhone,
+        },
+        {
             width: "210",
             prop: "Date",
+            align: "center",
+            label: language.orderCreateTime,
+            type: "expand"
+        },
+        {
+            width: "210",
+            prop: "Paytime",
             align: "center",
             label: language.paymentOkTime,
         },

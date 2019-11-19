@@ -78,6 +78,9 @@ export default {
   activated() {
     //可见
   },
+  deactivated () {
+    //隐藏
+  },
   beforeUpdate() {
     //更新前
   },

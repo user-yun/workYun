@@ -1,4 +1,5 @@
 <template>
+  <el-tooltip :content="tooltip" :disabled="tipDis">
   <el-button
     :type="type"
     :size="size"
@@ -9,6 +10,7 @@
   >
     <slot></slot>
   </el-button>
+  </el-tooltip>
 </template>
 
 <script>
@@ -18,13 +20,18 @@ export default {
   data() {
     return {
       handlerDisabled: false,
-      handlerLoading: false
+      handlerLoading: false,
+      tipDis: false
     };
   },
   props: {
     type: {
       type: String,
       default: "primary"
+    },
+    tooltip: {
+      type: String,
+      default: ""
     },
     size: {
       type: String,
@@ -71,6 +78,10 @@ export default {
       }, 2500);
     }
   },
-  mounted() {}
+  mounted() {
+    if (this.tooltip == "") {
+      this.tipDis = true;
+    }
+  }
 };
 </script>

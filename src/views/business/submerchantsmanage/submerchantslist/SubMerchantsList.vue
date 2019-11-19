@@ -38,7 +38,11 @@
           style="width:16%"
         ></el-input>
         <mdb @click="searchRecharge" class="margin1vw-r">{{language.query}}</mdb>
-        <mdb @click="SubMerchantsShowFun(1)" class="margin1vw-r">{{language.viewDetails}}</mdb>
+        <mdb
+          @click="SubMerchantsShowFun(1)"
+          class="margin1vw-r"
+          :disabled="selectTableItem.Status!=0"
+        >{{language.continueAuthSign}}</mdb>
         <mdb @click="SubMerchantsShowFun(2)">{{language.subMerchantsAdd}}</mdb>
       </el-col>
     </el-row>
@@ -105,6 +109,7 @@ export default {
     SubMerchantsShowFun(i) {
       if (i == 1) {
         this.SubMerchantsData = this.selectTableItem;
+        this.$set(this.SubMerchantsData, "stepsActive", 1);
       } else if (i == 2) {
         this.SubMerchantsData = {};
       } else if (!i) {
@@ -114,7 +119,7 @@ export default {
       this.SubMerchantsShow = true;
     },
     selectTable(t) {
-      this.selectTableItem = t[0];
+      this.selectTableItem = t.length > 0 ? t[0] : {};
     },
     searchRecharge() {
       this.$refs.subMerchantsListTable.resetPage();
@@ -170,7 +175,7 @@ export default {
                 that.language[
                   that.otherInfo.subMerchantsTypeList.itemByValue(
                     "value",
-                    e.SubMerType,
+                    e.Submertype,
                     "text"
                   )
                 ];
@@ -179,7 +184,7 @@ export default {
                 that.language[
                   that.otherInfo.personInChargeCertificatesTypeList.itemByValue(
                     "value",
-                    e.CertificateType,
+                    e.Certificatetype,
                     "text"
                   )
                 ];
@@ -188,7 +193,7 @@ export default {
                 that.language[
                   that.otherInfo.enterpriseCertificatesTypeList.itemByValue(
                     "value",
-                    e.MerCertificateType,
+                    e.Mercertificatetype,
                     "text"
                   )
                 ];
@@ -197,7 +202,7 @@ export default {
                 that.language[
                   that.otherInfo.receiveAccountTypeList.itemByValue(
                     "value",
-                    e.ReceiveAccountType,
+                    e.Receiveaccounttype,
                     "text"
                   )
                 ];
@@ -210,11 +215,11 @@ export default {
                     "text"
                   )
                 ];
-              that.$set(e, "SubMerType", SubMerType);
-              that.$set(e, "CertificateType", CertificateType);
-              that.$set(e, "MerCertificateType", MerCertificateType);
-              that.$set(e, "ReceiveAccountType", ReceiveAccountType);
-              that.$set(e, "Status", Status);
+              that.$set(e, "SubmertypeText", SubMerType);
+              that.$set(e, "CertificatetypeText", CertificateType);
+              that.$set(e, "MercertificatetypeText", MerCertificateType);
+              that.$set(e, "ReceiveaccounttypeText", ReceiveAccountType);
+              that.$set(e, "StatusText", Status);
             });
           }
           that.total = res.Data.total;

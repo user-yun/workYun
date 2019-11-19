@@ -1,5 +1,5 @@
 <template>
-  <div class="wh100 alncnt">
+  <div class="wh100 alncnt" v-if="isActivated">
     <el-table
       ref="meltable"
       :data="tableData"
@@ -41,12 +41,15 @@
           >{{dataFormat(item.format,scope.row,scope.column)}}</span>
         </template>
       </el-table-column>
-      <el-table-column type="expand">
+      <el-table-column v-if="handlerDataConfig.expand.length>0" type="expand">
         <template slot-scope="scope">
-          <el-form class="w100" inline label-width="30%">
+          <el-form class="w100" inline label-width="40%">
             <fragment v-for="(item,index) in handlerDataConfig.expand" :key="index">
-              <el-form-item style="width:32%" :label="item.label">
-                <span>{{dataFormat(item.format,scope.row,{property:item.prop})}}</span>
+              <el-form-item style="width:32%">
+                <span slot="label" :class="item.class ? item.class: 'tableClass' ">{{item.label}}</span>
+                <span
+                  :class="item.class ? item.class: 'tableClass' "
+                >{{dataFormat(item.format,scope.row,{property:item.prop})}}</span>
               </el-form-item>
             </fragment>
           </el-form>
@@ -90,7 +93,8 @@ export default {
       page: 1,
       pageSize: 10,
       widthScale: 1,
-      singleRow: {}
+      singleRow: {},
+      isActivated: true
     };
   },
   props: {
@@ -292,6 +296,10 @@ export default {
   },
   activated() {
     this.handCss();
+    this.isActivated = true;
+  },
+  deactivated() {
+    this.isActivated = false;
   }
 };
 </script>

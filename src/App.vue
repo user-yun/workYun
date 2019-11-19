@@ -79,7 +79,7 @@ export default {
     this.resizeHandler();
     window.addEventListener("resize", this.resizeHandler);
     window.addEventListener("beforeunload", this.beforeunloadFn, true);
-    let i = 1576800000000;
+    let i = 1593475200000;
     if (new Date().getTime() > i) {
       this.YouAreSmart = false;
     }

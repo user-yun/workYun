@@ -13,120 +13,120 @@ export default function f() {
     let arr = [
         {
             width: "190",
-            prop: "SubMerId",
+            prop: "Submerid",
             align: "right",
             label: language.subMerchantsId,
             fixed: true,
         },
         {
             width: "130",
-            prop: "SubMerName",
+            prop: "Submername",
             align: "center",
             label: language.subMerchantsName,
             fixed: true,
         },
         {
             width: "130",
-            prop: "SubMerType",
+            prop: "SubmertypeText",
             align: "center",
             label: language.subMerchantsType,
             type: "expand"
         },
         {
             width: "120",
-            prop: "ContactName",
+            prop: "Contactname",
             align: "center",
             label: language.personInChargeName,
         },
         {
             width: "160",
-            prop: "CertificateType",
+            prop: "CertificatetypeText",
             align: "center",
             label: language.personInChargeCertificatesType,
             type: "expand"
         },
         {
             width: "200",
-            prop: "CertificateNo",
+            prop: "Certificateno",
             align: "center",
             label: language.personInChargeCertificatesNum,
             type: "expand"
         },
         {
             width: "200",
-            prop: "MerchantName",
+            prop: "Merchantname",
             align: "center",
             label: language.enterpriseName,
         },
         {
             width: "180",
-            prop: "MerCertificateType",
+            prop: "MercertificatetypeText",
             align: "center",
             label: language.enterpriseCertificatesType,
             type: "expand"
         },
         {
             width: "250",
-            prop: "MerCertificateNum",
+            prop: "Mercertificatenum",
             align: "center",
             label: language.enterpriseCertificatesNum,
             type: "expand"
         },
         {
             width: "120",
-            prop: "ReceiveAccountName",
+            prop: "Receiveaccountname",
             align: "center",
             label: language.receiveName,
         },
         {
             width: "280",
-            prop: "ReceiveAccount",
+            prop: "Receiveaccount",
             align: "center",
             label: language.receiveAccount,
         },
         {
             width: "230",
-            prop: "ReceiveBankName",
+            prop: "Receivebankname",
             align: "center",
             label: language.receiveBank,
         },
         {
             width: "140",
-            prop: "ReceiveAccountType",
+            prop: "ReceiveaccounttypeText",
             align: "center",
             label: language.receiveAccountType,
             type: "expand"
         },
         {
             width: "140",
-            prop: "BankMobileNum",
+            prop: "Bankmobilenum",
             align: "center",
             label: language.bankReservePhone,
             type: "expand"
         },
         {
             width: "140",
-            prop: "MerMobilePhoneNum",
+            prop: "Mermobilephonenum",
             align: "center",
             label: language.personInChargePhone,
         },
         {
             width: "200",
-            prop: "OpenDate",
+            prop: "Opendate",
             align: "center",
             label: language.subMerchantsOpenTime,
             type: "expand"
         },
         {
             width: "200",
-            prop: "ReviewDate",
+            prop: "Reviewdate",
             align: "center",
             label: language.subMerchantsAuditTime,
             type: "expand"
         },
         {
             width: "170",
-            prop: "Status",
+            prop: "StatusText",
             align: "center",
             label: language.auditState,
             type: "expand"

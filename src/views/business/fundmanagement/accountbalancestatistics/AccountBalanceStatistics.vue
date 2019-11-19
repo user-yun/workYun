@@ -3,7 +3,7 @@
     <mt>{{language[$options.name]}}</mt>
     <el-col class="normal" :offset="1" :span="14">{{language.summaryAccountBalanceHints}}</el-col>
     <el-col :offset="1" :span="4">
-      <el-select v-model="rechargeMode" multiple class="w100" @visible-change="visibleChange">
+      <el-select v-model="rechargeMode" class="w100" @visible-change="visibleChange">
         <fragment v-for="(item,index) in otherInfo.rechargeModeList" :key="index+item.value">
           <el-option
             v-if="item.value!=-1 && item.value!=4"
@@ -112,7 +112,7 @@ export default {
       duration: 1000,
       month: null,
       day: null,
-      rechargeMode: [5],
+      rechargeMode: 5,
       numSumm: {
         enterGoldAll: 0,
         outGoldAll: 0,

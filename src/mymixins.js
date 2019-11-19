@@ -4,7 +4,8 @@ let m = {
       // h: "https://spmp.zg118.com/server"
       // h: "http://192.168.8.48:8888"//峰哥
       // h: "http://192.168.8.45:9031"//洋哥
-      h: "http://192.168.8.44:9031"//杨哥
+      // h: "http://192.168.8.44:9031"//杨哥
+      h: "http://121.196.211.83:8072"//农行
     };
   },
   computed: {
@@ -78,10 +79,10 @@ let m = {
             u,
             res
           });
-          let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
+          let c = res.ErrCode || res.Code || res.errCode || res.code || res.Errcode || errcode;
           let i = this.ifServerCode(c)
           if (i != 1 || ts) {
-            this.eleNotify(i, res.ErrMsg);
+            this.eleNotify(i, res.ErrMsg || res.message || res.Message);
           }
         }).catch((e) => {
           reject(e)
@@ -96,10 +97,10 @@ let m = {
             u,
             res
           });
-          let c = res.ErrCode != undefined ? res.ErrCode : res.Code;
+          let c = res.ErrCode || res.Code || res.errCode || res.code || res.Errcode || errcode;
           let i = this.ifServerCode(c)
           if (i != 1 || ts) {
-            this.eleNotify(i, res.ErrMsg);
+            this.eleNotify(i, res.ErrMsg || res.message || res.Message);
           }
         }).catch((e) => {
           reject(e)
@@ -166,7 +167,7 @@ let m = {
     },
     ifServerCode(i) {
       let s = [0, 200];//成功
-      let w = [];//警告
+      let w = [101];//警告
       let e = [10101, 10211, 10212, 10213, 10214, 10215, 10216];//失败
       if (s.includes(i)) {
         return 1;
