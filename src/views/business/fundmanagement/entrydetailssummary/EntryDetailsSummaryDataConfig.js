@@ -20,7 +20,7 @@ export default function f() {
             type: "expand"
         },
         {
-            width: "200",
+            width: "180",
             prop: "Name",
             align: "center",
             label: language.resident,
@@ -74,6 +74,12 @@ export default function f() {
             prop: "Mermobilephonenum",
             align: "center",
             label: language.businessPhone,
+        },
+        {
+            width: "160",
+            prop: "Merchartid",
+            align: "center",
+            label: language.merchantsId,
         },
         {
             width: "210",

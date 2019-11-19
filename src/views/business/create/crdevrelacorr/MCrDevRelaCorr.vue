@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     clickECharts(p) {
-      let d = JSON.parse(JSON.stringify(p));
+      let d = this.$avoid(p);
       this.treeData = Object.assign({}, null, d);
     },
     async ruleFormHandler(f) {

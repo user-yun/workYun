@@ -14,7 +14,12 @@
           style="width:32%"
         ></DatePickerMult>
         {{language.billState}}
-        <el-select v-model="liquidationState" class="margin1vw-r" style="width:13%">
+        <el-select
+          v-model="liquidationState"
+          class="margin1vw-r"
+          style="width:13%"
+          @change="searchRecharge"
+        >
           <el-option
             v-for="(item,index) in otherInfo.liquidationStateList"
             :key="index+item.value"
@@ -44,17 +49,22 @@
         <el-input
           v-model="queryNumbers"
           clearable
-          :maxlength="30"
+            :maxlength="40"
           :placeholder="language.oddNumAndPhoneEnquiry"
           style="width:35%"
           class="margin1vw-r"
         ></el-input>
         </el-tooltip>
-        <mdb @click="searchRecharge">{{language.query}}</mdb>
-        <mdb :disabled="selectExcelOut.length<1">{{language.selectLiquidation}}</mdb>
+        <mdb class="margin1vw-r" @click="searchRecharge">{{language.query}}</mdb>
+        <mdb
+          class="margin1vw-r"
+          :disabled="selectExcelOut.length<1||liquidationState!=3"
+          :tooltip="language.selectLiquidationTooltip"
+        >{{language.selectLiquidation}}</mdb>
         <mdb
           :disabled="selectExcelOut.length<1"
           @click="excelOut"
+          :tooltip="language.excelSelectRecordedInfoTooltip"
         >{{language.excelSelectRecordedInfo}}</mdb>
       </el-col>
     </el-row>
@@ -124,6 +134,7 @@ export default {
       );
     },
     searchRecharge() {
+      this.selectExcelOut = [];
       this.$refs.entryDetailsSummaryTable.resetPage();
     },
     clickPage(d, l) {

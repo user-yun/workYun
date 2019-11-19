@@ -22,11 +22,14 @@
     <el-form :model="ruleForm" lnline ref="ruleForm" inline-message status-icon label-width="30%">
       <el-row v-if="stepsActive==0">
         <el-col :span="12">
-          <el-form-item :label="language.subMerchantsId" prop="Submerid" :rules="rules.input">
+          <!-- <el-form-item :label="language.subMerchantsId" prop="Submerid" :rules="rules.input">
             <el-input class="form50z80" v-model="ruleForm.Submerid" clearable :maxlength="30"></el-input>
+          </el-form-item>-->
+          <el-form-item :label="language.appLoginAccount" prop="Userid" :rules="rules.input">
+            <el-input class="form50z80" v-model="ruleForm.Userid" clearable :maxlength="16"></el-input>
           </el-form-item>
           <el-form-item :label="language.subMerchantsName" prop="Submername" :rules="rules.input">
-            <el-input class="form50z80" v-model="ruleForm.Submername" clearable :maxlength="30"></el-input>
+            <el-input class="form50z80" v-model="ruleForm.Submername" clearable :maxlength="10"></el-input>
           </el-form-item>
           <el-form-item :label="language.subMerchantsType" prop="Submertype" :rules="rules.select">
             <el-select v-model="ruleForm.Submertype" class="form50z80">
@@ -46,7 +49,7 @@
             prop="Contactname"
             :rules="rules.input"
           >
-            <el-input class="form50z80" v-model="ruleForm.Contactname" clearable :maxlength="30"></el-input>
+            <el-input class="form50z80" v-model="ruleForm.Contactname" clearable :maxlength="4"></el-input>
           </el-form-item>
           <el-form-item
             :label="language.personInChargeCertificatesType"
@@ -70,10 +73,10 @@
             prop="Certificateno"
             :rules="rules.input"
           >
-            <el-input class="form50z80" v-model="ruleForm.Certificateno" clearable :maxlength="30"></el-input>
+            <el-input class="form50z80" v-model="ruleForm.Certificateno" clearable :maxlength="18"></el-input>
           </el-form-item>
           <el-form-item :label="language.enterpriseName" prop="Merchantname" :rules="rules.input">
-            <el-input class="form50z80" v-model="ruleForm.Merchantname" clearable :maxlength="30"></el-input>
+            <el-input class="form50z80" v-model="ruleForm.Merchantname" clearable :maxlength="16"></el-input>
           </el-form-item>
           <el-form-item
             :label="language.enterpriseCertificatesType"
@@ -115,18 +118,18 @@
               class="form50z80"
               v-model="ruleForm.Receiveaccountname"
               clearable
-              :maxlength="30"
+              :maxlength="4"
             ></el-input>
           </el-form-item>
           <el-form-item :label="language.receiveAccount" prop="Receiveaccount" :rules="rules.input">
-            <el-input class="form50z80" v-model="ruleForm.Receiveaccount" clearable :maxlength="30"></el-input>
+            <el-input class="form50z80" v-model="ruleForm.Receiveaccount" clearable :maxlength="19"></el-input>
           </el-form-item>
           <el-form-item :label="language.receiveBank" prop="Receivebankname" :rules="rules.input">
             <el-input
               class="form50z80"
               v-model="ruleForm.Receivebankname"
               clearable
-              :maxlength="30"
+              :maxlength="20"
             ></el-input>
           </el-form-item>
           <el-form-item
@@ -146,25 +149,17 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item
-            :label="language.bankReservePhone"
-            prop="Bankmobilenum"
-            :rules="rules.input"
-          >
-            <el-input v-model="ruleForm.Bankmobilenum" clearable :maxlength="30"></el-input>
+          <el-form-item :label="language.bankReservePhone" prop="Bankmobilenum" :rules="rules.tel">
+            <el-input v-model="ruleForm.Bankmobilenum" clearable :maxlength="11"></el-input>
           </el-form-item>
-          <el-form-item
-            :label="language.personInChargePhone"
-            prop="Mermobilephonenum"
-            :rules="rules.input"
-          >
-            <el-input v-model="ruleForm.Mermobilephonenum" clearable :maxlength="30"></el-input>
+          <el-form-item :label="language.personInChargePhone">
+            <el-input v-model="ruleForm.Mermobilephonenum" clearable :maxlength="11"></el-input>
           </el-form-item>
-          <el-form-item :label="language.address" :rules="rules.input">
-            <el-input v-model="ruleForm.Address" clearable :maxlength="30"></el-input>
+          <el-form-item :label="language.address">
+            <el-input v-model="ruleForm.Address" clearable :maxlength="16"></el-input>
           </el-form-item>
-          <el-form-item :label="language.remark" :rules="rules.input">
-            <el-input v-model="ruleForm.Remark" clearable :maxlength="30"></el-input>
+          <el-form-item :label="language.remark">
+            <el-input v-model="ruleForm.Remark" clearable :maxlength="16"></el-input>
           </el-form-item>
           <el-form-item
             :label="language.alreadyDeclaredTheThirdParty"
@@ -181,10 +176,10 @@
       </el-row>
       <el-row v-if="stepsActive==1">
         <el-col :span="12">
-          <el-form-item :label="language.subMerchantsId" disabled :rules="rules.input">
+          <el-form-item :label="language.subMerchantsId" :rules="rules.input">
             <el-input class="form50z80" v-model="ruleForm.Submerid" clearable :maxlength="30"></el-input>
           </el-form-item>
-          <el-form-item :label="language.receiveAccount" disabled :rules="rules.input">
+          <el-form-item :label="language.receiveAccount" :rules="rules.input">
             <el-input class="form50z80" v-model="ruleForm.Receiveaccount" clearable :maxlength="30"></el-input>
           </el-form-item>
         </el-col>
@@ -248,11 +243,11 @@ export default {
   methods: {
     againVCodeError() {
       let that = this;
-      let account = that.ruleForm.Submerid;
-      let submerchantaccno = that.ruleForm.Receiveaccount;
+      let submerchantno = that.ruleForm.Submerid;
+      let account = that.ruleForm.Receiveaccount;
       this.post(
         `/api/client/abc/sendmobilemessage`,
-        { account, submerchantaccno },
+        { account, submerchantno },
         false,
         true
       ).then(res => {});
@@ -282,8 +277,13 @@ export default {
         false,
         true
       ).then(res => {
-          if (res.code == 0) {
+        let ijsonString = JSON.parse(res.data.data.ijsonString);
+        let TrxResponse = ijsonString.MSG.Message.TrxResponse;
+        if (TrxResponse.ReturnCode == "0000") {
+          that.$set(that.ruleForm, "Submerid", res.submerid);
             that.stepsActive++;
+        } else {
+          this.eleNotify(3, TrxResponse.ErrorMessage);
           }
       });
     },
@@ -296,8 +296,8 @@ export default {
       this.post(
         "/api/client/abc/submerverify",
         {
-        account: that.ruleForm.ReceiveAccount,
-        submerchantno: that.ruleForm.SubMerId,
+          account: that.ruleForm.Receiveaccount,
+          submerchantno: that.ruleForm.Submerid,
         verificationcode
         },
         false,

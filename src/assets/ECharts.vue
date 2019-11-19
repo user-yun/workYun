@@ -1,5 +1,10 @@
 <template>
-  <div class="shadow wh100" v-bind:id="id" :class="className" :style="{height:height,width:width}"></div>
+  <div
+    class="shadow w100 h100"
+    v-bind:id="id"
+    :class="className"
+    :style="{height:height,width:width}"
+  ></div>
 </template>
 <script>
 export default {
@@ -58,7 +63,7 @@ export default {
     },
     click(p) {
       let _this = this;
-      let d = JSON.parse(JSON.stringify(p.data));
+      let d = this.$avoid(p.data);
       _this.$emit("clickECharts", Object.assign({}, null, d));
     },
     clear() {

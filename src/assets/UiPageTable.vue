@@ -1,5 +1,5 @@
 <template>
-  <div class="wh100 alncnt" v-if="isActivated">
+  <div class="w100 h100 alncnt" v-if="isActivated">
     <el-table
       ref="meltable"
       :data="tableData"

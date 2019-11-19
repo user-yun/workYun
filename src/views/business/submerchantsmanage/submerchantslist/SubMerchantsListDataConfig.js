@@ -12,14 +12,14 @@ export default function f() {
     // json:true
     let arr = [
         {
-            width: "190",
+            width: "220",
             prop: "Submerid",
             align: "right",
             label: language.subMerchantsId,
             fixed: true,
         },
         {
-            width: "130",
+            width: "220",
             prop: "Submername",
             align: "center",
             label: language.subMerchantsName,
@@ -79,7 +79,7 @@ export default function f() {
             label: language.receiveName,
         },
         {
-            width: "280",
+            width: "240",
             prop: "Receiveaccount",
             align: "center",
             label: language.receiveAccount,
@@ -102,13 +102,13 @@ export default function f() {
             prop: "Bankmobilenum",
             align: "center",
             label: language.bankReservePhone,
-            type: "expand"
         },
         {
             width: "140",
             prop: "Mermobilephonenum",
             align: "center",
             label: language.personInChargePhone,
+            type: "expand"
         },
         {
             width: "200",

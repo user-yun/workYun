@@ -1,5 +1,6 @@
 <template>
-  <el-tooltip :content="tooltip" :disabled="tipDis">
+  <el-tooltip :content="tooltip" :disabled="tipDis" class="bttooltip">
+    <div class="inblock">
   <el-button
     :type="type"
     :size="size"
@@ -10,6 +11,7 @@
   >
     <slot></slot>
   </el-button>
+    </div>
   </el-tooltip>
 </template>
 

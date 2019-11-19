@@ -28,7 +28,7 @@
           ${item.themeBackgroundColor} 50%,
           ${item.themeTextColor} 51%,
           ${item.themeTextColor} 100%)`}"
-            class="themeSpan"
+            class="themeSpan inblock"
             @click="clickThemePreset(item)"
           ></span>
         </el-col>

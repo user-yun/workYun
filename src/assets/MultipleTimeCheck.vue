@@ -15,7 +15,7 @@
       v-for="(oitem,oindex) in ML"
       :key="oindex"
       :style="{background:`${colors[oitem.type]}`}"
-      class="themeSpan"
+      class="themeSpan inblock"
       style="padding: 2px 4px;"
       @click="groupChange(oindex)"
     >{{oitem.text?oitem.text:oitem.value}}</span>

@@ -11,13 +11,18 @@
         <DatePickerMult
           class="margin1vw-r"
           :dayNum="31"
-          :currentNum="1"
+          :currentNum="0"
           @change="pickerChange"
           :clearable="true"
           style="width:20%"
         ></DatePickerMult>
         {{language.auditState}}
-        <el-select v-model="bankAuditState" class="margin1vw-r" style="width:13%">
+        <el-select
+          v-model="bankAuditState"
+          class="margin1vw-r"
+          style="width:13%"
+          @change="searchRecharge"
+        >
           <el-option
             v-for="(item,index) in otherInfo.bankAuditStateList"
             :key="index+item.value"
@@ -41,7 +46,8 @@
         <mdb
           @click="SubMerchantsShowFun(1)"
           class="margin1vw-r"
-          :disabled="selectTableItem.Status!=0"
+          :disabled="selectTableItem.Status!=0||bankAuditState!=0"
+          :tooltip="language.continueAuthSignTooltip"
         >{{language.continueAuthSign}}</mdb>
         <mdb @click="SubMerchantsShowFun(2)">{{language.subMerchantsAdd}}</mdb>
       </el-col>
@@ -122,6 +128,7 @@ export default {
       this.selectTableItem = t.length > 0 ? t[0] : {};
     },
     searchRecharge() {
+      this.selectTableItem = {};
       this.$refs.subMerchantsListTable.resetPage();
     },
     clickPage(d, l) {
@@ -149,7 +156,7 @@ export default {
         //如果商户号或者手机号有一个有则按照号的为准
         startdate = undefined;
         enddate = undefined;
-        status = undefined;
+        status = -1;
       }
 
       // let projectId = this.userInfo.projectId;

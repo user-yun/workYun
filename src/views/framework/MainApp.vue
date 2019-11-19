@@ -1,5 +1,5 @@
 <template >
-  <div class="shadow mainAppContent" style="overflow: auto;">
+  <div class="shadow mainAppContent w100" style="overflow: auto;">
     <!-- <transition
       name="custom-classes-transition"
       enter-active-class="animated zoomInDown"
@@ -8,7 +8,7 @@
       mode="out-in"
     >-->
     <keep-alive :include="include">
-      <router-view class="wh100" :key="key"/>
+      <router-view class="w100 h100" :key="key"/>
     </keep-alive>
     <!-- </transition> -->
   </div>
