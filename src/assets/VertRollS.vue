@@ -4,7 +4,7 @@
       <el-row
         v-for=" (items,index) in data "
         v-if=" index < showNum "
-        :style=" {height:height,width:'99.7%',listStyle:'none'} "
+        :style=" {height:height,width:'99.9%',listStyle:'none'} "
         :key="items.index"
         class="list-complete-item"
         @click.native="liCilck(items)"

@@ -46,7 +46,7 @@
 
 .menuItem {
     /* 右键菜单选择项 */
-    width: 99.7%;
+    width: 99.9%;
     display: block;
     margin: 0;
 }
@@ -111,7 +111,7 @@
 
 .h997 {
     /* 全屏高 */
-    height: 99.7vh;
+    height: 99.9vh;
     overflow: auto;
 }
 
@@ -137,15 +137,15 @@
 }
 
 .h100 {
-    height: 99.7%;
+    height: 99.9%;
 }
 
 .w100 {
-    width: 99.7%;
+    width: 99.9%;
 }
 
 .echarsCSS {
-    width: 99.7%;
+    width: 99.9%;
     height: 27.77777vh;
 }
 
@@ -211,7 +211,7 @@ body {
 
 .el-tree>.el-tree-node {
     display: inline-block;
-    min-width: 99.7%;
+    min-width: 99.9%;
 }
 
 .el-menu {
