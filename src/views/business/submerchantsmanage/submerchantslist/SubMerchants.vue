@@ -29,7 +29,7 @@
             <el-input class="form50z80" v-model="ruleForm.Userid" clearable :maxlength="16"></el-input>
           </el-form-item>
           <el-form-item :label="language.subMerchantsName" prop="Submername" :rules="rules.input">
-            <el-input class="form50z80" v-model="ruleForm.Submername" clearable :maxlength="10"></el-input>
+            <el-input class="form50z80" v-model="ruleForm.Submername" clearable :maxlength="30"></el-input>
           </el-form-item>
           <el-form-item :label="language.subMerchantsType" prop="Submertype" :rules="rules.select">
             <el-select v-model="ruleForm.Submertype" class="form50z80">
@@ -73,10 +73,10 @@
             prop="Certificateno"
             :rules="rules.input"
           >
-            <el-input class="form50z80" v-model="ruleForm.Certificateno" clearable :maxlength="18"></el-input>
+            <el-input class="form50z80" v-model="ruleForm.Certificateno" clearable :maxlength="30"></el-input>
           </el-form-item>
           <el-form-item :label="language.enterpriseName" prop="Merchantname" :rules="rules.input">
-            <el-input class="form50z80" v-model="ruleForm.Merchantname" clearable :maxlength="16"></el-input>
+            <el-input class="form50z80" v-model="ruleForm.Merchantname" clearable :maxlength="30"></el-input>
           </el-form-item>
           <el-form-item
             :label="language.enterpriseCertificatesType"
@@ -118,7 +118,7 @@
               class="form50z80"
               v-model="ruleForm.Receiveaccountname"
               clearable
-              :maxlength="4"
+              :maxlength="30"
             ></el-input>
           </el-form-item>
           <el-form-item :label="language.receiveAccount" prop="Receiveaccount" :rules="rules.input">
@@ -129,7 +129,7 @@
               class="form50z80"
               v-model="ruleForm.Receivebankname"
               clearable
-              :maxlength="20"
+              :maxlength="30"
             ></el-input>
           </el-form-item>
           <el-form-item

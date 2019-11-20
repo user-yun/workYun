@@ -52,7 +52,7 @@
         <mdb @click="SubMerchantsShowFun(2)">{{language.subMerchantsAdd}}</mdb>
       </el-col>
     </el-row>
-    <div class="margin1vw" style="height:70%;">
+    <div class="margin1vw" style="height:80%;">
       <UiPageTable
         ref="subMerchantsListTable"
         :tableData="dataList"

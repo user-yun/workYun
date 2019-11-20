@@ -20,13 +20,13 @@ export default function f() {
             type: "expand"
         },
         {
-            width: "180",
+            width: "150",
             prop: "Name",
             align: "center",
             label: language.resident,
         },
         {
-            width: "200",
+            width: "140",
             prop: "Phone",
             align: "center",
             label: language.residentPhone,
@@ -76,7 +76,7 @@ export default function f() {
             label: language.businessPhone,
         },
         {
-            width: "160",
+            width: "240",
             prop: "Merchartid",
             align: "center",
             label: language.merchantsId,

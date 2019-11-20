@@ -73,7 +73,7 @@ export default function f() {
             type: "expand"
         },
         {
-            width: "120",
+            width: "250",
             prop: "Receiveaccountname",
             align: "center",
             label: language.receiveName,
@@ -102,6 +102,7 @@ export default function f() {
             prop: "Bankmobilenum",
             align: "center",
             label: language.bankReservePhone,
+            type: "expand"
         },
         {
             width: "140",
