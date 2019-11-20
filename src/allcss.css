@@ -46,7 +46,7 @@
 
 .menuItem {
     /* 右键菜单选择项 */
-    width: 100%;
+    width: 99.7%;
     display: block;
     margin: 0;
 }
@@ -137,11 +137,16 @@
 }
 
 .h100 {
-    height: 100%;
+    height: 99.7%;
 }
 
 .w100 {
-    width: 100%;
+    width: 99.7%;
+}
+
+.echarsCSS {
+    width: 99.7%;
+    height: 27.77777vh;
 }
 
 .treeSearch {
@@ -206,7 +211,7 @@ body {
 
 .el-tree>.el-tree-node {
     display: inline-block;
-    min-width: 100%;
+    min-width: 99.7%;
 }
 
 .el-menu {

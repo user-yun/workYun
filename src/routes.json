@@ -4,7 +4,7 @@
     "component": "welcome/Home",
     "meta": {
         "intercept": true,
-        "role": [1, 999]
+        "role": [1]
     }
 }, {
     "path": "/logo",
@@ -68,7 +68,7 @@
         "intercept": true,
         "noKeepAlive": true,
         "noQuickTabs": true,
-        "role": [1, 999]
+        "role": [1]
     },
     "children": [{
         "path": "/home",
@@ -80,7 +80,7 @@
             "icon": "el-icon-house",
             "intercept": true,
             "noKeepAlive": true,
-            "role": [1, 999]
+            "role": [1]
         }
     }, {
         "path": "/test",
@@ -90,7 +90,7 @@
             "icon": "el-icon-sugar",
             "intercept": true,
             "noKeepAlive": true,
-            "role": [1, 999]
+            "role": [1]
         },
         "children": [{
             "path": "/test",
@@ -100,7 +100,7 @@
                 "icon": "el-icon-sugar",
                 "intercept": true,
                 "noKeepAlive": true,
-                "role": [1, 999]
+                "role": [1]
             }
         }, {
             "path": "/home",
@@ -112,7 +112,7 @@
                 "icon": "el-icon-house",
                 "intercept": true,
                 "noKeepAlive": true,
-                "role": [1, 999]
+                "role": [1]
             }
         }]
     }]
@@ -492,7 +492,7 @@
     "meta": {
         "icon": "el-icon-sugar",
         "intercept": true,
-        "role": [999]
+        "role": [1]
     },
     "children": [{
         "path": "/routeManagement",
@@ -501,7 +501,7 @@
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,
-            "role": [999]
+            "role": [1]
         }
     }]
 }]

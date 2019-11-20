@@ -110,10 +110,3 @@ export default {
   }
 };
 </script>
-
-<style scoped >
-.echarsCSS {
-  width: 100%;
-  height: 27.77777vh;
-}
-</style>
