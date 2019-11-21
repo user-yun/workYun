@@ -3,7 +3,7 @@
     <mt>{{language[$options.name]}}</mt>
     <el-row style="margin:5vw;">
       <el-col :span="12" @dblclick.native="logTrue">
-        <i class="el-icon-refresh-right icon" @click="getLog"></i>
+        <mi icon="el-icon-refresh-right" @click="getLog"></mi>
         <el-timeline>
           <el-timeline-item
             v-for="(item, index) in systemLog"

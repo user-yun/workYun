@@ -17,85 +17,85 @@
       </el-select>
     </el-col>
     <el-row class="margin5vw-t">
-    <el-col :offset="1" :span="4">
-      <el-card :header="language.recordedtTotalAmount" style="color:#67C23A">
-        <div>
+      <el-col :offset="1" :span="4">
+        <el-card :header="language.recordedtTotalAmount" style="color:#67C23A">
+          <div>
             <CountTo
               :start-val="0"
               :end-val="numSumm.outGoldAll"
               :duration="duration"
               :decimals="2"
             ></CountTo>
-          {{language.yuan}}
-        </div>
-      </el-card>
-    </el-col>
-    <el-col :offset="1" :span="4">
-      <el-card :header="language.unRecordedtTotalAmount" style="color:#E6A23C">
-        <div>
+            {{language.yuan}}
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :offset="1" :span="4">
+        <el-card :header="language.unRecordedtTotalAmount" style="color:#E6A23C">
+          <div>
             <CountTo :start-val="0" :end-val="0" :duration="duration" :decimals="2"></CountTo>
-          {{language.yuan}}
-        </div>
-      </el-card>
-    </el-col>
-    <el-col :offset="1" :span="4">
-      <el-card :header="language.freezingAmount" style="color:#F56C6C">
-        <div>
+            {{language.yuan}}
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :offset="1" :span="4">
+        <el-card :header="language.freezingAmount" style="color:#F56C6C">
+          <div>
             <CountTo :start-val="0" :end-val="0" :duration="duration" :decimals="2"></CountTo>
-          {{language.yuan}}
-        </div>
-      </el-card>
-    </el-col>
-    <el-col :offset="1" :span="4">
-      <el-card :header="language.settlementAmount" style="color:#409EFF">
-        <div>
+            {{language.yuan}}
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :offset="1" :span="4">
+        <el-card :header="language.settlementAmount" style="color:#409EFF">
+          <div>
             <CountTo
               :start-val="0"
               :end-val="numSumm.enterGoldAll"
               :duration="duration"
               :decimals="2"
             ></CountTo>
-          {{language.yuan}}
-        </div>
-      </el-card>
-    </el-col>
+            {{language.yuan}}
+          </div>
+        </el-card>
+      </el-col>
     </el-row>
     <el-row class="margin5vw-t">
       <el-col :offset="1" :span="9">
-      <el-card>
-        <div slot="header">
-          <span>{{language.recordedtTotalAmountMonth}}</span>
+        <el-card>
+          <div slot="header">
+            <span>{{language.recordedtTotalAmountMonth}}</span>
             <DatePicker :type="1" class="float-r" :dayNum="31" @change="pickerChangeMonth"></DatePicker>
-        </div>
-        <div>
+          </div>
+          <div>
             <CountTo
               :start-val="0"
               :end-val="numSumm.outGoldMonth"
               :duration="duration"
               :decimals="2"
             ></CountTo>
-          {{language.yuan}}
-        </div>
-      </el-card>
-    </el-col>
+            {{language.yuan}}
+          </div>
+        </el-card>
+      </el-col>
       <el-col :offset="1" :span="9">
-      <el-card>
-        <div slot="header">
-          <span>{{language.recordedtTotalAmountDay}}</span>
+        <el-card>
+          <div slot="header">
+            <span>{{language.recordedtTotalAmountDay}}</span>
             <DatePicker :dayNum="1" class="float-r" @change="pickerChangeDay"></DatePicker>
-        </div>
-        <div>
+          </div>
+          <div>
             <CountTo
               :start-val="0"
               :end-val="numSumm.outGoldDay"
               :duration="duration"
               :decimals="2"
             ></CountTo>
-          {{language.yuan}}
-        </div>
-      </el-card>
-    </el-col>
-  </el-row>
+            {{language.yuan}}
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
   </el-row>
 </template>
 

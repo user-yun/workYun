@@ -1,16 +1,16 @@
 <template>
   <el-tooltip :content="tooltip" :disabled="tipDis" class="bttooltip">
     <div class="inblock">
-  <el-button
-    :type="type"
-    :size="size"
-    :icon="icon"
-    :loading="handlerLoading"
-    :disabled="handlerDisabled"
-    @click="emtiClick"
-  >
-    <slot></slot>
-  </el-button>
+      <el-button
+        :type="type"
+        :size="size"
+        :icon="icon"
+        :loading="handlerLoading"
+        :disabled="handlerDisabled"
+        @click="emtiClick"
+      >
+        <slot></slot>
+      </el-button>
     </div>
   </el-tooltip>
 </template>

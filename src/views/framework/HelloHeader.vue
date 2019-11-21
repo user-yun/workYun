@@ -25,7 +25,7 @@
     <el-col :xs="6" :sm="3" :lg="2" :xl="2" class="alnrit">
       <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="menuSelect">
         <span class="emphasize" :style="{color:otherInfo.themeTextColor}">
-          <i class="el-icon-user icon"></i>
+          <mi icon="el-icon-user"></mi>
           {{userInfo.userName}}
         </span>
         <el-dropdown-menu slot="dropdown">
@@ -46,7 +46,7 @@
             :key="item.route"
             :index="item.route"
           >
-            <i :class="item.icon"></i>
+            <mi :icon="item.icon"></mi>
             <span slot="title" class="emphasize">{{language[item.title]}}</span>
           </el-menu-item>
         </el-menu>

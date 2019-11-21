@@ -46,14 +46,14 @@
       <el-col class="margin1vw-t" :xl="12" :lg="24">
         {{language.numbersEnquiry}}
         <el-tooltip :content="language.oddNumAndPhoneEnquiry">
-        <el-input
-          v-model="queryNumbers"
-          clearable
+          <el-input
+            v-model="queryNumbers"
+            clearable
             :maxlength="40"
-          :placeholder="language.oddNumAndPhoneEnquiry"
-          style="width:35%"
-          class="margin1vw-r"
-        ></el-input>
+            :placeholder="language.oddNumAndPhoneEnquiry"
+            style="width:35%"
+            class="margin1vw-r"
+          ></el-input>
         </el-tooltip>
         <mdb class="margin1vw-r" @click="searchRecharge">{{language.query}}</mdb>
         <mdb

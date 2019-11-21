@@ -14,7 +14,7 @@
         :size="size"
       >
         <span :style="{ color: tag.path == $route.path ? otherInfo.themeTextColor : '#909399' }">
-          <i :class="tag.meta.icon"></i>
+          <mi :icon="tag.meta.icon" iconClass></mi>
           {{language[key]}}
         </span>
       </el-tag>

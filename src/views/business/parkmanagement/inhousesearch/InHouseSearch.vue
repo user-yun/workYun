@@ -7,24 +7,24 @@
     <el-col :sm="6" :md="7" :xl="6">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>
-    <el-col :sm="12" :md="14" :xl="15"  style="height:94%">
+    <el-col :sm="12" :md="14" :xl="15" style="height:94%">
       <el-form label-width="40%">
         <el-form-item :label="language.curOptHou">
           <el-col :span="22">{{zoneTree.Title}}</el-col>
           <el-col :span="2">
-            <i class="el-icon-close" @click="zoneCleanFun"></i>
+            <mi icon="el-icon-close" @click="zoneCleanFun"></mi>
           </el-col>
         </el-form-item>
         <el-form-item :label="language.curOptOrg">
           <el-col :span="22">{{orgTree.Title}}</el-col>
           <el-col :span="2">
-            <i class="el-icon-close" @click="orgCleanFun"></i>
+            <mi icon="el-icon-close" @click="orgCleanFun"></mi>
           </el-col>
         </el-form-item>
         <el-form-item :label="language.selectDate">
           <el-col :span="22">{{selectDate}}</el-col>
           <el-col :span="2">
-            <i class="el-icon-close" @click="dateCleanFun"></i>
+            <mi icon="el-icon-close" @click="dateCleanFun"></mi>
           </el-col>
         </el-form-item>
         <el-form-item :label="language.selectDate">

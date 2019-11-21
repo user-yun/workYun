@@ -1,7 +1,7 @@
 <template>
   <span>
     <el-divider content-position="left">
-      <i class="el-icon-scissors"></i>
+      <mi icon="el-icon-scissors" iconClass></mi>
       <span class="normal">{{language.printBodyTips}}</span>
     </el-divider>
     <span id="PrintBody">
@@ -9,7 +9,7 @@
     </span>
     <el-divider content-position="right">
       <span class="normal">{{language.printBodyTips}}</span>
-      <i class="el-icon-scissors"></i>
+      <mi icon="el-icon-scissors" iconClass></mi>
     </el-divider>
   </span>
 </template>

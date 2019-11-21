@@ -7,9 +7,7 @@
         </el-tooltip>
       </el-col>
       <el-col :span="4">
-        <el-tooltip :content="language.refreshHou">
-          <i class="el-icon-refresh-left icon" @click="getRequest"></i>
-        </el-tooltip>
+        <mi icon="el-icon-refresh-left icon" @click="getRequest" :tooltip="language.refreshHou"></mi>
       </el-col>
     </el-row>
     <el-tree

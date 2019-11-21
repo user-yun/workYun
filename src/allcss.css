@@ -112,6 +112,14 @@
 .h997 {
     /* 全屏高 */
     height: 99.7vh;
+}
+
+.w999 {
+    /* 全屏高 */
+    width: 99.9vw;
+}
+
+.overflowauto {
     overflow: auto;
 }
 

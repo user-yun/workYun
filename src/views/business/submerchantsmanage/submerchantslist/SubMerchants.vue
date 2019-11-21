@@ -10,7 +10,7 @@
   >
     <div slot="title">
       <span class="title">{{ruleForm.Uuid ? language.subMerchantsInfo:language.subMerchantsAdd}}</span>
-      <div class="normal alnrit">{{language.subMerchantsOpenTips}}</div>
+      <div class="normal alnrit">{{language.subMerchantsOpenTooltip}}</div>
     </div>
     <el-steps :active="stepsActive" align-center>
       <el-step
@@ -184,11 +184,30 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :label="language.vCode" prop="vCode" :rules="rules.input">
+          <el-form-item
+            v-if="vCodeOrRandomamount"
+            :label="language.vCode"
+            prop="vCode"
+            :rules="rules.input"
+          >
             <el-input class="form50z80" v-model="ruleForm.vCode" clearable :maxlength="6"></el-input>
           </el-form-item>
-          <el-form-item>
+          <el-form-item
+            v-else
+            :label="language.paymentAmount"
+            prop="randomamount"
+            :rules="rules.numTType"
+          >
+            <el-input class="form50z80" v-model="ruleForm.randomamount" clearable :maxlength="6"></el-input>
+          </el-form-item>
+          <el-form-item v-if="vCodeOrRandomamount">
             <mdb type @click="againVCodeError">{{language.againVCodeError}}</mdb>
+          </el-form-item>
+          <el-form-item>
+            <mdb
+              type="text"
+              @click="vCodeOrRandomamount=!vCodeOrRandomamount"
+            >{{language.switchVerMode}}</mdb>
           </el-form-item>
         </el-col>
       </el-row>
@@ -220,7 +239,8 @@ export default {
       // otherInfo
       // language
       ruleForm: null,
-      stepsActive: 0
+      stepsActive: 0,
+      vCodeOrRandomamount: true
     };
   },
   props: {
@@ -283,24 +303,31 @@ export default {
         let TrxResponse = ijsonString.MSG.Message.TrxResponse;
         if (TrxResponse.ReturnCode == "0000") {
           that.$set(that.ruleForm, "Submerid", res.submerid);
-            that.stepsActive++;
+          that.stepsActive++;
         } else {
           this.eleNotify(3, TrxResponse.ErrorMessage);
-          }
+        }
       });
     },
     postRequest() {
       let that = this;
       // let projectId = this.userInfo.projectId;
       // let userProject = this.userInfo.userProject;
+
       let verificationcode = that.ruleForm.vCode;
-      let randomamount = "";
+      let randomamount = that.ruleForm.randomamount;
+      if (this.vCodeOrRandomamount) {
+        randomamount = undefined;
+      } else {
+        verificationcode = undefined;
+      }
       this.post(
         "/api/client/abc/submerverify",
         {
           account: that.ruleForm.Receiveaccount,
           submerchantno: that.ruleForm.Submerid,
-        verificationcode
+          verificationcode,
+          randomamount
         },
         false,
         true
@@ -313,14 +340,14 @@ export default {
       immediate: true,
       handler(newv, oldv) {
         if (this.data.hasOwnProperty("Uuid")) {
-    this.ruleForm = this.$avoid(this.data);
+          this.ruleForm = this.$avoid(this.data);
           if (this.data.hasOwnProperty("stepsActive")) {
             this.stepsActive = this.data.stepsActive;
           }
         } else {
           this.ruleForm = {};
         }
-  }
+      }
     }
   },
   created() {}

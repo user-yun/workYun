@@ -53,7 +53,7 @@ let regularNumber = (rule, value, callback) => {
     let patten = /^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/;
     if (!value || value == "") {
         callback(new Error(pleaseNumber));
-    } else if (!patten.test(value)) {
+    } else if (!patten.test(value) || value <= 0) {
         callback(new Error(illegalNumber));
     } else {
         callback();
@@ -80,14 +80,14 @@ let regularBool = (rule, value, callback) => {
     }
 };
 
-let msgUnSelect = { required: true, message: unselected, trigger: ["blur", "change"] };//±ØĞëÑ¡Ôñ
-let msgUnInput = { required: true, message: uninput, trigger: ["blur", "change"] };//±ØĞëÊäÈë
-let msgNumType = { type: 'number', message: pleaseNumber, trigger: ["blur", "change"] };//±ØĞëÎªÊıÖµÀàĞÍ
-let msgTNumType = { validator: regularNumber, trigger: ["blur", "change"] };//ÊıÖµ»òÕßÁ½Î»Ğ¡Êı
-let msgMail = { validator: regularMail, trigger: ["blur", "change"] };//ÓÊÏä
-let msgPostel = { validator: regularPostel, trigger: ["blur", "change"] };//ÓÊ±à
-let msgTel = { validator: regularTel, trigger: ["blur", "change"] };//µç»°»òÕßÊÖ»ú
-let msgCardID = { validator: regularCardID, trigger: ["blur", "change"] };//Éí·İÖ¤ºÅ
+let msgUnSelect = { required: true, message: unselected, trigger: ["blur", "change"] };//å¿…é¡»é€‰æ‹©
+let msgUnInput = { required: true, message: uninput, trigger: ["blur", "change"] };//å¿…é¡»è¾“å…¥
+let msgNumType = { type: 'number', message: pleaseNumber, trigger: ["blur", "change"] };//å¿…é¡»ä¸ºæ•°å€¼ç±»å‹
+let msgTNumType = { validator: regularNumber, trigger: ["blur", "change"] };//æ•°å€¼æˆ–è€…ä¸¤ä½å°æ•°
+let msgMail = { validator: regularMail, trigger: ["blur", "change"] };//é‚®ç®±
+let msgPostel = { validator: regularPostel, trigger: ["blur", "change"] };//é‚®ç¼–
+let msgTel = { validator: regularTel, trigger: ["blur", "change"] };//ç”µè¯æˆ–è€…æ‰‹æœº
+let msgCardID = { validator: regularCardID, trigger: ["blur", "change"] };//èº«ä»½è¯å·
 let msgBool = { validator: regularBool, trigger: ["blur", "change"] };//boolean
 
 let formVali = {
@@ -107,10 +107,10 @@ let formVali = {
     Status: [msgUnSelect],
     numType: [msgNumType],
     numTType: [msgTNumType],
-    mail: [msgMail,msgUnInput],
-    postel: [msgPostel,msgUnInput],
-    tel: [msgTel,msgUnInput],
-    cardId: [msgCardID,msgUnInput],
+    mail: [msgMail, msgUnInput],
+    postel: [msgPostel, msgUnInput],
+    tel: [msgTel, msgUnInput],
+    cardId: [msgCardID, msgUnInput],
     input: [msgUnInput],
     select: [msgUnSelect],
     boolean: [msgBool]

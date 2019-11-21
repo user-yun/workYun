@@ -17,13 +17,12 @@
       </el-col>
       <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1">
         &nbsp;
-        <el-tooltip :content="language.openSetUp">
-          <i
-            class="el-icon-setting icon"
-            :style="{color:otherInfo.themeTextColor}"
-            @click="iClassDrawerCollapseOnClick"
-          ></i>
-        </el-tooltip>
+        <mi
+          icon="el-icon-setting"
+          :tooltip="language.openSetUp"
+          :style="{color:otherInfo.themeTextColor}"
+          @click="iClassDrawerCollapseOnClick"
+        ></mi>
       </el-col>
       <el-col :xs="2" :sm="2" :md="1" :lg="1" :xl="1">
         <el-dropdown :size="otherInfo.menuCollapse?'medium':'default'" @command="noticeSelect">

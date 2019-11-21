@@ -1,6 +1,6 @@
 <template>
   <div id="app" @mousemove="mousemove">
-    <router-view class="w100 h100" v-if="YouAreSmart" key="app"/>
+    <router-view class="w999 h997" v-if="YouAreSmart" key="app"/>
   </div>
 </template>
 <script>
