@@ -75,11 +75,10 @@ export function setLocal(key, val) {
 export function getLocal(key) {
     let ls = window.localStorage;
     try {
+        let data = JSON.parse(ls.getItem("allLoacl"));
         if (key === "allLoacl") {
-            let data = JSON.parse(ls.getItem(key));
             return data;
         } else {
-            let data = JSON.parse(ls.getItem("allLoacl"));
             return data[key];
         }
     } catch (error) {

@@ -36,7 +36,7 @@ export default {
     // },
     width: {
       type: String,
-      default: "99.9%"
+      default: "99.7%"
     },
     height: {
       type: String,

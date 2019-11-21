@@ -67,7 +67,7 @@ export default {
       return data.Title.includes(value);
     },
     zoneTreeNodeClick(data, e) {
-      this.$emit("MFloorTree", data, Object.assign({}, e.level));
+      this.$emit("MFloorTree", this.$avoid(data), e.level);
     }
   },
   mounted() {

@@ -13,7 +13,7 @@
     <el-col style="height:94%;pointerEvents:none" :span="16">
       <ECharts
         id="publicTree"
-        height="99.9%"
+        height="99.7%"
         :data="require('@/echartsdata/TreeChart').default(TreeChartOption,'',TreeChartConfig)"
       ></ECharts>
     </el-col>

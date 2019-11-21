@@ -194,12 +194,14 @@
       </el-row>
     </el-form>
     <span slot="footer">
-      <mdb @click="stepsActive--" v-if="stepsActive==1">{{language.backUpStep}}</mdb>
+      <mdb @click="stepsActive--" v-if="stepsActive==1" class="margin1vw-r">{{language.backUpStep}}</mdb>
       <mdb
         @click="submitForm('ruleForm',1)"
+        class="margin1vw-r"
         v-if="!ruleForm.Uuid&&stepsActive==0"
       >{{language.subMerchantsOpenApply}}</mdb>
       <mdb
+        class="margin1vw-r"
         @click="submitForm('ruleForm',2)"
         v-if="stepsActive==1"
       >{{language.subMerchantsOpenConfirm}}</mdb>

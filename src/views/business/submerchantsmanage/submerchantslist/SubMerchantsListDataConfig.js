@@ -79,7 +79,7 @@ export default function f() {
             label: language.receiveName,
         },
         {
-            width: "240",
+            width: "230",
             prop: "Receiveaccount",
             align: "center",
             label: language.receiveAccount,

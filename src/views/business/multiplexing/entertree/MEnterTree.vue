@@ -76,7 +76,7 @@ export default {
       return data.Title.includes(value);
     },
     enterTreeNodeClick(data, e) {
-      this.$emit("MEnterTree", data, Object.assign({}, e.level));
+      this.$emit("MEnterTree", this.$avoid(data), e.level);
     }
   },
   mounted() {

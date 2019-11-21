@@ -4,7 +4,7 @@
     <el-col :span="16" style="height:93%">
       <ECharts
         id="TreeConfig"
-        height="99.9%"
+        height="99.7%"
         :data="require('@/echartsdata/TreeChart').default(TreeChartOption)"
         @clickECharts="clickECharts"
       ></ECharts>

@@ -76,7 +76,7 @@ export default {
       return data.Title.includes(value);
     },
     deviceTreeNodeClick(data, e) {
-      this.$emit("MDeviceTree", data, Object.assign({}, e.level));
+      this.$emit("MDeviceTree", this.$avoid(data), e.level);
     }
   },
   mounted() {

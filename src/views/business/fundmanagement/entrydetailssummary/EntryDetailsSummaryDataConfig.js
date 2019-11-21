@@ -20,7 +20,7 @@ export default function f() {
             type: "expand"
         },
         {
-            width: "150",
+            width: "140",
             prop: "Name",
             align: "center",
             label: language.resident,
