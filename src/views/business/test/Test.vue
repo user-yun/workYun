@@ -29,7 +29,7 @@
           <el-input v-model="v.value"></el-input>
         </el-col>
         <el-col :span="2">
-          <mi icon="el-icon-close title" @click="deleUpData(i)"></mi>
+          <mi icon="el-icon-close" iconClass="title" @click="deleUpData(i)"></mi>
         </el-col>
       </el-row>
       <el-row>

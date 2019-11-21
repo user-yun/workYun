@@ -2,9 +2,7 @@
   <div>
     <el-row class="treeSearch">
       <el-col :span="20">
-        <el-tooltip :content="language.searchHou">
-          <el-input v-model="filterText" clearable :maxlength="20"></el-input>
-        </el-tooltip>
+        <el-input v-model="filterText" clearable :maxlength="20" :placeholder="language.searchHou"></el-input>
       </el-col>
       <el-col :span="4">
         <mi icon="el-icon-refresh-left icon" @click="getRequest" :tooltip="language.refreshHou"></mi>
