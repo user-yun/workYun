@@ -18,14 +18,14 @@
       ></ECharts>
     </el-col>
     <el-col :xs="24" :md="12" :lg="8">
-      <ECharts
+      <!-- <ECharts
         :height="bigHeight"
         id="MapChart"
         :data="require('@/echartsdata/MapChart').default('折线图图')"
         @clickECharts="clickECharts"
-      ></ECharts>
-      <!-- <VertRollS :DHeight="bigHeight"></VertRollS> -->
-      <!-- <VertRoll DHeight="7vh" :vShowNum="4"></VertRoll> -->
+      ></ECharts> -->
+      <VertRollS :DHeight="bigHeight"></VertRollS>
+      <!-- <VertRoll :DHeight="bigHeight"></VertRoll> -->
     </el-col>
     <el-col :xs="24" :md="12" :lg="8">
       <ECharts

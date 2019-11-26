@@ -1,5 +1,6 @@
 let illegalURL = "https://spmp.zg118.com/";
 let weatherURL = "https://www.tianqiapi.com/api/"
+let openbank = "https://openbank.abchina.com/"
 let path = require('path')
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -79,6 +80,11 @@ module.exports = {
         pathRewrite: {
           '^/weather': ''
         }
+      },
+      "/GateWay": {
+        target: openbank,
+        changeOrigin: true,
+        secure: false,
       },
     }
   },

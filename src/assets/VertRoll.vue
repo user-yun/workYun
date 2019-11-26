@@ -15,9 +15,11 @@
           v-for=" (item,index) in items "
           :key="index*items.length*(items.length+index)"
           :span=" item.length"
-          :style=" { height:height,textAlign:item.align ? item.align : 'left' , background: item.background ? item.background : '',
-        overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',borderRadius:'0.26041vw',lineHeight:height, } "
+          :style=" { height:height,textAlign:item.align ? item.align : 'left' , 
+          background: item.background ? item.background : '',
+          borderRadius:'0.26041vw',lineHeight:height, } "
           :offset=" item.offset ? item.offset : 0 "
+          class="notLineFeed"
         >{{item.text}}</el-col>
       </el-row>
     </transition-group>
@@ -105,6 +107,150 @@ export default {
           {
             length: 6,
             text: "这是隔0长6居右",
+            align: "right",
+            offset: 0,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 18,
+            text: "这是隔6长18居中",
+            align: "center",
+            offset: 6,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 6,
+            text: "这是隔3长6居右",
+            align: "right",
+            offset: 3,
+            background: "#99a9bf"
+          },
+          {
+            length: 12,
+            text: "这是隔3长12居左",
+            align: "left",
+            offset: 3,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 6,
+            text: "这是隔2长6居左",
+            align: "left",
+            offset: 2,
+            background: "#99a9bf"
+          },
+          {
+            length: 6,
+            text: "这是隔2长6居中",
+            align: "center",
+            offset: 2,
+            background: "#99a9bf"
+          },
+          {
+            length: 8,
+            text: "这是隔0长8居右",
+            align: "right",
+            offset: 0,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 18,
+            text: "这是隔6长18居中",
+            align: "center",
+            offset: 6,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 6,
+            text: "这是隔3长6居右",
+            align: "right",
+            offset: 3,
+            background: "#99a9bf"
+          },
+          {
+            length: 12,
+            text: "这是隔3长12居左",
+            align: "left",
+            offset: 3,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 6,
+            text: "这是隔2长6居左",
+            align: "left",
+            offset: 2,
+            background: "#99a9bf"
+          },
+          {
+            length: 6,
+            text: "这是隔2长6居中",
+            align: "center",
+            offset: 2,
+            background: "#99a9bf"
+          },
+          {
+            length: 8,
+            text: "这是隔0长8居右",
+            align: "right",
+            offset: 0,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 18,
+            text: "这是隔6长18居中",
+            align: "center",
+            offset: 6,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 6,
+            text: "这是隔3长6居右",
+            align: "right",
+            offset: 3,
+            background: "#99a9bf"
+          },
+          {
+            length: 12,
+            text: "这是隔3长12居左",
+            align: "left",
+            offset: 3,
+            background: "#99a9bf"
+          }
+        ],
+        [
+          {
+            length: 6,
+            text: "这是隔2长6居左",
+            align: "left",
+            offset: 2,
+            background: "#99a9bf"
+          },
+          {
+            length: 6,
+            text: "这是隔2长6居中",
+            align: "center",
+            offset: 2,
+            background: "#99a9bf"
+          },
+          {
+            length: 8,
+            text: "这是隔0长8居右",
             align: "right",
             offset: 0,
             background: "#99a9bf"

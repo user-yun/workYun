@@ -1,11 +1,12 @@
 let m = {
   data() {
     return {
-      // h: "https://spmp.zg118.com/server"
+      h: "https://spmp.zg118.com/server"
       // h: "http://192.168.8.48:8888"//峰哥
-      // h: "http://192.168.8.45:9031"//洋哥
+      // h: "http://192.168.8.45:8888"//洋哥
       // h: "http://192.168.8.44:9031"//杨哥
-      h: "https://spmp.zg118.com/abcpay"//农行
+      // h: "http://192.168.8.44:8078"//杨哥
+      // h: "https://spmp.zg118.com/abcpay"//农行
     };
   },
   computed: {
@@ -72,41 +73,37 @@ let m = {
       });
     },
     post(u, p, f, ts) {
+      let that = this;
       return new Promise((resolve, reject) => {
         this.$Post(this.h + u, p, f).then(res => {
+          that.backRequest(u, res, ts);
           resolve(res)
-          this.log({
-            u,
-            res
-          });
-          let c = res.ErrCode || res.Code || res.errCode || res.code || res.Errcode || errcode;
-          let i = this.ifServerCode(c)
-          if (i != 1 || ts) {
-            this.eleNotify(i, res.ErrMsg || res.message || res.Message);
-          }
         }).catch((e) => {
           reject(e)
         });
       });
     },
     get(u, p, f, ts) {
+      let that = this;
       return new Promise((resolve, reject) => {
         this.$Get(this.h + u, p, f).then(res => {
+          that.backRequest(u, res, ts);
           resolve(res)
-          this.log({
-            u,
-            res
-          });
-          let c = res.ErrCode || res.Code || res.errCode || res.code || res.Errcode || errcode;
-          let i = this.ifServerCode(c)
-          if (i != 1 || ts) {
-            this.eleNotify(i, res.ErrMsg || res.message || res.Message);
-          }
         }).catch((e) => {
           reject(e)
         });
       });
-
+    },
+    backRequest(u, res, ts) {
+      this.log({
+        u,
+        res
+      });
+      let c = res.ErrCode || res.Code || res.errCode || res.code || res.Errcode || res.errcode;
+      let i = this.ifServerCode(c)
+      if (i != 1 || ts) {
+        this.eleNotify(i, res.ErrMsg || res.message || res.Message);
+      }
     },
     isFalse(o) {
       if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN') return true
@@ -167,7 +164,7 @@ let m = {
     },
     ifServerCode(i) {
       let s = [0, 200];//成功
-      let w = [101,100];//警告
+      let w = [101, 100, 1002];//警告
       let e = [10101, 10211, 10212, 10213, 10214, 10215, 10216];//失败
       if (s.includes(i)) {
         return 1;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainTag">
     <!-- <el-image v-if="otherInfo.bgImg" :src="otherInfo.bgImg" class="w100 h997" fit="cover"></el-image> -->
     <img v-if="otherInfo.bgImg" :src="otherInfo.bgImg" class="w999 h997" style="object-fit:cover;">
     <el-dialog :visible="true" :show-close="false" top="30vh" :width="dialogWidth">

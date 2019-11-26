@@ -1,7 +1,9 @@
 <template>
-  <el-tooltip :content="tooltip" :disabled="tipDis" class="bttooltip">
-    <i :class="[iconClass,icon]" :style="style"></i>
-  </el-tooltip>
+  <span>
+    <el-tooltip :content="tooltip" :disabled="tipDis" class="bttooltip">
+      <i :class="[iconClass,icon]" :style="style" @click.stop="iconClick"></i>
+    </el-tooltip>
+  </span>
 </template>
 
 <script>
@@ -27,6 +29,11 @@ export default {
       default: "icon"
     },
     style: {}
+  },
+  methods: {
+    iconClick() {
+      this.$emit("click", true);
+    }
   },
   mounted() {
     if (this.tooltip == "") {

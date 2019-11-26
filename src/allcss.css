@@ -74,6 +74,12 @@
     display: inline-block;
 }
 
+.notLineFeed {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .form50z80 {
     width: 80%
 }

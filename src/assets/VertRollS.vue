@@ -3,7 +3,6 @@
     <transition-group name="list-complete" tag="div">
       <el-row
         v-for=" (items,index) in data "
-        v-if=" index < showNum "
         :style=" {height:height,width:'99.7%',listStyle:'none'} "
         :key="items.index"
         class="list-complete-item"
@@ -11,14 +10,18 @@
         type="flex"
         align="middle"
       >
-        <el-col
-          v-for=" (item,index) in items.obj "
-          :key="index"
-          :span=" item.length"
-          :style=" { height:height,textAlign:item.align ? item.align : 'left' , background: item.background ? item.background : '',
-        overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',borderRadius:'0.26041vw',lineHeight:height, } "
-          :offset=" item.offset ? item.offset : 0 "
-        >{{item.text}}</el-col>
+        <fragment v-if=" index < showNum ">
+          <el-col
+            v-for=" (item,index) in items.obj "
+            :key="index"
+            :span=" item.length"
+            :style=" { height:height,textAlign:item.align ? item.align : 'left' , 
+            background: item.background ? item.background : '',
+            borderRadius:'0.26041vw',lineHeight:height, } "
+            :offset=" item.offset ? item.offset : 0 "
+            class="notLineFeed"
+          >{{item.text}}</el-col>
+        </fragment>
       </el-row>
     </transition-group>
   </div>
@@ -101,7 +104,8 @@ export default {
             },
             {
               length: 6,
-              text: "这是隔0长6居左",
+              text:
+                "这是隔0长6居左1111111111111111111111111111111111111111111111111111111",
               align: "left",
               offset: 0,
               background: "#99a9bf"
@@ -118,7 +122,7 @@ export default {
               text: "这是隔0长6居右",
               align: "right",
               offset: 0,
-              background: "#99a9bf"
+              background: "#99a9bf111111111"
             }
           ]
         },
@@ -127,10 +131,11 @@ export default {
           obj: [
             {
               length: 18,
-              text: "这是隔6长18居中",
+              text:
+                "这是隔6长18居中11111111111111111111111111111111111111111111111111111111111111111111111",
               align: "center",
               offset: 6,
-              background: "#99a9bf"
+              background: "#99a9bf5555555555"
             }
           ]
         },
@@ -142,7 +147,7 @@ export default {
               text: "这是隔6长18居中",
               align: "center",
               offset: 6,
-              background: "#99a9bf"
+              background: "#99a9bf444444444444444"
             }
           ]
         },
@@ -151,7 +156,7 @@ export default {
           obj: [
             {
               length: 18,
-              text: "这是隔6长18居中",
+              text: "这是隔6长18居中3333333333333",
               align: "center",
               offset: 6,
               background: "#99a9bf"
@@ -163,7 +168,7 @@ export default {
           obj: [
             {
               length: 18,
-              text: "这是隔6长18居中",
+              text: "这是隔6长18居中2222222222",
               align: "center",
               offset: 6,
               background: "#99a9bf"
@@ -175,7 +180,7 @@ export default {
           obj: [
             {
               length: 18,
-              text: "这是隔6长18居中",
+              text: "这是隔6长18居中1111111111111",
               align: "center",
               offset: 6,
               background: "#99a9bf"

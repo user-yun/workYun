@@ -54,7 +54,7 @@ export default {
       this.zoneTree = [];
       let userProject = this.userInfo.userProject;
       this.get(`/zone/tree/${userProject}`, {}).then(res => {
-        let data = res.Data;
+        let data = [res.Data];
         this.zoneTree = data;
       });
     },

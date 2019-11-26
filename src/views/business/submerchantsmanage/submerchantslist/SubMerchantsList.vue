@@ -44,12 +44,27 @@
         ></el-input>
         <mdb @click="searchRecharge" class="margin1vw-r">{{language.query}}</mdb>
         <mdb
-          @click="SubMerchantsShowFun(1)"
+          @click="handlerDialog(1,selectTableItem)"
           class="margin1vw-r"
           :disabled="selectTableItem.Status!=0||bankAuditState!=0"
           :tooltip="language.continueAuthSignTooltip"
         >{{language.continueAuthSign}}</mdb>
-        <mdb @click="SubMerchantsShowFun(2)">{{language.subMerchantsAdd}}</mdb>
+        <mdb @click="handlerDialog(2)" class="margin1vw-r">{{language.subMerchantsAdd}}</mdb>
+        <mdb
+          @click="queryBalance(selectTableItem)"
+          :disabled="!selectTableItem.hasOwnProperty('Submerid')"
+        >{{language.queryBalance}}</mdb>
+        <!-- <el-dropdown trigger="click">
+          <span>
+            <mdb
+              :tooltip="language.pleaseIsTableSelect"
+              :disabled="!selectTableItem.hasOwnProperty('Submerid')"
+            >{{language.moreOperations}}</mdb>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            
+          </el-dropdown-menu>
+        </el-dropdown>-->
       </el-col>
     </el-row>
     <div class="margin1vw" style="height:80%;">
@@ -63,12 +78,13 @@
         @select="selectTable"
       ></UiPageTable>
     </div>
-    <SubMerchants
-      v-if="SubMerchantsShow"
-      :show="SubMerchantsShow"
-      :data="SubMerchantsData"
-      @onColse="SubMerchantsShowFun"
-    ></SubMerchants>
+    <component
+      v-if="showDialog"
+      :is="isDialog"
+      :show="showDialog"
+      :data="dataDialog"
+      @onColse="handlerDialog"
+    ></component>
   </el-row>
 </template>
 
@@ -79,7 +95,8 @@ export default {
   components: {
     UiPageTable: () => import("@/assets/UiPageTable"),
     DatePickerMult: () => import("@/assets/DatePickerMult"),
-    SubMerchants: () => import("./SubMerchants")
+    SubMerchants: () => import("./SubMerchants"),
+    SubMerchantsBalance: () => import("./SubMerchantsBalance")
   },
   data() {
     return {
@@ -99,8 +116,9 @@ export default {
       dateSlot: [],
       firstEntry: true,
       selectTableItem: {},
-      SubMerchantsData: {},
-      SubMerchantsShow: false
+      dataDialog: {},
+      showDialog: false,
+      isDialog: null
     };
   },
   computed: {
@@ -112,20 +130,34 @@ export default {
     }
   },
   methods: {
-    SubMerchantsShowFun(i) {
+    queryBalance(d) {
+      let that = this;
+      that
+        .post(`/api/client/abc/submeraccbalqry/${d.Submerid}`, {})
+        .then(res => {
+          let data = JSON.parse(res.data);
+          that.handlerDialog(3, data.MSG.Message.TrxResponse);
+        });
+    },
+    handlerDialog(i, d) {
       if (i == 1) {
-        this.SubMerchantsData = this.selectTableItem;
-        this.$set(this.SubMerchantsData, "stepsActive", 1);
+        this.dataDialog = d;
+        this.$set(this.dataDialog, "stepsActive", 1);
+        this.isDialog = "SubMerchants";
       } else if (i == 2) {
-        this.SubMerchantsData = {};
+        this.dataDialog = {};
+        this.isDialog = "SubMerchants";
+      } else if (i == 3) {
+        this.dataDialog = d;
+        this.isDialog = "SubMerchantsBalance";
       } else if (!i) {
-        this.SubMerchantsShow = i;
+        this.showDialog = i;
         return;
       }
-      this.SubMerchantsShow = true;
+      this.showDialog = true;
     },
     selectTable(t) {
-      this.selectTableItem = t.length > 0 ? t[0] : {};
+      this.selectTableItem = t.length > 0 ? this.$avoid(t[0]) : {};
     },
     searchRecharge() {
       this.selectTableItem = {};

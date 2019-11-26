@@ -46,7 +46,7 @@ export default {
     getRequest() {
       let projectId = this.userInfo.projectId;
       let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
+      this.get(`/zone/1212121/${userProject}`, {}).then(res => {
         let data = res.Data;
         this.List = data;
       });

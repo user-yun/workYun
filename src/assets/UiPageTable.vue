@@ -1,75 +1,90 @@
 <template>
   <div class="w100 h100 alncnt" v-if="isActivated">
-    <el-table
-      ref="meltable"
-      :data="tableData"
-      :border="TableConfig.border"
-      :stripe="TableConfig.stripe"
-      :highlight-current-row="TableConfig.highlight"
-      :height="TableConfig.disabled ? '99.7%':'95%'"
-      :header-cell-style="headerCellStyle"
-      :cell-style="cellStyle"
-      @cell-dblclick="cellDblClick"
-      @select="select"
-      @select-all="selectAll"
+    <el-tooltip
+      placement="top-end"
+      :disabled="!(TableConfig.multiple || TableConfig.single)||notShow"
+      class="bttooltip"
     >
-      <el-table-column
-        v-if="TableConfig.multiple || TableConfig.single"
-        type="selection"
-        width="50"
-        fixed
-      ></el-table-column>
-      <el-table-column type="index" width="60" align="center" fixed></el-table-column>
-      <el-table-column
-        v-for="(item,index) in handlerDataConfig.table"
-        :key="index"
-        :align="item.align"
-        :width="item.width*widthScale"
-        :prop="item.prop"
-        :label=" item.label ? item.label : item.prop "
-        :sortable="item.sortable"
-        :fixed="item.fixed"
+      <div slot="content">
+        {{language.tableSelectTooltip}}
+        <br>
+        <el-button type="text" @click.stop="notShow=true">{{language.notShow}}</el-button>
+      </div>
+      <el-table
+        ref="meltable"
+        :data="tableData"
+        :border="TableConfig.border"
+        :stripe="TableConfig.stripe"
+        :highlight-current-row="TableConfig.highlight"
+        :height="TableConfig.disabled ? '99.7%':'95%'"
+        :header-cell-style="headerCellStyle"
+        :cell-style="cellStyle"
+        @cell-dblclick="cellDblClick"
+        @select="select"
+        @select-all="selectAll"
+        @row-dblclick="rowDb"
       >
-        <template slot="header" slot-scope="scope">
-          <span :class="item.class ? item.class: 'tableClass' ">{{scope.column.label}}</span>
-        </template>
-        <template slot-scope="scope">
-          <pre v-if="item.json" :class="item.class ? item.class: 'tableClass' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
-          <span
-            v-else
-            :class="item.class ? item.class: 'tableClass' "
-          >{{dataFormat(item.format,scope.row,scope.column)}}</span>
-        </template>
-      </el-table-column>
-      <el-table-column v-if="handlerDataConfig.expand.length>0" type="expand">
-        <template slot-scope="scope">
-          <el-form class="w100" inline label-width="40%">
-            <fragment v-for="(item,index) in handlerDataConfig.expand" :key="index">
-              <el-form-item style="width:32%">
-                <span slot="label" :class="item.class ? item.class: 'tableClass' ">{{item.label}}</span>
-                <span
-                  :class="item.class ? item.class: 'tableClass' "
-                >{{dataFormat(item.format,scope.row,{property:item.prop})}}</span>
-              </el-form-item>
-            </fragment>
-          </el-form>
-        </template>
-      </el-table-column>
-      <fragment v-if="TableConfig.button">
         <el-table-column
-          :width="TableConfig.button.width*widthScale"
-          :fixed="TableConfig.button.fixed?TableConfig.button.fixed:'right'"
-          :label="TableConfig.button.label?TableConfig.button.label:'*'"
-          :align="TableConfig.button.align?TableConfig.button.align:'center'"
+          v-if="TableConfig.multiple || TableConfig.single"
+          type="selection"
+          width="50"
+          fixed
+        ></el-table-column>
+        <el-table-column type="index" width="60" align="center" fixed></el-table-column>
+        <el-table-column
+          v-for="(item,index) in handlerDataConfig.table"
+          :key="index"
+          :align="item.align"
+          :width="item.width*widthScale"
+          :prop="item.prop"
+          :label=" item.label ? item.label : item.prop "
+          :sortable="item.sortable"
+          :fixed="item.fixed"
         >
+          <template slot="header" slot-scope="scope">
+            <span :class="item.class ? item.class: 'tableClass' ">{{scope.column.label}}</span>
+          </template>
           <template slot-scope="scope">
-            <fragment v-for="(btitem,bti) in TableConfig.button.list" :key="bti">
-              <mdb :type="btitem.type" @click="handleButton(scope.row,btitem.text)">{{btitem.text}}</mdb>
-            </fragment>
+            <pre v-if="item.json" :class="item.class ? item.class: 'tableClass' ">{{dataFormat(item.format,scope.row,scope.column)}}</pre>
+            <span
+              v-else
+              :class="item.class ? item.class: 'tableClass' "
+            >{{dataFormat(item.format,scope.row,scope.column)}}</span>
           </template>
         </el-table-column>
-      </fragment>
-    </el-table>
+        <el-table-column v-if="handlerDataConfig.expand.length>0" type="expand">
+          <template slot-scope="scope">
+            <el-form class="w100" inline label-width="40%">
+              <fragment v-for="(item,index) in handlerDataConfig.expand" :key="index">
+                <el-form-item style="width:32%">
+                  <span slot="label" :class="item.class ? item.class: 'tableClass' ">{{item.label}}</span>
+                  <span
+                    :class="item.class ? item.class: 'tableClass' "
+                  >{{dataFormat(item.format,scope.row,{property:item.prop})}}</span>
+                </el-form-item>
+              </fragment>
+            </el-form>
+          </template>
+        </el-table-column>
+        <fragment v-if="TableConfig.button">
+          <el-table-column
+            :width="TableConfig.button.width*widthScale"
+            :fixed="TableConfig.button.fixed?TableConfig.button.fixed:'right'"
+            :label="TableConfig.button.label?TableConfig.button.label:'*'"
+            :align="TableConfig.button.align?TableConfig.button.align:'center'"
+          >
+            <template slot-scope="scope">
+              <fragment v-for="(btitem,bti) in TableConfig.button.list" :key="bti">
+                <mdb
+                  :type="btitem.type"
+                  @click="handleButton(scope.row,btitem.text)"
+                >{{btitem.text}}</mdb>
+              </fragment>
+            </template>
+          </el-table-column>
+        </fragment>
+      </el-table>
+    </el-tooltip>
     <el-pagination
       v-if="!TableConfig.disabled"
       :small="false"
@@ -94,7 +109,8 @@ export default {
       pageSize: 10,
       widthScale: 1,
       singleRow: {},
-      isActivated: true
+      isActivated: true,
+      notShow: false
     };
   },
   props: {
@@ -168,6 +184,9 @@ export default {
     otherInfo() {
       return this.$store.getters.getOtherInfo;
     },
+    language() {
+      return this.$store.getters.getLanguage;
+    },
     handlerDataConfig() {
       let table = [];
       let expand = [];
@@ -182,10 +201,6 @@ export default {
     }
   },
   methods: {
-    test(r) {
-      console.log(r);
-      return "";
-    },
     widthScaleHandler() {
       if (this.otherInfo.tableSelfAW) {
         let w = document.body.clientWidth;
@@ -249,6 +264,9 @@ export default {
     },
     refSelectAll() {
       this.$refs.meltable.toggleAllSelection();
+    },
+    rowDb(r) {
+      this.$refs.meltable.toggleRowSelection(r);
     },
     select(s, r) {
       if (this.TableConfig.single) {

@@ -2,25 +2,39 @@
   <el-row>
     <mt>{{language[$options.name]}}</mt>
     <el-col :span="4">
-      <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
+      <MEnterTree ref="MEnterTree" @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>
     <el-col :span="6">
-      {{orgData}}
-      <el-form ref="form" :model="orgData" label-width="40%">
-        <el-form-item :label="language.curOptOrg">{{orgData.Title}}</el-form-item>
-        <el-form-item :label="language.area">
-          <el-input type="number" v-model.number="orgData.Area" :maxlength="5">
-            <span slot="append">{{language.squareMeter}}</span>
-          </el-input>
+      <el-form ref="form" :model="orgData" lnline inline-message status-icon label-width="40%">
+        <el-form-item :label="language.curOptOrg">{{orgData.selectTitle}}</el-form-item>
+        <el-form-item :label="language.enterpriseName" prop="title" :rules="rules.input">
+          <el-input v-model="orgData.title" :maxlength="15"></el-input>
+        </el-form-item>
+        <el-form-item :label="language.contacts" prop="contact" :rules="rules.input">
+          <el-input v-model="orgData.contact" :maxlength="5"></el-input>
+        </el-form-item>
+        <el-form-item :label="language.email" prop="email" :rules="rules.mail">
+          <el-input v-model="orgData.email" :maxlength="20"></el-input>
+        </el-form-item>
+        <el-form-item :label="language.tel" prop="phone" :rules="rules.tel">
+          <el-input v-model="orgData.phone" :maxlength="11"></el-input>
         </el-form-item>
         <el-form-item>
-          <mdb type="primary" @click="addNewOrg">{{language.addNewOrg}}</mdb>
+          <mdb type="primary" @click="submitForm('form',0)">{{language.addNewOrg}}</mdb>
         </el-form-item>
         <el-form-item>
-          <mdb type="warning" @click="upTheOrg">{{language.upTheOrg}}</mdb>
+          <mdb
+            type="warning"
+            @click="submitForm('form',1)"
+            :disabled="!orgData.selectTitle"
+          >{{language.upTheOrg}}</mdb>
         </el-form-item>
         <el-form-item>
-          <mdb type="danger" @click="deleTheOrg">{{language.deleTheOrg}}</mdb>
+          <mdb
+            type="danger"
+            @click="submitForm('form',2)"
+            :disabled="!orgData.selectTitle"
+          >{{language.deleTheOrg}}</mdb>
         </el-form-item>
       </el-form>
     </el-col>
@@ -39,35 +53,62 @@ export default {
       orgData: {}
     };
   },
+  computed: {
+    rules() {
+      let obj = {};
+      return Object.assign(
+        {},
+        require("@/function/formValidation.js").default,
+        obj
+      );
+    }
+  },
   components: {
     MEnterTree: () => import("#/multiplexing/entertree/MEnterTree.vue")
   },
   methods: {
     MEnterTreeClick(t) {
-      this.orgData = this.$avoid(t);
+      let orgData = this.$avoid(t);
+      this.$set(this.orgData, "orgid", orgData.Id);
+      this.$set(this.orgData, "selectTitle", orgData.Title);
+      this.$set(this.orgData, "title", orgData.Title);
+      this.$set(this.orgData, "phone", orgData.Param.phone);
+      this.$set(this.orgData, "contact", orgData.Param.contact);
+      this.$set(this.orgData, "email", orgData.Param.email);
     },
-    addNewOrg() {},
-    upTheOrg() {},
-    deleTheOrg() {},
-    getRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
-        let data = res.Data;
-        this.List = data;
+    submitForm(f, i) {
+      let that = this;
+      this.$refs[f].validate(valid => {
+        if (valid) {
+          if (i == 0) {
+            that.addNewOrg();
+          } else if (i == 2) {
+            that.deleTheOrg();
+          }
+        }
       });
     },
-    postRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
-        let data = res.Data;
-        this.List = data;
+    addNewOrg() {
+      let that = this;
+      let project = that.userInfo.userProject;
+      this.post("/org/create", {
+        project,
+        ...that.orgData
+      }).then(res => {
+        that.$refs.MEnterTree.getRequest();
+        that.orgData = {};
+      });
+    },
+    deleTheOrg() {
+      let that = this;
+      let orgid = that.orgData.orgid;
+      this.post("/org/delete", {
+        orgid
+      }).then(res => {
+        that.$refs.MEnterTree.getRequest();
+        that.orgData = {};
       });
     }
-  },
-  mounted() {
-    //渲染
   }
 };
 </script>

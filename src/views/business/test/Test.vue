@@ -56,7 +56,7 @@
       <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
       <!-- <ProgresS></ProgresS> -->
       <mdb @click="exc">excelTest</mdb>
-      <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
+      <!-- <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch> -->
       <!-- <ECharts
       style="pointerEvents:none"
       id="TreeDemo"
@@ -292,7 +292,7 @@ export default {
     // clickPage(page) {},
     getRequest() {
       let userProject = this.userInfo.userProject;
-      this.get(`/zone/tree/${userProject}`, {}).then(res => {
+      this.get(`/zone/13212312/${userProject}`, {}).then(res => {
         let data = res.Data;
         this.List = data;
       });
