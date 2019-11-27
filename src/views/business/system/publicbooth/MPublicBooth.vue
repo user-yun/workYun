@@ -27,7 +27,7 @@ export default {
   name: "publicBooth",
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
-    PageTable: () => import("@/assets/PageTable.vue"),
+    PageTable: () => import("@/assets/UiPageTable.vue"),
     ECharts: () => import("@/assets/ECharts.vue")
   },
   data() {
@@ -40,7 +40,8 @@ export default {
         border: true,
         stripe: true,
         highlight: true,
-        single: true
+        single: true,
+        disabled: true
       },
       TreeChartOption: [],
       TreeChartConfig: {

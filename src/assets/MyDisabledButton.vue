@@ -70,12 +70,13 @@ export default {
   },
   methods: {
     emtiClick() {
+      let that = this;
       this.$emit("click");
       this.handlerDisabled = true;
       this.handlerLoading = true;
       let t = setTimeout(() => {
-        this.handlerDisabled = false;
-        this.handlerLoading = false;
+        that.handlerDisabled = that.disabled;
+        that.handlerLoading = false;
         clearTimeout(t);
       }, 2500);
     }

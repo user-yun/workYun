@@ -10,7 +10,6 @@
           :type="1"
           :dayNum="31"
           @change="pickerChange"
-          :default="false"
           :clearable="true"
         ></DatePicker>
       </el-col>
@@ -41,7 +40,7 @@ export default {
         border: true,
         stripe: true,
         highlight: true,
-        multiple: true
+        multiple: true,
       },
       selectBill: [],
       buttonText: "",
@@ -50,7 +49,7 @@ export default {
     };
   },
   components: {
-    PageTable: () => import("@/assets/PageTable.vue"),
+    PageTable: () => import("@/assets/UiPageTable.vue"),
     DatePicker: () => import("@/assets/DatePicker"),
     ProOrgSearch: () => import("#/multiplexing/proorgsearch/ProOrgSearch")
   },

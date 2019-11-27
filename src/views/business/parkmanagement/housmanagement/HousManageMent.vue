@@ -47,7 +47,8 @@ export default {
   name: "housManageMent",
   data() {
     return {
-      housData: {}
+      housData: {},
+      reconfirm: true
     };
   },
   computed: {
@@ -66,12 +67,39 @@ export default {
   methods: {
     submitForm(f, i) {
       let that = this;
+      let textArr = [
+        that.housData.upTitle +
+          that.language.theHousLowerAdd +
+          that.housData.Title,
+        that.housData.upTitle + that.language.upTheHous,
+        that.housData.upTitle + that.language.deleThehous
+      ];
+      let typeArr = ["success", "warning", "error"];
       this.$refs[f].validate(valid => {
         if (valid) {
-          if (i == 1 || i == 0) {
-            that.theHousLowerAdd(i);
-          } else if (i == 2) {
-            that.deleThehous();
+          if (that.reconfirm) {
+            that
+              .$alert(textArr[i], {
+                showClose: false,
+                type: typeArr[i],
+                showCancelButton: true,
+                cancelButtonText: that.language.cancel,
+                confirmButtonText: that.language.sure
+              })
+              .then(() => {
+                if (i == 1 || i == 0) {
+                  that.theHousLowerAdd(i);
+                } else if (i == 2) {
+                  that.deleThehous();
+                }
+              })
+              .catch(action => {});
+          } else {
+            if (i == 1 || i == 0) {
+              that.theHousLowerAdd(i);
+            } else if (i == 2) {
+              that.deleThehous();
+            }
           }
         }
       });
@@ -118,8 +146,6 @@ export default {
       });
     }
   },
-  mounted() {
-    //渲染
-  }
+  mounted() {}
 };
 </script>

@@ -2,13 +2,14 @@
   <div class="w100 h100 alncnt" v-if="isActivated">
     <el-tooltip
       placement="top-end"
-      :disabled="!(TableConfig.multiple || TableConfig.single)||notShow"
+      :disabled="!(TableConfig.multiple || TableConfig.single)||thisNotShow"
       class="bttooltip"
     >
       <div slot="content">
         {{language.tableSelectTooltip}}
         <br>
-        <el-button type="text" @click.stop="notShow=true">{{language.notShow}}</el-button>
+        <el-button type="text" @click.stop="thisNotShow=true">{{language.thisNotShow}}</el-button>
+        <el-button type="text" @click.stop="tableNotShowFun">{{language.tableNotShow}}</el-button>
       </div>
       <el-table
         ref="meltable"
@@ -23,6 +24,7 @@
         @select="select"
         @select-all="selectAll"
         @row-dblclick="rowDb"
+        @selection-change="selectionChange"
       >
         <el-table-column
           v-if="TableConfig.multiple || TableConfig.single"
@@ -102,6 +104,7 @@
 
 <script>
 export default {
+  mixins: [require("@/mymixins").default],
   name: "UiPageTable",
   data() {
     return {
@@ -110,7 +113,7 @@ export default {
       widthScale: 1,
       singleRow: {},
       isActivated: true,
-      notShow: false
+      thisNotShow: false
     };
   },
   props: {
@@ -181,12 +184,6 @@ export default {
     }
   },
   computed: {
-    otherInfo() {
-      return this.$store.getters.getOtherInfo;
-    },
-    language() {
-      return this.$store.getters.getLanguage;
-    },
     handlerDataConfig() {
       let table = [];
       let expand = [];
@@ -198,6 +195,15 @@ export default {
         }
       });
       return { table, expand };
+    }
+  },
+  watch: {
+    "otherInfo.tableNotShow": {
+      deep: true,
+      immediate: true,
+      handler(newv, oldv) {
+        this.thisNotShow = newv;
+      }
     }
   },
   methods: {
@@ -266,7 +272,26 @@ export default {
       this.$refs.meltable.toggleAllSelection();
     },
     rowDb(r) {
-      this.$refs.meltable.toggleRowSelection(r);
+      if (this.TableConfig.single) {
+        this.$refs.meltable.clearSelection();
+        if (this.singleRow != r) {
+          this.$refs.meltable.toggleRowSelection(r);
+          this.singleRow = r;
+          return;
+        } else {
+          this.singleRow = {};
+          return;
+        }
+      } else {
+        this.$refs.meltable.toggleRowSelection(r);
+      }
+    },
+    selectionChange(s) {
+      if (this.TableConfig.single) {
+        this.$emit("select", s.slice(-1));
+      } else {
+        this.$emit("select", s);
+      }
     },
     select(s, r) {
       if (this.TableConfig.single) {
@@ -274,18 +299,12 @@ export default {
         if (this.singleRow != r) {
           this.$refs.meltable.toggleRowSelection(r);
           this.singleRow = r;
-          this.$emit("select", [r]);
           return;
         } else {
           this.singleRow = {};
-          this.$emit("select", []);
           return;
         }
       }
-      this.$emit("select", s);
-    },
-    selectAll(s) {
-      this.$emit("select", s);
     },
     clickPage(i) {
       this.page = i;
@@ -302,6 +321,10 @@ export default {
     },
     handleButton(r, b) {
       this.$emit("clickButton", r, b);
+    },
+    tableNotShowFun() {
+      this.thisNotShow = true;
+      this.setOtherInfo({ tableNotShow: true });
     }
   },
   mounted() {

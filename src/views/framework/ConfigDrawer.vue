@@ -53,6 +53,10 @@
         <el-switch v-model="rightClickMenu"></el-switch>
       </el-form-item>
       <el-form-item>
+        <span slot="label" class="emphasize">{{language.tableSwitch}}</span>
+        <el-switch v-model="tableNotShow"></el-switch>
+      </el-form-item>
+      <el-form-item>
         <span slot="label" class="emphasize">{{language.selectLanguage}}</span>
         <SelectLanguage></SelectLanguage>
       </el-form-item>
@@ -93,6 +97,15 @@ export default {
       },
       set(v) {
         this.setOtherInfo({ menuUnique: v });
+      }
+    },
+    tableNotShow: {
+      get() {
+        return !this.otherInfo.tableNotShow;
+      },
+      set(v) {
+        console.log(v);
+        this.setOtherInfo({ tableNotShow: !v });
       }
     },
     rightClickMenu: {

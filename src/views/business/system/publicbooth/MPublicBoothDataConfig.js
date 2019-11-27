@@ -18,7 +18,7 @@ let arr = [
         prop: "UpperTitle",
     },
     {
-        width: "175",
+        width: "165",
         prop: "UpperPcode",
         sortable: true,
     },
