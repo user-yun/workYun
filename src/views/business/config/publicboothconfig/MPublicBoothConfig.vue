@@ -48,9 +48,11 @@
                 :value="{pid:item.Pid,title:item.Title,value:1,pcode:item.Pcode}"
                 :label="item.Title"
               >
-                {{item.Title}}
-                pid:{{item.Pid}}
-                pcode:{{item.Pcode}}
+                <span class="float-l">
+                  pid:{{item.Pid}}
+                  pcode:{{item.Pcode}}
+                </span>
+                <span class="float-r">{{item.Title}}</span>
               </el-option>
             </el-select>
           </el-form-item>
@@ -63,9 +65,11 @@
                 :value="{pid:item.Pid,title:item.Title,value:1,pcode:item.Pcode}"
                 :label="item.Title"
               >
-                {{item.Title}}
-                pid:{{item.Pid}}
-                pcode:{{item.Pcode}}
+                <span class="float-l">
+                  pid:{{item.Pid}}
+                  pcode:{{item.Pcode}}
+                </span>
+                <span class="float-r">{{item.Title}}</span>
               </el-option>
             </el-select>
           </el-form-item>
@@ -79,9 +83,11 @@
               :value="{pid:item.Pid,title:item.Title,value:1,pcode:item.Pcode}"
               :label="item.Title"
             >
-              {{item.Title}}
-              pid:{{item.Pid}}
-              pcode:{{item.Pcode}}
+              <span class="float-l">
+                pid:{{item.Pid}}
+                pcode:{{item.Pcode}}
+              </span>
+              <span class="float-r">{{item.Title}}</span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -155,9 +161,11 @@
               :value="{pid:item.Pid,title:item.Title,value:1,pcode:item.Pcode}"
               :label="item.Title"
             >
-              {{item.Title}}
-              pid:{{item.Pid}}
-              pcode:{{item.Pcode}}
+              <span class="float-l">
+                pid:{{item.Pid}}
+                pcode:{{item.Pcode}}
+              </span>
+              <span class="float-r">{{item.Title}}</span>
             </el-option>
           </el-select>
         </el-form-item>

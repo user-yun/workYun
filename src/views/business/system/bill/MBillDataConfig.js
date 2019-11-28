@@ -14,12 +14,12 @@ let arr = [
         fixed: true,
     },
     {
-        width: "240",
+        width: "260",
         prop: "id",
         sortable: true,
     },
     {
-        width: "240",
+        width: "260",
         prop: "orgid",
         sortable: true,
         // json: true
@@ -30,12 +30,12 @@ let arr = [
     //     sortable: true,
     // },
     {
-        width: "90",
+        width: "120",
         prop: "gover",
         sortable: true,
     },
     {
-        width: "90",
+        width: "140",
         prop: "status",
         format: true,
         label: "pay",
@@ -58,7 +58,7 @@ let arr = [
         sortable: true,
     },
     {
-        width: "90",
+        width: "140",
         prop: "sum",
         sortable: true,
         align: "right",

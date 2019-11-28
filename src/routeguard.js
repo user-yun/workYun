@@ -41,7 +41,7 @@ function setRouterHistory(toHandler, to) {
 
 function notAllowMessage(next) {
     Vue.prototype.$message({
-        message: store.state.language.notAllow,
+        message: store.state.language.functionNotEnabled,
         type: "error",
         duration: 8000,
         customClass: "messageBox"

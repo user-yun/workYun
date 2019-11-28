@@ -14,7 +14,7 @@ let arr = [
         fixed: true,
     },
     {
-        width: "240",
+        width: "260",
         prop: "Id",
     },
     // {
@@ -32,12 +32,12 @@ let arr = [
         format: true,
     },
     {
-        width: "250",
+        width: "260",
         prop: "Zonids",
         format: true
     },
     {
-        width: "120",
+        width: "130",
         prop: "Param.phone",
         label: "phone",
         format: true,
@@ -64,7 +64,7 @@ let arr = [
     //     label: "paymode",
     // },
     {
-        width: "110",
+        width: "120",
         prop: "Param.balance",
         sortable: true,
         format: true,
@@ -72,7 +72,7 @@ let arr = [
         label: "balance",
     },
     {
-        width: "90",
+        width: "100",
         prop: "Param.area",
         sortable: true,
         label: "area",

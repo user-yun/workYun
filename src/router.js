@@ -13,7 +13,7 @@ let router = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/welcome/Test.vue'),
+    component: () => import('@/views/welcome/Login.vue'),
     meta: {
       intercept: false,
       noQuickTabs: true,

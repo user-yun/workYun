@@ -19,7 +19,7 @@ let arr = [
     //     sortable: true,
     // },
     {
-        width: "240",
+        width: "260",
         prop: "zoneid",
         sortable: true,
     },
@@ -35,13 +35,13 @@ let arr = [
         format: true
     },
     {
-        width: "90",
+        width: "120",
         prop: "param",
         sortable: true,
         format: true,
     },
     {
-        width: "90",
+        width: "120",
         prop: "status",
         sortable: true,
         format: true,

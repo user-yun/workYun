@@ -14,29 +14,28 @@ let arr = [
         fixed: true,
     },
     {
-        width: "240",
-        prop: "id",
+        width: "300",
+        prop: "id/zoneid",
+        format: true,
         fixed: true,
     },
-    {
-        width: "240",
-        prop: "pid",
-        sortable: true,
-    },
+    // {
+    //     width: "260",
+    //     prop: "pid",
+    // },
     // {
     //     width: "130",
     //     prop: "devid",
     //     sortable: true,
     // },
+    // {
+    //     width: "140",
+    //     prop: "zoneid",
+    // },
     {
-        width: "140",
-        prop: "zoneid",
-        sortable: true,
-    },
-    {
-        width: "180",
-        prop: "pcode",
-        sortable: true,
+        width: "280",
+        prop: "pcode/pid",
+        format: true
     },
     // {
     //     width: "100",
@@ -58,6 +57,7 @@ let arr = [
         prop: "voltage",
         sortable: true,
         format: true,
+        type: "expand"
     },
     {
         width: "110",
@@ -70,18 +70,21 @@ let arr = [
         prop: "current",
         sortable: true,
         format: true,
+        type: "expand"
     },
     {
         width: "130",
         prop: "activePower",
         sortable: true,
-        format: true
+        format: true,
+        type: "expand"
     },
     {
         width: "90",
         prop: "param",
         sortable: true,
-        format: true
+        format: true,
+        type: "expand"
     },
     // {
     //     width: "100",
@@ -92,26 +95,28 @@ let arr = [
     {
         width: "110",
         prop: "status",
-        sortable: true,
-        format: true
+        json: true
     },
     {
         width: "110",
         prop: "report",
         sortable: true,
-        format: true
+        format: true,
+        type: "expand"
     },
     {
         width: "110",
         prop: "ingress",
         sortable: true,
-        format: true
+        format: true,
+        type: "expand"
     },
     {
         width: "110",
         prop: "egress",
         sortable: true,
-        format: true
+        format: true,
+        type: "expand"
     }
 ]
 

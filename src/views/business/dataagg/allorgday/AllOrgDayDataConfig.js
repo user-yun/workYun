@@ -8,16 +8,17 @@
 // json:true
 let arr = [
     {
-        width: "190",
-        prop: "Id",
-        sortable: true,
+        width: "280",
+        prop: "Id/Orgid",
+        // sortable: true,
+        format: true,
     },
-    {
-        width: "190",
-        prop: "Orgid",
-        sortable: true,
-        fixed: true,
-    },
+    // {
+    //     width: "190",
+    //     prop: "Orgid",
+    //     sortable: true,
+    //     fixed: true,
+    // },
     {
         width: "180",
         prop: "Orgtitle",
@@ -40,6 +41,7 @@ let arr = [
         prop: "AllPower",
         align: "right",
         sortable: true,
+        format: true,
     },
     {
         width: "190",

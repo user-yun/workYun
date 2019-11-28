@@ -6,6 +6,7 @@
         <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
       </el-col>
       <el-col :span="8">
+        {{language.timeSlotEnquiry}}
         <DatePickerMult :dayNum="31" @change="pickerChange" :default="false" :clearable="true"></DatePickerMult>
       </el-col>
       <el-col :span="8">

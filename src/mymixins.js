@@ -1,11 +1,11 @@
 let m = {
   data() {
     return {
-      // h: "https://spmp.zg118.com/server"
+      h: "https://spmp.zg118.com/server"
       // h: "http://192.168.8.48:8888"//峰哥
       // h: "http://192.168.8.45:8888"//洋哥
       // h: "http://192.168.8.44:9031"//杨哥
-      h: "http://192.168.8.21:8078"//杨哥
+      // h: "http://192.168.8.21:8078"//杨哥
       // h: "https://spmp.zg118.com/abcpay"//农行
     };
   },
@@ -137,20 +137,51 @@ let m = {
       }
     },
     cellDataFormat(r, c) {
+      let ipf = c.property.indexOf("/");
       let iof = c.property.indexOf(".");
-      if (iof == -1) {
+      if (ipf != -1) {
+        let ago = c.property.substring(0, ipf);
+        let back = c.property.substring(ipf + 1, c.property.length);
+        let agoValue = r[ago];
+        let backValue = r[back];
+        let ipfLabel = c.label.indexOf("/");
+        if (ipfLabel != -1) {
+          ago = c.label.substring(0, ipfLabel);
+          back = c.label.substring(ipfLabel + 1, c.label.length);
+        }
+        let data = {};
+        this.$set(data, ago, agoValue);
+        this.$set(data, back, backValue);
+        return data;
+      } else if (iof == -1) {
         return r[c.property];
       } else {
         let s = c.property.substring(0, iof);
         let e = c.property.substring(iof + 1, c.property.length);
         let data = r[s][e];
-        return {
-          data,
-          s,
-          e,
-        };
+        return data;
+        // return {
+        //   data,
+        //   s,
+        //   e
+        // };
       }
     },
+    // cellDataFormat(r, c) {
+    //   let iof = c.property.indexOf(".");
+    //   if (iof == -1) {
+    //     return r[c.property];
+    //   } else {
+    //     let s = c.property.substring(0, iof);
+    //     let e = c.property.substring(iof + 1, c.property.length);
+    //     let data = r[s][e];
+    //     return {
+    //       data,
+    //       s,
+    //       e,
+    //     };
+    //   }
+    // },
     eleNotify(i, t) {
       //message
       //notify

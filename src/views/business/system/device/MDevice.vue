@@ -2,11 +2,12 @@
   <el-row>
     <mt>{{language[$options.name]}}</mt>
     <div style="height:94%">
-      <PageTable
+      <UiPageTable
         :tableData="tableData"
+        :TableConfig="TableConfig"
         :DataConfig="require('./MDeviceDataConfig.js')"
         @cellDblClick="cellDblClick"
-      ></PageTable>
+      ></UiPageTable>
     </div>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </el-row>
@@ -17,7 +18,7 @@ export default {
   mixins: [require("@/mymixins").default],
   name: "device",
   components: {
-    PageTable: () => import("@/assets/PageTable.vue"),
+    UiPageTable: () => import("@/assets/UiPageTable.vue"),
     MBusinessDialog: () => import("#/system/business/MBusinessDialog")
   },
   data() {
@@ -25,7 +26,13 @@ export default {
       tableData: [],
       is: "MBusinessDialog",
       show: false,
-      rowData: null
+      rowData: null,
+      TableConfig: {
+        border: true,
+        stripe: true,
+        highlight: true,
+        disabled: true
+      }
     };
   },
   mounted() {

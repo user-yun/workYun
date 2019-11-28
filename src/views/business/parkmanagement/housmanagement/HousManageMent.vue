@@ -8,7 +8,7 @@
       <el-form ref="form" :model="housData" label-width="40%">
         <el-form-item :label="language.curOptHou">{{housData.upTitle}}</el-form-item>
         <el-form-item :label="language.housName" prop="Title" :rules="rules.input">
-          <el-input v-model="housData.Title" :maxlength="12"></el-input>
+          <el-input v-model="housData.Title" :maxlength="30"></el-input>
         </el-form-item>
         <el-form-item :label="language.area" prop="Area" :rules="rules.numTType">
           <el-input type="number" v-model.number="housData.Area" :maxlength="5">

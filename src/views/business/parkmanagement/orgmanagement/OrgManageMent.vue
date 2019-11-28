@@ -8,7 +8,7 @@
       <el-form ref="form" :model="orgData" lnline inline-message status-icon label-width="40%">
         <el-form-item :label="language.curOptOrg">{{orgData.selectTitle}}</el-form-item>
         <el-form-item :label="language.enterpriseName" prop="title" :rules="rules.input">
-          <el-input v-model="orgData.title" :maxlength="15"></el-input>
+          <el-input v-model="orgData.title" :maxlength="30"></el-input>
         </el-form-item>
         <el-form-item :label="language.contacts" prop="contact" :rules="rules.input">
           <el-input v-model="orgData.contact" :maxlength="5"></el-input>
@@ -91,10 +91,15 @@ export default {
     addNewOrg() {
       let that = this;
       let project = that.userInfo.userProject;
-      this.post("/org/create", {
-        project,
-        ...that.orgData
-      }).then(res => {
+      this.post(
+        "/org/create",
+        {
+          project,
+          ...that.orgData
+        },
+        false,
+        true
+      ).then(res => {
         that.$refs.MEnterTree.getRequest();
         that.orgData = {};
       });
@@ -102,9 +107,14 @@ export default {
     deleTheOrg() {
       let that = this;
       let orgid = that.orgData.orgid;
-      this.post("/org/delete", {
-        orgid
-      }).then(res => {
+      this.post(
+        "/org/delete",
+        {
+          orgid
+        },
+        false,
+        true
+      ).then(res => {
         that.$refs.MEnterTree.getRequest();
         that.orgData = {};
       });

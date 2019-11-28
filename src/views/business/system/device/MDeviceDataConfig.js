@@ -28,13 +28,15 @@ let arr = [
         format: true,
     },
     {
-        width: "130",
-        prop: "Pcode",
+        width: "260",
+        prop: "Pcode/Pid",
+        // label:"设备编码/设备id",
+        format: true
     },
-    {
-        width: "240",
-        prop: "Pid",
-    },
+    // {
+    //     width: "260",
+    //     prop: "Pid",
+    // },
     // {
     //     width: "90",
     //     prop: "Param.zone",
@@ -61,6 +63,7 @@ let arr = [
         label: "factor",
         align: "right",
         format: true,
+        type: "expand"
     },
     {
         width: "110",
@@ -69,6 +72,7 @@ let arr = [
         format: true,
         align: "right",
         label: "voltage",
+        type: "expand"
     },
     {
         width: "110",
@@ -76,7 +80,8 @@ let arr = [
         sortable: true,
         label: "current",
         align: "right",
-        format: true
+        format: true,
+        type: "expand"
     },
     {
         width: "100",
@@ -85,6 +90,7 @@ let arr = [
         label: "active",
         align: "right",
         format: true,
+        type: "expand"
     },
     {
         width: "110",
@@ -92,7 +98,8 @@ let arr = [
         sortable: true,
         label: "reactive",
         align: "right",
-        format: true
+        format: true,
+        type: "expand"
     },
     {
         width: "110",

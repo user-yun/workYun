@@ -221,6 +221,12 @@ body {
     /* margin-top: -10px; */
 }
 
+.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
+    background-color: #44444436;
+    color: #409EFF;
+    font-weight: 500;
+}
+
 .el-menu--popup,
 .el-popover,
 .el-submenu .el-menu-item {

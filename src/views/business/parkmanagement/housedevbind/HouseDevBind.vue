@@ -27,7 +27,7 @@
           <mdb type="primary" @click="getRequest">{{language.houseDevBind}}</mdb>
         </el-form-item>
       </el-form>
-      <div style="height:75%" v-if="bindList">
+      <div style="height:70%" v-if="bindList">
         <PageTable :tableData="bindList" :DataConfig="require('./HouseDevBindDataConfig.js')"></PageTable>
       </div>
     </el-col>
@@ -85,13 +85,18 @@ export default {
       let Zoneid = that.zoneData.Id;
       let Pcode = that.devData.Pcode;
       that
-        .post(`/zonemodule/create`, {
-          Project,
-          Zoneid,
-          Pcode,
-          Level: that.level,
-          ModuleFuncType: that.shareTreeNode
-        })
+        .post(
+          `/zonemodule/create`,
+          {
+            Project,
+            Zoneid,
+            Pcode,
+            Level: that.level,
+            ModuleFuncType: that.shareTreeNode
+          },
+          false,
+          true
+        )
         .then(res => {
           that.getZoneBindList();
         });

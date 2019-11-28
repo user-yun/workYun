@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="w100 h100 alncnt"  v-if="isActivated"> -->
   <div class="w100 h100 alncnt">
     <el-tooltip
       placement="top-end"
@@ -26,13 +27,16 @@
         @row-dblclick="rowDb"
         @selection-change="selectionChange"
       >
+        <!-- 单选或者多选列 -->
         <el-table-column
           v-if="TableConfig.multiple || TableConfig.single"
           type="selection"
           width="50"
           fixed
         ></el-table-column>
+        <!-- 索引列 -->
         <el-table-column type="index" width="60" align="center" fixed></el-table-column>
+        <!-- 主要显示列 -->
         <el-table-column
           v-for="(item,index) in handlerDataConfig.table"
           :key="index"
@@ -51,15 +55,20 @@
             <span
               v-else
               :class="item.class ? item.class: 'tableClass' "
-            >{{dataFormat(item.format,scope.row,scope.column)}}</span>
+              v-html="dataFormat(item.format,scope.row,scope.column)"
+            ></span>
           </template>
         </el-table-column>
+        <!-- 展开列 -->
         <el-table-column v-if="handlerDataConfig.expand.length>0" type="expand">
           <template slot-scope="scope">
             <el-form class="w100" inline label-width="40%">
               <fragment v-for="(item,index) in handlerDataConfig.expand" :key="index">
                 <el-form-item style="width:32%">
-                  <span slot="label" :class="item.class ? item.class: 'tableClass' ">{{item.label}}</span>
+                  <span
+                    slot="label"
+                    :class="item.class ? item.class: 'tableClass' "
+                  >{{item.label ? item.label : item.prop }}</span>
                   <span
                     :class="item.class ? item.class: 'tableClass' "
                   >{{dataFormat(item.format,scope.row,{property:item.prop})}}</span>
@@ -68,6 +77,7 @@
             </el-form>
           </template>
         </el-table-column>
+        <!-- 可能会用到的按钮列 不完整功能 无法根据状态显示 -->
         <fragment v-if="TableConfig.button">
           <el-table-column
             :width="TableConfig.button.width*widthScale"
@@ -87,6 +97,7 @@
         </fragment>
       </el-table>
     </el-tooltip>
+    <!-- 分页 -->
     <el-pagination
       v-if="!TableConfig.disabled"
       :small="false"
@@ -113,6 +124,7 @@ export default {
       widthScale: 1,
       singleRow: {},
       thisNotShow: false
+      // isActivated: true
     };
   },
   props: {
@@ -146,18 +158,18 @@ export default {
           border: true,
           stripe: true,
           highlight: true,
-          multiple: false,
-          single: false,
-          disabled: true,
-          button: {
-            fixed: "right",
-            label: "manage",
-            width: 100,
-            list: [
-              { text: "add", type: "primary" },
-              { text: "delete", type: "danger" }
-            ]
-          }
+          disabled: true
+          // multiple: false,
+          // single: false,
+          // button: {
+          //   fixed: "right",
+          //   label: "manage",
+          //   width: 100,
+          //   list: [
+          //     { text: "add", type: "primary" },
+          //     { text: "delete", type: "danger" }
+          //   ]
+          // }
         };
         return obj;
       }
@@ -212,6 +224,7 @@ export default {
         let ws = w / 1920 <= 0.6 ? 0.6 : w / 1920;
         this.widthScale = ws;
       }
+      this.doLayout();
     },
     handCss() {
       if (this.TableConfig.single) {
@@ -220,37 +233,42 @@ export default {
         this.$addCSS(".el-checkbox__inner{ border-radius:2px;}");
       }
     },
-    cellDataFormat(r, c) {
-      let iof = c.property.indexOf(".");
-      if (iof == -1) {
-        return r[c.property];
-      } else {
-        let s = c.property.substring(0, iof);
-        let e = c.property.substring(iof + 1, c.property.length);
-        let data = r[s][e];
-        return data;
-        // return {
-        //   data,
-        //   s,
-        //   e
-        // };
-      }
-    },
     dataFormat(is, r, c) {
+      let that = this;
+      let colors = require("@/color.js");
       let data = this.cellDataFormat(r, c);
       if (!is) return data;
       try {
-        switch (typeof data) {
-          case "string":
+        switch (that.$type(data)) {
+          case "[object String]":
             return data.substr(0, 10);
-          case "number":
+          case "[object Number]":
             return data.toFixed(2);
-          case "object":
-            let t = "";
-            data.forEach(e => {
-              t += e;
-            });
-            return t;
+          case "[object Array]":
+            let ahtml = "";
+            if (data.length > 0) {
+              if (that.$type(data[0]) == "[object Object]") {
+                ahtml = JSON.stringify(data).substr(0, 10);
+              } else {
+                data.forEach(e => {
+                  ahtml += e;
+                });
+              }
+            }
+            return ahtml;
+          case "[object Object]":
+            let ohtml = "";
+            let colorio = 0;
+            for (let k in data) {
+              if (data.hasOwnProperty(k)) {
+                let e = `<div style="color:${colors[colorio]}">${k}:${
+                  data[k]
+                }</div>`;
+                ohtml += e;
+                colorio++;
+              }
+            }
+            return ohtml;
           default:
             return JSON.stringify(data).substr(0, 10);
         }
@@ -340,6 +358,10 @@ export default {
   activated() {
     this.handCss();
     this.doLayout();
+    // this.isActivated = true;
   }
+  // deactivated() {
+  //   this.isActivated = false;
+  // }
 };
 </script>

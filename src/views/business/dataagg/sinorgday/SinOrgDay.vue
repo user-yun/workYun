@@ -7,10 +7,10 @@
     <el-col :sm="12" :md="18" :xl="21" style="height:94%">
       <DatePickerMult @change="pickerChange"></DatePickerMult>
       <div style="height:94%">
-        <PageTable
+        <UiPageTable
           :tableData="dataList"
           :DataConfig="require('../allorgday/AllOrgDayDataConfig.js')"
-        ></PageTable>
+        ></UiPageTable>
       </div>
     </el-col>
   </el-row>
@@ -28,7 +28,7 @@ export default {
     };
   },
   components: {
-    PageTable: () => import("@/assets/PageTable"),
+    UiPageTable: () => import("@/assets/UiPageTable"),
     MEnterTree: () => import("#/multiplexing/entertree/MEnterTree.vue"),
     DatePickerMult: () => import("@/assets/DatePickerMult")
   },

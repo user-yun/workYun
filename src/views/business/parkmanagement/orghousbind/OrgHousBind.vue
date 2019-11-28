@@ -4,7 +4,7 @@
     <el-col :sm="6" :md="4" :xl="3">
       <MFloorTree @MFloorTree="MFloorTreeClick"></MFloorTree>
     </el-col>
-    <el-col :sm="6" :md="4" :xl="3">
+    <el-col :sm="6" :md="4" :xl="5">
       <MEnterTree @MEnterTree="MEnterTreeClick"></MEnterTree>
     </el-col>
     <el-col :sm="12" :md="8" :xl="10">
@@ -52,7 +52,7 @@
           <mdb @click="submitForm('form',1)">{{language.orgHousBind}}</mdb>
         </el-form-item>
       </el-form>
-      <div style="height:55vh" v-if="checkData">
+      <div style="height:50vh" v-if="checkData">
         <PageTable :tableData="checkData" :DataConfig="require('./OrgHousBindDataConfig.js')"></PageTable>
       </div>
     </el-col>
@@ -142,7 +142,9 @@ export default {
           `/orgcheckin/input/${userProject}/${that.form.Orgid}/${
             that.form.Zoneid
           }/${that.form.Contractbdate}/${that.form.Contractedate}`,
-          {}
+          {},
+          false,
+          true
         )
         .then(res => {});
     },
@@ -150,10 +152,15 @@ export default {
       let that = this;
       let Project = that.userInfo.userProject;
       that
-        .post(`/org/checkin`, {
-          Project,
-          ...that.form
-        })
+        .post(
+          `/org/checkin`,
+          {
+            Project,
+            ...that.form
+          },
+          false,
+          true
+        )
         .then(res => {});
     }
   }

@@ -18,13 +18,13 @@
       </el-col>
     </el-row>
     <div :span="24" style="height:90%">
-      <PageTable
+      <UiPageTable
         ref="billExcel"
         :tableData="tableData"
         :TableConfig="TableConfig"
         :DataConfig="require('./AccountsReceivableDataConfig.js').default()"
         @select="tableSelect"
-      ></PageTable>
+      ></UiPageTable>
     </div>
   </el-row>
 </template>
@@ -49,7 +49,7 @@ export default {
     };
   },
   components: {
-    PageTable: () => import("@/assets/UiPageTable.vue"),
+    UiPageTable: () => import("@/assets/UiPageTable.vue"),
     DatePicker: () => import("@/assets/DatePicker"),
     ProOrgSearch: () => import("#/multiplexing/proorgsearch/ProOrgSearch")
   },

@@ -24,19 +24,20 @@ export default function f() {
             align: "center",
         },
         {
-            width: "100",
-            prop: "gover",
+            width: "300",
+            prop: "gover/orgTitle",
+            format: true,
         },
+        // {
+        //     width: "120",
+        //     prop: "orgTitle",
+        //     align: "right",
+        // },
         {
-            width: "120",
-            prop: "orgTitle",
+            width: "280",
+            prop: "orderTime/payTime",
             align: "right",
-        },
-        {
-            width: "180",
-            prop: "orderTime",
-            align: "right",
-            sortable: true,
+            format: true,
         },
         {
             width: "180",
@@ -56,10 +57,10 @@ export default function f() {
             align: "right",
             sortable: true,
         },
-        {
-            width: "100",
-            prop: "payTime",
-        },
+        // {
+        //     width: "100",
+        //     prop: "payTime",
+        // },
         {
             width: "130",
             prop: "rechargeWay",

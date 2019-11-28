@@ -5,7 +5,7 @@
     <el-dialog :visible="true" :show-close="false" top="30vh" :width="dialogWidth">
       <el-row slot="title">
         <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="18">
-          <h2 class="title" @dblclick="hiddRefresh">{{language.title}}</h2>
+          <h2 class="title" @dblclick="hiddRefresh">{{language[otherInfo.helloTitle]}}</h2>
         </el-col>
         <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="6" class="alnrit">
           <SelectLanguage></SelectLanguage>
@@ -89,7 +89,8 @@ export default {
       }
     },
     async setWebConfig() {
-      let config = await this.$Get("/web-config/config.json");
+      let config = await this.$Get("/web-config/config-powerbee.json");
+      // let config = await this.$Get("/web-config/config-abc.json");
       this.setOtherInfo(config);
       this.resizeHandler();
     },

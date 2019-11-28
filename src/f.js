@@ -357,3 +357,6 @@ Vue.prototype.$analogKeyboard = function (el, evtType, keyCode) {
 Vue.prototype.$avoid = function (j) {
     return JSON.parse(JSON.stringify(j));
 }
+Vue.prototype.$type = function (j) {
+    return Object.prototype.toString.call(j);
+}

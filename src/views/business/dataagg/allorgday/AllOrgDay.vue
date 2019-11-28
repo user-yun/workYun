@@ -3,7 +3,7 @@
     <mt>{{language[$options.name]}}</mt>
     <DatePickerMult @change="pickerChange"></DatePickerMult>
     <div style="height:90%">
-      <PageTable :tableData="dataList" :DataConfig="require('./AllOrgDayDataConfig.js')"></PageTable>
+      <UiPageTable :tableData="dataList" :DataConfig="require('./AllOrgDayDataConfig.js')"></UiPageTable>
     </div>
   </el-row>
 </template>
@@ -19,7 +19,7 @@ export default {
     };
   },
   components: {
-    PageTable: () => import("@/assets/PageTable"),
+    UiPageTable: () => import("@/assets/UiPageTable"),
     DatePickerMult: () => import("@/assets/DatePickerMult")
   },
   methods: {

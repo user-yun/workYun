@@ -2,11 +2,12 @@
   <el-row>
     <mt>{{language[$options.name]}}</mt>
     <div style="height:94%">
-      <PageTable
+      <UiPageTable
         :tableData="tableData"
+        :TableConfig="TableConfig"
         :DataConfig="require('./MZoneSummaryDataConfig.js')"
         @cellDblClick="cellDblClick"
-      ></PageTable>
+      ></UiPageTable>
     </div>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </el-row>
@@ -18,14 +19,20 @@ export default {
   name: "regionalSummary",
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
-    PageTable: () => import("@/assets/PageTable.vue")
+    UiPageTable: () => import("@/assets/UiPageTable.vue")
   },
   data() {
     return {
       tableData: [],
       is: "MBusinessDialog",
       show: false,
-      rowData: null
+      rowData: null,
+      TableConfig: {
+        border: true,
+        stripe: true,
+        highlight: true,
+        disabled: true
+      }
     };
   },
   mounted() {

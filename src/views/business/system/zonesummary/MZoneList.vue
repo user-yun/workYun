@@ -2,11 +2,11 @@
   <el-row>
     <mt>{{language[$options.name]}}</mt>
     <div style="height:94%">
-      <PageTable
+      <UiPageTable
         :tableData="tableData"
         :DataConfig="require('./MZoneListDataConfig.js')"
         @cellDblClick="cellDblClick"
-      ></PageTable>
+      ></UiPageTable>
     </div>
     <component v-if="show" :is="is" :show="show" :data="rowData" @onColse="onColse"></component>
   </el-row>
@@ -26,7 +26,7 @@ export default {
   },
   components: {
     MBusinessDialog: () => import("#/system/business/MBusinessDialog"),
-    PageTable: () => import("@/assets/PageTable.vue")
+    UiPageTable: () => import("@/assets/UiPageTable.vue")
   },
   methods: {
     cellDblClick(r, c) {
