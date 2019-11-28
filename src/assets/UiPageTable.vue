@@ -1,5 +1,5 @@
 <template>
-  <div class="w100 h100 alncnt" v-if="isActivated">
+  <div class="w100 h100 alncnt">
     <el-tooltip
       placement="top-end"
       :disabled="!(TableConfig.multiple || TableConfig.single)||thisNotShow"
@@ -112,7 +112,6 @@ export default {
       pageSize: 10,
       widthScale: 1,
       singleRow: {},
-      isActivated: true,
       thisNotShow: false
     };
   },
@@ -325,6 +324,9 @@ export default {
     tableNotShowFun() {
       this.thisNotShow = true;
       this.setOtherInfo({ tableNotShow: true });
+    },
+    doLayout() {
+      this.$refs.meltable.doLayout();
     }
   },
   mounted() {
@@ -337,10 +339,7 @@ export default {
   },
   activated() {
     this.handCss();
-    this.isActivated = true;
-  },
-  deactivated() {
-    this.isActivated = false;
+    this.doLayout();
   }
 };
 </script>

@@ -1,11 +1,11 @@
 let m = {
   data() {
     return {
-      h: "https://spmp.zg118.com/server"
+      // h: "https://spmp.zg118.com/server"
       // h: "http://192.168.8.48:8888"//峰哥
       // h: "http://192.168.8.45:8888"//洋哥
       // h: "http://192.168.8.44:9031"//杨哥
-      // h: "http://192.168.8.44:8078"//杨哥
+      h: "http://192.168.8.21:8078"//杨哥
       // h: "https://spmp.zg118.com/abcpay"//农行
     };
   },

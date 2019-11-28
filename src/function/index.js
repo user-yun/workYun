@@ -2,6 +2,58 @@ export default function log(l) {
     console.log(l);
 }
 
+export function jsonToParams(data) {
+    //json 转 url拼接参数
+    try {
+        let tempArr = [];
+        for (let i in data) {
+            let key = encodeURIComponent(i);
+            let value = encodeURIComponent(data[i]);
+            tempArr.push(key + '=' + value);
+        }
+        let urlParamsStr = tempArr.join('&');
+        return urlParamsStr;
+    } catch (err) {
+        return '';
+    }
+}
+
+export function getQueryObject(url) {
+    //url 拼接参数转json
+    url = url == null ? window.location.href : url;
+    let search = url.substring(url.lastIndexOf("?") + 1);
+    let obj = {};
+    let reg = /([^?&=]+)=([^?&=]*)/g;
+    search.replace(reg, function (rs, $1, $2) {
+        let name = decodeURIComponent($1);
+        let val = decodeURIComponent($2);
+        val = String(val);
+        obj[name] = val;
+        return rs;
+    });
+    return obj;
+}
+
+export function getParams(url) {
+    //url 拼接参数转json
+    url = url == null ? window.location.href : url;
+    try {
+        let index = url.indexOf('?');
+        url = url.match(/\?([^#]+)/)[1];
+        let obj = {}, arr = url.split('&');
+        for (let i = 0; i < arr.length; i++) {
+            let subArr = arr[i].split('=');
+            let key = decodeURIComponent(subArr[0]);
+            let value = decodeURIComponent(subArr[1]);
+            obj[key] = value;
+        }
+        return obj;
+
+    } catch (err) {
+        return null;
+    }
+}
+
 export function formData(item) {
     //转换成表单
     let form = new FormData();
