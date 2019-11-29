@@ -366,7 +366,7 @@ export default {
     //   let bool = true;
     //   if (
     //     !(
-    //       this.isFalse(this.upperModule) ||
+    //       this.$isFalse(this.upperModule) ||
     //       (this.lowerModules.length < 1 && this.apportionModules.length < 1)
     //     )
     //   ) {

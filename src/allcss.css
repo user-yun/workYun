@@ -73,8 +73,9 @@
 .inblock {
     display: inline-block;
 }
-
+/* pointerEvents:none禁止点击 */
 .notLineFeed {
+    /* 不换行 */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

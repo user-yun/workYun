@@ -128,7 +128,7 @@ export default {
             userToken: data.Token,
             userRole: data.Role,
             userProject: data.Project,
-            projectId: that.isFalse(res.Expand) ? null : res.Expand.Id,
+            projectId: that.$isFalse(res.Expand) ? null : res.Expand.Id,
             cooperativePartner: that.language.ABC
           });
           setLocal("userMemory", {
@@ -148,7 +148,7 @@ export default {
   },
   mounted() {
     let userMemory = getLocal("userMemory");
-    if (!this.isFalse(userMemory) && Object.keys(userMemory).length > 0) {
+    if (!this.$isFalse(userMemory) && Object.keys(userMemory).length > 0) {
       this.setOtherInfo(userMemory.otherInfo);
     } else {
       this.setWebConfig();

@@ -45,8 +45,8 @@ export default {
       let bool = true;
       if (
         !(
-          this.isFalse(this.ruleForm.GroupNumber) ||
-          this.isFalse(this.ruleForm.RobotToken)
+          this.$isFalse(this.ruleForm.GroupNumber) ||
+          this.$isFalse(this.ruleForm.RobotToken)
         )
       ) {
         bool = false;

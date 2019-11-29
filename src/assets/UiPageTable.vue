@@ -26,6 +26,7 @@
         @select-all="selectAll"
         @row-dblclick="rowDb"
         @selection-change="selectionChange"
+        @expand-change="expandChange"
       >
         <!-- 单选或者多选列 -->
         <el-table-column
@@ -71,7 +72,8 @@
                   >{{item.label ? item.label : item.prop }}</span>
                   <span
                     :class="item.class ? item.class: 'tableClass' "
-                  >{{dataFormat(item.format,scope.row,{property:item.prop})}}</span>
+                    v-html="dataFormat(item.format,scope.row,{property:item.prop})"
+                  ></span>
                 </el-form-item>
               </fragment>
             </el-form>
@@ -276,9 +278,6 @@ export default {
         return JSON.stringify(data);
       }
     },
-    cellDblClick(r, c) {
-      this.$emit("cellDblClick", r, c);
-    },
     headerCellStyle(o) {
       this.handCss();
       if (o.columnIndex == 0 && this.TableConfig.single) {
@@ -288,7 +287,20 @@ export default {
     refSelectAll() {
       this.$refs.meltable.toggleAllSelection();
     },
-    rowDb(r) {
+    expandChange(r) {
+      event.stopPropagation();
+    },
+    cellDblClick(r, co, ce, e) {
+      if (this.$isTrue(co.property)) {
+        this.$emit("cellDblClick", r, co);
+      } else {
+        this.$log(this.$isFalse([]));
+        this.$log(this.$isFalse([1]));
+        this.$log(this.$isFalse({}));
+        this.$log(this.$isFalse({ test: 1 }));
+      }
+    },
+    rowDb(r, c, e) {
       if (this.TableConfig.single) {
         this.$refs.meltable.clearSelection();
         if (this.singleRow != r) {

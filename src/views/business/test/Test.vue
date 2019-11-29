@@ -261,7 +261,6 @@ export default {
   },
   methods: {
     proOrgSelect(o) {
-      console.log(o);
     },
     deleUpData(i) {
       this.upData.splice(i);

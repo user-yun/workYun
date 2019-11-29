@@ -99,7 +99,7 @@ export default {
       deep: true,
       // immediate: true,
       handler(newv, oldv) {
-        if (this.ihTrue(newv)) {
+        if (this.$isTrue(newv)) {
           this.$set(this.ruleForm, "title", newv.name);
           this.$set(this.ruleForm, "ftype", newv.type);
           this.$set(this.ruleForm, "id", newv.id);
@@ -112,7 +112,7 @@ export default {
       deep: true,
       // immediate: true,
       handler(newv, oldv) {
-        if (this.ihTrue(newv)) this.$refs["ruleForm"].validate(valid => {});
+        if (this.$isTrue(newv)) this.$refs["ruleForm"].validate(valid => {});
       }
     }
   },

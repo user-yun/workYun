@@ -47,7 +47,6 @@ export default {
       this.getRequest();
     },
     clickPage(d, l) {
-      console.log(d, l);
     },
     getRequest() {
       let that = this;

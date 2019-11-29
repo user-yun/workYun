@@ -27,16 +27,16 @@ export default {
         //   .getElementById("formDiv")
         //   .getElementsByTagName("form")[0]
         //   .submit();
-        console.log(getParams());
-        console.log(getQueryObject());
-        console.log(
+        this.$log(getParams());
+        this.$log(getQueryObject());
+        this.$log(
           getParams(
             `https://openbank.abchina.com/GateWay/openabc/h5/h5eaccount/EAccOpen/v1?${jsonToParams(
               res.data
             )}`
           )
         );
-        console.log(
+        this.$log(
           getQueryObject(
             `https://openbank.abchina.com/GateWay/openabc/h5/h5eaccount/EAccOpen/v1?${jsonToParams(
               res.data

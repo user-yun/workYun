@@ -4,18 +4,10 @@ import 'nprogress/nprogress.css';
 import router from './router';
 import store from './store';
 import { getLocal, clearLocal } from "@/function";
-// import log from "@/function";
 
 function isFalse(o) {
-    if (
-        !o ||
-        o === "null" ||
-        o === "undefined" ||
-        o === "false" ||
-        o === "NaN"
-    )
-        return true;
-    return false;
+    if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN' || Object.keys(o).length < 1 || o.length < 1) return true
+    return false
 }
 
 function setRouterHistory(toHandler, to) {

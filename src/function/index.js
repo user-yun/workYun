@@ -1,7 +1,3 @@
-export default function log(l) {
-    console.log(l);
-}
-
 export function jsonToParams(data) {
     //json 转 url拼接参数
     try {
@@ -60,11 +56,9 @@ export function formData(item) {
     // let logF = object.entries();
     // for (; ;) {
     //   let i = logF.next();
-    //   log(i);
     //   if (i.done) break;
     // }
     for (let key in item) {
-        // log(item[key]);
         form.append(key, item[key]);
     }
     return form;

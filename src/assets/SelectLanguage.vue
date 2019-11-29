@@ -65,7 +65,9 @@ export default {
         o === "null" ||
         o === "undefined" ||
         o === "false" ||
-        o === "NaN"
+        o === "NaN" ||
+        Object.keys(o).length < 1 ||
+        o.length < 1
       )
         return true;
       return false;

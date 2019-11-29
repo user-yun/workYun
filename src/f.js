@@ -360,3 +360,49 @@ Vue.prototype.$avoid = function (j) {
 Vue.prototype.$type = function (j) {
     return Object.prototype.toString.call(j);
 }
+Vue.prototype.$log = function (l) {
+    console.log(l);
+}
+Vue.prototype.$isFalse = function (o) {
+    //检验值完全没有
+    if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN' || Object.keys(o).length < 1 || o.length < 1) return true
+    return false
+}
+Vue.prototype.$isTrue = function (d) {
+    //检验值有但是为空
+    switch (typeof d) {
+        case "string":
+            return d.length > 0;
+        case "number":
+            return true;
+        case "boolean":
+            return d;
+        case "object":
+            if (d == "undefined" || Object.keys(d).length < 1 || d.length < 1) {
+                return false;
+            } else
+                return true;
+        default:
+            return false;
+    }
+}
+Vue.prototype.$dataFormat = function (data) {
+    try {
+        switch (typeof data) {
+            case "string":
+                return data.substr(0, 10);
+            case "number":
+                return data.toFixed(2);
+            case "object":
+                let t = "";
+                for (let key in data) {
+                    t += data[key]
+                }
+                return t;
+            default:
+                return JSON.stringify(data).substr(0, 10);
+        }
+    } catch (e) {
+        return JSON.stringify(data);
+    }
+}

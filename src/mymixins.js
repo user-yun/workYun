@@ -23,23 +23,20 @@ let m = {
   watch: {
     // userInfo: {
     //   handler(newValue, oldValue) {
-    //     this.log({ text: "userInfo", newValue });
+    //     this.$log({ text: "userInfo", newValue });
     //   },
     //   immediate: true, //最初监听
     //   deep: true //深度监听
     // },
     // otherInfo: {
     //   handler(newValue, oldValue) {
-    //     this.log({ text: "otherInfo", newValue });
+    //     this.$log({ text: "otherInfo", newValue });
     //   },
     //   immediate: true, //最初监听
     //   deep: true //深度监听
     // }
   },
   methods: {
-    log(t) {
-      console.log(t);
-    },
     deleteOtherInfo(k) {
       //删除其他的信息
       this.$store.dispatch("upVuex", {
@@ -95,7 +92,7 @@ let m = {
       });
     },
     backRequest(u, res, ts) {
-      this.log({
+      this.$log({
         u,
         res
       });
@@ -103,37 +100,6 @@ let m = {
       let i = this.ifServerCode(c)
       if (i != 1 || ts) {
         this.eleNotify(i, res.ErrMsg || res.message || res.Message);
-      }
-    },
-    isFalse(o) {
-      if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN') return true
-      return false
-    },
-    ihTrue(d) {
-      switch (typeof d) {
-        case "string":
-          return d.length > 0;
-        case "number":
-          return true;
-        case "boolean":
-          return d;
-        case "object":
-          if (d == "undefined" || Object.keys(d).length < 0 || d.length < 0) {
-            return false;
-          } else
-            return true;
-        default:
-          return false;
-      }
-    },
-    dataFormat(d) {
-      switch (typeof d) {
-        case "string":
-          return d.substr(0, 10);
-        case "number":
-          return d.toFixed(2);
-        default:
-          return d;
       }
     },
     cellDataFormat(r, c) {

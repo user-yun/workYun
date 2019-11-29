@@ -4,15 +4,8 @@ import 'nprogress/nprogress.css';
 import store from './store';
 
 function isFalse(o) {
-    if (
-        !o ||
-        o === "null" ||
-        o === "undefined" ||
-        o === "false" ||
-        o === "NaN"
-    )
-        return true;
-    return false;
+    if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN' || Object.keys(o).length < 1 || o.length < 1) return true
+    return false
 }
 
 function formData(item) {

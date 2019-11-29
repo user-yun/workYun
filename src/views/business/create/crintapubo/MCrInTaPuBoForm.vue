@@ -135,7 +135,7 @@ export default {
       deep: true,
       // immediate: true,
       handler(newv, oldv) {
-        if (!this.isFalse(newv)) {
+        if (!this.$isFalse(newv)) {
           this.$set(this.ruleForm, "zoneid", newv.Id);
           this.$set(this.ruleForm, "title", newv.Title);
         }

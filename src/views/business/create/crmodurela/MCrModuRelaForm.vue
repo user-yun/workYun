@@ -109,7 +109,7 @@ export default {
       deep: true,
       // immediate: true,
       handler(newv, oldv) {
-        if (this.ihTrue(newv)) {
+        if (this.$isTrue(newv)) {
           this.$set(this.ruleForm, "Zongid", newv.Zongid);
           // this.$set(this.ruleForm, "Title", newv.Zongtitle);
           // this.$set(this.ruleForm, "Title", newv.Orgtitle);
@@ -118,7 +118,7 @@ export default {
           this.$set(this.ruleForm, "Pcode", newv.Pcode);
           this.$set(this.ruleForm, "Type", newv.Type);
           this.$set(this.ruleForm, "Devid", newv.Devid);
-          if (this.ihTrue(newv.Status))
+          if (this.$isTrue(newv.Status))
             this.$set(this.ruleForm, "Status", newv.Status.online);
         }
       }
@@ -127,7 +127,7 @@ export default {
       deep: true,
       // immediate: true,
       handler(newv, oldv) {
-        if (this.ihTrue(newv)) this.$refs["ruleForm"].validate(valid => {});
+        if (this.$isTrue(newv)) this.$refs["ruleForm"].validate(valid => {});
       }
     }
   },

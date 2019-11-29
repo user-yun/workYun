@@ -104,7 +104,6 @@ export default {
         return !this.otherInfo.tableNotShow;
       },
       set(v) {
-        console.log(v);
         this.setOtherInfo({ tableNotShow: !v });
       }
     },
