@@ -34,6 +34,14 @@
     float: left;
 }
 
+.transparent02 {
+    background: rgba(211, 211, 211, 0.2)
+}
+
+.transparent {
+    background: transparent;
+}
+
 .option-r {
     color: #eee;
 }
@@ -73,6 +81,7 @@
 .inblock {
     display: inline-block;
 }
+
 /* pointerEvents:none禁止点击 */
 .notLineFeed {
     /* 不换行 */
@@ -91,6 +100,12 @@
     font-weight: 500;
     /* 18/1920 */
     cursor: default;
+}
+
+.largeTitle {
+    /* 大标题文字 */
+    font-size: 22px;
+    font-weight: 500;
 }
 
 .normal {

@@ -4,6 +4,7 @@
     v-model="otherInfo.languageOpt"
     @change="selectChange"
     size="mini"
+    popper-class="transparent02"
   >
     <el-option v-for="(value,key) in otherInfo.languageList" :key="key" :value="key" :label="value">
       <span class="normal float-l">{{value}}</span>

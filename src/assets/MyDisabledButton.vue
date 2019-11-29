@@ -1,10 +1,11 @@
 <template>
   <el-tooltip :content="tooltip" :disabled="tipDis" class="bttooltip">
-    <div class="inblock">
+    <div class="inblock" :style="longStyle">
       <el-button
         :type="type"
         :size="size"
         :icon="icon"
+        :style="longStyle"
         :loading="handlerLoading"
         :disabled="handlerDisabled"
         @click="emtiClick"
@@ -25,6 +26,15 @@ export default {
       handlerLoading: false,
       tipDis: false
     };
+  },
+  computed: {
+    longStyle() {
+      let data = "";
+      if (this.long == true) {
+        data = "width:100%";
+      }
+      return data;
+    }
   },
   props: {
     type: {
@@ -48,6 +58,10 @@ export default {
       default: false
     },
     loading: {
+      type: Boolean,
+      default: false
+    },
+    long: {
       type: Boolean,
       default: false
     }

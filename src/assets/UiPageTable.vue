@@ -290,14 +290,9 @@ export default {
     expandChange(r) {
       event.stopPropagation();
     },
-    cellDblClick(r, co, ce, e) {
+    cellDblClick(r, co) {
       if (this.$isTrue(co.property)) {
         this.$emit("cellDblClick", r, co);
-      } else {
-        this.$log(this.$isFalse([]));
-        this.$log(this.$isFalse([1]));
-        this.$log(this.$isFalse({}));
-        this.$log(this.$isFalse({ test: 1 }));
       }
     },
     rowDb(r, c, e) {
