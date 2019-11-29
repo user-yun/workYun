@@ -32,7 +32,7 @@ export default {
   watch: {
     "otherInfo.languageOpt": {
       handler(newValue, oldValue) {
-        if (!this.isFalse(newValue)) this.getLanguageJson();
+        if (this.$isTrue(newValue)) this.getLanguageJson();
       },
       immediate: true, //最初监听
       deep: true //深度监听
@@ -59,19 +59,6 @@ export default {
         mutations: "setLanguage",
         value: language
       });
-    },
-    isFalse(o) {
-      if (
-        !o ||
-        o === "null" ||
-        o === "undefined" ||
-        o === "false" ||
-        o === "NaN" ||
-        Object.keys(o).length < 1 ||
-        o.length < 1
-      )
-        return true;
-      return false;
     }
   }
 };

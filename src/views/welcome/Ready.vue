@@ -72,13 +72,11 @@ export default {
           ? redirect
           : pathMatch.substr(1, pathMatch.length);
       that.$router.replace({ name });
+      this.$setTitle(this.language[this.otherInfo.helloTitle]);
+      this.$setIco("https://cloud.tencent.com/favicon.ico");
       // clearTimeout(t);
       // }, 2000);
     }
-  },
-  created() {
-    this.$setTitle("yun3");
-    this.$setIco("https://cloud.tencent.com/favicon.ico");
   },
   mounted() {
     this.ready();

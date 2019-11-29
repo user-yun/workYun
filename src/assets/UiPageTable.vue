@@ -237,46 +237,9 @@ export default {
     },
     dataFormat(is, r, c) {
       let that = this;
-      let colors = require("@/color.js");
       let data = this.cellDataFormat(r, c);
       if (!is) return data;
-      try {
-        switch (that.$type(data)) {
-          case "[object String]":
-            return data.substr(0, 10);
-          case "[object Number]":
-            return data.toFixed(2);
-          case "[object Array]":
-            let ahtml = "";
-            if (data.length > 0) {
-              if (that.$type(data[0]) == "[object Object]") {
-                ahtml = JSON.stringify(data).substr(0, 10);
-              } else {
-                data.forEach(e => {
-                  ahtml += e;
-                });
-              }
-            }
-            return ahtml;
-          case "[object Object]":
-            let ohtml = "";
-            let colorio = 0;
-            for (let k in data) {
-              if (data.hasOwnProperty(k)) {
-                let e = `<div style="color:${colors[colorio]}">${k}:${
-                  data[k]
-                }</div>`;
-                ohtml += e;
-                colorio++;
-              }
-            }
-            return ohtml;
-          default:
-            return JSON.stringify(data).substr(0, 10);
-        }
-      } catch (e) {
-        return JSON.stringify(data);
-      }
+      return that.$dataFormat(data);
     },
     headerCellStyle(o) {
       this.handCss();

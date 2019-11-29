@@ -3,11 +3,6 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import store from './store';
 
-function isFalse(o) {
-    if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN' || Object.keys(o).length < 1 || o.length < 1) return true
-    return false
-}
-
 function formData(item) {
     let form = new FormData();
     for (let key in item) {
@@ -31,7 +26,7 @@ axios.interceptors.request.use((config) => {
     //在发送请求之前做某件事
     NProgress.start();
     let token = store.state.userInfo.userToken
-    config.headers.Authorization = `${isFalse(token) ? '' : token}`
+    config.headers.Authorization = `${token ? token : ''}`
     return config;
 }, (error) => {
     NProgress.done();

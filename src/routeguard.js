@@ -3,29 +3,35 @@ import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import router from './router';
 import store from './store';
-import { getLocal, clearLocal } from "@/function";
+import {
+    getLocal,
+    clearLocal
+} from "@/function";
 
-function isFalse(o) {
-    if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN' || Object.keys(o).length < 1 || o.length < 1) return true
-    return false
+function isTrue(o) {
+    return Vue.prototype.$isTrue(o);
 }
 
 function setRouterHistory(toHandler, to) {
     // if (!to.meta.noQuickTabs && !to.meta.noKeepAlive && to.meta.icon) {
     if ((!!to.meta.icon && !to.meta.noKeepAlive) || (!!to.meta.icon && !to.meta.noQuickTabs)) {
         let routerHistory = store.state.otherInfo.routerHistory
-        if (isFalse(routerHistory)) {
+        if (isTrue(routerHistory)) {
+            Vue.set(routerHistory, to.name, toHandler);
+            store.dispatch("upVuex", {
+                mutations: "setOtherInfo",
+                value: {
+                    routerHistory: routerHistory
+                }
+            });
+        } else {
             let rhObj = {};
             Vue.set(rhObj, to.name, toHandler);
             store.dispatch("upVuex", {
                 mutations: "setOtherInfo",
-                value: { routerHistory: rhObj }
-            });
-        } else {
-            Vue.set(routerHistory, to.name, toHandler);
-            store.dispatch("upVuex", {
-                mutations: "setOtherInfo",
-                value: { routerHistory: routerHistory }
+                value: {
+                    routerHistory: rhObj
+                }
             });
         }
     }
@@ -60,18 +66,24 @@ router.beforeEach((to, from, next) => {
     }
 
     let meta = to.meta;
-    // if (isFalse(meta.intercept)) {//是否需要拦截 否
-    if (meta.intercept == false) {//是否需要拦截 否
+    if (meta.intercept == false) { //是否需要拦截 否
         setRouterHistory(toHandler, to);
         next();
     } else if (meta.intercept == true) {
         let userRole = store.state.userInfo.userRole;
-        if (isFalse(userRole)) {//是否拥有角色 否
+        if (isTrue(userRole)) { //是否拥有角色 是
+            if (meta.role.includes(userRole)) { //是否角色可以跳转路由 是
+                setRouterHistory(toHandler, to);
+                next();
+            } else {
+                notAllowMessage(next);
+            }
+        } else { //有角色就可以跳转 等待加时间限制
             let userMemory = getLocal("userMemory");
-            if (!isFalse(userMemory) && Object.keys(userMemory).length > 0) {//是否本地有记忆 有
+            if (isTrue(userMemory)) { //是否本地有记忆 有
                 let second = userMemory.userInfo.lastTime.second;
                 let nowSecond = new Date().getTime();
-                let obsoleteTime = 0.5 * 60 * 60 * 1000 * 48;//用户登录时间判断拦截
+                let obsoleteTime = 0.5 * 60 * 60 * 1000 * 48; //用户登录时间判断拦截
                 if (nowSecond - second < obsoleteTime) {
                     store.dispatch("upVuex", {
                         mutations: "setUserInfo",
@@ -86,7 +98,7 @@ router.beforeEach((to, from, next) => {
                         value: userMemory.language
                     });
                     let userMRole = store.state.userInfo.userRole;
-                    if (meta.role.includes(userMRole)) {//是否角色可以跳转路由 是
+                    if (meta.role.includes(userMRole)) { //是否角色可以跳转路由 是
                         setRouterHistory(toHandler, to);
                         next();
                     } else {
@@ -96,15 +108,8 @@ router.beforeEach((to, from, next) => {
                     // clearLocal();
                     nextTo("login", to, next);
                 }
-            } else {// 否
+            } else { // 否
                 nextTo("login", to, next);
-            }
-        } else {//有角色就可以跳转 等待加时间限制
-            if (meta.role.includes(userRole)) {//是否角色可以跳转路由 是
-                setRouterHistory(toHandler, to);
-                next();
-            } else {
-                notAllowMessage(next);
             }
         }
     } else if (from.name == "login") {

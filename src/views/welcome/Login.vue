@@ -138,7 +138,7 @@ export default {
             userToken: data.Token,
             userRole: data.Role,
             userProject: data.Project,
-            projectId: that.$isFalse(res.Expand) ? null : res.Expand.Id,
+            projectId: that.$isTrue(res.Expand) ? res.Expand.Id : null,
             cooperativePartner: that.language.ABC
           });
           setLocal("userMemory", {
@@ -152,13 +152,10 @@ export default {
       });
     }
   },
-  created() {
-    this.$setTitle("yun3");
-    this.$setIco("https://cloud.tencent.com/favicon.ico");
-  },
   mounted() {
     let userMemory = getLocal("userMemory");
-    if (!this.$isFalse(userMemory) && Object.keys(userMemory).length > 0) {
+    // if (this.$isTrue(userMemory)) {
+    if (false) {
       this.setOtherInfo(userMemory.otherInfo);
     } else {
       this.setWebConfig();

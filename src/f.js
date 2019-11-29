@@ -370,15 +370,20 @@ Vue.prototype.$isFalse = function (o) {
 }
 Vue.prototype.$isTrue = function (d) {
     //检验值有但是为空
-    switch (typeof d) {
-        case "string":
+    switch (Vue.prototype.$type(d)) {
+        case "[object String]":
             return d.length > 0;
-        case "number":
+        case "[object Number]":
             return true;
-        case "boolean":
+        case "[object Boolean]":
             return d;
-        case "object":
-            if (d == "undefined" || Object.keys(d).length < 1 || d.length < 1) {
+        case "[object Array]":
+            if (d == "undefined" || d.length < 1) {
+                return false;
+            } else
+                return true;
+        case "[object Object]":
+            if (d == "undefined" || Object.keys(d).length < 1) {
                 return false;
             } else
                 return true;
@@ -387,18 +392,38 @@ Vue.prototype.$isTrue = function (d) {
     }
 }
 Vue.prototype.$dataFormat = function (data) {
+    let colors = require("@/color.js");
     try {
-        switch (typeof data) {
-            case "string":
+        switch (Vue.prototype.$type(data)) {
+            case "[object String]":
                 return data.substr(0, 10);
-            case "number":
+            case "[object Number]":
                 return data.toFixed(2);
-            case "object":
-                let t = "";
-                for (let key in data) {
-                    t += data[key]
+            case "[object Array]":
+                let ahtml = "";
+                if (data.length > 0) {
+                    if (Vue.prototype.$type(data[0]) == "[object Object]") {
+                        ahtml = JSON.stringify(data).substr(0, 10);
+                    } else {
+                        data.forEach(e => {
+                            ahtml += e;
+                        });
+                    }
                 }
-                return t;
+                return ahtml;
+            case "[object Object]":
+                let ohtml = "";
+                let colorio = 0;
+                for (let k in data) {
+                    if (data.hasOwnProperty(k)) {
+                        let e = `<div style="color:${colors[colorio]}">${k}:${
+                            data[k]
+                            }</div>`;
+                        ohtml += e;
+                        colorio++;
+                    }
+                }
+                return ohtml;
             default:
                 return JSON.stringify(data).substr(0, 10);
         }
