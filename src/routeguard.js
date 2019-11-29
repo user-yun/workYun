@@ -45,7 +45,7 @@ function notAllowMessage(next) {
         customClass: "messageBox"
     });
     next(false);
-    router.back();
+    router.go(-1);
 }
 
 function nextTo(name, to, next) {

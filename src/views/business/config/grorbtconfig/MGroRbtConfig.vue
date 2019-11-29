@@ -42,12 +42,12 @@ export default {
   mounted() {},
   computed: {
     bindDis() {
-      let bool = false;
+      let bool = true;
       if (
         this.$isTrue(this.ruleForm.GroupNumber) &&
         this.$isTrue(this.ruleForm.RobotToken)
       ) {
-        bool = true;
+        bool = false;
       }
       return bool;
     }

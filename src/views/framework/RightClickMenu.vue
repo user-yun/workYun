@@ -93,7 +93,7 @@ export default {
       this.$router.replace({ name: "quickFeedback" });
     },
     backUpPage() {
-      this.$router.back();
+      this.$router.go(-1);
     },
     reloadThisPage() {
       history.go(0);

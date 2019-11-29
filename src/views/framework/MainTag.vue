@@ -54,7 +54,7 @@ export default {
         if (rkl > 0) {
           this.$router.replace({ name: rk[rkl - 1] });
         } else {
-          this.$router.back();
+          this.$router.go(-1);
         }
       }
     },
