@@ -176,10 +176,10 @@
       </el-row>
       <el-row v-if="stepsActive==1">
         <el-col :span="12">
-          <el-form-item :label="language.subMerchantsId" :rules="rules.input">
+          <el-form-item :label="language.subMerchantsId" prop="Submerid" :rules="rules.input">
             <el-input class="form50z80" v-model="ruleForm.Submerid" clearable :maxlength="30"></el-input>
           </el-form-item>
-          <el-form-item :label="language.receiveAccount" :rules="rules.input">
+          <el-form-item :label="language.receiveAccount" prop="Receiveaccount" :rules="rules.input">
             <el-input class="form50z80" v-model="ruleForm.Receiveaccount" clearable :maxlength="30"></el-input>
           </el-form-item>
         </el-col>
