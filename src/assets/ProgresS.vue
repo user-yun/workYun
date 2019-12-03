@@ -53,7 +53,7 @@ export default {
   computed: {
     l() {
       let l = [];
-      let sum = this.list.operation("num");
+      let sum = this.list.$operation("num");
       this.list.forEach(e => {
         let o = {
           num: parseFloat(((e.num / sum) * 100).toFixed(2))

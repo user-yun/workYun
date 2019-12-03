@@ -4,11 +4,11 @@
     <div class="margin1vw" style="height:80%;">
       {{selectTableItem}}
       <UiPageTable
-        ref="routeManagementTable"
+        ref="accountManagementTable"
         :tableData="dataList"
         :TableConfig="TableConfig"
         :PageConfig="PageConfig"
-        :DataConfig="require('./RouteManagementDataConfig.js').default()"
+        :DataConfig="require('./AccountManagementDataConfig.js').default()"
         @clickPage="clickPage"
         @select="selectTable"
       ></UiPageTable>
@@ -19,7 +19,7 @@
 <script>
 export default {
   mixins: [require("@/mymixins").default],
-  name: "menuManagement",
+  name: "accountManagement",
   data() {
     return {
       TableConfig: {
@@ -34,19 +34,19 @@ export default {
       total: 0,
       dataList: [
         {
-          name: "rrrrlllllll1111111",
-          url: "rrrrrllllllll111111111111",
-          requestMode: "rrrrrllllll11111111111111"
+          username: "1111111",
+          password: "111111111111",
+          email: "11111111111111"
         },
         {
-          name: "rrrllllll2222",
-          url: "rrrlllll2222",
-          requestMode: "rrrllll2222"
+          username: "2222",
+          password: "2222",
+          email: "2222"
         },
         {
-          name: "rrrrllll3333",
-          url: "rrrrllllll3333",
-          requestMode: "rrrrllllll333333"
+          username: "3333",
+          password: "3333",
+          email: "333333"
         }
       ],
       selectTableItem: {}

@@ -1,5 +1,5 @@
 <template>
-  <div class="th4 mainTag" style="white-space:nowrap;">
+  <div class="th4 mainTag">
     <fragment v-for="(tag,key) in routerTag" :key="key">
       <el-tag
         v-if="!tag.meta.noQuickTabs"
@@ -64,12 +64,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-::-webkit-scrollbar {
-  /*滚动条整体样式*/
-  width: 0.333vw;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 0.333vw;
-}
-</style>
-

@@ -465,6 +465,15 @@
             "intercept": true,
             "role": [1, 999]
         }
+    }, {
+        "path": "/abcStatements",
+        "name": "abcStatements",
+        "component": "fundmanagement/abcstatements/AbcStatements",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1, 999]
+        }
     }]
 }, {
     "path": "/subMerchantsList",
@@ -486,8 +495,8 @@
         }
     }]
 }, {
-    "path": "/routeManagement",
-    "name": "routeManagement",
+    "path": "/systemManagement",
+    "name": "systemManagement",
     "component": "welcome/Main",
     "meta": {
         "icon": "el-icon-sugar",
@@ -495,9 +504,27 @@
         "role": [1]
     },
     "children": [{
-        "path": "/routeManagement",
-        "name": "routeManagement",
+        "path": "/menuManagement",
+        "name": "menuManagement",
         "component": "admin/routemanagement/RouteManagement",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/accountManagement",
+        "name": "accountManagement",
+        "component": "admin/accountmanagement/AccountManagement",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [1]
+        }
+    }, {
+        "path": "/roleManagement",
+        "name": "roleManagement",
+        "component": "admin/rolemanagement/RoleManagement",
         "meta": {
             "icon": "el-icon-sugar",
             "intercept": true,

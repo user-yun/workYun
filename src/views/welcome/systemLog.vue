@@ -21,7 +21,7 @@
           </el-timeline-item>
         </el-timeline>
       </el-col>
-      <el-col :span="12" v-if="showSet" @click.native="getLog">
+      <el-col :span="12" v-if="showSet">
         <el-form label-width="30%">
           <el-form-item :label="language.zhcnContent">
             <el-input v-model="ZContent" clearable :maxlength="60"></el-input>
@@ -70,6 +70,9 @@ export default {
         EContent: that.EContent,
         OContent: that.OContent
       }).then(res => {
+        that.ZContent = "";
+        that.EContent = "";
+        that.OContent = "";
         that.getLog();
       });
     },

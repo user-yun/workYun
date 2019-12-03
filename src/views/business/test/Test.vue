@@ -56,6 +56,7 @@
       <!-- <DatePickerMult :type="1" @change="pickerChange"></DatePickerMult> -->
       <!-- <ProgresS></ProgresS> -->
       <mdb @click="exc">excelTest</mdb>
+      <!-- <AutoScroll style="height:40vh"></AutoScroll> -->
       <!-- <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch> -->
       <!-- <ECharts
       style="pointerEvents:none"
@@ -82,6 +83,7 @@ export default {
     // ProgresS: () => import("@/assets/ProgresS"),
     ECharts: () => import("@/assets/ECharts"),
     PrintBody: () => import("@/assets/PrintBody"),
+    // AutoScroll: () => import("@/assets/AutoScroll"),
     ProOrgSearch: () => import("#/multiplexing/proorgsearch/ProOrgSearch")
   },
   data() {
@@ -232,15 +234,6 @@ export default {
       ]
     };
   },
-  props: {
-    // test: {
-    //   type: String,
-    //   default: () => {
-    //     let colors = require("@/color.js");
-    //     return colors[Math.ceil(Math.random() * colors.length - 1)];
-    //   }
-    // }
-  },
   computed: {
     upDataHandler() {
       let td = {};
@@ -251,17 +244,8 @@ export default {
       return td;
     }
   },
-  watch: {
-    //监听数据变化
-    // test: {
-    //   deep: true,
-    //   immediate: true,
-    //   handler(newv, oldv) {}
-    // }
-  },
   methods: {
-    proOrgSelect(o) {
-    },
+    proOrgSelect(o) {},
     deleUpData(i) {
       this.upData.splice(i);
     },
@@ -303,6 +287,7 @@ export default {
         this.List = data;
       });
     }
-  }
+  },
+  mounted() {}
 };
 </script>

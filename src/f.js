@@ -1,12 +1,26 @@
-Array.prototype.max = function () {
+Array.prototype.$max = function () {
     //数字数组里最大
     return Math.max.apply({}, this);
 }
-Array.prototype.min = function () {
+Array.prototype.$min = function () {
     //数字数组里最小
     return Math.min.apply({}, this);
 }
-Array.prototype.itemByValue = function (v, ii, t) {
+Array.prototype.$minByObj = function (k) {
+    //对象数组中某个属性的最小值
+    return Math.min.apply({}, this.map(i => { return i[k] }));
+}
+Array.prototype.$maxByObj = function (k) {
+    //对象数组中某个属性的最大值
+    return Math.max.apply({}, this.map(i => { return i[k] }));
+}
+Vue.prototype.$maxValue = function (o) {
+    return Math.max.apply({}, Object.values(o))
+}
+Vue.prototype.$minValue = function (o) {
+    return Math.min.apply({}, Object.values(o))
+}
+Array.prototype.$itemByValue = function (v, ii, t) {
     //比较数组中对象的某个值等于传入的值返回另一个值
     return this.find(i => i[v] == ii)[t]
     // for (let i = 0, l = this.length; i < l; i++) {
@@ -15,7 +29,7 @@ Array.prototype.itemByValue = function (v, ii, t) {
     //     }
     // }
 }
-Array.prototype.operation = function (i, o) {
+Array.prototype.$operation = function (i, o) {
     //单个item的数组的计算
     let s = 0;
     let a = 0;
@@ -248,7 +262,7 @@ Vue.directive('dialogDrag', {
  *(new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
  *(new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
  */
-Date.prototype.format = function (fmt) {
+Date.prototype.$format = function (fmt) {
     //日期格式化
     let o = {
         "M+": this.getMonth() + 1, //月份

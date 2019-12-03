@@ -57,10 +57,10 @@ export default {
     if (this.default) {
       let date = new Date();
       date.setDate(date.getDate() - this.dayNum);
-      this.day.push(date.format(this.valueF[this.type]));
+      this.day.push(date.$format(this.valueF[this.type]));
       date = new Date();
       date.setDate(date.getDate() - this.currentNum);
-      this.day.push(date.format(this.valueF[this.type]));
+      this.day.push(date.$format(this.valueF[this.type]));
       this.$emit("change", this.day);
     }
   }

@@ -7,10 +7,10 @@
         {{language.billTimeSlot}}
         <DatePickerMult
           class="margin1vw-r"
-          :dayNum="5"
-          :currentNum="0"
+          :dayNum="2"
+          :currentNum="2"
           @change="pickerChange"
-          :clearable="true"
+          :clearable="false"
           style="width:32%"
         ></DatePickerMult>
         <!-- {{language.billState}}
@@ -70,11 +70,11 @@
     </el-row>
     <div class="margin1vw" style="height:80%;">
       <UiPageTable
-        ref="entryDetailsSummaryTable"
+        ref="abcStatementsTable"
         :tableData="dataList"
         :TableConfig="TableConfig"
         :PageConfig="PageConfig"
-        :DataConfig="require('./EntryDetailsSummaryDataConfig.js').default()"
+        :DataConfig="require('./AbcStatementsDataConfig.js').default()"
         @clickPage="clickPage"
         @select="selectTable"
       ></UiPageTable>
@@ -85,7 +85,7 @@
 <script>
 export default {
   mixins: [require("@/mymixins").default],
-  name: "entryDetailsSummary",
+  name: "abcStatements",
   components: {
     UiPageTable: () => import("@/assets/UiPageTable"),
     DatePickerMult: () => import("@/assets/DatePickerMult")
@@ -123,19 +123,19 @@ export default {
     excelOut() {
       require("@/excelformat/seeGetExcel.js").default(
         this,
-        this.language.entryDetailsSummary,
+        this.language.abcStatements,
         [
           {
-            name: this.language.entryDetailsSummary,
+            name: this.language.abcStatements,
             list: this.selectExcelOut
           }
         ],
-        require("./EntryDetailsSummaryDataConfig.js").default()
+        require("./AbcStatementsDataConfig.js").default()
       );
     },
     searchRecharge() {
       this.selectExcelOut = [];
-      this.$refs.entryDetailsSummaryTable.resetPage();
+      this.$refs.abcStatementsTable.resetPage();
     },
     clickPage(d, l) {
       this.page = d;
@@ -176,7 +176,7 @@ export default {
 
       that
         // .post("/api/client/abc/orderinfo", {
-          .get("/findPaymentByOrderDate", {
+        .get("/findStatementsByOrderTime", {
           pagesize: that.pageSize,
           page: that.page,
           // phone,
@@ -192,24 +192,24 @@ export default {
           let data = res.data;
           that.dataList = data != null ? data : [];
           // that.dataList.forEach(e => {
-          //   let typeText =
-          //     that.language[
-          //       that.otherInfo.rechargeModeList.$itemByValue(
-          //         "value",
-          //         e.Rechargeway,
-          //         "text"
-          //       )
-          //     ];
-          //   let statusText =
-          //     that.language[
-          //       that.otherInfo.liquidationStateList.$itemByValue(
-          //         "value",
-          //         e.Status,
-          //         "text"
-          //       )
-          //     ];
-          //   that.$set(e, "PaymentChannel", typeText);
-          //   that.$set(e, "billState", statusText);
+            // let typeText =
+            //   that.language[
+            //     that.otherInfo.rechargeModeList.$itemByValue(
+            //       "value",
+            //       e.Rechargeway,
+            //       "text"
+            //     )
+            //   ];
+            // let statusText =
+            //   that.language[
+            //     that.otherInfo.liquidationStateList.$itemByValue(
+            //       "value",
+            //       e.Status,
+            //       "text"
+            //     )
+            //   ];
+            // that.$set(e, "PaymentChannel", typeText);
+            // that.$set(e, "billState", statusText);
           // });
           // that.total = res.Data.total;
         });

@@ -69,7 +69,7 @@ export default {
         that.bindList.forEach(e => {
           let typeText =
             that.language[
-              that.otherInfo.shareTreeNodeList.itemByValue(
+              that.otherInfo.shareTreeNodeList.$itemByValue(
                 "value",
                 e.ModuleFuncType,
                 "text"

@@ -4,11 +4,11 @@
     <div class="margin1vw" style="height:80%;">
       {{selectTableItem}}
       <UiPageTable
-        ref="routeManagementTable"
+        ref="roleManagementTable"
         :tableData="dataList"
         :TableConfig="TableConfig"
         :PageConfig="PageConfig"
-        :DataConfig="require('./RouteManagementDataConfig.js').default()"
+        :DataConfig="require('./RoleManagementDataConfig.js').default()"
         @clickPage="clickPage"
         @select="selectTable"
       ></UiPageTable>
@@ -19,7 +19,7 @@
 <script>
 export default {
   mixins: [require("@/mymixins").default],
-  name: "menuManagement",
+  name: "roleManagement",
   data() {
     return {
       TableConfig: {
@@ -34,19 +34,13 @@ export default {
       total: 0,
       dataList: [
         {
-          name: "rrrrlllllll1111111",
-          url: "rrrrrllllllll111111111111",
-          requestMode: "rrrrrllllll11111111111111"
+          rolename: "nnnnnnnnnnnnn",
         },
         {
-          name: "rrrllllll2222",
-          url: "rrrlllll2222",
-          requestMode: "rrrllll2222"
+          rolename: "nnnnnnn444444444",
         },
         {
-          name: "rrrrllll3333",
-          url: "rrrrllllll3333",
-          requestMode: "rrrrllllll333333"
+          rolename: "n5555555555555",
         }
       ],
       selectTableItem: {}

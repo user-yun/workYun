@@ -294,7 +294,7 @@ export default {
       // let projectId = this.userInfo.projectId;
       // let userProject = this.userInfo.userProject;
       this.post(
-        "/api/client/abc/regsubmerinforequest",
+        "/abcinterface/RegSubMerInfoRequest",
         this.ruleForm,
         false,
         true
@@ -322,7 +322,7 @@ export default {
         verificationcode = undefined;
       }
       this.post(
-        "/api/client/abc/submerverify",
+        "/abcinterface/VerifyMessageCodeAndRandomAmount",
         {
           account: that.ruleForm.Receiveaccount,
           submerchantno: that.ruleForm.Submerid,

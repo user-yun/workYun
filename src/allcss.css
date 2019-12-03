@@ -61,6 +61,14 @@
 
 .mainTag {
     overflow: hidden;
+    white-space: nowrap;
+}
+
+.mainTag::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 0.333vw;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 0.333vw;
 }
 
 .mainTag:hover {
@@ -143,6 +151,18 @@
 
 .overflowauto {
     overflow: auto;
+}
+
+.autoScroll {
+    overflow: auto;
+    transition: all 1s;
+}
+
+.autoScroll::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 0.001px;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 0.001px;
 }
 
 .hh5 {
@@ -292,24 +312,21 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.list-complete-enter
-
-/* .list-complete-leave-active for below version 2.1.8 */
-    {
-    opacity: 0;
-    transition: all 2s;
-    transform: translateY(1vh);
+/* .list-complete-enter { */
+    /* .list-complete-leave-active for below version 2.1.8 */
+    /* opacity: 0; */
+    /* transition: all 2s; */
+    /* transform: translateY(1vh); */
     /* transform: scale(1.2) translateY(4.16666vh); */
-}
+/* } */
 
-.list-complete-leave-to {
-    opacity: 0;
-    transition: all 0.1s;
-    transform: scale(0.1) translateY(-0.1vh) translateZ(-100);
-    z-index: -100;
+/* .list-complete-leave-to { */
+    /* opacity: 0; */
+    /* transition: all 0.1s; */
+    /* transform: scale(0.1) translateY(-0.1vh) translateZ(-100); */
     /* transform: scale(0.1) translateY(-4.16666vh); */
-}
+/* } */
 
-.list-complete-leave-active {
+/* .list-complete-leave-active {
     position: absolute;
-}
+} */

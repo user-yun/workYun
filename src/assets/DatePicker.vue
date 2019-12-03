@@ -51,7 +51,7 @@ export default {
     if (this.default) {
       let date = new Date();
       date.setDate(date.getDate() - this.dayNum);
-      this.day = date.format(this.valueF[this.type]);
+      this.day = date.$format(this.valueF[this.type]);
       this.$emit("change", this.day);
     }
   }

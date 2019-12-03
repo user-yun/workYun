@@ -13,14 +13,14 @@ export default function f() {
     let arr = [
         {
             width: "220",
-            prop: "Submerid",
+            prop: "subMerId",
             align: "right",
             label: language.subMerchantsId,
             fixed: true,
         },
         {
             width: "220",
-            prop: "Submername",
+            prop: "subMerName",
             align: "center",
             label: language.subMerchantsName,
             fixed: true,
@@ -34,7 +34,7 @@ export default function f() {
         },
         {
             width: "120",
-            prop: "Contactname",
+            prop: "contactName",
             align: "center",
             label: language.personInChargeName,
         },
@@ -47,14 +47,14 @@ export default function f() {
         },
         {
             width: "200",
-            prop: "Certificateno",
+            prop: "certificateNo",
             align: "center",
             label: language.personInChargeCertificatesNum,
             type: "expand"
         },
         {
             width: "200",
-            prop: "Merchantname",
+            prop: "companyName",
             align: "center",
             label: language.enterpriseName,
         },
@@ -67,26 +67,26 @@ export default function f() {
         },
         {
             width: "250",
-            prop: "Mercertificatenum",
+            prop: "companyCertNo",
             align: "center",
             label: language.enterpriseCertificatesNum,
             type: "expand"
         },
         {
             width: "250",
-            prop: "Receiveaccountname",
+            prop: "accountName",
             align: "center",
             label: language.receiveName,
         },
         {
             width: "230",
-            prop: "Receiveaccount",
+            prop: "account",
             align: "center",
             label: language.receiveAccount,
         },
         {
             width: "230",
-            prop: "Receivebankname",
+            prop: "bankName",
             align: "center",
             label: language.receiveBank,
         },
@@ -99,32 +99,32 @@ export default function f() {
         },
         {
             width: "140",
-            prop: "Bankmobilenum",
+            prop: "mobilePhone",
             align: "center",
             label: language.bankReservePhone,
             type: "expand"
         },
         {
             width: "140",
-            prop: "Mermobilephonenum",
+            prop: "merMobilePhone",
             align: "center",
             label: language.personInChargePhone,
             type: "expand"
         },
-        {
-            width: "200",
-            prop: "Opendate",
-            align: "center",
-            label: language.subMerchantsOpenTime,
-            type: "expand"
-        },
-        {
-            width: "200",
-            prop: "Reviewdate",
-            align: "center",
-            label: language.subMerchantsAuditTime,
-            type: "expand"
-        },
+        // {
+        //     width: "200",
+        //     prop: "Opendate",
+        //     align: "center",
+        //     label: language.subMerchantsOpenTime,
+        //     type: "expand"
+        // },
+        // {
+        //     width: "200",
+        //     prop: "Reviewdate",
+        //     align: "center",
+        //     label: language.subMerchantsAuditTime,
+        //     type: "expand"
+        // },
         {
             width: "170",
             prop: "StatusText",

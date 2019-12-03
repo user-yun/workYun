@@ -1,9 +1,9 @@
 <template>
   <el-dialog v-if="show" :visible.sync="show" :before-close="handleClose" destroy-on-close>
     <el-form label-width="30%">
-      <el-form-item :label="language.subMerchantsName">{{showData.MerchantName}}</el-form-item>
+      <el-form-item :label="language.subMerchantsName">{{showData.subMerName}}</el-form-item>
       <el-form-item :label="language.recordedtTotalAmount">
-        <CountTo :start-val="0" :end-val="+showData.Balance" :duration="duration" :decimals="2"></CountTo>
+        <CountTo :start-val="0" :end-val="+showData.balance" :duration="duration" :decimals="2"></CountTo>
       </el-form-item>
       <el-form-item>
         <span class="normal">{{language.balanceAccountTooltip}}</span>

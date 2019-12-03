@@ -1,11 +1,18 @@
 <template>
-  <div class="shadow w100 h100" ref="VertRoll" :style="{height:DHeight}">
+  <div
+    class="shadow w100 h100"
+    ref="VertRoll"
+    :style="{height:DHeight}"
+    @mousewheel="VetMouseWheel"
+    @mouseleave="autoFun"
+    @mouseover="clearTimer"
+  >
     <transition-group name="list-complete" tag="div">
       <el-row
         v-for=" (items,index) in data "
-        :style=" {height:height,width:'99.7%',listStyle:'none'} "
+        :style=" {height:height} "
         :key="items.index"
-        class="list-complete-item"
+        class="list-complete-item w100"
         @click.native="liCilck(items)"
         type="flex"
         align="middle"
@@ -40,7 +47,7 @@ export default {
           obj: [
             {
               length: 18,
-              text: "这是隔6长18居中",
+              text: "这是隔6长18居中111",
               align: "center",
               offset: 6,
               background: "#99a9bf"
@@ -48,11 +55,71 @@ export default {
           ]
         },
         {
-          index: 2,
+          index: 113132,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中111",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 11321321,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中111",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 1132132132121,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中111",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 1333,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中222",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 1444,
+          obj: [
+            {
+              length: 18,
+              text: "这是隔6长18居中3333",
+              align: "center",
+              offset: 6,
+              background: "#99a9bf"
+            }
+          ]
+        },
+        {
+          index: 2555,
           obj: [
             {
               length: 6,
-              text: "这是隔3长6居右",
+              text: "这是隔3长6居右44444",
               align: "right",
               offset: 3,
               background: "#99a9bf"
@@ -332,26 +399,51 @@ export default {
         this.s = i;
       }
     },
-    shuffle: function() {
+    shuffle: function(i) {
+      this.$addCSS(
+        `.list-complete-item{transition: all ${i ? i : 4}s;display: block;}`
+      );
       let item = this.data[0];
       this.data.splice(this.data.length, 0, item);
       this.data.splice(0, 1);
     },
+    adShuffle() {
+      this.$addCSS(".list-complete-item{transition: all 0s;display: block;}");
+      let item = this.data[this.data.length - 1];
+      this.data.splice(0, 0, item);
+      this.data.splice(this.data.length - 1, 1);
+    },
     liCilck(items) {
       this.$emit("onClick", items);
+    },
+    autoFun() {
+      if (this.timer == null) {
+        this.handlerHeight();
+        if (this.showNum < this.data.length) {
+          this.timer = setInterval(this.shuffle, this.aniTime * 1000);
+        }
+      }
+    },
+    clearTimer() {
+      if (this.timer != null) {
+        clearInterval(this.timer); //关闭
+      }
+      this.timer = null;
+    },
+    VetMouseWheel(e) {
+      let isDown = e.deltaY > 0;
+      if (isDown) {
+        this.shuffle(0.1);
+      } else {
+        this.adShuffle();
+      }
     }
   },
   mounted() {
-    this.handlerHeight();
-    if (this.showNum < this.data.length)
-      this.timer = setInterval(this.shuffle, this.aniTime * 1000);
-    document.body.style.overflowX = "hidden";
+    this.autoFun();
   },
   beforeDestroy() {
-    if (this.timer) {
-      clearInterval(this.timer); //关闭
-    }
-  },
-  destroyed() {}
+    this.clearTimer();
+  }
 };
 </script>

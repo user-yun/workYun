@@ -15,7 +15,7 @@ export default function sg(that, n, o, c) {
         SheetNames: [],
         Sheets: {}
     }
-    let row = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]
+    let row = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     o.forEach((oe, oei) => {
         let p = {};
         that.$set(p, "!cols", []);

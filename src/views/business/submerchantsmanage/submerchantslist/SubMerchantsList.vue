@@ -52,13 +52,13 @@
         <mdb @click="handlerDialog(2)" class="margin1vw-r">{{language.subMerchantsAdd}}</mdb>
         <mdb
           @click="queryBalance(selectTableItem)"
-          :disabled="!selectTableItem.hasOwnProperty('Submerid')"
+          :disabled="!selectTableItem.hasOwnProperty('subMerId')"
         >{{language.queryBalance}}</mdb>
         <!-- <el-dropdown trigger="click">
           <span>
             <mdb
               :tooltip="language.pleaseIsTableSelect"
-              :disabled="!selectTableItem.hasOwnProperty('Submerid')"
+              :disabled="!selectTableItem.hasOwnProperty('subMerId')"
             >{{language.moreOperations}}</mdb>
           </span>
           <el-dropdown-menu slot="dropdown">
@@ -133,10 +133,12 @@ export default {
     queryBalance(d) {
       let that = this;
       that
-        .post(`/api/client/abc/submeraccbalqry/${d.Submerid}`, {})
+        .get(`/merchantProcess`, {
+          process: "queryBalance",
+          subMerId: d.subMerId
+        })
         .then(res => {
-          let data = JSON.parse(res.data);
-          that.handlerDialog(3, data.MSG.Message.TrxResponse);
+          that.handlerDialog(3, res.data[0]);
         });
     },
     handlerDialog(i, d) {
@@ -178,13 +180,13 @@ export default {
       this.firstEntry = false;
       let that = this;
       let qnl = that.businessPhoneNum ? that.businessPhoneNum.length : 0; //获取输入框值的长度
-      let submerid = qnl != 11 && qnl != 0 ? that.businessPhoneNum : undefined; //长度不为11且不为0，则认为是商户号 （undefined是为了不传字段）
+      let subMerId = qnl != 11 && qnl != 0 ? that.businessPhoneNum : undefined; //长度不为11且不为0，则认为是商户号 （undefined是为了不传字段）
       let phone = qnl == 11 ? that.businessPhoneNum : undefined; //长度为11则认为是手机号
       let startdate = that.dateSlot ? that.dateSlot[0] : undefined; //如果时间段有值则取值
       let enddate = that.dateSlot ? that.dateSlot[1] : undefined;
       let status = that.bankAuditState;
 
-      if (submerid != undefined || phone != undefined) {
+      if (subMerId != undefined || phone != undefined) {
         //如果商户号或者手机号有一个有则按照号的为准
         startdate = undefined;
         enddate = undefined;
@@ -194,10 +196,11 @@ export default {
       // let projectId = this.userInfo.projectId;
       // let userProject = this.userInfo.userProject;
       that
-        .post(`/api/client/abc/getsubmerinfo`, {
+        // .post(`/api/client/abc/getsubmerinfo`, {
+        .get(`/findMerchantInfoAll`, {
           pagesize: that.pageSize,
           page: that.page,
-          submerid,
+          subMerId,
           phone,
           status,
           startdate,
@@ -205,52 +208,52 @@ export default {
         })
         .then(res => {
           that.dataList = [];
-          let data = res.Data.data;
+          let data = res.data;
           that.dataList = data;
           if (data != null) {
             that.dataList.forEach(e => {
               //二级商户类型处理
               let SubMerType =
                 that.language[
-                  that.otherInfo.subMerchantsTypeList.itemByValue(
+                  that.otherInfo.subMerchantsTypeList.$itemByValue(
                     "value",
-                    e.Submertype,
+                    e.subMerType,
                     "text"
                   )
                 ];
               //负责人证件类型
               let CertificateType =
                 that.language[
-                  that.otherInfo.personInChargeCertificatesTypeList.itemByValue(
+                  that.otherInfo.personInChargeCertificatesTypeList.$itemByValue(
                     "value",
-                    e.Certificatetype,
+                    e.certificateType,
                     "text"
                   )
                 ];
               //企业证件类型
               let MerCertificateType =
                 that.language[
-                  that.otherInfo.enterpriseCertificatesTypeList.itemByValue(
+                  that.otherInfo.enterpriseCertificatesTypeList.$itemByValue(
                     "value",
-                    e.Mercertificatetype,
+                    e.companyCertType,
                     "text"
                   )
                 ];
               //收款账户类型
               let ReceiveAccountType =
                 that.language[
-                  that.otherInfo.receiveAccountTypeList.itemByValue(
+                  that.otherInfo.receiveAccountTypeList.$itemByValue(
                     "value",
-                    e.Receiveaccounttype,
+                    e.accountType,
                     "text"
                   )
                 ];
               //审核状态
               let Status =
                 that.language[
-                  that.otherInfo.bankAuditStateList.itemByValue(
+                  that.otherInfo.bankAuditStateList.$itemByValue(
                     "value",
-                    e.Status,
+                    e.status,
                     "text"
                   )
                 ];
@@ -261,7 +264,7 @@ export default {
               that.$set(e, "StatusText", Status);
             });
           }
-          that.total = res.Data.total;
+          // that.total = res.Data.total;
         });
     }
   },
