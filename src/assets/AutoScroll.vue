@@ -1,5 +1,5 @@
 <template>
-  <div class="h100 w100 autoScroll animated bounceInDown" ref="AutoScroll">
+  <div class="h100 w100 autoScroll" ref="AutoScroll">
     <!-- <mi icon="iconfont icon-yuebuzutixing"></mi> -->
     <el-row
       v-for=" (items,index) in data "

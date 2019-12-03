@@ -13,7 +13,8 @@ let router = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/welcome/Login.vue'),
+    // component: () => import('@/views/welcome/AbcLogin.vue'),
+    component: () => import('@/views/welcome/PowerbeeLogin.vue'),
     meta: {
       intercept: false,
       noQuickTabs: true,

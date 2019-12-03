@@ -37,15 +37,16 @@ function setRouterHistory(toHandler, to) {
     }
 }
 
-function notAllowMessage(next) {
+function notAllowMessage(to, next) {
     Vue.prototype.$message({
         message: store.state.language.functionNotEnabled,
         type: "error",
         duration: 8000,
         customClass: "messageBox"
     });
-    next(false);
-    router.go(-1);
+    // next(false);
+    // router.go(-1);
+    nextTo("404", to, next);
 }
 
 function nextTo(name, to, next) {
@@ -76,7 +77,7 @@ router.beforeEach((to, from, next) => {
                 setRouterHistory(toHandler, to);
                 next();
             } else {
-                notAllowMessage(next);
+                notAllowMessage(to, next);
             }
         } else { //有角色就可以跳转 等待加时间限制
             let userMemory = getLocal("userMemory");
@@ -102,7 +103,7 @@ router.beforeEach((to, from, next) => {
                         setRouterHistory(toHandler, to);
                         next();
                     } else {
-                        notAllowMessage(next);
+                        notAllowMessage(to, next);
                     }
                 } else {
                     // clearLocal();
@@ -115,7 +116,7 @@ router.beforeEach((to, from, next) => {
     } else if (from.name == "login") {
         nextTo("ready", to, next);
     } else {
-        notAllowMessage(next);
+        notAllowMessage(to, next);
     }
     NProgress.done();
 });
