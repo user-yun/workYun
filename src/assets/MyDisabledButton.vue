@@ -64,6 +64,10 @@ export default {
     long: {
       type: Boolean,
       default: false
+    },
+    disabledTime: {
+      type: Number,
+      default: 2500
     }
   },
   watch: {
@@ -83,16 +87,19 @@ export default {
     }
   },
   methods: {
-    emtiClick() {
+    clickDis() {
       let that = this;
-      this.$emit("click");
       this.handlerDisabled = true;
       this.handlerLoading = true;
       let t = setTimeout(() => {
         that.handlerDisabled = that.disabled;
         that.handlerLoading = false;
         clearTimeout(t);
-      }, 2500);
+      }, that.disabledTime);
+    },
+    emtiClick() {
+      this.$emit("click");
+      this.clickDis();
     }
   },
   mounted() {

@@ -118,17 +118,24 @@ export function setLocal(key, val) {
     // }
 }
 /*获取localStorage*/
-export function getLocal(key) {
+export function getLocal(key, value) {
+    if (value == undefined) {
+        value = {}
+    }
     let ls = window.localStorage;
     try {
         let data = JSON.parse(ls.getItem("allLoacl"));
-        if (key === "allLoacl") {
+        if (data == null) {
+            return value;
+        } else if (key === "allLoacl") {
             return data;
-        } else {
+        } else if (!!data[key] && data[key] != undefined) {
             return data[key];
+        } else {
+            value
         }
     } catch (error) {
-        return null;
+        return value;
     }
 
 

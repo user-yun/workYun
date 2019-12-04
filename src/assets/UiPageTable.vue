@@ -139,7 +139,7 @@ export default {
     },
     cellStyle: {
       default: () => {
-        let c = "padding:4px";
+        let c = "padding:2px 1px";
         return c;
       }
     },
@@ -244,7 +244,7 @@ export default {
     headerCellStyle(o) {
       this.handCss();
       if (o.columnIndex == 0 && this.TableConfig.single) {
-        return { pointerEvents: "none", opacity: 0.4 };
+        return { pointerEvents: "none", opacity: 0.2 };
       }
     },
     refSelectAll() {

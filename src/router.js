@@ -14,7 +14,8 @@ let router = [
     path: '/login',
     name: 'login',
     // component: () => import('@/views/welcome/AbcLogin.vue'),
-    component: () => import('@/views/welcome/PowerbeeLogin.vue'),
+    // component: () => import('@/views/welcome/PowerbeeLogin.vue'),
+    component: () => import('@/views/welcome/OrgLogin.vue'),
     meta: {
       intercept: false,
       noQuickTabs: true,
@@ -44,7 +45,7 @@ let router = [
     meta: {
       intercept: true,
       noQuickTabs: true,
-      role: [1, 999]
+      role: [1, 2, 999]
     }
   }
 ]

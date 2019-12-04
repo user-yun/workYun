@@ -338,8 +338,8 @@
         }
     }]
 }, {
-    "path": "/parkmanagement",
-    "name": "parkmanagement",
+    "path": "/parkManageMent",
+    "name": "parkManageMent",
     "component": "welcome/Main",
     "meta": {
         "icon": "el-icon-sugar",
@@ -529,6 +529,90 @@
             "icon": "el-icon-sugar",
             "intercept": true,
             "role": [1]
+        }
+    }]
+}, {
+    "path": "/orgAccount",
+    "name": "orgAccount",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [2]
+    },
+    "children": [{
+        "path": "/monthlyCheckoutSheet",
+        "name": "monthlyCheckoutSheet",
+        "component": "orgaccount/monthlycheckoutsheet/MonthlyCheckoutSheet",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [2]
+        }
+    }, {
+        "path": "/orgRechargeRecord",
+        "name": "orgRechargeRecord",
+        "component": "orgaccount/rechargerecord/RechargeRecord",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [2]
+        }
+    }]
+}, {
+    "path": "/elecManageMent",
+    "name": "elecManageMent",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [2]
+    },
+    "children": [{
+        "path": "/deviceList",
+        "name": "deviceList",
+        "component": "orgelecmanagement/devicelist/DeviceList",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [2]
+        }
+    }, {
+        "path": "/enerAnalysis",
+        "name": "enerAnalysis",
+        "component": "orgelecmanagement/eneranalysis/EnerAnalysis",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [2]
+        }
+    }]
+}, {
+    "path": "/estaManageMent",
+    "name": "estaManageMent",
+    "component": "welcome/Main",
+    "meta": {
+        "icon": "el-icon-sugar",
+        "intercept": true,
+        "role": [2]
+    },
+    "children": [{
+        "path": "/property",
+        "name": "property",
+        "component": "orgestamanagement/property/Property",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [2]
+        }
+    }, {
+        "path": "/rent",
+        "name": "rent",
+        "component": "orgestamanagement/rent/Rent",
+        "meta": {
+            "icon": "el-icon-sugar",
+            "intercept": true,
+            "role": [2]
         }
     }]
 }]
