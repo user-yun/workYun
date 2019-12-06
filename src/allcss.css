@@ -261,9 +261,15 @@ body {
     /* margin-top: -10px; */
 }
 
+.el-tree-node__content:hover {
+    background-color: #77777713;
+    color: rgba(34, 144, 255, 0.596);
+    font-weight: 500;
+}
+
 .el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
-    background-color: #44444436;
-    color: #409EFF;
+    background-color: rgba(131, 176, 238, 0.26);
+    color: rgb(15, 119, 255);
     font-weight: 500;
 }
 
@@ -319,22 +325,3 @@ body {
 .list-complete-item:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
-
-/* .list-complete-enter { */
-/* .list-complete-leave-active for below version 2.1.8 */
-/* opacity: 0; */
-/* transition: all 2s; */
-/* transform: translateY(1vh); */
-/* transform: scale(1.2) translateY(4.16666vh); */
-/* } */
-
-/* .list-complete-leave-to { */
-/* opacity: 0; */
-/* transition: all 0.1s; */
-/* transform: scale(0.1) translateY(-0.1vh) translateZ(-100); */
-/* transform: scale(0.1) translateY(-4.16666vh); */
-/* } */
-
-/* .list-complete-leave-active {
-    position: absolute;
-} */

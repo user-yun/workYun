@@ -15,7 +15,8 @@ let router = [
     name: 'login',
     // component: () => import('@/views/welcome/AbcLogin.vue'),
     // component: () => import('@/views/welcome/PowerbeeLogin.vue'),
-    component: () => import('@/views/welcome/OrgLogin.vue'),
+    component: () => import('@/views/welcome/AdminLogin.vue'),
+    // component: () => import('@/views/welcome/OrgLogin.vue'),
     meta: {
       intercept: false,
       noQuickTabs: true,

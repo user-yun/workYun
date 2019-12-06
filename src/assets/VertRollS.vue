@@ -7,7 +7,7 @@
     @mouseleave="autoFun"
     @mouseover="clearTimer"
   >
-    <transition-group name="list-complete" tag="div">
+    <transition-group>
       <el-row
         v-for=" (items,index) in data "
         :style=" {height:height} "
@@ -17,7 +17,7 @@
         type="flex"
         align="middle"
       >
-        <fragment v-if=" index < showNum ">
+        <fragment v-if=" index < showNum " :key="items.index">
           <el-col
             v-for=" (item,index) in items.obj "
             :key="index"

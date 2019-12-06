@@ -47,7 +47,7 @@ export default {
     },
     size: {
       type: String,
-      default: "small"
+      default: "mini"
     },
     icon: {
       type: String,

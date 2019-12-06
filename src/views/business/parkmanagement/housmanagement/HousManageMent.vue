@@ -111,7 +111,7 @@ export default {
     theHousLowerAdd(i) {
       let that = this;
       let Project = this.userInfo.userProject;
-      let Zoneid = undefined;
+      let Zoneid = undefined;//可以直接声明不带=号的
       if (i == 1) {
         Zoneid = that.housData.Id;
       }

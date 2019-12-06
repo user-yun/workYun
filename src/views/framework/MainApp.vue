@@ -1,10 +1,10 @@
 <template >
   <div class="shadow mainAppContent w100" style="overflow: auto;">
     <!-- <transition
-      name="custom-classes-transition"
+      name="mainapp-classes-transition"
       enter-active-class="animated zoomInDown"
       leave-active-class="animated zoomOutDown"
-      :duration="{ enter: 500, leave: 300 }"
+      :duration="{ enter: 500, leave: 500 }"
       mode="out-in"
     >-->
     <keep-alive :include="include">

@@ -2,14 +2,7 @@ import axios from 'axios'
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import store from './store';
-
-function formData(item) {
-    let form = new FormData();
-    for (let key in item) {
-        form.append(key, item[key]);
-    }
-    return form;
-}
+import { formData } from '@/function'
 
 axios.defaults.timeout = 20000;                        //响应时间
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';        //配置请求头

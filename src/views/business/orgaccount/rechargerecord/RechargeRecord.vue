@@ -1,6 +1,11 @@
 <template>
   <el-row>
     <mt>{{language[$options.name]}}</mt>
+    <div class="normal margin1vw-l">{{language.orgMonthlyCheckoutSheetTooltip}}</div>
+    <el-row class="alnrit margin1vw-r">
+      <DatePicker :type="1" :dayNum="31" @change="pickerChange"></DatePicker>
+      <mdb :disabled="!selectTableItem.hasOwnProperty('Bid')">{{language.viewBillDetails}}</mdb>
+    </el-row>
     <div class="margin1vw" style="height:80%;">
       <UiPageTable
         ref="orgRechargeRecord"
@@ -30,22 +35,15 @@ export default {
       },
       page: 1,
       pageSize: 30,
-      total: 0,
+      total: 1000,
       dataList: [],
-      selectTableItem: {}
+      selectTableItem: {},
+      selectDate: ""
     };
   },
   components: {
-    UiPageTable: () => import("@/assets/UiPageTable")
-  },
-  props: {
-    // test: {
-    //   type: String,
-    //   default: () => {
-    //     let colors = require("@/color.js");
-    //     return colors[Math.ceil(Math.random() * colors.length - 1)];
-    //   }
-    // }
+    UiPageTable: () => import("@/assets/UiPageTable"),
+    DatePicker: () => import("@/assets/DatePicker")
   },
   computed: {
     PageConfig() {
@@ -64,6 +62,10 @@ export default {
     // }
   },
   methods: {
+    pickerChange(t) {
+      this.selectDate = t;
+      this.getRequest();
+    },
     clickPage(d, l) {
       this.page = d;
       this.pageSize = l;
@@ -73,19 +75,16 @@ export default {
       this.selectTableItem = t.length > 0 ? this.$avoid(t[0]) : {};
     },
     getRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.get(`/zone/1231321/${userProject}`, {}).then(res => {
+      let that = this;
+      let orgid = this.userInfo.userOrgid;
+      this.get(
+        `/recharge/historymonth/${orgid}/${that.selectDate}/${that.page}/${
+          that.pageSize
+        }`,
+        {}
+      ).then(res => {
         let data = res.Data;
-        this.List = data;
-      });
-    },
-    postRequest() {
-      let projectId = this.userInfo.projectId;
-      let userProject = this.userInfo.userProject;
-      this.post("/auth/login", {}).then(res => {
-        let data = res.Data;
-        this.List = data;
+        this.dataList = data;
       });
     }
   },

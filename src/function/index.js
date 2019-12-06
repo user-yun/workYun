@@ -132,7 +132,7 @@ export function getLocal(key, value) {
         } else if (!!data[key] && data[key] != undefined) {
             return data[key];
         } else {
-            value
+            return value;
         }
     } catch (error) {
         return value;

@@ -123,9 +123,9 @@ export default {
     },
     login() {
       let that = this;
-      this.post("/auth/login", {
-        Username: this.ruleForm.username,
-        Password: require("js-md5")(this.ruleForm.password)
+      this.get("/login/login", {
+        username: this.ruleForm.username,
+        password: this.ruleForm.password
       }).then(res => {
         if (res.Code == 0) {
           let data = res.Data;

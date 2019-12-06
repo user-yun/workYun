@@ -59,7 +59,7 @@ export default function f() {
         //     align: "right",
         //     format: true,
         //     // label: language.currentReceivable,
-        //     type: Number
+        //     number: true
         // },
         // {
         //     width: "130",
@@ -68,7 +68,7 @@ export default function f() {
         //     sortable: true,
         //     format: true,
         //     // label: language.currentToBeCollected,
-        //     type: Number
+        //     number: true
         // },
         // {
         //     width: "130",
@@ -77,7 +77,7 @@ export default function f() {
         //     // label: language.realIncome,
         //     sortable: true,
         //     format: true,
-        //     type: Number
+        //     number: true
         // },
         // {
         //     width: "130",
@@ -86,7 +86,7 @@ export default function f() {
         //     sortable: true,
         //     // label: language.cumulativeRecharge,
         //     format: true,
-        //     type: Number
+        //     number: true
         // },
         // {
         //     width: "130",
@@ -95,7 +95,7 @@ export default function f() {
         //     sortable: true,
         //     // label: language.accountBalance,
         //     format: true,
-        //     type: Number
+        //     number: true
         // },
         // {
         //     width: "100",

@@ -99,7 +99,6 @@ export default {
       }
     },
     async setWebConfig() {
-      // let config = await this.$Get("/web-config/config-powerbee.json");
       let config = await this.$Get("/web-config/config-abc.json");
       this.setOtherInfo(config);
       this.resizeHandler();
@@ -141,19 +140,14 @@ export default {
             projectId: that.$isTrue(res.Expand) ? res.Expand.Id : null,
             cooperativePartner: that.language.ABC
           });
-          setLocal("userMemory", {
-            userInfo: that.userInfo,
-            otherInfo: that.otherInfo,
-            language: that.language
-          });
-          // that.$router.replace({ name: "home" });
           that.$router.replace({ name: "test" });
         }
       });
     }
   },
   mounted() {
-    let userMemory = getLocal("userMemory");
+    // let userMemory = getLocal("userMemory");
+    this.ruleForm = getLocal("loginForm");
     // if (this.$isTrue(userMemory)) {
     if (false) {
       this.setOtherInfo(userMemory.otherInfo);
@@ -163,7 +157,14 @@ export default {
     window.addEventListener("resize", this.resizeHandler);
   },
   beforeDestroy() {
+    let that = this;
     window.removeEventListener("resize", this.resizeHandler);
+    setLocal("userMemory", {
+      userInfo: that.userInfo,
+      otherInfo: that.otherInfo,
+      language: that.language
+    });
+    setLocal("loginForm", that.ruleForm);
   }
 };
 </script>

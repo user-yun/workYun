@@ -1,3 +1,4 @@
+import Vue from 'vue';
 Array.prototype.$max = function () {
     //数字数组里最大
     return Math.max.apply({}, this);
@@ -28,6 +29,63 @@ Array.prototype.$itemByValue = function (v, ii, t) {
     //         return this[i][t]
     //     }
     // }
+}
+// Object.prototype.hasOwnProperty()
+// 返回一个布尔值，表示某个对象是否含有指定的属性，而且此属性非原型链继承的。
+// Object.prototype.isPrototypeOf()
+// 返回一个布尔值，表示指定的对象是否在本对象的原型中。
+// Object.prototype.propertyIsEnumerable()()
+// 返回一个布尔值，表示某个对象是否含有指定的属性，并且可以枚举。
+Vue.prototype.$setTitle = function (t) {
+    //设置网页的标题
+    let title = document.querySelector("title") || document.createElement('title');
+    title.innerText = t;
+    document.getElementsByTagName('head')[0].appendChild(title);
+}
+Vue.prototype.$setIco = function (i) {
+    //设置网页的图标
+    let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = i;
+    document.getElementsByTagName('head')[0].appendChild(link);
+}
+Vue.prototype.$avoid = function (j) {
+    return JSON.parse(JSON.stringify(j));
+}
+Vue.prototype.$type = function (j) {
+    return Object.prototype.toString.call(j);
+}
+Vue.prototype.$log = function (l) {
+    console.log(l);
+}
+Vue.prototype.$isFalse = function (o) {
+    //检验值完全没有
+    if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN' || Object.keys(o).length < 1 || o.length < 1) return true
+    return false
+}
+Vue.prototype.$isTrue = function (d) {
+    //检验值有但是为空
+    switch (Vue.prototype.$type(d)) {
+        case "[object String]":
+            return d.length > 0;
+        case "[object Number]":
+            return true;
+        case "[object Boolean]":
+            return d;
+        case "[object Array]":
+            if (d == "undefined" || d.length < 1) {
+                return false;
+            } else
+                return true;
+        case "[object Object]":
+            if (d == "undefined" || Object.keys(d).length < 1) {
+                return false;
+            } else
+                return true;
+        default:
+            return false;
+    }
 }
 Array.prototype.$operation = function (i, o) {
     //单个item的数组的计算
@@ -86,14 +144,140 @@ Array.prototype.$operation = function (i, o) {
     }
     return s;
 }
-// Object.prototype.hasOwnProperty()
-// 返回一个布尔值，表示某个对象是否含有指定的属性，而且此属性非原型链继承的。
-// Object.prototype.isPrototypeOf()
-// 返回一个布尔值，表示指定的对象是否在本对象的原型中。
-// Object.prototype.propertyIsEnumerable()()
-// 返回一个布尔值，表示某个对象是否含有指定的属性，并且可以枚举。
+Vue.prototype.$ColorReverse = function (o) {
+    //反转颜色
+    o = "0x" + o.replace(/#/g, "");
+    let str = "000000" + (0xffffff - o).toString(16);
+    return "#" + str.substring(str.length - 6, str.length);
+}
+Vue.prototype.$addCSS = function (cssText) {
+    //动态添加css
+    let ti = null;
+    let style = document.createElement('style'), //创建一个style元素 
+        head = document.head || document.getElementsByTagName('head')[0]; //获取head元素 
+    style.type = 'text/css'; //这里必须显示设置style元素的type属性为text/css，否则在ie中不起作用 
+    if (style.styleSheet) { //IE 
+        let func = function () {
+            try { //防止IE中stylesheet数量超过限制而发生错误 
+                style.styleSheet.cssText = cssText;
+            } catch (e) { }
+            if (ti != null) {
+                // clearImmediate
+                clearTimeout(ti);
+            }
+        }
+        //如果当前styleSheet还不能用，则放到异步中则行
+        if (style.styleSheet.disabled) {
+            ti = setTimeout(func, 100);
+        } else {
+            func();
+        }
+    } else { //w3c
+        //w3c浏览器中只要创建文本节点插入到style元素中就行了
+        let textNode = document.createTextNode(cssText);
+        style.appendChild(textNode);
+    }
+    head.appendChild(style); //把创建的style元素插入到head中  
+}
+Date.prototype.$format = function (fmt) {
+    //日期格式化
+    /**
+     *对Date的扩展，将 Date 转化为指定格式的String
+    *月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
+    *年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+    *例子：
+    *(new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
+    *(new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
+    */
+    let o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (let k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
+Vue.prototype.$dataFormat = function (data) {
+    let colors = require("@/color.js");
+    try {
+        switch (Vue.prototype.$type(data)) {
+            case "[object String]":
+                return data.substr(0, 10);
+            case "[object Number]":
+                return data.toFixed(2);
+            case "[object Array]":
+                let ahtml = "";
+                if (data.length > 0) {
+                    if (Vue.prototype.$type(data[0]) == "[object Object]") {
+                        ahtml = JSON.stringify(data).substr(0, 10);
+                    } else {
+                        data.forEach(e => {
+                            ahtml += e;
+                        });
+                    }
+                }
+                return ahtml;
+            case "[object Object]":
+                let ohtml = "";
+                let colorio = 0;
+                for (let k in data) {
+                    if (data.hasOwnProperty(k)) {
+                        let e = `<div style="color:${colors[colorio]}">${k}:${
+                            data[k]
+                            }</div>`;
+                        ohtml += e;
+                        colorio++;
+                    }
+                }
+                return ohtml;
+            default:
+                return JSON.stringify(data).substr(0, 10);
+        }
+    } catch (e) {
+        return JSON.stringify(data);
+    }
+}
+Vue.prototype.$analogKeyboard = function (el, evtType, keyCode) {
+    let evtObj;
+    if (document.createEvent) {
+        if (window.KeyEvent) { //firefox 浏览器下模拟事件
+            evtObj = document.createEvent('KeyEvents');
+            evtObj.initKeyEvent(evtType, true, true, window, true, false, false, false, keyCode, 0);
+        } else { //chrome 浏览器下模拟事件
+            evtObj = document.createEvent('UIEvents');
+            evtObj.initUIEvent(evtType, true, true, window, 1);
 
-import Vue from 'vue';
+            delete evtObj.keyCode;
+            if (typeof evtObj.keyCode === "undefined") { //为了模拟keycode
+                Object.defineProperty(evtObj, "keyCode", {
+                    value: keyCode
+                });
+            } else {
+                evtObj.key = String.fromCharCode(keyCode);
+            }
+
+            if (typeof evtObj.ctrlKey === 'undefined') { //为了模拟ctrl键
+                Object.defineProperty(evtObj, "ctrlKey", {
+                    value: true
+                });
+            } else {
+                evtObj.ctrlKey = true;
+            }
+        }
+        el.dispatchEvent(evtObj);
+
+    } else if (document.createEventObject) { //IE 浏览器下模拟事件
+        evtObj = document.createEventObject();
+        evtObj.keyCode = keyCode
+        el.fireEvent('on' + evtType, evtObj);
+    }
+}
 /*
  *  使用方法
  *  将以下代码复制到一个js文件中，然后在入口文件main.js中import引入即可；
@@ -254,194 +438,3 @@ Vue.directive('dialogDrag', {
         }
     }
 })
-/**
- *对Date的扩展，将 Date 转化为指定格式的String
- *月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
- *年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
- *例子：
- *(new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
- *(new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
- */
-Date.prototype.$format = function (fmt) {
-    //日期格式化
-    let o = {
-        "M+": this.getMonth() + 1, //月份
-        "d+": this.getDate(), //日
-        "h+": this.getHours(), //小时
-        "m+": this.getMinutes(), //分
-        "s+": this.getSeconds(), //秒
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
-        "S": this.getMilliseconds() //毫秒
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (let k in o)
-        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-}
-
-Vue.prototype.$setTitle = function (t) {
-    //设置网页的标题
-    let title = document.querySelector("title") || document.createElement('title');
-    title.innerText = t;
-    document.getElementsByTagName('head')[0].appendChild(title);
-}
-
-Vue.prototype.$setIco = function (i) {
-    //设置网页的图标
-    let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = i;
-    document.getElementsByTagName('head')[0].appendChild(link);
-}
-
-Vue.prototype.$ColorReverse = function (o) {
-    //反转颜色
-    o = "0x" + o.replace(/#/g, "");
-    let str = "000000" + (0xffffff - o).toString(16);
-    return "#" + str.substring(str.length - 6, str.length);
-}
-
-Vue.prototype.$addCSS = function (cssText) {
-    //动态添加css
-    let ti = null;
-    let style = document.createElement('style'), //创建一个style元素 
-        head = document.head || document.getElementsByTagName('head')[0]; //获取head元素 
-    style.type = 'text/css'; //这里必须显示设置style元素的type属性为text/css，否则在ie中不起作用 
-    if (style.styleSheet) { //IE 
-        let func = function () {
-            try { //防止IE中stylesheet数量超过限制而发生错误 
-                style.styleSheet.cssText = cssText;
-            } catch (e) { }
-            if (ti != null) {
-                // clearImmediate
-                clearTimeout(ti);
-            }
-        }
-        //如果当前styleSheet还不能用，则放到异步中则行
-        if (style.styleSheet.disabled) {
-            ti = setTimeout(func, 100);
-        } else {
-            func();
-        }
-    } else { //w3c
-        //w3c浏览器中只要创建文本节点插入到style元素中就行了
-        let textNode = document.createTextNode(cssText);
-        style.appendChild(textNode);
-    }
-    head.appendChild(style); //把创建的style元素插入到head中  
-}
-
-Vue.prototype.$analogKeyboard = function (el, evtType, keyCode) {
-    let evtObj;
-    if (document.createEvent) {
-        if (window.KeyEvent) { //firefox 浏览器下模拟事件
-            evtObj = document.createEvent('KeyEvents');
-            evtObj.initKeyEvent(evtType, true, true, window, true, false, false, false, keyCode, 0);
-        } else { //chrome 浏览器下模拟事件
-            evtObj = document.createEvent('UIEvents');
-            evtObj.initUIEvent(evtType, true, true, window, 1);
-
-            delete evtObj.keyCode;
-            if (typeof evtObj.keyCode === "undefined") { //为了模拟keycode
-                Object.defineProperty(evtObj, "keyCode", {
-                    value: keyCode
-                });
-            } else {
-                evtObj.key = String.fromCharCode(keyCode);
-            }
-
-            if (typeof evtObj.ctrlKey === 'undefined') { //为了模拟ctrl键
-                Object.defineProperty(evtObj, "ctrlKey", {
-                    value: true
-                });
-            } else {
-                evtObj.ctrlKey = true;
-            }
-        }
-        el.dispatchEvent(evtObj);
-
-    } else if (document.createEventObject) { //IE 浏览器下模拟事件
-        evtObj = document.createEventObject();
-        evtObj.keyCode = keyCode
-        el.fireEvent('on' + evtType, evtObj);
-    }
-}
-
-Vue.prototype.$avoid = function (j) {
-    return JSON.parse(JSON.stringify(j));
-}
-Vue.prototype.$type = function (j) {
-    return Object.prototype.toString.call(j);
-}
-Vue.prototype.$log = function (l) {
-    console.log(l);
-}
-Vue.prototype.$isFalse = function (o) {
-    //检验值完全没有
-    if (!o || o === 'null' || o === 'undefined' || o === 'false' || o === 'NaN' || Object.keys(o).length < 1 || o.length < 1) return true
-    return false
-}
-Vue.prototype.$isTrue = function (d) {
-    //检验值有但是为空
-    switch (Vue.prototype.$type(d)) {
-        case "[object String]":
-            return d.length > 0;
-        case "[object Number]":
-            return true;
-        case "[object Boolean]":
-            return d;
-        case "[object Array]":
-            if (d == "undefined" || d.length < 1) {
-                return false;
-            } else
-                return true;
-        case "[object Object]":
-            if (d == "undefined" || Object.keys(d).length < 1) {
-                return false;
-            } else
-                return true;
-        default:
-            return false;
-    }
-}
-Vue.prototype.$dataFormat = function (data) {
-    let colors = require("@/color.js");
-    try {
-        switch (Vue.prototype.$type(data)) {
-            case "[object String]":
-                return data.substr(0, 10);
-            case "[object Number]":
-                return data.toFixed(2);
-            case "[object Array]":
-                let ahtml = "";
-                if (data.length > 0) {
-                    if (Vue.prototype.$type(data[0]) == "[object Object]") {
-                        ahtml = JSON.stringify(data).substr(0, 10);
-                    } else {
-                        data.forEach(e => {
-                            ahtml += e;
-                        });
-                    }
-                }
-                return ahtml;
-            case "[object Object]":
-                let ohtml = "";
-                let colorio = 0;
-                for (let k in data) {
-                    if (data.hasOwnProperty(k)) {
-                        let e = `<div style="color:${colors[colorio]}">${k}:${
-                            data[k]
-                            }</div>`;
-                        ohtml += e;
-                        colorio++;
-                    }
-                }
-                return ohtml;
-            default:
-                return JSON.stringify(data).substr(0, 10);
-        }
-    } catch (e) {
-        return JSON.stringify(data);
-    }
-}

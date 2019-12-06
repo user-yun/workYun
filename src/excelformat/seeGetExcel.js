@@ -31,7 +31,7 @@ export default function sg(that, n, o, c) {
             i++;
             // p["!rows"].push({ hpx: 40 });
             c.forEach((ce, cei) => {
-                that.$set(p, row[cei] + i, { v: oee[ce.prop], s: align(ce.align ? ce.align : "center"), t: ce.type == Number ? "n" : "" });
+                that.$set(p, row[cei] + i, { v: oee[ce.prop], s: align(ce.align ? ce.align : "center"), t: ce.number == true ? "n" : "" });
             })
         });
         that.$set(p, "!ref", "A1:" + row[c.length - 1] + i);

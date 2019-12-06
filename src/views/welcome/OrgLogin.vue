@@ -107,7 +107,7 @@ export default {
       ruleForm: {},
       parkList: [],
       orgList: [],
-      size:""
+      size: ""
     };
   },
   components: {
@@ -116,15 +116,7 @@ export default {
   props: {},
   computed: {
     rules() {
-      let rules = {
-        username: [
-          { required: true, message: this.language.userName, trigger: "blur" }
-        ],
-        password: [
-          { required: true, message: this.language.passWord, trigger: "blur" }
-        ]
-      };
-
+      let rules = {};
       return Object.assign(
         {},
         require("@/function/formValidation.js").default,
@@ -135,7 +127,17 @@ export default {
       return this.otherInfo.menuCollapse ? "50%" : "25%";
     }
   },
-  watch: {},
+  watch: {
+    "ruleForm.parkSelectItem": {
+      deep: true,
+      immediate: true,
+      handler(newv, oldv) {
+        if (newv && newv != undefined) {
+          this.getOrgList();
+        }
+      }
+    }
+  },
   methods: {
     ruleFormValidate(prop, is, mess) {
       let that = this;
@@ -145,7 +147,7 @@ export default {
         that
           .get(`/wxbase/verification/${that.ruleForm.phone}`, {})
           .then(res => {
-            that.$set(that.ruleForm, "vCode", res.Data);
+            that.$set(that.ruleForm, "vCode", "");
           });
       }
     },
@@ -189,9 +191,15 @@ export default {
     parkQuerySearchSelect(item) {
       let that = this;
       that.$set(that.ruleForm, "parkSelectItem", item);
-      that.get(`/wxbase/allorg/${item.Project}`, {}).then(res => {
-        that.orgList = res.Data;
-      });
+      that.getOrgList();
+    },
+    getOrgList() {
+      let that = this;
+      that
+        .get(`/wxbase/allorg/${that.ruleForm.parkSelectItem.Project}`, {})
+        .then(res => {
+          that.orgList = res.Data;
+        });
     },
     orgQuerySearchSelect(item) {
       this.$set(this.ruleForm, "orgSelectItem", item);
@@ -256,8 +264,9 @@ export default {
     }
   },
   mounted() {
-    let userMemory = getLocal("userMemory");
+    // let userMemory = getLocal("userMemory");
     this.ruleForm = getLocal("loginForm");
+    this.$set(this.ruleForm, "vCode", "");
     // if (this.$isTrue(userMemory)) {
     if (false) {
       this.setOtherInfo(userMemory.otherInfo);
