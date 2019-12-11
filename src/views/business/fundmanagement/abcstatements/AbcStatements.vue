@@ -41,7 +41,7 @@
             <span class="float-l">{{language[item.text]}}</span>
             <span class="float-r option-r">{{item.value}}</span>
           </el-option>
-        </el-select> -->
+        </el-select>-->
       </el-col>
       <el-col class="margin1vw-t alnrit" :xl="12" :lg="24">
         <!-- {{language.numbersEnquiry}}
@@ -60,7 +60,7 @@
           class="margin1vw-r"
           :disabled="selectExcelOut.length<1||liquidationState!=3"
           :tooltip="language.selectLiquidationTooltip"
-        >{{language.selectLiquidation}}</mdb> -->
+        >{{language.selectLiquidation}}</mdb>-->
         <mdb
           :disabled="selectExcelOut.length<1"
           @click="excelOut"
@@ -122,11 +122,10 @@ export default {
   methods: {
     excelOut() {
       require("@/excelformat/seeGetExcel.js").default(
-        this,
-        this.language.abcStatements,
+        this.language[this.$options.name],
         [
           {
-            name: this.language.abcStatements,
+            name: this.language[this.$options.name],
             list: this.selectExcelOut
           }
         ],
@@ -192,24 +191,24 @@ export default {
           let data = res.data;
           that.dataList = data != null ? data : [];
           // that.dataList.forEach(e => {
-            // let typeText =
-            //   that.language[
-            //     that.otherInfo.rechargeModeList.$itemByValue(
-            //       "value",
-            //       e.Rechargeway,
-            //       "text"
-            //     )
-            //   ];
-            // let statusText =
-            //   that.language[
-            //     that.otherInfo.liquidationStateList.$itemByValue(
-            //       "value",
-            //       e.Status,
-            //       "text"
-            //     )
-            //   ];
-            // that.$set(e, "PaymentChannel", typeText);
-            // that.$set(e, "billState", statusText);
+          // let typeText =
+          //   that.language[
+          //     that.otherInfo.rechargeModeList.$itemByValue(
+          //       "value",
+          //       e.Rechargeway,
+          //       "text"
+          //     )
+          //   ];
+          // let statusText =
+          //   that.language[
+          //     that.otherInfo.liquidationStateList.$itemByValue(
+          //       "value",
+          //       e.Status,
+          //       "text"
+          //     )
+          //   ];
+          // that.$set(e, "PaymentChannel", typeText);
+          // that.$set(e, "billState", statusText);
           // });
           // that.total = res.Data.total;
         });

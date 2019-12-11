@@ -256,9 +256,9 @@ export default {
       });
     },
     exc() {
-      require("@/excelformat/test.js").default(this, "封装测试", [
-        { title: "测试一", content: "内容一" },
-        { title: "测试二", content: "内容二" }
+      require("@/excelformat/test.js").default("封装测试", [
+        { title: "测试一1", content: "内容一1" },
+        { title: "测试二2", content: "内容二2" }
       ]);
     },
     pickerChange(t) {},

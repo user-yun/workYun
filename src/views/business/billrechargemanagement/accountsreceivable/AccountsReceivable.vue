@@ -6,12 +6,7 @@
         <ProOrgSearch @proOrg="proOrgSelect"></ProOrgSearch>
       </el-col>
       <el-col :span="8">
-        <DatePicker
-          :type="1"
-          :dayNum="31"
-          @change="pickerChange"
-          :clearable="true"
-        ></DatePicker>
+        <DatePicker :type="1" :dayNum="31" @change="pickerChange" :clearable="true"></DatePicker>
       </el-col>
       <el-col :span="8">
         <mdb :disabled="disabledButton" type="primary" @click="excelOut">{{excelExportButton}}</mdb>
@@ -40,7 +35,7 @@ export default {
         border: true,
         stripe: true,
         highlight: true,
-        multiple: true,
+        multiple: true
       },
       selectBill: [],
       buttonText: "",
@@ -101,11 +96,10 @@ export default {
     excelOut() {
       // require("@/function/tableExcel.js").default("billExcel");//需要xlsx 现在换为了xlsx-style
       require("@/excelformat/seeGetExcel.js").default(
-        this,
-        "账单",
+        this.language[this.$options.name],
         [
           {
-            name: "账单",
+            name: this.language[this.$options.name],
             list: this.selectBill
           }
         ],
